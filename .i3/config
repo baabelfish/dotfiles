@@ -1,0 +1,231 @@
+set $mod Mod4
+font pango:Termsyn 8
+floating_modifier $mod
+
+# workspace_auto_back_and_forth yes
+
+# class                 border  backgr. text    indicator
+client.focused           #999999  #999999  #999999  #999999
+client.focused_inactive  #444444  #444444  #444444  #444444
+client.unfocused         #222222  #222222  #222222  #222222
+client.urgent            #222222  #222222  #222222  #222222
+
+client.background           #1d1d1d
+
+new_window pixel 1
+
+#hide_edge_borders both
+focus_follows_mouse no
+popup_during_fullscreen smart
+
+# i3
+bindsym $mod+Shift+r reload
+bindsym $mod+Control+Shift+F4 i3-msg exit
+bindsym $mod+q kill
+
+# Terminal
+bindsym $mod+Return exec urxvtc
+bindsym $mod+t exec urxvtc
+bindsym $mod+Shift+Return exec urxvtc -T "float"
+bindsym $mod+Shift+t exec urxvtc -T "float"
+
+bindsym $mod+p exec --no-startup-id ~/.xmonad/scripts/start_menu.sh
+bindsym $mod+Shift+p exec --no-startup-id gmrun
+# bindsym $mod+Shift+p exec --no-startup-id bmenu_run
+bindsym $mod+i move workspace to output left
+bindsym $mod+o move workspace to output right
+bindsym $mod+e focus output left
+bindsym $mod+r move container to output left
+bindsym $mod+Shift+e exec --no-startup-id ~/.xmonad/scripts/swap_displays.sh
+
+# Focus
+bindsym $mod+a focus left
+bindsym $mod+s focus down
+bindsym $mod+w focus up
+bindsym $mod+d focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move window
+bindsym $mod+Control+a move left 50px
+bindsym $mod+Control+s move down 50px
+bindsym $mod+Control+w move up 50px
+bindsym $mod+Control+d move right 50px
+bindsym $mod+Control+h move left 50px
+bindsym $mod+Control+j move down 50px
+bindsym $mod+Control+k move up 50px
+bindsym $mod+Control+l move right 50px
+
+# Resizing
+bindsym $mod+Shift+l resize grow width 40 px or 4 ppt
+bindsym $mod+Shift+k resize grow height 40 px or 4 ppt
+bindsym $mod+Shift+j resize shrink height 40 px or 4 ppt
+bindsym $mod+Shift+h resize shrink width 40 px or 4 ppt
+bindsym $mod+Shift+d resize grow width 40 px or 4 ppt
+bindsym $mod+Shift+w resize grow height 40 px or 4 ppt
+bindsym $mod+Shift+s resize shrink height 40 px or 4 ppt
+bindsym $mod+Shift+a resize shrink width 40 px or 4 ppt
+
+# Splits
+bindsym $mod+colon split h
+bindsym $mod+Control+colon split h
+bindsym $mod+semicolon split v
+bindsym $mod+Control+semicolon split v
+bindcode $mod+94 split h
+bindcode $mod+Shift+94 split v
+
+# Layouts
+bindsym $mod+f fullscreen
+bindsym $mod+space layout toggle split
+bindsym $mod+Shift+space layout tabbed
+
+bindsym $mod+Tab focus mode_toggle
+bindsym $mod+Shift+Tab floating toggle
+
+# Focus parent
+bindsym $mod+z focus parent
+
+# Focus child
+bindsym $mod+x focus child
+
+# Scratchpad
+bindsym $mod+c move scratchpad
+bindsym $mod+v scratchpad show floating toggle
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Bar
+bar {
+    modifier       Mod2
+    tray_output    primary
+    status_command i3status
+    position       bottom
+    # mode           hide
+
+    colors {
+        background         #101010
+        statusline         #00AA00
+                           #border #backgr #text
+        focused_workspace  #606060 #404040 #22FF22
+        inactive_workspace #606060 #202020 #115511
+        urgent_workspace   #ffffff #900000 #ff0000
+
+        # background #101010
+        # statusline #999999
+        # focused_workspace #825969 #191919
+        # active_workspace #825969 #101010
+        # inactive_workspace #9a878f #191919
+        # urgent_workspace #2e3436 #9a878f
+   }
+}
+
+# Lock screen
+bindsym $mod+F5 exec --no-startup-id i3lock -c 000000
+bindsym $mod+shift+F5 exec ~/.xmonad/scripts/aux/suspend.sh
+
+# Volume keys
+bindsym XF86AudioMute exec  --no-startup-id ~/.xmonad/scripts/aux/gvol.sh -t
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.xmonad/scripts/aux/gvol.sh -i 4
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xmonad/scripts/aux/gvol.sh -d 4
+bindsym $mod+m exec --no-startup-id ~/.xmonad/scripts/aux/gvol.sh -t
+bindsym $mod+plus exec --no-startup-id ~/.xmonad/scripts/aux/gvol.sh -i 3
+bindsym $mod+minus exec --no-startup-id ~/.xmonad/scripts/aux/gvol.sh -d 3
+
+# Music
+bindsym $mod+F1 exec --no-startup-id ~/.xmonad/scripts/aux/music.sh -u
+bindsym $mod+F3 exec --no-startup-id ~/.xmonad/scripts/aux/music.sh -r
+bindsym $mod+F4 exec --no-startup-id ~/.xmonad/scripts/aux/music.sh -n
+
+# Monitors
+bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xmonad/scripts/select_monitors.sh'
+# bindsym $mod+F6 exec --no-startup-id "~/.xmonad/scripts/aux/one_monitor.sh"
+# bindsym $mod+Shift+F6 exec --no-startup-id "~/.xmonad/scripts/aux/two_monitors.sh"
+bindsym $mod+Shift+F8 exec --no-startup-id "killall compton; compton"
+
+# Tmux terminals
+bindsym $mod+Control+1 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 1
+bindsym $mod+Control+2 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 2
+bindsym $mod+Control+3 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 3
+bindsym $mod+Control+4 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 4
+bindsym $mod+Control+5 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 5
+bindsym $mod+Control+6 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 6
+bindsym $mod+Control+7 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 7
+bindsym $mod+Control+8 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 8
+bindsym $mod+Control+9 exec --no-startup-id ~/.xmonad/scripts/open_ssh_tmux.sh 9
+
+# Change wallpaper
+bindsym $mod+Control+b exec --no-startup-id ~/.xmonad/scripts/random/bgdonwload.sh 1
+
+# Configuration commands
+bindsym $mod+F8  exec --no-startup-id xmodmap ~/.capsswap
+bindsym $mod+F9  exec --no-startup-id urxvt -T float -e zsh -c alsamixer
+bindsym $mod+F10 exec --no-startup-id pavucontrol
+bindsym $mod+F11 exec --no-startup-id urxvt -T float -e zsh -c htop
+bindsym $mod+Shift+F9 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.i3/config"
+bindsym $mod+Shift+F10 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.xinitrc"
+bindsym $mod+Shift+F11  exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.Xdefaults"
+
+bindsym $mod+b border toggle
+
+# Window orientations
+for_window [class="^Amnesia$"] floating enable
+for_window [class="^Braid$"] floating enable
+for_window [class="^Closure$"] floating enable
+for_window [class="^Defcon$"] floating enable
+for_window [class="^DungeonDefenders-x86$"] floating enable
+for_window [class="^Dustforce$"] floating enable
+for_window [class="^FTL$"] floating enable
+for_window [class="^FrozenSynapse$"] floating enable
+for_window [class="^Gmrun$"] floating enable
+for_window [class="^Guake$"] floating enable
+for_window [class="^Limbo$"] floating enable
+for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^Rochard$"] floating enable
+for_window [class="^SPAZ$"] floating enable
+for_window [class="^SPAZ$"] fullscreen
+for_window [class="^hl2_linux$"] floating enable
+for_window [class="^SpaceChem$"] floating enable
+for_window [class="^SpaceChem$"] fullscreen
+for_window [class="^Splice$"] floating enable
+for_window [class="^Spotify$"] floating enable
+for_window [class="^Steam$"] floating enable
+for_window [class="^Awesomenauts$"] floating enable
+for_window [class="^Trine2.*$"] border none
+for_window [class="^Trine2.*$"] floating enable
+for_window [class="^Wine$"] floating enable
+for_window [class="^Yakuake$"] floating enable
+for_window [class="^feh$"] floating enable
+for_window [class="^hl_linux$"] floating enable
+for_window [title="^Dynamite Jack$"] floating enable
+for_window [title="^Install.*$"] floating enable
+for_window [title="^Product Activation$"] floating enable
+for_window [title="^Serious Sam 3 - Linux$"] floating enable
+for_window [title="^float$"] floating enable
+for_window [title="^Grid$"] floating enable
+for_window [window_role="pop-up"] floating enable
+
+exec --no-startup-id transset-df -n i3bar 0.8
