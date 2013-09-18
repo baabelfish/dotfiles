@@ -113,7 +113,7 @@ set listchars=""
 set listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
 set modelines=0
 set nobackup
-set cursorline
+set nocursorline
 set noerrorbells
 set nofoldenable
 set noshowmode

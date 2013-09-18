@@ -2,7 +2,7 @@ set $mod Mod4
 font pango:Termsyn 8
 floating_modifier $mod
 
-# workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 
 # class                 border  backgr. text    indicator
 client.focused           #999999  #999999  #999999  #999999
@@ -14,7 +14,6 @@ client.background           #1d1d1d
 
 new_window pixel 1
 
-#hide_edge_borders both
 focus_follows_mouse no
 popup_during_fullscreen smart
 
@@ -145,40 +144,19 @@ bar {
 
 # Lock screen
 bindsym $mod+F5 exec --no-startup-id i3lock -c 000000
-bindsym $mod+shift+F5 exec ~/.xutils/aux/suspend.sh
+bindsym $mod+shift+F5 exec ~/.xutils/suspend.sh
 
 # Volume keys
-bindsym XF86AudioMute exec  --no-startup-id ~/.xutils/aux/gvol.sh -t
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.xutils/aux/gvol.sh -i 4
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xutils/aux/gvol.sh -d 4
-bindsym $mod+m exec --no-startup-id ~/.xutils/aux/gvol.sh -t
-bindsym $mod+plus exec --no-startup-id ~/.xutils/aux/gvol.sh -i 3
-bindsym $mod+minus exec --no-startup-id ~/.xutils/aux/gvol.sh -d 3
-
-# Music
-bindsym $mod+F1 exec --no-startup-id ~/.xutils/aux/music.sh -u
-bindsym $mod+F3 exec --no-startup-id ~/.xutils/aux/music.sh -r
-bindsym $mod+F4 exec --no-startup-id ~/.xutils/aux/music.sh -n
+bindsym XF86AudioMute exec  --no-startup-id ~/.xutils/gvol.sh -t
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.xutils/gvol.sh -i 4
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xutils/gvol.sh -d 4
+bindsym $mod+m exec --no-startup-id ~/.xutils/gvol.sh -t
+bindsym $mod+plus exec --no-startup-id ~/.xutils/gvol.sh -i 3
+bindsym $mod+minus exec --no-startup-id ~/.xutils/gvol.sh -d 3
 
 # Monitors
 bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xutils/select_monitors.sh'
-# bindsym $mod+F6 exec --no-startup-id "~/.xutils/aux/one_monitor.sh"
-# bindsym $mod+Shift+F6 exec --no-startup-id "~/.xutils/aux/two_monitors.sh"
 bindsym $mod+Shift+F8 exec --no-startup-id "killall compton; compton"
-
-# Tmux terminals
-bindsym $mod+Control+1 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 1
-bindsym $mod+Control+2 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 2
-bindsym $mod+Control+3 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 3
-bindsym $mod+Control+4 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 4
-bindsym $mod+Control+5 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 5
-bindsym $mod+Control+6 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 6
-bindsym $mod+Control+7 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 7
-bindsym $mod+Control+8 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 8
-bindsym $mod+Control+9 exec --no-startup-id ~/.xutils/open_ssh_tmux.sh 9
-
-# Change wallpaper
-bindsym $mod+Control+b exec --no-startup-id ~/.xutils/random/bgdonwload.sh 1
 
 # Configuration commands
 bindsym $mod+F8  exec --no-startup-id xmodmap ~/.capsswap
@@ -188,8 +166,6 @@ bindsym $mod+F11 exec --no-startup-id urxvt -T float -e zsh -c htop
 bindsym $mod+Shift+F9 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.i3/config"
 bindsym $mod+Shift+F10 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.xinitrc"
 bindsym $mod+Shift+F11  exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.Xdefaults"
-
-bindsym $mod+b border toggle
 
 # Window orientations
 for_window [class="^Amnesia$"] floating enable

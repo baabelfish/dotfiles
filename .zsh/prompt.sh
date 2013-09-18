@@ -71,13 +71,13 @@ if [[ "$PROMPT_STYLE" == "multiline" ]]; then
             GBRANCH="$(aC $NC)$(basename `git rev-parse --show-toplevel`)$(aC $LC)/$(aC $AC)$GBRANCH"
         fi
 
-        print -n "\033[s"
-        print -nrP "$(aC $LC)"
-        for (( i = 0; i < $[$COLUMNS-1]; i++ )); do
-            print -nrP "─"
-        done
-        print -nrP "╼"
-        print -n "\033[u"
+        # print -n "\033[s"
+        # print -nrP "$(aC $LC)"
+        # for (( i = 0; i < $[$COLUMNS-1]; i++ )); do
+        #     print -nrP "─"
+        # done
+        # print -nrP "╼"
+        # print -n "\033[u"
 
 print -rP "$(aC $LC)╾─\
 $(aC $LC)❨$(aC $IC)%*$(aC $LC)❩──\
@@ -85,7 +85,7 @@ $(aC $LC)❨$(aC 118)$(hostname)$(aC $LC)❩─\
 $(aC $LC)❨$(aC $IC)$GBRANCH$(aC $LC)❩─\
 $(aC $LC)❨$(aC $IC)%~$(aC $LC)❩─\
 $(aC $LC)❨$(aC $IC)$ERR$(aC $LC)❩─\
-"
+╼"
     }
     PROMPT=""
     RPROMPT=""
