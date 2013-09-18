@@ -1,80 +1,79 @@
-set nocompatible
-"1""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-"2""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" :BundleInstall
-"3"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimproc
-" cd ~/.vim/bundle/vimproc.vim
-" make
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NeoBundle:
+" git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Post Install:
+" cd ~/.vim/bundle/vimproc.vim && make
+" cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer --system-libclang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off
-set rtp+=~/.vim/bundle/vundle
+if has('vim_starting')
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-call vundle#rc()
+call neobundle#rc(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-Bundle 'gmarik/vundle'
-" Bundle 'Yggdroot/indentLine'
-" Bundle 'Raimondi/delimitMate'
+" NeoBundle 'gmarik/vundle'
+" NeoBundle 'Yggdroot/indentLine'
+" NeoBundle 'jiangmiao/auto-pairs'
+" NeoBundle 'abijr/colorpicker'
 
-Bundle 'abijr/colorpicker'
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'gregsexton/gitv'
-Bundle 'vim-scripts/octave.vim--'
-Bundle 'tpope/vim-markdown'
-Bundle 'kurkale6ka/vim-pairs'
-Bundle 'AndrewRadev/switch.vim'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'Shougo/unite-outline'
-Bundle 'Shougo/unite.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'drmikehenry/vim-fixkey'
-Bundle 'arecarn/crunch'
-Bundle 'b5winckler/vim-angry'
-Bundle 'PeterRincker/vim-argumentative'
-Bundle 'baabelfish/vim-droid256'
-Bundle 'bling/vim-airline'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'dag/vim-fish'
-Bundle 'glts/vim-textobj-comment'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'kana/vim-arpeggio'
-Bundle 'kana/vim-textobj-entire'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'kana/vim-textobj-user'
-Bundle 'mattn/emmet-vim'
-Bundle 'mhinz/vim-signify'
-Bundle 'mhinz/vim-startify'
-Bundle 'mrtazz/DoxygenToolkit.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'paradigm/SkyBison'
-Bundle 'scottymoon/vim-twilight'
-Bundle 'scrooloose/syntastic'
-Bundle 'sjl/gundo.vim'
-Bundle 'baabelfish/vim-vertigo'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-dispatch'
-Bundle 'baabelfish/vim-dispatch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-sleuth'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/Bck'
-Bundle 'vim-scripts/L9'
-Bundle 'vim-scripts/Vimchant'
-Bundle 'vim-scripts/VisIncr'
-Bundle 'vim-scripts/ZoomWin'
-Bundle 'baabelfish/a.vim'
-Bundle 'vim-scripts/django.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'jwhitley/vim-matchit'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'vim-scripts/octave.vim--'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kurkale6ka/vim-pairs'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'drmikehenry/vim-fixkey'
+NeoBundle 'arecarn/crunch'
+NeoBundle 'b4winckler/vim-angry'
+NeoBundle 'PeterRincker/vim-argumentative'
+NeoBundle 'baabelfish/vim-droid256'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'dag/vim-fish'
+NeoBundle 'glts/vim-textobj-comment'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'kana/vim-arpeggio'
+NeoBundle 'kana/vim-textobj-entire'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mhinz/vim-signify'
+NeoBundle 'mhinz/vim-startify'
+NeoBundle 'mrtazz/DoxygenToolkit.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'paradigm/SkyBison'
+NeoBundle 'scottymoon/vim-twilight'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'baabelfish/vim-vertigo'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'baabelfish/vim-dispatch'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-scripts/Bck'
+NeoBundle 'vim-scripts/L9'
+NeoBundle 'vim-scripts/Vimchant'
+NeoBundle 'vim-scripts/VisIncr'
+NeoBundle 'vim-scripts/ZoomWin'
+NeoBundle 'baabelfish/a.vim'
+NeoBundle 'vim-scripts/django.vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'jwhitley/vim-matchit'
+
+NeoBundleCheck
 
 filetype plugin indent on
 setlocal spell spelllang=en_us
@@ -171,27 +170,9 @@ endif
 "" Automatic commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-  " if has('conceal')
-  "   autocmd Syntax * syn keyword Operator not conceal cchar=¬
-  "   hi! link Conceal Operator
-  "   set conceallevel=1
-  " endif
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  " autocmd InsertEnter * set cul
-  " autocmd InsertLeave * set nocul
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
   autocmd FileType matlab set filetype=octave
-
-  " if !has("gui_running")
-  "     autocmd InsertEnter * set nocursorline nocursorcolumn
-  "     autocmd InsertLeave * set cursorline
-  "     set cursorline
-  " endif
-  " autocmd FileType help set rnu " FIXME
-
-  " autocmd FocusLost * :wa
-  " autocmd WinLeave * silent! :w
-  " autocmd BufLeave * silent! :w
 
   autocmd VimEnter * RainbowParenthesesToggle
   autocmd Syntax * RainbowParanthesesLoadRound
@@ -209,20 +190,11 @@ if has("autocmd")
   autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
   autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 
-  " Compile with java
-  " autocmd Filetype java set makeprg=javac\ % set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-
   " autocmd FileType plaintex set filetype=tex
   autocmd FileType tex set filetype=plaintex
   autocmd FileType fish set filetype=sh
   autocmd FileType cpp set nowrap
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
-
-  " Hack to get signbuf on always
-  " augroup mine
-  "   autocmd BufWinEnter * sign define mysign
-  "   autocmd BufWinEnter * exe "sign place 1337 line=1 name=mysign buffer=" . bufnr('%')
-  " augroup END
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,17 +215,14 @@ nnoremap <M-K> K
 nnoremap <M-L> L
 nnoremap <M-q> <C-w>c
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
-nnoremap <M-c> :tabclose<cr>:echo ""<cr>
-nnoremap <M-N> <C-w>v:Unite -silent file_rec/async<CR>
-nnoremap <M-M> <C-w>s:Unite -silent file_rec/async<CR>
+" nnoremap <M-c> :tabclose<cr>:echo ""<cr>
 nnoremap <M-n> <C-w>v
+nnoremap <M-M> <C-w>v
 nnoremap <M-m> <C-w>s
 nnoremap <M-w> <C-w><C-w>
 
 " nnoremap ) /)\\|(<cr>
 " nnoremap ( ?)\\|(<cr>
-nnoremap sq /"\\|'\\|`<cr>
-nnoremap Sq ?"\\|'\\|`<cr>
 
 nnoremap vif :call SelectFunction(1)<cr>
 nnoremap vaf :call SelectFunction(0)<cr>
@@ -267,30 +236,8 @@ nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 " nnoremap <C-w> <nop>
 "
-" syntax region DoxComment start="\/\*\*" end="\*\/" transparent fold
-
-" cnoremap e<space> :call SkyBison("e ")<cr>
-" cnoremap h<space> :call SkyBison("h ")<cr>
-" cnoremap jk <esc>
-" cnoremap kj <esc>
-" vnoremap jk <esc>
-" vnoremap kj <esc>
-" inoremap jk <esc>
-" inoremap kj <esc>
-" nnoremap <leader>S :setlocal spell! spelllang=en_us<CR>
-" nnoremap <leader>gT :!ctags -R<CR><CR>
-" nnoremap <leader>gT :!~/.zsh_augments/dev/cscope_gen.sh<CR>
-" nnoremap <silent><C-b> :silent make! -j 16\|copen 4\|redraw!\|cc <CR>
-" nnoremap <silent><leader>bR :call BreakpointRemoveAll()<cr><cr>
-" nmap <leader>e :e <cfile><cr>
-" nmap <leader>x :!xdg-open <cfile><cr>
-" nnoremap <silent><leader>nd :e note:deadlinet<cr>
-" nnoremap <silent><leader>nl :e note:linkit<cr>
-" nnoremap <silent><leader>nt :e note:todo<cr>
-" nnoremap <silent><leader>nv :e note:velat<cr>
-" nnoremap Q gqip
-" nnoremap gt :UniteWithCursorWord -hide-status-line -immediately tag<CR>
 " vnoremap <silent><enter> :EasyAlign<cr>
+nnoremap Q gqip
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
@@ -435,19 +382,14 @@ let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_check_header = 1
-" let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
-" let g:syntastic_error_symbol='X'
-" let g:syntastic_warning_symbol='>'
 let g:syntastic_error_symbol='✕'
 let g:syntastic_warning_symbol='✕'
-" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 
 let g:user_emmet_expandabbr_key = '<c-e>'
-" let g:use_emmet_complete_tag = 1
 
 let g:skybison_fuzz = 1
 let g:skybison_input = 1
@@ -458,16 +400,11 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" let g:ycm_key_invoke_completion = '<tab>'
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
-" let g:ycm_min_num_of_chars_for_completion = 100
-" let g:ycm_min_num_identifier_candidate_chars = 10
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-
-let delimitMate_expand_cr = 1
 
 let g:unite_source_history_yank_enable =1
 let g:unite_enable_start_insert = 1
@@ -523,8 +460,6 @@ let g:switch_custom_definitions =
 let g:indentLine_color_term = 237
 let g:indentLine_char = '│'
 
-" let g:notes_directory = '~/.vim/notes'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -542,14 +477,10 @@ if has("gui_running")
   colorscheme twilight
 elseif &t_Co == 256 
   syntax on
-  " let g:solarized_termcolors=256
   colorscheme droid256
 endif
 
 if &term =~ '256color'
-  " Disable Background Color Erase (BCE) so that color schemes
-  " work properly when Vim is used inside tmux and GNU screen.
-  " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
 
@@ -557,12 +488,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
 if has("gui_running")
   set number
-  " set guioptions=ac
-  " set guioptions-=T           " remove the toolbar
   set guifont=Termsyn\ 10
   set guicursor+=a:blinkon0
 endif
@@ -580,7 +507,7 @@ cabbrev E e
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FUNCTIONS
+" Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function OpenCw()
   execute ":redraw"
@@ -656,7 +583,7 @@ endfunction
 
 " Basic gdb breakpoint support
 " Usage: gdb -x breakpoints ./main
-" ----------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent><leader>ba :call BreakpointAdd()<cr><cr>
 nnoremap <silent><leader>br :call BreakpointRemove()<cr><cr>
 nnoremap <silent><leader>bR :call BreakpointRemoveAllInFile()<cr><cr>
@@ -846,3 +773,5 @@ call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
 let g:arpeggio_timeoutlen = 20
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+
+echo ""
