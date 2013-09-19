@@ -17,7 +17,6 @@ autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/yaudtray ]] && yaudtray&
 [[ -e /bin/xautolock ]] && xautolock -time 15 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&
-# [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape;Control_L=Control_L|O'&
 
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1 &
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2 &

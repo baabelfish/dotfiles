@@ -1,6 +1,13 @@
 #!/bin/bash
+# Start X-session when logged in from tty1
+if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+    exec startx
+    logout
+fi
+
 [[ -e ~/.zsh/colors.sh ]] && source ~/.zsh/colors.sh             # Nicer colors for everything
 [[ -e ~/.zsh/zshsettings.sh ]] && source ~/.zsh/zshsettings.sh   # Basic zsh-settings
+[[ -e ~/.xutils/init.sh ]] && ~/.xutils/init.sh
 
 [[ -e ~/.zsh/alias.sh ]] && source ~/.zsh/alias.sh               # Basic aliases to make life easier
 [[ -e ~/.zsh/bookmarks.sh ]] && source ~/.zsh/bookmarks.sh       # For bookmarking directories (with ranger integration)

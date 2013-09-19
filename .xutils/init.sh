@@ -1,9 +1,12 @@
 #!/bin/bash
-# This file is for performing first time install
+# This file is for performing first time configuration
+######################################################
+# Use filelock to detect installation
 if [[ -e /home/$USER/.xutils/.has_been_initialized ]]; then
-  echo "This has already been initialized."
   exit 0
 fi
+
+# Create skeleton config file for the scripts
 if [[ ! -e ~/.xutils/config.sh ]]; then
   echo "#!/bin/bash
 LOG_FILE="/home/$USER/.bblog"
@@ -21,10 +24,10 @@ dmenu_info=\"\"
 " > ~/.xutils/config.sh
 fi
 
-Make needed directories
+# Make needed directories
 mkdir ~/.wallpapers
 
-Download files
+# Download files
 wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2907932.jpg' -O ~/.wallpapers1366x768.png
 
 touch /home/$USER/.xutils/.has_been_initialized
