@@ -1,1 +1,5 @@
 set font termsyn\ 8
+set show-scrollbars false
+
+map t toggle_index 
+map p toggle_page_mode
