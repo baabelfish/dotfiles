@@ -22,6 +22,5 @@ SOURCES=(
 )
 
 for i in ${SOURCES[@]}; do
-    echo $i
     [[ -e "/home/$USER/$i" ]] && source "/home/$USER/$i"
 done
