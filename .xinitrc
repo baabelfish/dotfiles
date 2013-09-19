@@ -12,9 +12,9 @@ xsetroot -cursor_name left_ptr&
 autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
-[[ -e /usr/unclutter ]] && unclutter -idle 3 -noevents&
+[[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 [[ -e /usr/bin/yaudtray ]] && yaudtray&
-[[ -e /bin/xautolock ]] && xautolock -time 15 -locker "i3lock -c 202020"&
+[[ -e /usr/bin/xautolock ]] && xautolock -time 15 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&
 
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1 &
