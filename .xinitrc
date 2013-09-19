@@ -1,6 +1,5 @@
 #!/bin/bash
-# feh --bg-fill --no-xinerama ~/pictures/green4.jpg
-feh --bg-center --no-xinerama ~/pictres/tree.png
+feh --bg-center --no-xinerama ~/.wallpapers/1366x768.png
 
 export AWT_TOOLKIT=XToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1

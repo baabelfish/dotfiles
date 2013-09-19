@@ -15,7 +15,6 @@ client.background           #1d1d1d
 new_window pixel 1
 
 focus_follows_mouse no
-popup_during_fullscreen smart
 
 # i3
 bindsym $mod+Shift+r reload

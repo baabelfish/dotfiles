@@ -3,7 +3,7 @@
 ######################################################
 # Use filelock to detect installation
 if [[ -e /home/$USER/.xutils/.has_been_initialized ]]; then
-  exit 0
+  return
 fi
 
 # Create skeleton config file for the scripts

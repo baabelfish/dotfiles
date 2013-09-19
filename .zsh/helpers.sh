@@ -1,5 +1,9 @@
 #!/bin/bash
 
+addSource() {
+    [[ -e "$1" ]] && source "$1"
+}
+
 is_set() {
     [[ $# != 1 ]] && return 0
     if [[ -z "$1" ]]; then

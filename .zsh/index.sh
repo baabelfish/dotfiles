@@ -1,19 +1,27 @@
 #!/bin/bash
+source ~/.zsh/helpers.sh
+
 # Start X-session when logged in from tty1
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec startx
     logout
 fi
 
-[[ -e ~/.zsh/colors.sh ]] && source ~/.zsh/colors.sh             # Nicer colors for everything
-[[ -e ~/.zsh/zshsettings.sh ]] && source ~/.zsh/zshsettings.sh   # Basic zsh-settings
-[[ -e ~/.xutils/init.sh ]] && ~/.xutils/init.sh
+SOURCES=(
+.zsh/colors.sh
+.zsh/zshsettings.sh
+.xutils/init.sh
+.zsh/alias.sh
+.zsh/bookmarks.sh
+.zsh/help.sh
+.zsh/miscfuncs.sh
+.zsh/packages.sh
+.zsh/prompt.sh
+.zsh/tags.sh
+.zsh/vimfuncs.sh
+)
 
-[[ -e ~/.zsh/alias.sh ]] && source ~/.zsh/alias.sh               # Basic aliases to make life easier
-[[ -e ~/.zsh/bookmarks.sh ]] && source ~/.zsh/bookmarks.sh       # For bookmarking directories (with ranger integration)
-[[ -e ~/.zsh/help.sh ]] && source ~/.zsh/help.sh                 # Massive help index
-[[ -e ~/.zsh/miscfuncs.sh ]] && source ~/.zsh/miscfuncs.sh       # All more or less useless
-[[ -e ~/.zsh/packages.sh ]] && source ~/.zsh/packages.sh         # Package management utilities
-[[ -e ~/.zsh/prompt.sh ]] && source ~/.zsh/prompt.sh             # Prompt specific settings
-[[ -e ~/.zsh/tags.sh ]] && source ~/.zsh/tags.sh                 # For bookmarking files (with ranger integration)
-[[ -e ~/.zsh/vimfuncs.sh ]] && source ~/.zsh/vimfuncs.sh         # Short vim-like commands
+for i in ${SOURCES[@]}; do
+    echo $i
+    [[ -e "/home/$USER/$i" ]] && source "/home/$USER/$i"
+done
