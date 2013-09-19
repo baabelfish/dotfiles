@@ -9,6 +9,7 @@ Dependencies
 
 ```
 chromium
+Termsyn
 cmus
 compton
 dmenu

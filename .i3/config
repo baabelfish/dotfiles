@@ -158,7 +158,6 @@ bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xutils/s
 bindsym $mod+Shift+F8 exec --no-startup-id "killall compton; compton"
 
 # Configuration commands
-bindsym $mod+F8  exec --no-startup-id xmodmap ~/.capsswap
 bindsym $mod+F9  exec --no-startup-id urxvt -T float -e zsh -c alsamixer
 bindsym $mod+F10 exec --no-startup-id pavucontrol
 bindsym $mod+F11 exec --no-startup-id urxvt -T float -e zsh -c htop
