@@ -496,6 +496,7 @@ endif
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 abbr teh the
+abbr ture true
 cabbrev vh vert help
 cabbrev W w
 cabbrev Q q
