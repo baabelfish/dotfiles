@@ -653,15 +653,31 @@ function! StripTrailingWhitespace()
   call setpos('.', save_cursor)
 endfunction
 
+function! ColorPicker(insert)
+  let color = '\#' . expand('<cword>')
+  let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
+  if strlen(@z) != 0
+    if a:insert == 0
+      normal! diw"zp
+    else
+      let @z = '#' . @z
+      normal! "zp
+    endif
+  endif
+endfunction
+nnoremap <silent><space>c :call ColorPicker(0)<cr>
+inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Macros
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au FileType cpp nnoremap <buffer> ¤f 0f;xA {}O
-au FileType cpp nnoremap <buffer> ¤O ^f(%li {A}
-au FileType cpp nnoremap <buffer> ¤o ^/{DJJD
-au FileType sh nnoremap <buffer> ¤mv m'"zyiwf=l"xyg$:'<,'>s/\$z/x/''dd
-au FileType sh nnoremap <buffer> ¤mf mk"zyiwf=l"xyg$viB:'<,'>s/\$z/x/'kdd
-au FileType sh nnoremap <buffer> ¤M mk"zyiwf=l"xyg$:.,$s/\$z/x/'kdd
+" au FileType cpp nnoremap <buffer> ¤f 0f;xA {}O
+" au FileType cpp nnoremap <buffer> ¤O ^f(%li {A}
+" au FileType cpp nnoremap <buffer> ¤o ^/{DJJD
+" au FileType sh nnoremap <buffer> ¤mv m'"zyiwf=l"xyg$:'<,'>s/\$z/x/''dd
+" au FileType sh nnoremap <buffer> ¤mf mk"zyiwf=l"xyg$viB:'<,'>s/\$z/x/'kdd
+" au FileType sh nnoremap <buffer> ¤M mk"zyiwf=l"xyg$:.,$s/\$z/x/'kdd
 " au FileType sh vnoremap <buffer> ¤m mk"zyiwf=l"xyg$:'<,'>s/\$z/x/'kdd
 
 
