@@ -4,11 +4,9 @@ Xft.dpi:                 96
 Xft.antialias:           1
 Xft.hinting:             1
 Xft.hintstyle:           hintslight
-!Xft.hintstyle:           hintfull
 Xft.rgba:                rgb
 Xft.lcdfilter:           lcddefault
 
-!dzen2.font:       -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
 dzen2.font:       Termsyn
 dzen2.foreground: #22EE11
 dzen2.background: green
