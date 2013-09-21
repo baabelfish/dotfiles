@@ -38,4 +38,6 @@ zathura
 the_silver_searcher
 transset-df
 zsh
+xorg-xfontsel
+zenity
 ```

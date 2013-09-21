@@ -1,5 +1,5 @@
 #!/bin/bash
-feh --bg-center --no-xinerama ~/.wallpapers/1366x768.png
+feh --bg-center --no-xinerama ~/.wallpapers/1920x1080.png
 
 export AWT_TOOLKIT=XToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1

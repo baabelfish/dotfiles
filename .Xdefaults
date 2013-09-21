@@ -25,9 +25,9 @@ URxvt.borderLess:        no
 URxvt.buffered:          false
 URxvt.depth:             32
 URxvt.font:              xft:Termsyn-10
+URxvt.italicFont:        xft:Monospace:style=Oblique:pixelsize=10
 URxvt.hold:              true
 URxvt.internalBorder:    0
-URxvt.italicFont:        xft:DejaVu Sans Mono:style=Oblique:pixelsize=10
 URxvt.jumpScroll:        true
 URxvt.keysym.M-u:        perl:url-select:select_next
 URxvt.letterSpace:       0

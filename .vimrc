@@ -95,7 +95,7 @@ set cscopetag
 set display+=lastline " FIXME
 set expandtab
 set fillchars+=vert:│
-set foldmethod=syntax
+" set foldmethod=syntax
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 set formatoptions=qrn1tj
 set gdefault
