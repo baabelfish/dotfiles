@@ -233,7 +233,7 @@ nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 " nnoremap <C-w> <nop>
 "
-" vnoremap <silent><enter> :EasyAlign<cr>
+vnoremap <silent><space><enter> :EasyAlign<cr>
 nnoremap Q gqip
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>

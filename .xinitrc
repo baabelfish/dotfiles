@@ -1,5 +1,5 @@
 #!/bin/bash
-feh --bg-center --no-xinerama ~/.wallpapers/1920x1080.png
+feh --bg-fill --no-xinerama ~/.wallpapers/1920x1080.png
 
 export AWT_TOOLKIT=XToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1
@@ -13,6 +13,7 @@ autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
+[[ -e /usr/bin/pnmixer ]] && pnmixer&
 [[ -e /usr/bin/yaudtray ]] && yaudtray&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 15 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&

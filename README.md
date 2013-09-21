@@ -8,22 +8,26 @@ Dependencies
 ============
 
 ```
-chromium
 Termsyn
+chromium
 cmus
 compton
 dmenu
 dwb
 dzen2
+faenza-icon-theme
 feh
 gifsicle
 i3
 i3lock
 libav (with --enable-x11grab)
 mutt
+pnmixer
 ranger
 screen
+the_silver_searcher
 tmux
+transset-df
 unclutter
 urxvt
 vim
@@ -35,8 +39,6 @@ xorg-xrandr
 yaourt
 yaudtray
 zathura
-the_silver_searcher
-transset-df
-zsh
 zenity
+zsh
 ```

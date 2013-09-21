@@ -126,11 +126,11 @@ bar {
 
     colors {
         background         #101010
-        statusline         #00AA00
+        statusline         #CCCCCC
                            #border #backgr #text
         focused_workspace  #606060 #404040 #22FF22
-        inactive_workspace #606060 #202020 #115511
-        urgent_workspace   #ffffff #900000 #ff0000
+        inactive_workspace #606060 #202020 #777777
+        urgent_workspace   #ffffff #900000 #ff5555
 
         # background #101010
         # statusline #999999
@@ -138,6 +138,9 @@ bar {
         # active_workspace #825969 #101010
         # inactive_workspace #9a878f #191919
         # urgent_workspace #2e3436 #9a878f
+        # focused_workspace  #606060 #404040 #22FF22
+        # inactive_workspace #606060 #202020 #115511
+        # urgent_workspace   #ffffff #900000 #ff0000
    }
 }
 
@@ -202,4 +205,4 @@ for_window [title="^float$"] floating enable
 for_window [title="^Grid$"] floating enable
 for_window [window_role="pop-up"] floating enable
 
-exec --no-startup-id transset-df -n i3bar 0.8
+exec --no-startup-id sleep 3 && transset-df -n i3bar 0.8
