@@ -37,4 +37,7 @@ wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2444098.jpg' -O ~/.wallpaper
 # Install from repositories
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
+# Clone necessary projects
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
 touch /home/$USER/.xutils/.has_been_initialized
