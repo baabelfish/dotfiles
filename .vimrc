@@ -93,7 +93,6 @@ set complete-=i
 set completeopt=menu,longest
 set cscopetag
 set display+=lastline " FIXME
-set expandtab
 set fillchars+=vert:│
 " set foldmethod=syntax
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
@@ -126,20 +125,16 @@ set path+=.,,
 set pumheight=5
 " set regexpengine=0
 " set scrolloff=100
-set shiftround " FIXME
-set shiftwidth=4
 set shortmess+=filmnrxoOtTI
 set showcmd
 set showfulltag
 set sidescroll=1
 set smartcase
 set smartindent
-set smarttab
-set softtabstop=4
+" set smarttab
 set splitbelow
 set splitright
 set t_vb=
-set tabstop=4
 set titlestring=Vim:\ %f\ %h%r%m
 set ttimeout
 set ttimeoutlen=0
@@ -148,6 +143,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar
 set wildmenu
 set wildmode=longest,list
 set wrapmargin=0
+set ts=4 sts=4 sw=4 expandtab shiftround
 
 if version >= 703
   set number
