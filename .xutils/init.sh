@@ -28,6 +28,9 @@ fi
 mkdir ~/.wallpapers
 
 # Download files
-wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2907932.jpg' -O ~/.wallpapers1366x768.png
+wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2907932.jpg' -O ~/.wallpapers/1366x768.png
+
+# Install from repositories
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 touch /home/$USER/.xutils/.has_been_initialized

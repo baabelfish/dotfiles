@@ -35,5 +35,6 @@ xorg-xrandr
 yaourt
 yaudtray
 zathura
+the_silver_searcher
 zsh
 ```

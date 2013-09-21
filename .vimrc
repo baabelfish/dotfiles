@@ -1,10 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoBundle:
+" Prequests:
 " git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Post Install:
-" cd ~/.vim/bundle/vimproc.vim && make
-" cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer --system-libclang
+" sudo pacman -S the_silver_searcher
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('vim_starting')
    set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -345,7 +342,7 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jslint']
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=0
-let g:airline_theme='badwolf'
+let g:airline_theme='wombat'
 let g:airline_detect_modified=1
 let g:airline_exclude_preview = 0
 let g:airline_mode_map = {
@@ -723,53 +720,12 @@ let g:unite_source_menu_menus.super.command_candidates = [
     \]
 nnoremap <silent>[menu]e :Unite -silent -winheight=20 menu:text <CR>
 
-" Sets all ignores for unite
-function SetUniteIgnores()
-  " Add patterns to be ignored always
-  let unite_ignore_always = [
-        \]
-
-  " Add filetype specific ignores
-  let unite_ignorelists = {
-      \'cpp': [
-      \'moc_',
-      \'.*\.o'
-      \],
-      \'javascript': [
-      \'.*/node_modules/.*'
-      \],
-      \}
-
-  let regex = ''
-  for value in unite_ignore_always
-    if len(regex) == 0
-      let regex = '\(' . value . '\)'
-    else
-      let regex = regex . '\|'. '\(' . value . '\)'
-    endif
-  endfor
-
-  if !has_key(unite_ignorelists, &ft)
-    call unite#custom_source('file_rec/async', 'ignore_pattern', regex)
-    return
-  endif
-
-  for value in unite_ignorelists[&ft]
-    if len(regex) == 0
-      let regex = '\(' . value . '\)'
-    else
-      let regex = regex . '\|'. '\(' . value . '\)'
-    endif
-  endfor
-  call unite#custom_source('file_rec/async', 'ignore_pattern', regex)
-endfun
-" autocmd BufReadPost * call SetUniteIgnores()
-
 call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
+let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
 
 let g:arpeggio_timeoutlen = 20
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
