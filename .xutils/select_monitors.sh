@@ -10,7 +10,7 @@ DISPLAY_SECONDARY=99
 DISPLAY_SECONDARY_POSITION=99
 OFFLIST=""
 
-[[ ${#DISPLAYS[@]} == 1 ]] && echo "You only have one display, idiot!" && read ASD && exit
+[[ ${#DISPLAYS[@]} == 1 ]] && echo "You only have one display, idiot!" && read ASD && feh --bg-center ~/.wallpapers/1920x1080.png && exit
 [[ ${#DISPLAYS[@]} != ${#RESOLUTIONS[@]} ]] && echo "Something went terribly wrong!" && exit
 unset $IFS
 
@@ -54,12 +54,12 @@ if [[ $DISPLAY_SECONDARY -lt ${#DISPLAYS[@]} ]]; then
     ORIENTATION="--left-of"
     [[ $DISPLAY_SECONDARY_POSITION -eq 1 ]] && ORIENTATION="--right-of"
 
-    echo "xrandr --output ${DISPLAYS[$DISPLAY_PRIMARY]} --auto$OFFLIST"
     eval "xrandr --output ${DISPLAYS[$DISPLAY_PRIMARY]} --auto$OFFLIST"
-    echo "xrandr --output ${DISPLAYS[$DISPLAY_SECONDARY]} --auto $ORIENTATION ${DISPLAYS[$DISPLAY_PRIMARY]}"
+    sleep 1
     eval "xrandr --output ${DISPLAYS[$DISPLAY_SECONDARY]} --auto $ORIENTATION ${DISPLAYS[$DISPLAY_PRIMARY]}"
+    feh --bg-center ~/.wallpapers/massive1.png
 # Only one display
 else
-    echo "xrandr --output ${DISPLAYS[$DISPLAY_PRIMARY]} --auto$OFFLIST"
     eval "xrandr --output ${DISPLAYS[$DISPLAY_PRIMARY]} --auto$OFFLIST"
+    feh --bg-center ~/.wallpapers/1920x1080.png
 fi

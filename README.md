@@ -36,5 +36,6 @@ yaourt
 yaudtray
 zathura
 the_silver_searcher
+transset-df
 zsh
 ```

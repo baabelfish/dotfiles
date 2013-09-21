@@ -29,6 +29,10 @@ mkdir ~/.wallpapers
 
 # Download files
 wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2907932.jpg' -O ~/.wallpapers/1366x768.png
+wget 'http://baabelfish.kapsi.fi/1920x1080.png' -O ~/.wallpapers/1920x1080.png
+wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-1884306.jpg' -O ~/.wallpapers/massive1.png
+wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-795770.jpg' -O ~/.wallpapers/massive2.png
+wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2444098.jpg' -O ~/.wallpapers/massive3.png
 
 # Install from repositories
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
