@@ -310,6 +310,7 @@ vnoremap <silent><leader>cw :s/\s\+$//<cr>
 vnoremap <silent><return> :NarrowRegion<CR>
 vnoremap <silent><return> :NarrowRegion<CR>
 vnoremap ¤ :g/.*/norm! 
+nnoremap ¤ :'<,'>g/.*/norm! 
 vnoremap ½ @q
 vnoremap å :TComment<CR>
 
@@ -664,75 +665,6 @@ endfunction
 nnoremap <silent><space>c :call ColorPicker(0)<cr>
 inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Macros
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" au FileType cpp nnoremap <buffer> ¤f 0f;xA {}O
-" au FileType cpp nnoremap <buffer> ¤O ^f(%li {A}
-" au FileType cpp nnoremap <buffer> ¤o ^/{DJJD
-" au FileType sh nnoremap <buffer> ¤mv m'"zyiwf=l"xyg$:'<,'>s/\$z/x/''dd
-" au FileType sh nnoremap <buffer> ¤mf mk"zyiwf=l"xyg$viB:'<,'>s/\$z/x/'kdd
-" au FileType sh nnoremap <buffer> ¤M mk"zyiwf=l"xyg$:.,$s/\$z/x/'kdd
-" au FileType sh vnoremap <buffer> ¤m mk"zyiwf=l"xyg$:'<,'>s/\$z/x/'kdd
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Supermenu
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_source_menu_menus = {}
-let g:unite_source_menu_menus.super = {
-    \ 'description' : '           Super menu for everything',
-    \}
-
-nnoremap <space>: :Unite -silent menu:super<CR>
-let g:unite_source_menu_menus.super.command_candidates = [
-    \['> add word to dictionary', 'normal ,sa'],
-    \['> buffers', 'Unite buffer'],
-    \['> close all folds', 'normal zM'],
-    \['> close current window', 'close'],
-    \['> copy to the clipboard', 'normal ,y'],
-    \['> delete buffer', 'bd'],
-    \['> insert lorem ipsum text', 'exe "Loremipsum" input("numero de palabras: ")'],
-    \['> jumps to next bad spell word and show suggestions', 'normal ,sc'],
-    \['> jumps to next bad spell word', 'normal ,sn'],
-    \['> location list', 'Unite location_list'],
-    \['> new horizontal window', 'split'],
-    \['> new vertical window', 'vsplit'],
-    \['> open all folds', 'normal zR'],
-    \['> paste from the clipboard', 'normal ,p'],
-    \['> quickfix', 'Unite quickfix'],
-    \['> remove trailing whitespaces', 'normal ,et'],
-    \['> resize windows', 'WinResizerStartResize'],
-    \['> search changes', 'Unite change'],
-    \['> search folds', 'Unite -vertical -winwidth=30 -auto-highlight fold'],
-    \['> search jumps', 'Unite jump'],
-    \['> search line', 'Unite -auto-preview -start-insert line'],
-    \['> search marks', 'Unite -auto-preview mark'],
-    \['> search outlines & tags (ctags)', 'Unite -vertical -winwidth=40 -direction=topleft -toggle outline'],
-    \['> search tasks', 'Unite -toggle grep:%::FIXME|TODO|NOTE|XXX|COMBAK|@todo'],
-    \['> search undos', 'Unite undo'],
-    \['> search word under the cursor', 'UniteWithCursorWord -no-split -auto-preview line'],
-    \['> show available digraphs', 'digraphs'],
-    \['> show current char info', 'normal ga'],
-    \['> show hidden chars', 'set list!'],
-    \['> show word frequency', 'Unite output:WordFrequency'],
-    \['> spell checking in English', 'setlocal spell spelllang=en'],
-    \['> suggestions', 'normal ,sp'],
-    \['> tabs', 'Unite tab'],
-    \['> text statistics', 'Unite output:normal\ ,es -no-cursor-line'],
-    \['> toggle fold', 'normal za'],
-    \['> toggle line numbers', 'call ToggleRelativeAbsoluteNumber()'],
-    \['> toggle paste mode', 'normal ,P'],
-    \['> toggle quickfix window', 'normal ,q'],
-    \['> toggle search results highlight', 'set invhlsearch'],
-    \['> toggle wrapping', 'call ToggleWrap()'],
-    \['> turn off spell checking', 'setlocal nospell'],
-    \['> windows', 'Unite window'],
-    \['> zoom', 'ZoomWinTabToggle'],
-    \]
-nnoremap <silent>[menu]e :Unite -silent -winheight=20 menu:text <CR>
-
 call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
@@ -742,5 +674,4 @@ let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ign
 
 let g:arpeggio_timeoutlen = 20
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-
 echo ""
