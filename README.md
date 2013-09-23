@@ -10,6 +10,8 @@ Dependencies
 ```
 Termsyn
 chromium
+udiskie
+dunst
 cmus
 compton
 dmenu

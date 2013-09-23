@@ -15,6 +15,8 @@ autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 [[ -e /usr/bin/pnmixer ]] && pnmixer&
 [[ -e /usr/bin/yaudtray ]] && yaudtray&
+[[ -e /usr/bin/udiskie ]] && udiskie&
+[[ -e /usr/bin/dunst ]] && dunst&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&
 

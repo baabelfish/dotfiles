@@ -17,6 +17,12 @@ dzen2.background: green
 
 # URXVT
 ################################################################################
+! URxvt.keysym.M-x:        perl:keyboard-select:activate
+! URxvt.keysym.M-u:        perl:url-select:select_next
+! URxvt.keysym.M-c:        perl:clipboard:copy
+! URxvt.keysym.M-v:        perl:clipboard:paste
+! URxvt.keysym.M-s:        perl:keyboard-select:search
+! URxvt.keysym.M-C-v:      perl:clipboard:paste_escaped
 URxvt*imLocale:          en_US.utf8
 URxvt.bigfont_key:       o
 URxvt.borderLess:        no
