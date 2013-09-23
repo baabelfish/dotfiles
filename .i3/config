@@ -36,6 +36,8 @@ bindsym $mod+e focus output left
 bindsym $mod+r move container to output left
 bindsym $mod+Shift+e exec --no-startup-id ~/.xutils/swap_displays.sh
 
+bindsym $mod+Control+t border toggle
+
 # Focus
 bindsym $mod+a focus left
 bindsym $mod+s focus down
@@ -124,8 +126,8 @@ bar {
     position         bottom
 
     colors {
-        background         #111111
-        statusline         #111111
+        background         #151515
+        statusline         #151515
                            #border #backgr #text
         focused_workspace  #606060 #404040 #58FF58
         inactive_workspace #606060 #202020 #777777
@@ -204,12 +206,12 @@ for_window [title="^float$"] floating enable
 for_window [title="^Grid$"] floating enable
 for_window [window_role="pop-up"] floating enable
 
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS1' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS2' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS3' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA2' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA1' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI1' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI2' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP1' 0.8
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP2' 0.8
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS1' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS2' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS3' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA2' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA1' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI1' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI2' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP1' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP2' 0.9

@@ -10,11 +10,10 @@ Dependencies
 ```
 Termsyn
 chromium
-udiskie
-dunst
 cmus
 compton
 dmenu
+dunst
 dwb
 dzen2
 faenza-icon-theme
@@ -30,6 +29,7 @@ screen
 the_silver_searcher
 tmux
 transset-df
+udiskie
 unclutter
 urxvt
 vim
