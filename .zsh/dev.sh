@@ -1,80 +1,42 @@
 #!/bin/bash
 
 source /home/$USER/.zsh/colors.sh
-DELTA=5
+DELTA=3
 
 set_title() {
     echo -e "\e]2;$a$*$2\a"
 }
 
-sde_pidof() {
+grab_name() {
+    xprop|grep _NET_WM_NAME|cut -d'=' -f2|tr -d '"'|tr -d ' '
+}
+
+grab_pid() {
     xprop|grep _NET_WM_PID|cut -d'=' -f2|tr -d ' '
 }
 
-sde_ltrace() {
+sde_app() {
+    NAME=$1
     nocon=0
     while true
     do
-        pidi=$1
-        if [[ ! -z $pidi ]]; then
-            set_title $TITLE_PREFIX' ltrace '$1' [active]'
+        # Select pid
+        PID=$(pgrep $NAME)
+
+        if [[ ! -z $PID ]]; then
+            set_title $TITLE_PREFIX' '$NAME' '$2' '$PID' [active]'
             clear
-            if [[ -z $2 ]]; then
-                ltrace -p "$pidi"
-            else 
-                ltrace -o $1.ltrace -p "$pidi"
-            fi
+            $2 $3 $4 $5 $6 $7 $8 $PID
             nocon=0
         elif [[ $nocon -eq 0 ]]; then
-            set_title $TITLE_PREFIX' ltrace '$1' [disconnected]'
-            echo 'ltrace '$1' [disconnected]'
-            if [[ ! -z $2 ]]; then
-                vim $1.ltrace
-                rm -f $1.ltrace
-            fi
+            set_title $TITLE_PREFIX' '$NAME' '$2' '$PID' [disconnected]'
             nocon=1
         fi
         sleep $DELTA
     done
 }
 
-sde_strace() {
-    nocon=0
-    while true
-    do
-        pidi=$1
-        if [[ ! -z $pidi ]]; then
-            set_title $TITLE_PREFIX' strace '$1' [active]'
-            clear
-            strace -p "$pidi"
-            nocon=0
-        elif [[ $nocon -eq 0 ]]; then
-            set_title $TITLE_PREFIX' strace '$1' [disconnected]'
-            echo 'strace '$1' [disconnected]'
-            nocon=1
-        fi
-        sleep $DELTA
-    done
-}
-
-sde_memory() {
-    nocon=0
-    while true
-    do
-        pidi=$1
-        if [[ -z $pidi ]]; then
-            pidi=$(ps aux|grep valgrind|grep a.out|grep -v urxvt|grep -v zsh|awk '{print $2}')
-        fi
-        if [[ ! -z $pidi ]]; then
-            set_title $TITLE_PREFIX' mem '$1' [active]'
-            clear
-            pmap $pidi
-            nocon=0
-        elif [[ $nocon -eq 0 ]]; then
-            set_title $TITLE_PREFIX' mem '$1' [disconnected]'
-            echo 'mem '$1' [disconnected]'
-            nocon=1
-        fi
-        sleep $DELTA
-    done
+sde() {
+    [[ -z $2 ]] && echo "Usage: sde <name of application> <command that takes pid as last argument>" && return
+    sde_app $1 $2 $3 $4 $5 $6 $7 $8
 }
