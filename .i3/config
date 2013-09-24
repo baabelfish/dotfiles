@@ -122,7 +122,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 bar {
     modifier         Mod2
     tray_output      primary
-    status_command   ~/.conky
+    status_command   ~/.i3conky
     position         bottom
 
     colors {
