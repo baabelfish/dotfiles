@@ -464,12 +464,13 @@ if 8 <= hour && hour < 18
   " let g:droid_day = 1
 endif
 
+syntax on
 if has("gui_running")
-  syntax on
   colorscheme twilight
 elseif &t_Co == 256 
-  syntax on
   colorscheme droid256
+else
+  colorscheme delek
 endif
 
 if &term =~ '256color'

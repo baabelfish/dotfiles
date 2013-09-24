@@ -1,5 +1,6 @@
 #!/bin/bash
 PROMPT_STYLE="multiline"
+[[ "$TERM" == "linux" ]] && PROMPT_STYLE="oneline"
 
 PS1=":"
 
