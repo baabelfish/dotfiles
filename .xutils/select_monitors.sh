@@ -17,8 +17,8 @@ if [[ ${#DISPLAYS[@]} == 1 ]]; then
     for i in ${DISCONNECTED_DISPLAYS[@]}; do
         xrandr --output $i --off
     done
-    feh --bg-center ~/.wallpapers/1920x1080.png
     xrandr --output "${DISPLAYS[0]}" --auto
+    feh --bg-center ~/.wallpapers/1920x1080.png
     exit 0
 fi
 [[ ${#DISPLAYS[@]} != ${#RESOLUTIONS[@]} ]] && echo "Something went terribly wrong!" && exit
