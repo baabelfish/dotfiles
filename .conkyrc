@@ -16,7 +16,8 @@ TEXT
   {"full_text": "◢","color": "\#333333"},
   {"full_text": "≣ [$membar]", "color":"\#B58900"},
   {"full_text": "◢","color": "\#333333"},
-  {"full_text": "≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%]","color": "\#33cc99"},
+  {"full_text": "≈ ${if_up wlan0}${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%]${else}[${addr eth0}]${endif}","color": "\#33cc99"},
   {"full_text": "◢","color": "\#333333"},
-  {"full_text": "${time %a %d %b} ${time %H:%M}","color": "\#58FF58"}
+  {"full_text": "${time %a %d %b} ${time %H:%M}","color": "\#58FF58"},
+  {"full_text": "◢","color": "\#333333"}
 ]
