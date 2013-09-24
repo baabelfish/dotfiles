@@ -5,12 +5,22 @@
 IFS=$'\n'
 DISPLAYS=(`xrandr|grep '\<connected\>'|cut -f1 -d' '`)
 RESOLUTIONS=(`xrandr|grep -A 1 '\<connected\>'|grep '^ '|sed 's/^\s*//'|sed 's/\s\+.*$//'`)
+DISCONNECTED_DISPLAYS=(`xrandr|grep '\<disconnected\>'|cut -f1 -d' '`)
 DISPLAY_PRIMARY=99
 DISPLAY_SECONDARY=99
 DISPLAY_SECONDARY_POSITION=99
 OFFLIST=""
 
-[[ ${#DISPLAYS[@]} == 1 ]] && echo "You only have one display, idiot!" && read ASD && feh --bg-center ~/.wallpapers/1920x1080.png && exit
+if [[ ${#DISPLAYS[@]} == 1 ]]; then
+    echo "Press enter to reset display."
+    read
+    for i in ${DISCONNECTED_DISPLAYS[@]}; do
+        xrandr --output $i --off
+    done
+    feh --bg-center ~/.wallpapers/1920x1080.png
+    xrandr --output "${DISPLAYS[0]}" --auto
+    exit 0
+fi
 [[ ${#DISPLAYS[@]} != ${#RESOLUTIONS[@]} ]] && echo "Something went terribly wrong!" && exit
 unset $IFS
 
