@@ -41,7 +41,6 @@ NeoBundle 'dag/vim-fish'
 NeoBundle 'glts/vim-textobj-comment'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'kana/vim-arpeggio'
-NeoBundle 'kana/vim-textobj-entire'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
@@ -230,7 +229,6 @@ nmap >; <Plug>Argumentative_MoveRight
 " nnoremap <C-w> <nop>
 "
 vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap Q gqip
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>

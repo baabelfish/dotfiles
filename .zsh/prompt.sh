@@ -42,6 +42,7 @@ if [[ "$PROMPT_STYLE" == "multiline" ]]; then
     AC=118
 
     precmd() {
+        # Show return value
         ERR=$?
         if [[ "$ERR" != "0" ]]; then
             ERR="$(aC $WC)$ERR"
@@ -71,22 +72,14 @@ if [[ "$PROMPT_STYLE" == "multiline" ]]; then
             GBRANCH="$(aC $NC)$(basename `git rev-parse --show-toplevel`)$(aC $LC)/$(aC $AC)$GBRANCH"
         fi
 
-        # print -n "\033[s"
-        # print -nrP "$(aC $LC)"
-        # for (( i = 0; i < $[$COLUMNS-1]; i++ )); do
-        #     print -nrP "─"
-        # done
-        # print -nrP "╼"
-        # print -n "\033[u"
-
-print -rP "$(aC $LC)╾─\
+PROMPT="$(aC $LC)╾─\
 $(aC $LC)❨$(aC $IC)%*$(aC $LC)❩──\
 $(aC $LC)❨$(aC 118)$(hostname)$(aC $LC)❩─\
 $(aC $LC)❨$(aC $IC)$GBRANCH$(aC $LC)❩─\
 $(aC $LC)❨$(aC $IC)%~$(aC $LC)❩─\
 $(aC $LC)❨$(aC $IC)$ERR$(aC $LC)❩─\
-╼"
+╼$reset_color
+"
     }
-    PROMPT=""
     RPROMPT=""
 fi

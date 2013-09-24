@@ -14,6 +14,7 @@ SOURCES=(
 .zsh/alias.sh
 .zsh/bookmarks.sh
 .zsh/help.sh
+.zsh/dev.sh
 .zsh/miscfuncs.sh
 .zsh/packages.sh
 .zsh/prompt.sh
