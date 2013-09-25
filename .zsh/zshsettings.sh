@@ -45,8 +45,6 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 
-# [[ -n $(echo $TTY|grep tty) ]] && export TERM=xterm
-# [[ -n $TMUX ]] && export TERM='screen-256color'
 export CHROME_BIN='/usr/bin/chromium'
 export MANWIDTH=80
 export MOSH_TITLE_NOPREFIX=1

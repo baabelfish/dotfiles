@@ -36,8 +36,6 @@ FX=(
     reverse   "[07m" no-reverse   "[27m"
 )
 
-local SUPPORT
-
 # Optionally handle impoverished terminals.
 if (( $# == 0 )); then
     SUPPORT=256
