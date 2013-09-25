@@ -39,7 +39,6 @@ xcape
 xdotool
 xorg-xrandr
 yaourt
-yaudtray
 zathura
 zenity
 zsh

@@ -15,7 +15,6 @@ xmodmap -e "pointer = 1 6 3 4 5 2"&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 [[ -e /usr/bin/pnmixer ]] && pnmixer&
-[[ -e /usr/bin/yaudtray ]] && yaudtray&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/dunst ]] && dunst&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
