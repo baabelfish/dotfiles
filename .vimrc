@@ -206,6 +206,7 @@ nnoremap <M-J> J
 nnoremap <M-K> K
 nnoremap <M-L> L
 nnoremap <M-q> <C-w>c
+inoremap <M-z> <C-o>zz
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 " nnoremap <M-c> :tabclose<cr>:echo ""<cr>
 nnoremap <M-n> <C-w>v
