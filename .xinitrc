@@ -11,7 +11,7 @@ xset -b&
 xsetroot -cursor_name left_ptr&
 autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
-xmodmap -e "pointer = 1 6 3 4 5 2"&
+# xmodmap -e "pointer = 1 6 3 4 5 2"&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 [[ -e /usr/bin/pnmixer ]] && pnmixer&

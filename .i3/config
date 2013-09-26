@@ -38,6 +38,9 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.xutils/swap_displays.sh
 
 bindsym $mod+Control+t border toggle
 
+# Toggle layout
+bindcode 9 exec --no-startup-id ~/.xutils/togglelayout.sh
+
 # Focus
 bindsym $mod+a focus left
 bindsym $mod+s focus down
