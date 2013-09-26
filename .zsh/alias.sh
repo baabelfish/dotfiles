@@ -47,6 +47,10 @@ alias gitm='vim $(git diff --name-only --diff-filter=U)'
 alias gitc='git commit -a && git push origin master'
 alias gitc!='git commit -a -m "Who reads these anyways?" && git push origin master'
 
+# Keyboard layout
+alias use_dvorak='setxkbmap dvorak'
+alias use_qwerty='setxkbmap qwerty'
+
 # Dev
 alias make='make -j $((`cat /proc/cpuinfo|grep processor|wc -l`*2))' # Compile with more cores
 
