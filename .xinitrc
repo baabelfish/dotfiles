@@ -18,7 +18,7 @@ autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/dunst ]] && dunst&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
-[[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&
+# [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&
 [[ -e /usr/bin/compton ]] && compton&
 
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1 &
