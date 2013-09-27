@@ -1,4 +1,5 @@
 #!/bin/bash
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 feh --bg-fill --no-xinerama ~/.wallpapers/1920x1080.png
 
 export AWT_TOOLKIT=XToolkit

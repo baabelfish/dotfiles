@@ -1,0 +1,69 @@
+#include "/home/baabelfish/.colors/default"
+
+Xft.dpi:                 96
+Xft.antialias:           1
+Xft.hinting:             1
+Xft.hintstyle:           hintslight
+Xft.rgba:                rgb
+Xft.lcdfilter:           lcddefault
+
+dzen2.font:       Termsyn
+dzen2.foreground: #22EE11
+dzen2.background: green
+
+# UNIVERSAL
+################################################################################
+*geometry:          120x52
+
+# URXVT
+################################################################################
+! URxvt.keysym.M-x:        perl:keyboard-select:activate
+! URxvt.keysym.M-u:        perl:url-select:select_next
+! URxvt.keysym.M-c:        perl:clipboard:copy
+! URxvt.keysym.M-v:        perl:clipboard:paste
+! URxvt.keysym.M-s:        perl:keyboard-select:search
+! URxvt.keysym.M-C-v:      perl:clipboard:paste_escaped
+URxvt*imLocale:          en_US.utf8
+URxvt.bigfont_key:       o
+URxvt.borderLess:        no
+URxvt.buffered:          false
+URxvt.depth:             32
+URxvt.font:              xft:Termsyn-10
+URxvt.italicFont:        xft:Monospace:style=Oblique:pixelsize=10
+URxvt.hold:              true
+URxvt.internalBorder:    0
+URxvt.jumpScroll:        true
+URxvt.keysym.M-u:        perl:url-select:select_next
+URxvt.letterSpace:       0
+URxvt.loginShell:        true
+URxvt.perl-ext:          default,url-select
+URxvt.scrollBar:         off
+URxvt.scrollTtyKeypress: off
+URxvt.scrollTtyOutput:   off
+URxvt.secondaryScreen:   false
+URxvt.skipScroll:        true
+URxvt.smallfont_key:     p
+URxvt.tripleclickwords:  on
+URxvt.url-select.launcher:  dwb
+URxvt.url-select.underline: true
+URxvt*keysym.Control-Up:    \033[1;5A
+URxvt*keysym.Control-Down:  \033[1;5B
+URxvt*keysym.Control-Left:  \033[1;5D
+URxvt*keysym.Control-Right: \033[1;5C
+
+# XTERM
+################################################################################
+XTerm*borderWidth: 0
+XTerm*borderWidth: 0
+XTerm*termName: xterm-256color
+XTerm*locale: true
+XTerm*metaSendsEscape: true
+XTerm*saveLines: 4096
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+XTerm*faceName: xft:Termsyn-10
+#XTerm*faceName: xft:DejaVu Sans Mono:style=Oblique:pixelsize=10
+
+# odd shit
+
+*saveLines:1000
