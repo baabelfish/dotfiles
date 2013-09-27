@@ -40,6 +40,7 @@ xdotool
 xorg-xrandr
 yaourt
 zathura
+gimp
 zenity
 zsh
 ```
