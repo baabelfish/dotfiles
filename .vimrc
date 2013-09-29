@@ -15,12 +15,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'jiangmiao/auto-pairs'
 " NeoBundle 'abijr/colorpicker'
 
+NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'gregsexton/gitv'
+NeoBundle 'Shougo/unite-session'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kurkale6ka/vim-pairs'
@@ -29,7 +31,8 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang' } }
+" NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang' } }
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'drmikehenry/vim-fixkey'
 NeoBundle 'arecarn/crunch'
 NeoBundle 'b4winckler/vim-angry'
@@ -177,6 +180,7 @@ if has("autocmd")
   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
   autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
   autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
@@ -210,9 +214,9 @@ nnoremap <M-q> <C-w>c
 inoremap <M-z> <C-o>zz
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 " nnoremap <M-c> :tabclose<cr>:echo ""<cr>
-nnoremap <M-n> <C-w>v
-nnoremap <M-M> <C-w>v
-nnoremap <M-m> <C-w>s
+nnoremap <M-m> <C-w>v
+nnoremap <M-N> <C-w>v
+nnoremap <M-n> <C-w>s
 nnoremap <M-w> <C-w><C-w>
 
 " nnoremap ) /)\\|(<cr>
@@ -391,6 +395,14 @@ let g:skybison_input = 1
 let g:Vertigo_homerow = 'asdfghjklp'
 let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_refresh_always = 0
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+endif
+
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -405,6 +417,7 @@ let g:unite_enable_start_insert = 1
 let g:unite_split_rule = 'bot'
 let g:unite_winheight = 15
 let g:unite_enable_ignore_case = 1
+let g:unite_prompt = '» '
 
 let g:startify_show_files_number = 30
 let g:startify_change_to_dir = 0
@@ -672,6 +685,13 @@ call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
+" let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i -g ""'
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+" le
 
 let g:arpeggio_timeoutlen = 20
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')

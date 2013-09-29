@@ -41,11 +41,14 @@ alias pac='sudo pacman -Syc'
 # Git
 alias giti='git ls-tree -r --name-only'
 alias gita='git add'
-alias gitr='git checkout --'
-alias gitu='git pull origin master && git show --pretty=fuller'
+alias gitb='git branch'
 alias gitm='vim $(git diff --name-only --diff-filter=U)'
-alias gitc='git commit -a && git push origin master'
-alias gitc!='git commit -a -m "Who reads these anyways?" && git push origin master'
+alias gitph='git push'
+alias gitpl='git pull'
+alias gitc='git commit'
+alias gitc!='git commit -m'
+alias gitca='git commit -a'
+alias gitca!='git commit -a -m'
 
 # Keyboard layout
 alias use_dvorak='setxkbmap dvorak'

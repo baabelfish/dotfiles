@@ -1,0 +1,31 @@
+Terminal = urxvt
+TermExec = ${Terminal} -e
+AlwaysInTerm = ssh telnet ftp lynx mc vi vim pine centericq perldoc man
+
+Width = 400
+Top = 0
+Left = 450
+History = 256
+
+ShowLast = 1
+ShowDotFiles = 0
+TabTimeout = 0
+
+URL_http = dwb %u
+URL_mailto = dwb -remote "mailto(%s)"
+URL_man = ${TermExec} 'man %s'
+URL_info = ${TermExec} 'info %s'
+URL_pd = ${TermExec} 'perldoc %s'
+URL_readme = ${TermExec} 'less /usr/doc/%s/README'
+URL_info = ${TermExec} 'info %s'
+URL_sh = sh -c '%s'
+URL_paci = ${TermExec} 'pacman -S %s'
+URL_pacs = ${TermExec} 'pacman -Ss %s'
+
+# extension handlers
+EXT:doc,rtf = AbiWord %s
+EXT:txt,cc,cpp,h,java,html,htm,epl,tex,latex,js,css,xml,xsl,am,php,css,js,py,rb = ${TermExec} vim %s
+EXT:mpeg,mpg,avi,mkv,flv = mplayer %s
+EXT:mp3,ogg,m4a,wmv,wma = ${TermExec} 'mplayer %s'
+EXT:ps = gv %s
+EXT:pdf = zathura %s

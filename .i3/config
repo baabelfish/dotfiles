@@ -172,7 +172,10 @@ bindsym $mod+F10 exec --no-startup-id pavucontrol
 bindsym $mod+F11 exec --no-startup-id urxvt -T float -e zsh -c htop
 bindsym $mod+Shift+F9 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.i3/config"
 bindsym $mod+Shift+F10 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.xinitrc"
-bindsym $mod+Shift+F11  exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.Xdefaults"
+bindsym $mod+Shift+F11 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.Xdefaults"
+
+# Misc
+bindsym $mod+Shift+F1 exec --no-startup-id feh ~/.volemap.png
 
 # Window orientations
 for_window [class="^Amnesia$"] floating enable
