@@ -51,8 +51,9 @@ alias gitca='git commit -a'
 alias gitca!='git commit -a -m'
 
 # Keyboard layout
-alias use_dvorak='setxkbmap dvorak'
-alias use_qwerty='setxkbmap qwerty'
+alias use_dvorak='setxkbmap fi dvorak'
+alias use_neo='setxkbmap fi neo'
+alias use_qwerty='setxkbmap fi qwerty'
 
 # Dev
 alias make='make -j $((`cat /proc/cpuinfo|grep processor|wc -l`*2))' # Compile with more cores
