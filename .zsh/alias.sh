@@ -46,9 +46,9 @@ alias gitm='vim $(git diff --name-only --diff-filter=U)'
 alias gitps='git push'
 alias gitpl='git pull'
 alias gitc='git commit'
-alias gitc!='git commit -m "Who reads these anyways?" && git push origin master'
+alias gitc!='git commit -m'
 alias gitca='git commit -a'
-alias gitca!='git commit -a -m "Who reads these anyways?" && git push origin master'
+alias gitca!='git commit -a -m'
 
 # Keyboard layout
 alias use_dvorak='setxkbmap dvorak'
