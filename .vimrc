@@ -185,6 +185,7 @@ if has("autocmd")
   " autocmd FileType plaintex set filetype=tex
   autocmd FileType tex set filetype=plaintex
   autocmd FileType fish set filetype=sh
+  autocmd FileType ejs set filetype=javascript
   autocmd FileType cpp set nowrap
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
 endif
