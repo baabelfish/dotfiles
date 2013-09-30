@@ -16,7 +16,7 @@ cl() {
 
 # Misc
 alias cal='cal -m -y' # More verbose calendar
-alias sshp='killall mpv; export DISPLAY=:0 && mpv -fs' # Play video over ssh
+alias sshp='killall mplayer; export DISPLAY=:0 && mplayer -fs' # Play video over ssh
 
 # Basic things more verbose
 alias cp='cp -iv'
