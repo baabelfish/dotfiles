@@ -217,6 +217,7 @@ exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS2' 0.9
 exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS3' 0.9
 exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA2' 0.9
 exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA1' 0.9
+exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA0' 0.9
 exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI1' 0.9
 exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI2' 0.9
 exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP1' 0.9

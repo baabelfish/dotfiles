@@ -41,6 +41,8 @@ xorg-xrandr
 yaourt
 zathura
 gimp
+xorg
+xorg-apps
 zenity
 zsh
 ```
