@@ -343,3 +343,83 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['connect']);
 };
 endsnippet
+
+snippet eresource "Makes a Express resource" !b
+'use strict';
+
+var mongoose = require('mongoose');
+var ${1:Model} = mongoose.model('${1}');
+var AccessToken = mongoose.model('AccessToken');
+
+var auth = require('../lib/auth');
+
+
+function get${1}s(req, res) {
+    ${1}.find({}, function(err, skills) {
+        if (err) {
+            res.send(500);
+        } else if (!skills) {
+            res.send(400);
+        } else {
+            res.send(skills);
+        }
+    });
+}
+
+function get${1}(req, res) {
+    ${1}.findOne({
+        id: req.body.id,
+    }, function(err, skill) {
+        if (err) {
+            res.send(500);
+        } else if (!skill) {
+            res.send(400);
+        } else {
+            res.send(skill);
+        }
+    });
+}
+
+function add${1}(req, res) {
+    var skill = new ${1}(req.body);
+    skill.save(function(err) {
+        if (err) {
+            res.send(500);
+        } else {
+            res.send(200);
+        }
+    });
+}
+
+function update${1}(req, res) {
+    ${1}.update({
+        _id: req.route.params.id
+    }, req.body, function(err) {
+        if (err) {
+            res.send(400);
+        } else {
+            res.send(200);
+        }
+    });
+}
+
+function delete${1}(req, res) {
+    ${1}.findOneAndRemove({
+        _id: req.route.params.id
+    }, function(err) {
+        if (err) {
+            res.send(500);
+        } else {
+            res.send(200);
+        }
+    });
+}
+
+module.exports = function(app) {
+    app.get('/${1}s', auth.isLoggedIn, get${1}s);
+    app.get('/${1}s/:id', auth.isLoggedIn, get${1});
+    app.post('/${1}s', auth.isLoggedIn, add${1});
+    app.put('/${1}s/:id', auth.isLoggedIn, update${1});
+    app.delete('/${1}s/:id', auth.isLoggedIn, delete${1});
+}
+endsnippet

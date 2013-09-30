@@ -30,8 +30,10 @@ bindsym $mod+Shift+t exec urxvtc -T "float"
 bindsym $mod+p exec --no-startup-id ~/.xutils/menu.sh
 bindsym $mod+Shift+p exec --no-startup-id gmrun
 # bindsym $mod+Shift+p exec --no-startup-id bmenu_run
-bindsym $mod+i move workspace to output left
-bindsym $mod+o move workspace to output right
+bindsym $mod+i move container to output left
+bindsym $mod+o move container to output right
+bindsym $mod+Shift+i move workspace to output left
+bindsym $mod+Shift+o move workspace to output right
 bindsym $mod+e focus output left
 bindsym $mod+r move container to output left
 bindsym $mod+Shift+e exec --no-startup-id ~/.xutils/swap_displays.sh

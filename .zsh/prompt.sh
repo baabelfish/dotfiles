@@ -1,5 +1,5 @@
 #!/bin/bash
-PROMPT_STYLE="multiline"
+PROMPT_STYLE="fancy"
 [[ "$TERM" == "linux" ]] && PROMPT_STYLE="oneline"
 
 PS1=":"
@@ -18,23 +18,12 @@ aC() {
 ################################################################################
 if [[ "$PROMPT_STYLE" == "oneline" ]]; then
     precmd() {
-        ERR="$?"
-        VENV=$(echo $VIRTUAL_ENV|rev|cut -f1 -d'/'|rev)
-        [[ ! -z $VENV ]] && VENV="[%{$fg[green]%}$VENV%{$reset_color%}]"
-        HOSTNAME=$(hostname)
-        if [[ "$ERR" != "0" ]]; then
-            set_title "$USER@$HOST [$PWD] E:$ERR"
-        else
-            set_title "$USER@$HOST [$PWD]"
-        fi
         PROMPT="$VENV%u%B%{$fg[green]%}:%{$reset_color%}%b"
-        RPROMPT="(%{$fg[green]%}$HOSTNAME%{$reset_color%})-(%{$fg[green]%}%~%{$reset_color%})"
+        RPROMPT="(%{$fg[green]%}$HOSTNAME%{$reset_color%})-(%{$fg[green]%}%~%{$reset_color%})-($GBRANCH)"
     }
 fi
 
-# source ~/.zsh/helpers.sh
-
-if [[ "$PROMPT_STYLE" == "multiline" ]]; then
+if [[ "$PROMPT_STYLE" == "fancy" ]]; then
     # Colors
     LC=239
     IC=070

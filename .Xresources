@@ -1,4 +1,4 @@
-#include "/home/baabelfish/.colors/default"
+#include "/home/baabelfish/.xutils/colors/default"
 
 Xft.dpi:                 96
 Xft.antialias:           1
