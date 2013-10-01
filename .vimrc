@@ -214,9 +214,8 @@ nnoremap <M-q> <C-w>c
 inoremap <M-z> <C-o>zz
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 " nnoremap <M-c> :tabclose<cr>:echo ""<cr>
-nnoremap <M-m> <C-w>v
-nnoremap <M-N> <C-w>v
-nnoremap <M-n> <C-w>s
+nnoremap <M-n> <C-w>v
+nnoremap <M-m> <C-w>s
 nnoremap <M-w> <C-w><C-w>
 
 " nnoremap ) /)\\|(<cr>

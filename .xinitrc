@@ -7,6 +7,7 @@ export VDPAU_NVIDIA_NO_OVERLAY=1
 
 urxvtd -q -f -o&
 setxkbmap -layout fi
+setxkbmap -option caps:escape
 xmodmap ~/.xbqwerty
 xset dpms 540 1000 2000&
 xset -b&
