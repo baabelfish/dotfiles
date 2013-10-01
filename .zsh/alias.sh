@@ -16,7 +16,7 @@ cl() {
 
 # Misc
 alias cal='cal -m -y' # More verbose calendar
-alias sshp='xdotool mousemove 1 1; killall mpv; export DISPLAY=:0 && mpv -fs' # Play video over ssh
+alias sshp='killall mplayer; export DISPLAY=:0 && mplayer -fs' # Play video over ssh
 
 # Basic things more verbose
 alias cp='cp -iv'
@@ -54,6 +54,8 @@ alias gitca!='git commit -a -m'
 alias use_dvorak='setxkbmap fi dvorak'
 alias use_neo='setxkbmap fi neo'
 alias use_qwerty='setxkbmap fi qwerty'
+
+alias move_mouse='export DISPLAY=:0 && xdotool mousemove 1 1'
 
 # Dev
 alias make='make -j $((`cat /proc/cpuinfo|grep processor|wc -l`*2))' # Compile with more cores
