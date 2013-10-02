@@ -15,7 +15,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'jiangmiao/auto-pairs'
 " NeoBundle 'abijr/colorpicker'
 
-NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -31,8 +30,7 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
-" NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang' } }
-NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang' } }
 NeoBundle 'drmikehenry/vim-fixkey'
 NeoBundle 'arecarn/crunch'
 NeoBundle 'b4winckler/vim-angry'
