@@ -682,12 +682,11 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-" le
+" if executable('ag')
+"   let g:unite_source_grep_command = 'ag'
+"   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+"   let g:unite_source_grep_recursive_opt = ''
+" endif
 
 let g:arpeggio_timeoutlen = 20
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
