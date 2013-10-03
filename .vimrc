@@ -3,21 +3,17 @@
 " git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 " sudo pacman -S the_silver_searcher
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if has('vim_starting')
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" NeoBundle 'gmarik/vundle'
-" NeoBundle 'Yggdroot/indentLine'
-" NeoBundle 'jiangmiao/auto-pairs'
-" NeoBundle 'abijr/colorpicker'
-
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'mhinz/vim-toplevel'
+NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'gregsexton/gitv'
@@ -199,6 +195,7 @@ let mapleader = 'ö'
 nnoremap ' `
 set pastetoggle=<M-p>
 
+nnoremap <silent><space>r :Root<cr>
 nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
 nnoremap <M-j> j
@@ -212,8 +209,8 @@ nnoremap <M-q> <C-w>c
 inoremap <M-z> <C-o>zz
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 " nnoremap <M-c> :tabclose<cr>:echo ""<cr>
-nnoremap <M-n> <C-w>v
-nnoremap <M-m> <C-w>s
+nnoremap <M-m> <C-w>v
+nnoremap <M-n> <C-w>s
 nnoremap <M-w> <C-w><C-w>
 
 " nnoremap ) /)\\|(<cr>
