@@ -287,6 +287,7 @@ var ${1:name} = mongoose.model('$1', {
     $0
 });
 endsnippet
+
 snippet mgfield "" !b
 ${2:name}: { type: ${3:String/Number/Date/Buffer/Boolean/Mixed/ObjectId/Array}, required: ${4:true}, unique: ${5:false} },$0
 endsnippet
@@ -327,7 +328,7 @@ $2.save(function(err, $2) {
 });
 endsnippet
 
-snippet func "" !b
+snippet func "" !w
 function ${1:name}(${2}) {
     $0
 }

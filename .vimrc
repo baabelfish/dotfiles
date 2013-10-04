@@ -389,13 +389,13 @@ let g:skybison_input = 1
 let g:Vertigo_homerow = 'asdfghjklp'
 let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_refresh_always = 0
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_refresh_always = 0
+" let g:neocomplete#enable_smart_case = 1
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+"   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" endif
 
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_confirm_extra_conf = 0
