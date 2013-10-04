@@ -39,6 +39,7 @@ alias pau='yaourt -Syyu'
 alias pac='sudo pacman -Syc'
 
 # Git
+alias gitC='git diff --name-only --diff-filter=U'
 alias giti='git ls-tree -r --name-only'
 alias gita='git add'
 alias gitb='git branch'
