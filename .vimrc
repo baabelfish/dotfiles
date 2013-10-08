@@ -334,8 +334,6 @@ let g:airline_right_sep = '◀'
 let g:airline_powerline_fonts=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['jslint']
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=0
 let g:airline_theme='wombat'
@@ -371,16 +369,20 @@ let g:gundo_right = 1
 let g:gundo_width = 40
 
 let g:pydiction_location = '/usr/share/pydiction/complete-dict'
+
 let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_check_on_wq=0
 let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol='✕'
-let g:syntastic_warning_symbol='✕'
+let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_warning_symbol='✕'
 
 let g:user_emmet_expandabbr_key = '<c-e>'
 
