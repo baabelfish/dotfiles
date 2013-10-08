@@ -26,7 +26,7 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang' } }
+NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang && git submodule update --init --recursive' } }
 NeoBundle 'drmikehenry/vim-fixkey'
 NeoBundle 'arecarn/crunch'
 NeoBundle 'b4winckler/vim-angry'
@@ -105,7 +105,7 @@ set listchars=""
 set listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
 set modelines=0
 set nobackup
-set nocursorline
+set cursorline
 set noerrorbells
 set nofoldenable
 set noshowmode
@@ -195,6 +195,7 @@ let mapleader = 'ö'
 nnoremap ' `
 set pastetoggle=<M-p>
 
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent><space>r :Root<cr>
 nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
@@ -307,8 +308,8 @@ vnoremap <leader>s :s/
 vnoremap <silent><leader>cw :s/\s\+$//<cr>
 vnoremap <silent><return> :NarrowRegion<CR>
 vnoremap <silent><return> :NarrowRegion<CR>
-vnoremap ¤ :g/.*/norm! 
-nnoremap ¤ :'<,'>g/.*/norm! 
+vnoremap ¤ :g/^/norm! 
+nnoremap ¤ :'<,'>g/^/norm! 
 vnoremap ½ @q
 vnoremap å :TComment<CR>
 
@@ -397,14 +398,25 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 "   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " endif
 
-let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'git' : 1,
+      \ 'vim' : 1,
+      \ 'javascript' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'unite' : 1,
+      \}
 
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
 let g:unite_source_history_yank_enable =1
