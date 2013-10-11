@@ -65,26 +65,23 @@ AC=118
 
 RPROMPT="\
 %{$(bC 233)%}%{$(fC 234)%} $SEP_RIGHT\
-%{$(bC 234)%}%{$(fC $IC)%} %m\
+%{$(bC 234)%}%{$(fC $IC)%} %~\
 %{$(bC 234)%}%{$(fC 235)%} $SEP_RIGHT\
 %{$(bC 235)%}%{$(fC 082)%} %B$GBRANCH%b\
 %{$(bC 235)%}%{$(fC 236)%} $SEP_RIGHT\
-%{$(bC 236)%}%{$(fC 076)%} %~ %{$reset_color%}"
+%{$(bC 236)%}%{$(fC 076)%} %m %{$reset_color%}"
 
 PROMPT="\
-%{$(bC 235)%}%{$(fC $IC)%} %B$VENV \
-%{$(bC 233)%}%{$(fC 235)%}$SEP_LEFT\
+%{$(bC 234)%}%{$(fC $IC)%} %B$VENV \
+%{$(bC 233)%}%{$(fC 234)%}$SEP_LEFT\
 %{$reset_color%}%b "
 
 if [[ ! -z $ERR ]]; then
-    PROMPT="%{$(bC 236)%}%{$(fC $WC)%} %B$ERR %b\
-%{$(bC 235)%}%{$(fC 236)%}$SEP_LEFT\
+    PROMPT="%{$(bC 235)%}%{$(fC $WC)%} %B$ERR %b\
+%{$(bC 234)%}%{$(fC 235)%}$SEP_LEFT\
 $PROMPT "
 fi
 
     }
 
-    # preexec() {
-    #     echo -ne "\033[0m"
-    # }
 fi
