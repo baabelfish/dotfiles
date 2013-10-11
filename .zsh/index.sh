@@ -7,7 +7,7 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) =~ /dev/tty ]]; then
     i3
     \033[32m2: \033[0m\
     None"
-    echo "> "
+    echo -ne "> "
     read choice
     case $choice in
       1 )
@@ -15,10 +15,11 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) =~ /dev/tty ]]; then
           logout
           ;;
       * )
+          clear
           ;;
     esac
-# else
-    # [[ -f ~/.Xresources ]] && [[ -z "$SSH_CLIENT" ]] && xrdb -merge ~/.Xresources
+else
+    [[ -f ~/.Xresources ]] && [[ -z "$SSH_CLIENT" ]] && xrdb -merge ~/.Xresources
 fi
 
 source ~/.zsh/helpers.sh
