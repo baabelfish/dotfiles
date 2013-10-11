@@ -54,17 +54,17 @@ if [[ "$PROMPT_STYLE" == "fancy" ]]; then
             GBRANCH="-"
         fi
 
-SEP_LEFT="▶"
-SEP_RIGHT="◀"
-LC=250
-LBC=234
-IC=070
-NC=076
-WC=160
-AC=118
-MAX=236
+    SEP_LEFT="▶"
+    SEP_RIGHT="◀"
+    LC=250
+    LBC=234
+    IC=070
+    NC=076
+    WC=160
+    AC=118
+    MAX=236
 
-RPROMPT="\
+    RPROMPT="\
 %{$(bC 233)%}%{$(fC $((MAX-2)))%} $SEP_RIGHT\
 %{$(bC $((MAX-2)))%}%{$(fC $IC)%} %~\
 %{$(bC $((MAX-2)))%}%{$(fC $((MAX-1)))%} $SEP_RIGHT\
@@ -72,18 +72,18 @@ RPROMPT="\
 %{$(bC $((MAX-1)))%}%{$(fC $MAX)%} $SEP_RIGHT\
 %{$(bC $MAX)%}%{$(fC 076)%} %T %{$reset_color%}"
 
-PROMPT="\
+    PROMPT="\
 %{$(bC $((MAX-1)))%}%{$(fC $IC)%} %m \
 %{$(bC $((MAX-2)))%}%{$(fC $((MAX-1)))%}$SEP_LEFT\
 %{$(bC $((MAX-2)))%}%{$(fC $IC)%} %B$VENV \
 %{$(bC 233)%}%{$(fC $((MAX-2)))%}$SEP_LEFT\
 %{$reset_color%}%b "
 
-if [[ ! -z $ERR ]]; then
-    PROMPT="%{$(bC $((MAX)))%}%{$(fC $WC)%} %B$ERR %b\
+    if [[ ! -z $ERR ]]; then
+        PROMPT="%{$(bC $((MAX)))%}%{$(fC $WC)%} %B$ERR %b\
 %{$(bC $((MAX-1)))%}%{$(fC $((MAX)))%}$SEP_LEFT\
 $PROMPT"
-fi
+    fi
 
     }
 
