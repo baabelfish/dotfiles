@@ -62,24 +62,27 @@ IC=070
 NC=076
 WC=160
 AC=118
+MAX=236
 
 RPROMPT="\
-%{$(bC 233)%}%{$(fC 234)%} $SEP_RIGHT\
-%{$(bC 234)%}%{$(fC $IC)%} %~\
-%{$(bC 234)%}%{$(fC 235)%} $SEP_RIGHT\
-%{$(bC 235)%}%{$(fC 082)%} %B$GBRANCH%b\
-%{$(bC 235)%}%{$(fC 236)%} $SEP_RIGHT\
-%{$(bC 236)%}%{$(fC 076)%} %m %{$reset_color%}"
+%{$(bC 233)%}%{$(fC $((MAX-2)))%} $SEP_RIGHT\
+%{$(bC $((MAX-2)))%}%{$(fC $IC)%} %~\
+%{$(bC $((MAX-2)))%}%{$(fC $((MAX-1)))%} $SEP_RIGHT\
+%{$(bC $((MAX-1)))%}%{$(fC 082)%} %B$GBRANCH%b\
+%{$(bC $((MAX-1)))%}%{$(fC $MAX)%} $SEP_RIGHT\
+%{$(bC $MAX)%}%{$(fC 076)%} %T %{$reset_color%}"
 
 PROMPT="\
-%{$(bC 234)%}%{$(fC $IC)%} %B$VENV \
-%{$(bC 233)%}%{$(fC 234)%}$SEP_LEFT\
+%{$(bC $((MAX-1)))%}%{$(fC $IC)%} %m \
+%{$(bC $((MAX-2)))%}%{$(fC $((MAX-1)))%}$SEP_LEFT\
+%{$(bC $((MAX-2)))%}%{$(fC $IC)%} %B$VENV \
+%{$(bC 233)%}%{$(fC $((MAX-2)))%}$SEP_LEFT\
 %{$reset_color%}%b "
 
 if [[ ! -z $ERR ]]; then
-    PROMPT="%{$(bC 235)%}%{$(fC $WC)%} %B$ERR %b\
-%{$(bC 234)%}%{$(fC 235)%}$SEP_LEFT\
-$PROMPT "
+    PROMPT="%{$(bC $((MAX)))%}%{$(fC $WC)%} %B$ERR %b\
+%{$(bC $((MAX-1)))%}%{$(fC $((MAX)))%}$SEP_LEFT\
+$PROMPT"
 fi
 
     }
