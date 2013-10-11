@@ -39,6 +39,7 @@ alias pau='yaourt -Syyu'
 alias pac='sudo pacman -Syc'
 
 # Git
+alias gitC='git diff --name-only --diff-filter=U'
 alias giti='git ls-tree -r --name-only'
 alias gita='git add'
 alias gitb='git branch'
@@ -55,7 +56,7 @@ alias use_dvorak='setxkbmap fi dvorak'
 alias use_neo='setxkbmap fi neo'
 alias use_qwerty='setxkbmap fi qwerty'
 
-alias move_mouse='export DISPLAY=:0 && xdotool mousemove 5 5'
+alias move_mouse="export DISPLAY=:0 && xdotool mousemove $((RANDOM%300)) $((RANDOM%300))"
 
 # Dev
 alias make='make -j $((`cat /proc/cpuinfo|grep processor|wc -l`*2))' # Compile with more cores
