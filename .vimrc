@@ -26,7 +26,7 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang' } }
+NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang && git submodule update --init --recursive' } }
 NeoBundle 'drmikehenry/vim-fixkey'
 NeoBundle 'arecarn/crunch'
 NeoBundle 'b4winckler/vim-angry'
@@ -195,6 +195,7 @@ let mapleader = 'ö'
 nnoremap ' `
 set pastetoggle=<M-p>
 
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent><space>r :Root<cr>
 nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
@@ -307,8 +308,8 @@ vnoremap <leader>s :s/
 vnoremap <silent><leader>cw :s/\s\+$//<cr>
 vnoremap <silent><return> :NarrowRegion<CR>
 vnoremap <silent><return> :NarrowRegion<CR>
-vnoremap ¤ :g/.*/norm! 
-nnoremap ¤ :'<,'>g/.*/norm! 
+vnoremap ¤ :g/^/norm! 
+nnoremap ¤ :'<,'>g/^/norm! 
 vnoremap ½ @q
 vnoremap å :TComment<CR>
 
@@ -333,8 +334,6 @@ let g:airline_right_sep = '◀'
 let g:airline_powerline_fonts=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['jslint']
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=0
 let g:airline_theme='wombat'
@@ -370,16 +369,20 @@ let g:gundo_right = 1
 let g:gundo_width = 40
 
 let g:pydiction_location = '/usr/share/pydiction/complete-dict'
+
 let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_check_on_wq=0
 let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol='✕'
-let g:syntastic_warning_symbol='✕'
+let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_warning_symbol='✕'
 
 let g:user_emmet_expandabbr_key = '<c-e>'
 
@@ -397,14 +400,25 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 "   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " endif
 
-let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'gitcommit' : 1,
+      \ 'vim' : 1,
+      \ 'javascript' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'unite' : 1,
+      \}
 
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
 let g:unite_source_history_yank_enable =1

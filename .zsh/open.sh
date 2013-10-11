@@ -8,7 +8,7 @@ leave=0
 echo $filename
 
 case "$filename" in
-    *.mp4|*.mkv|*.avi|*.mpg) exe="vlc" && leave=1 ;;
+    *.mp4|*.mkv|*.avi|*.mpg) exe="mplayer" && leave=1 ;;
     *.mp3|*.ogg|*.wav) exe="mplayer" && leave=0 ;;
     *.jpg|*.jpeg|*.png|*.bmp) exe="feh" && leave=1 ;;
     *.gif) exe="dwb" && leave=0 ;;

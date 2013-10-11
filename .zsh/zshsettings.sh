@@ -1,6 +1,5 @@
 #!/bin/bash
 # Necessary for own applications
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 PATH="$HOME/.local/bin:$PATH"
 
 ################################################################################
