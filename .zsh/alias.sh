@@ -55,7 +55,7 @@ alias use_dvorak='setxkbmap fi dvorak'
 alias use_neo='setxkbmap fi neo'
 alias use_qwerty='setxkbmap fi qwerty'
 
-alias move_mouse='export DISPLAY=:0 && xdotool mousemove 1 1'
+alias move_mouse='export DISPLAY=:0 && xdotool mousemove 5 5'
 
 # Dev
 alias make='make -j $((`cat /proc/cpuinfo|grep processor|wc -l`*2))' # Compile with more cores
