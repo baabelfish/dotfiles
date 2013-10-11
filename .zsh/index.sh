@@ -1,11 +1,28 @@
 #!/bin/bash
-source ~/.zsh/helpers.sh
-
 # Start X-session when logged in from tty1
-if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec startx
-    logout
+if [[ -z "$DISPLAY" ]] && [[ $(tty) =~ /dev/tty ]]; then
+    clear
+    echo "\033[32m\033[1mChoose the DE:\033[0m
+    \033[32m1: \033[0m\
+    i3
+    \033[32m2: \033[0m\
+    None"
+    echo -ne "> "
+    read choice
+    case $choice in
+      *)
+          exec startx
+          logout
+          ;;
+      2)
+          clear
+          ;;
+    esac
+else
+    [[ -f ~/.Xresources ]] && [[ -z "$SSH_CLIENT" ]] && xrdb -merge ~/.Xresources
 fi
+
+source ~/.zsh/helpers.sh
 
 SOURCES=(
 .zsh/colors.sh

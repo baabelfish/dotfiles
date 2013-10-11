@@ -1,6 +1,6 @@
 #!/bin/bash
 PROMPT_STYLE="fancy"
-[[ "$TERM" == "linux" ]] && PROMPT_STYLE="oneline"
+[[ "$TERM" == "linux" ]] && PROMPT_STYLE="basic"
 
 PS1=":"
 
@@ -9,40 +9,30 @@ if [[ "$PROMPT_STYLE" == "basic" ]]; then
     prompt walters
 fi
 
-aC() {
+bC() {
+    echo -ne "$BG[$1]"
+}
+
+fC() {
     echo -ne "$FG[$1]"
 }
 
-################################################################################
-# Prompt
-################################################################################
-if [[ "$PROMPT_STYLE" == "oneline" ]]; then
-    precmd() {
-        PROMPT="$VENV%u%B%{$fg[green]%}:%{$reset_color%}%b"
-        RPROMPT="(%{$fg[green]%}$HOSTNAME%{$reset_color%})-(%{$fg[green]%}%~%{$reset_color%})-($GBRANCH)"
-    }
-fi
-
 if [[ "$PROMPT_STYLE" == "fancy" ]]; then
-    # Colors
-    LC=239
-    IC=070
-    NC=076
-    WC=196
-    AC=118
-
     precmd() {
         # Show return value
         ERR=$?
         if [[ "$ERR" != "0" ]]; then
-            ERR="$(aC $WC)$ERR"
+            ERR="$ERR"
+            # ERR="$(aC $WC)$ERR"
         else
-            ERR="-"
+            ERR=""
         fi
 
         # Show virtual environment
         VENV=$(echo $VIRTUAL_ENV|rev|cut -f1 -d'/'|rev)
-        [[ ! -z "$VENV" ]] && VENV="❨$VENV❩"
+        if [[ -z "$VENV" ]]; then
+            VENV="»"
+        fi
 
         # Show branch name
         d=$(pwd)
@@ -51,25 +41,50 @@ if [[ "$PROMPT_STYLE" == "fancy" ]]; then
             [[ -d "$d"/.git ]] && INGIT=true && break
             d=${d%/*}
         done
-        GBRANCH="-"
+
         if [[ $INGIT == true ]]; then
-            GBRANCH=$(git branch|grep '^*'|cut -f2 -d' ')
+            GBRANCH=$(git branch|grep '^*'|cut -f2 -d' ') 2> /dev/null
             if [[ "$GBRANCH" == "master" ]]; then
                 GBRANCH="M"
             else
                 GBRANCH="$GBRANCH"
             fi
-            GBRANCH="$(aC $NC)$(basename `git rev-parse --show-toplevel`)$(aC $LC)/$(aC $AC)$GBRANCH"
+        fi
+        if [[ -z $GBRANCH ]]; then
+            GBRANCH="-"
         fi
 
-PROMPT="$(aC $LC)╾─\
-$(aC $LC)❨$(aC $IC)%*$(aC $LC)❩──\
-$(aC $LC)❨$(aC 118)$(hostname)$(aC $LC)❩─\
-$(aC $LC)❨$(aC $IC)$GBRANCH$(aC $LC)❩─\
-$(aC $LC)❨$(aC $IC)%~$(aC $LC)❩─\
-$(aC $LC)❨$(aC $IC)$ERR$(aC $LC)❩─\
-╼$reset_color
-"
+    SEP_LEFT="▶"
+    SEP_RIGHT="◀"
+    LC=250
+    LBC=234
+    IC=070
+    NC=076
+    WC=160
+    AC=118
+    MAX=236
+
+    RPROMPT="\
+%{$(bC 233)%}%{$(fC $((MAX-2)))%} $SEP_RIGHT\
+%{$(bC $((MAX-2)))%}%{$(fC $IC)%} %~\
+%{$(bC $((MAX-2)))%}%{$(fC $((MAX-1)))%} $SEP_RIGHT\
+%{$(bC $((MAX-1)))%}%{$(fC 082)%} %B$GBRANCH%b\
+%{$(bC $((MAX-1)))%}%{$(fC $MAX)%} $SEP_RIGHT\
+%{$(bC $MAX)%}%{$(fC 076)%} %T %{$reset_color%}"
+
+    PROMPT="\
+%{$(bC $((MAX-1)))%}%{$(fC $IC)%} %m \
+%{$(bC $((MAX-2)))%}%{$(fC $((MAX-1)))%}$SEP_LEFT\
+%{$(bC $((MAX-2)))%}%{$(fC $IC)%} %B$VENV \
+%{$(bC 233)%}%{$(fC $((MAX-2)))%}$SEP_LEFT\
+%{$reset_color%}%b "
+
+    if [[ ! -z $ERR ]]; then
+        PROMPT="%{$(bC $((MAX)))%}%{$(fC $WC)%} %B$ERR %b\
+%{$(bC $((MAX-1)))%}%{$(fC $((MAX)))%}$SEP_LEFT\
+$PROMPT"
+    fi
+
     }
-    RPROMPT=""
+
 fi

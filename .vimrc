@@ -120,7 +120,7 @@ set number
 set numberwidth=4
 set path+=.,,
 set pumheight=5
-" set regexpengine=0
+set regexpengine=1
 " set scrolloff=100
 set shortmess+=filmnrxoOtTI
 set showcmd
