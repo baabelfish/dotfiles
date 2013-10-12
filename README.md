@@ -17,7 +17,7 @@ dmenu
 dunst
 dwb
 dzen2
-faenza-icon-theme
+elementary-icon-theme
 feh
 gifsicle
 gimp
