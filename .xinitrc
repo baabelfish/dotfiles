@@ -12,15 +12,13 @@ xmodmap ~/.xbqwerty
 xset dpms 540 1000 2000&
 xset -b&
 xsetroot -cursor_name left_ptr&
-autocutsel -fork&
-autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
-[[ -e /usr/bin/pnmixer ]] && pnmixer&
+[[ -e /usr/bin/volumeicon ]] && volumeicon&
+[[ -e /usr/bin/clipit ]] && clipit&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/dunst ]] && dunst&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
-# [[ -e /usr/bin/xcape ]] && xcape -e 'Alt_L=Escape'&
 [[ -e /usr/bin/compton ]] && compton&
 
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1 &

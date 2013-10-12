@@ -25,7 +25,7 @@ dmenu_info=\"\"
 fi
 
 # Make needed directories
-mkdir ~/.wallpapers
+mkdir ~/.wallpapers ~/repos ~/downloads ~/temp ~/images
 
 # Download files
 wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2907932.jpg' -O ~/.wallpapers/1366x768.png
@@ -37,7 +37,15 @@ wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2444098.jpg' -O ~/.wallpaper
 # Install from repositories
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
-# Clone necessary projects
-git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+# Install software
+sudo pacman --noconfirm -S acpi clipit chromium dunst dzen2 feh feh gvim i3lock rxvt-unicode rxvt-unicode-terminfo the_silver_searcher urxvt-perls udiskie unclutter volumeicon zathura zsh
+yaourt --noconfirm -S compton dwb-git dmenu-xft i3-git termsyn
+
+# Install laptop specific software
+ISLAPTOP=$(acpi) 2> /dev/null
+if [[ ! -z $ISLAPTOP ]]; then
+    sudo pacman --noconfirm -S xautolock
+fi
+
 
 touch /home/$USER/.xutils/.has_been_initialized
