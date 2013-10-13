@@ -11,6 +11,7 @@ DISPLAY_SECONDARY=99
 DISPLAY_SECONDARY_POSITION=99
 OFFLIST=""
 
+
 if [[ ${#DISPLAYS[@]} == 1 ]]; then
     echo "Press enter to reset display."
     read
@@ -31,7 +32,11 @@ for (( i = 0; i < ${#DISPLAYS[@]}; i++ )); do
 done
 while [[ $DISPLAY_PRIMARY -ge ${#DISPLAYS[@]} ]]; do
     echo -n "> "
-    read DISPLAY_PRIMARY
+    # read DISPLAY_PRIMARY
+    stty raw
+    DISPLAY_PRIMARY=$(dd bs=1 count=1 2>/dev/null)
+    stty -raw
+    echo ""
     [[ $DISPLAY_PRIMARY -ge ${#DISPLAYS[@]} ]] && echo "You must select a number between 0 and $[${#DISPLAYS[@]}-1]"
 done
 
@@ -44,7 +49,12 @@ done
 echo "${#DISPLAYS[@]}: None"
 while [[ $DISPLAY_SECONDARY -gt ${#DISPLAYS[@]} ]] || [[ $DISPLAY_SECONDARY == $DISPLAY_PRIMARY ]]; do
     echo -n "> "
-    read DISPLAY_SECONDARY
+    # read DISPLAY_SECONDARY
+    stty raw
+    DISPLAY_SECONDARY=$(dd bs=1 count=1 2>/dev/null)
+    stty -raw
+    echo ""
+    [[ $DISPLAY_PRIMARY -ge ${#DISPLAYS[@]} ]] && echo "You must select a number between 0 and $[${#DISPLAYS[@]}-1]"
     [[ $DISPLAY_SECONDARY -gt ${#DISPLAYS[@]} ]] && echo "You must select a number between 0 and $[${#DISPLAYS[@]}]"
     [[ $DISPLAY_SECONDARY == $DISPLAY_PRIMARY ]] && echo "Secondary monitor can't be the same as primary"
 done
@@ -57,7 +67,11 @@ if [[ $DISPLAY_SECONDARY -lt ${#DISPLAYS[@]} ]]; then
     echo "1: Right of primary"
     while [[ $DISPLAY_SECONDARY_POSITION -ge 2 ]]; do
         echo -n "> "
-        read DISPLAY_SECONDARY_POSITION
+        # read DISPLAY_SECONDARY_POSITION
+        stty raw
+        DISPLAY_SECONDARY_POSITION=$(dd bs=1 count=1 2>/dev/null)
+        stty -raw
+        echo ""
         [[ $DISPLAY_SECONDARY_POSITION -ge 2 ]] && echo "You must select 0 or 1"
     done
 
