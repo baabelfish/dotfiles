@@ -41,6 +41,7 @@ xorg-xrandr
 yaourt
 zathura
 gimp
+xmms2
 xorg
 xorg-apps
 zenity

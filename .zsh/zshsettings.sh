@@ -91,3 +91,5 @@ bindkey '^W' backward-delete-to-slash
 bindkey '^i' expand-or-complete-prefix
 bindkey -s '^O' '^qpopd && clear && l\n'
 bindkey "^R" history-incremental-pattern-search-backward 
+
+stty -ixon
