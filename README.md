@@ -18,6 +18,7 @@ dunst
 dwb
 dzen2
 elementary-icon-theme
+faenza-icon-theme
 feh
 gifsicle
 gimp
