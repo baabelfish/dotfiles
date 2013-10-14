@@ -14,6 +14,13 @@ cl() {
     done
 }
 
+# XMMS2
+alias xa='xmms2 add'
+alias xp='xmms2 pause'
+alias xc='xmms2 clear'
+alias xs='xmms2 status'
+alias xt='xmms2 toggle'
+
 # Misc
 alias cal='cal -m -y' # More verbose calendar
 alias sshp='killall mplayer; export DISPLAY=:0 && mplayer -fs' # Play video over ssh

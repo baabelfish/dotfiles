@@ -22,6 +22,8 @@ faenza-icon-theme
 feh
 gifsicle
 gimp
+gimp
+gvim
 i3
 i3lock
 libav (with --enable-x11grab)
@@ -30,16 +32,19 @@ screen
 the_silver_searcher
 tmux
 transset-df
+tree
 udiskie
 unclutter
 urxvt
-gvim
 volumeicon
 weechat
 xautolock
 xcape
 xdotool
+xmms2
 xorg
+xorg
+xorg-apps
 xorg-apps
 xorg-xrandr
 yaourt
