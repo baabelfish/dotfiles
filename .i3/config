@@ -164,6 +164,7 @@ bindsym $mod+minus exec --no-startup-id ~/.xutils/gvol.sh -d 3
 
 # Monitors
 bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xutils/select_monitors.sh'
+bindsym $mod+F7 exec --no-startup-id ~/.xutils/toggle_compton.sh
 bindsym $mod+Shift+F8 exec --no-startup-id "killall compton; compton"
 
 # Configuration commands
