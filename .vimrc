@@ -92,7 +92,7 @@ set cscopetag
 set display+=lastline " FIXME
 set fillchars+=vert:│
 " set foldmethod=syntax
-set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+" set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 set formatoptions=qrn1tj
 set gdefault
 set hidden
@@ -703,3 +703,5 @@ call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 let g:arpeggio_timeoutlen = 20
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 echo ""
+
+set nofoldenable

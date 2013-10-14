@@ -10,6 +10,7 @@ Dependencies
 ```
 Termsyn
 chromium
+clipit
 cmus
 compton
 dmenu
@@ -19,12 +20,11 @@ dzen2
 faenza-icon-theme
 feh
 gifsicle
+gimp
 i3
 i3lock
 libav (with --enable-x11grab)
 mutt
-pnmixer
-ranger
 screen
 the_silver_searcher
 tmux
@@ -32,15 +32,19 @@ transset-df
 udiskie
 unclutter
 urxvt
-vim
+gvim
+volumeicon
 weechat
 xautolock
 xcape
 xdotool
+xorg
+xorg-apps
 xorg-xrandr
 yaourt
 zathura
 gimp
+xmms2
 xorg
 xorg-apps
 zenity
