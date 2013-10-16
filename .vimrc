@@ -254,7 +254,7 @@ nnoremap <F5> :GundoToggle<CR>
 nnoremap <leader>* :s/<C-r><C-w>/
 nnoremap <leader>C :!clear && octave -q %<CR>
 nnoremap <leader>s :%s//
-nnoremap <leader>dw :call <SID>StripTrailingWhitespaces()
+" nnoremap <leader>dw :call <SID>StripTrailingWhitespaces()
 nnoremap <leader>S :%s/
 nnoremap <leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <CR> <CR>
 nnoremap <leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <CR><CR>
@@ -267,12 +267,12 @@ nnoremap <silent><C-h> ?{<cr>
 nnoremap <silent><C-l> /{<cr>
 nnoremap <silent><c-j> /{<cr>
 nnoremap <silent><c-k> ?{<cr>
-nnoremap <silent><leader>t :NERDTree $PWD \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>T :NERDTreeToggle \| wincmd p<CR>
+nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
+nnoremap <silent><leader>D :NERDTree $PWD \| wincmd =<CR>
+nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
-nnoremap <silent><leader>D :!./findindoc.sh <C-r><C-w><CR><CR>
 nnoremap <silent><leader>W  :set invwrap<CR> :set wrap?<CR>
 nnoremap <leader>f :find 
 nnoremap <silent><space>bR :call BreakpointRemoveAllInFile()<cr><cr>
