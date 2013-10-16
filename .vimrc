@@ -268,7 +268,7 @@ nnoremap <silent><C-l> /{<cr>
 nnoremap <silent><c-j> /{<cr>
 nnoremap <silent><c-k> ?{<cr>
 nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>D :NERDTree $PWD \| wincmd =<CR>
+nnoremap <silent><leader>D :NERDTreeFocus<CR>
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
