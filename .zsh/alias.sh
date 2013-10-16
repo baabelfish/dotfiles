@@ -57,6 +57,7 @@ alias gitc='git commit'
 alias gitc!='git commit -m'
 alias gitca='git commit -a'
 alias gitca!='git commit -a -m'
+alias äpärä='git'
 
 # Keyboard layout
 alias use_dvorak='setxkbmap fi dvorak'
