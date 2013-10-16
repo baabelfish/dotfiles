@@ -16,8 +16,10 @@ cl() {
 
 # XMMS2
 alias xa='xmms2 add'
+alias xp='xmms2 pause'
 alias xc='xmms2 clear'
 alias xs='xmms2 status'
+alias xt='xmms2 toggle'
 
 # Misc
 alias cal='cal -m -y' # More verbose calendar
