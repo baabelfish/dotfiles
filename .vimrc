@@ -375,6 +375,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open=0
 let g:syntastic_check_on_wq=0
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
