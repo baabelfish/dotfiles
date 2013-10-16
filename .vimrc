@@ -2,6 +2,7 @@
 " Prequests:
 " git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 " sudo pacman -S the_silver_searcher
+" mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has('vim_starting')
@@ -37,7 +38,6 @@ NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'glts/vim-textobj-comment'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'kana/vim-arpeggio'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
@@ -56,7 +56,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/Bck'
+NeoBundle 'baabelfish/Bck'
 NeoBundle 'vim-scripts/L9'
 NeoBundle 'vim-scripts/Vimchant'
 NeoBundle 'vim-scripts/VisIncr'
@@ -118,10 +118,10 @@ set nowrap
 set nrformats-=octal
 set number
 set numberwidth=4
-set path+=.,,
+set path+=.,**
+set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc
 set pumheight=5
 set regexpengine=1
-" set scrolloff=100
 set shortmess+=filmnrxoOtTI
 set showcmd
 set showfulltag
@@ -136,9 +136,9 @@ set titlestring=Vim:\ %f\ %h%r%m
 set ttimeout
 set ttimeoutlen=0
 set viewoptions=folds,options,cursor,unix,slash
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
-set wildmenu
-set wildmode=longest,list
+set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
+" set wildmenu
+set wildmode=full
 set wrapmargin=0
 set ts=4 sts=4 sw=4 expandtab shiftround
 
@@ -269,6 +269,7 @@ nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
 nnoremap <silent><leader>D :!./findindoc.sh <C-r><C-w><CR><CR>
 nnoremap <silent><leader>W  :set invwrap<CR> :set wrap?<CR>
+nnoremap <leader>f :find 
 nnoremap <silent><space>bR :call BreakpointRemoveAllInFile()<cr><cr>
 nnoremap <silent><space>ba :call BreakpointAdd()<cr><cr>
 nnoremap <silent><space>br :call BreakpointRemove()<cr><cr>
@@ -693,15 +694,11 @@ call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
-call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 " if executable('ag')
 "   let g:unite_source_grep_command = 'ag'
 "   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 "   let g:unite_source_grep_recursive_opt = ''
 " endif
-
-let g:arpeggio_timeoutlen = 20
-call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-echo ""
 
 set nofoldenable
