@@ -12,6 +12,7 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
 NeoBundle 'Blackrush/vim-gocode'
@@ -138,7 +139,7 @@ set ttimeout
 set ttimeoutlen=0
 set viewoptions=folds,options,cursor,unix,slash
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
-" set wildmenu
+set wildmenu
 set wildmode=full
 set wrapmargin=0
 set ts=4 sts=4 sw=4 expandtab shiftround
@@ -209,6 +210,7 @@ nnoremap <M-J> J
 nnoremap <M-K> K
 nnoremap <M-L> L
 nnoremap <M-q> <C-w>c
+inoremap <C-q> <C-o>ciW
 inoremap <M-z> <C-o>zz
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 " nnoremap <M-c> :tabclose<cr>:echo ""<cr>
@@ -265,6 +267,8 @@ nnoremap <silent><C-h> ?{<cr>
 nnoremap <silent><C-l> /{<cr>
 nnoremap <silent><c-j> /{<cr>
 nnoremap <silent><c-k> ?{<cr>
+nnoremap <silent><leader>t :NERDTree \| wincmd p \| NERDTreeFind \| wincmd p<CR>
+nnoremap <silent><leader>T :NERDTreeToggle \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
@@ -404,6 +408,8 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 "   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " endif
 
+
+
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -464,6 +470,12 @@ let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'
 let g:signify_sign_delete            = '«'
 let g:signify_sign_delete_first_line = '-'
+
+let NERDTreeHijackNetrw = 0
+let NERDTreeShowHidden = 1
+let NERDTreeShowLineNumbers = 0
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 let g:bl_no_implystart = 1
 
