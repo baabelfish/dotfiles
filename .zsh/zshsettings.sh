@@ -2,6 +2,15 @@
 # Necessary for own applications
 PATH="$HOME/.local/bin:$PATH"
 
+if [[ $(tty) =~ /dev/tty ]]; then
+    export TERM='linux'
+else
+    export TERM='rxvt-unicode-256color'
+    alias mutt='export TERM=screen-256color && mutt'
+    alias rtorrent='export TERM=screen-256color && rtorrent'
+    alias magnetminer='export TERM=screen-256color && magnetminer'
+fi
+
 ################################################################################
 # ZSH specific settings
 ################################################################################
@@ -48,11 +57,6 @@ SAVEHIST=5000
 export CHROME_BIN='/usr/bin/chromium'
 export MANWIDTH=80
 export MOSH_TITLE_NOPREFIX=1
-if [[ $(tty) =~ /dev/tty ]]; then
-    export TERM='linux'
-else
-    export TERM='rxvt-unicode-256color'
-fi
 export _JAVA_AWT_WM_NONREPARENTING=1
 export npm_config_prefix="$HOME/.local"
 
