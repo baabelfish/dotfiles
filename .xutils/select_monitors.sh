@@ -81,9 +81,10 @@ if [[ $DISPLAY_SECONDARY -lt ${#DISPLAYS[@]} ]]; then
     eval "xrandr --output ${DISPLAYS[$DISPLAY_PRIMARY]} --auto$OFFLIST"
     sleep 1
     eval "xrandr --output ${DISPLAYS[$DISPLAY_SECONDARY]} --auto $ORIENTATION ${DISPLAYS[$DISPLAY_PRIMARY]}"
-    feh --bg-fill ~/.wallpapers/massive1.png
+    feh --bg-center ~/.wallpapers/1920x1080.png
+    # feh --bg-fill ~/.wallpapers/massive1.png
 # Only one display
 else
     eval "xrandr --output ${DISPLAYS[$DISPLAY_PRIMARY]} --auto$OFFLIST"
-    feh --bg-fill ~/.wallpapers/1920x1080.png
+    feh --bg-center ~/.wallpapers/1920x1080.png
 fi

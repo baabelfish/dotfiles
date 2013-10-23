@@ -2,7 +2,9 @@
 # Start X-session when logged in from tty1
 if [[ -z "$DISPLAY" ]] && [[ $(tty) =~ /dev/tty ]]; then
     clear
-    echo "\033[32m\033[1mChoose the DE:\033[0m
+    [[ -e /bin/alsi ]] && alsi -l
+    echo ""
+    echo "\033[32m\033[1mChoose the manager:\033[0m
     \033[32m1: \033[0m\
     i3
     \033[32m2: \033[0m\
@@ -40,5 +42,5 @@ SOURCES=(
 )
 
 for i in ${SOURCES[@]}; do
-    [[ -e "/home/$USER/$i" ]] && source "/home/$USER/$i"
+    [[ -e "$HOME/$i" ]] && source "$HOME/$i"
 done
