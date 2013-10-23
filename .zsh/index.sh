@@ -40,5 +40,5 @@ SOURCES=(
 )
 
 for i in ${SOURCES[@]}; do
-    [[ -e "/home/$USER/$i" ]] && source "/home/$USER/$i"
+    [[ -e "$HOME/$i" ]] && source "$HOME/$i"
 done
