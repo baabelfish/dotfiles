@@ -20,6 +20,7 @@ alias xp='xmms2 pause'
 alias xc='xmms2 clear'
 alias xs='xmms2 status'
 alias xt='xmms2 toggle'
+alias x='xmms2'
 
 # Misc
 alias cal='cal -m -y' # More verbose calendar
