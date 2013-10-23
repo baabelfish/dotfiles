@@ -25,7 +25,7 @@ NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kurkale6ka/vim-pairs'
 NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'justinmk/vim-sneak'
+" NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
@@ -219,9 +219,6 @@ nnoremap <M-m> <C-w>v
 nnoremap <M-n> <C-w>s
 nnoremap <M-w> <C-w><C-w>
 
-" nnoremap ) /)\\|(<cr>
-" nnoremap ( ?)\\|(<cr>
-
 nnoremap vif :call SelectFunction(1)<cr>
 nnoremap vaf :call SelectFunction(0)<cr>
 nnoremap dif :call SelectFunction(1)<cr>d
@@ -265,10 +262,6 @@ nnoremap <leader>wc :w !wc<CR>
 nnoremap <leader>§ :let @q='q'
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><C-h> ?{<cr>
-nnoremap <silent><C-l> /{<cr>
-nnoremap <silent><c-j> /{<cr>
-nnoremap <silent><c-k> ?{<cr>
 nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
 nnoremap <silent><leader>d :NERDTreeFocus<CR>
 nnoremap <silent><leader>D :NERDTreeToggle \| wincmd = \| wincmd p<CR>
