@@ -17,7 +17,7 @@ new_window pixel 1
 focus_follows_mouse no
 
 # i3
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r restart
 bindsym $mod+Control+Shift+F4 i3-msg exit
 bindsym $mod+q kill
 

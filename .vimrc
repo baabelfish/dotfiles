@@ -121,7 +121,7 @@ set nowrap
 set nrformats-=octal
 set number
 set numberwidth=4
-set path+=.,**
+set path+=.,**,,
 set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set pumheight=5
 set regexpengine=1
