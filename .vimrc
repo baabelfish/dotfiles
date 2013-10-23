@@ -13,6 +13,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
 NeoBundle 'Blackrush/vim-gocode'
@@ -140,7 +141,7 @@ set ttimeoutlen=0
 set viewoptions=folds,options,cursor,unix,slash
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu
-set wildmode=full
+set wildmode=longest:full,full
 set wrapmargin=0
 set ts=4 sts=4 sw=4 expandtab shiftround
 
@@ -236,6 +237,7 @@ nmap >; <Plug>Argumentative_MoveRight
 vnoremap <silent><space><enter> :EasyAlign<cr>
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
+cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <Right>
 nnoremap <silent><space>T :!export TERM=screen-256color && tig<CR><CR>
@@ -268,8 +270,8 @@ nnoremap <silent><C-l> /{<cr>
 nnoremap <silent><c-j> /{<cr>
 nnoremap <silent><c-k> ?{<cr>
 nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>D :NERDTreeFocus<CR>
-nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
+nnoremap <silent><leader>d :NERDTreeFocus<CR>
+nnoremap <silent><leader>D :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
