@@ -133,20 +133,11 @@ bar {
     colors {
         background         #151515
         statusline         #151515
+
                            #border #backgr #text
         focused_workspace  #606060 #404040 #58FF58
         inactive_workspace #606060 #202020 #777777
         urgent_workspace   #ffffff #900000 #ff5555
-
-        # background #101010
-        # statusline #999999
-        # focused_workspace #825969 #191919
-        # active_workspace #825969 #101010
-        # inactive_workspace #9a878f #191919
-        # urgent_workspace #2e3436 #9a878f
-        # focused_workspace  #606060 #404040 #22FF22
-        # inactive_workspace #606060 #202020 #115511
-        # urgent_workspace   #ffffff #900000 #ff0000
    }
 }
 

@@ -14,7 +14,7 @@ TEXT
 ,[
   {"full_text": "${exec ~/.xutils/current_window_title.sh}","color": "\#dddddd"},
   {"full_text": "◢","color": "\#22cc22"},
-  {"full_text": "≈ ${if_up wlan0}${addr wlan0}${else}[${addr eth0}]${endif}","color": "\#aaaaaa"},
+  {"full_text": "≈ ${if_up wlan0}${addr wlan0}${else}${addr eth0}${endif}","color": "\#aaaaaa"},
   {"full_text": "◢","color": "\#22cc22"},
   {"full_text": "❤ $acpitemp°C","color": "\#aaaaaa","align": "right"},
   {"full_text": "◢","color": "\#22cc22"},
