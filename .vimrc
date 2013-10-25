@@ -121,14 +121,17 @@ set nowrap
 set nrformats-=octal
 set number
 set numberwidth=4
-set path+=.,**
+set path+=.,**,,
 set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set pumheight=5
 set regexpengine=1
 set shortmess+=filmnrxoOtTI
-set showcmd
+set noshowcmd
+set scrolljump=10
 set showfulltag
 set sidescroll=1
+set ttyfast
+set ttyscroll=3
 set smartcase
 set smartindent
 " set smarttab
@@ -449,11 +452,11 @@ let g:startify_skiplist = [
       \ ]
 let g:startify_custom_header = [
       \'',
-      \'   _/      _/  _/',
-      \'  _/      _/      _/_/_/  _/_/',
-      \' _/      _/  _/  _/    _/    _/',
-      \'  _/  _/    _/  _/    _/    _/',
-      \'   _/      _/  _/    _/    _/',
+      \'     _/      _/  _/',
+      \'    _/      _/      _/_/_/  _/_/',
+      \'   _/      _/  _/  _/    _/    _/',
+      \'    _/  _/    _/  _/    _/    _/',
+      \'     _/      _/  _/    _/    _/',
       \'',
       \'',
       \ ]

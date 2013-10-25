@@ -26,6 +26,7 @@ gimp
 gvim
 i3
 i3lock
+i3status
 libav (with --enable-x11grab)
 mutt
 screen
