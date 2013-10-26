@@ -16,10 +16,12 @@ cl() {
 
 # XMMS2
 alias xa='xmms2 add'
-alias xp='xmms2 pause'
+alias xp='xmms2 prev'
+alias xn='xmms2 next'
 alias xc='xmms2 clear'
 alias xs='xmms2 status'
 alias xt='xmms2 toggle'
+alias xl='xmms2 list'
 alias x='xmms2'
 
 # Misc
