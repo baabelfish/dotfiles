@@ -13,6 +13,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
@@ -153,8 +154,8 @@ if version >= 703
   " set relativenumber
   set undodir=~/.vim/undodir
   set undofile
-  set undolevels=100
-  set undoreload=1000
+  set undolevels=1000
+  set undoreload=10000
   set wildignorecase
 endif
 
@@ -178,7 +179,7 @@ if has("autocmd")
   autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
 
   autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
@@ -422,7 +423,6 @@ let g:ycm_filetype_blacklist = {
       \ 'notes' : 1,
       \ 'gitcommit' : 1,
       \ 'vim' : 1,
-      \ 'javascript' : 1,
       \ 'markdown' : 1,
       \ 'text' : 1,
       \ 'unite' : 1,
