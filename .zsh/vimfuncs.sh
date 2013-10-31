@@ -14,11 +14,6 @@ v() {
   feh -d -F `ls` -\| $mFILE
 }
 
-# Opening stuff
-o() {
-  /home/$USER/.zsh/open.sh $*
-}
-
 # Find directory under current dir
 f() {
   if [[ -e /usr/bin/bcmenu ]]; then
@@ -114,8 +109,4 @@ archelp() {
     pai w3m
     w3m "http://wiki.archlinux.org/index.php/Special:Search?search=${1}"
   fi
-}
-
-r() {
-  ~/.zsh/rename.sh $*
 }

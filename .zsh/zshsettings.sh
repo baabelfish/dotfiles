@@ -61,6 +61,8 @@ export MANWIDTH=80
 export MOSH_TITLE_NOPREFIX=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export npm_config_prefix="$HOME/.local"
+export XDG_CONFIG_HOME="/home/$USER/.config"
+export BSPWM_SOCKET="/tmp/bspwm-socket"
 
 
 ##################################################################

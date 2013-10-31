@@ -12,6 +12,7 @@ xmodmap ~/.xbqwerty
 xset dpms 540 1000 2000&
 xset -b&
 xsetroot -cursor_name left_ptr&
+
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 [[ -e /usr/bin/volumeicon ]] && volumeicon&
@@ -29,4 +30,6 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 0 
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 8 50 &
 xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
 
+# sxhkd&
+# exec bspwm
 exec i3
