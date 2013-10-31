@@ -86,6 +86,7 @@ endif
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set langmenu=en_US.UTF-8
+set tildeop
 set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
@@ -127,11 +128,11 @@ set pumheight=5
 set regexpengine=1
 set shortmess+=filmnrxoOtTI
 set noshowcmd
-set scrolljump=10
+set scrolljump=15
 set showfulltag
 set sidescroll=1
 set ttyfast
-set ttyscroll=3
+set ttyscroll=1
 set smartcase
 set smartindent
 " set smarttab
@@ -266,8 +267,8 @@ nnoremap <leader>§ :let @q='q'
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
 nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>d :NERDTreeFocus<CR>
-nnoremap <silent><leader>D :NERDTreeToggle \| wincmd = \| wincmd p<CR>
+nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind<CR>
+nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>

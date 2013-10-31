@@ -14,6 +14,11 @@ cl() {
     done
 }
 
+# Usual stuff
+alias o="/home/$USER/.zsh/open.sh"
+alias WC="wicd-curses"
+alias r="~/.zsh/rename.sh"
+
 # XMMS2
 alias xa='xmms2 add'
 alias xp='xmms2 pause'
