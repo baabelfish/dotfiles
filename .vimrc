@@ -87,6 +87,7 @@ endif
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set langmenu=en_US.UTF-8
+set virtualedit=block
 set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
