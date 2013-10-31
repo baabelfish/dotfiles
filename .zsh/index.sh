@@ -12,12 +12,12 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) =~ /dev/tty ]]; then
     echo -ne "> "
     read choice
     case $choice in
+      2)
+          clear
+          ;;
       *)
           exec startx
           logout
-          ;;
-      2)
-          clear
           ;;
     esac
 else

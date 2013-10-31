@@ -9,17 +9,13 @@ pad_percents      3
 override_utf8_locale yes
 
 # {"full_text": "≈ ${if_up wlan0}${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%]${else}[${addr eth0}]${endif}","color": "\#aaaaaa"},
+# {"full_text": "◢","color": "\#22cc22"},
+# {"full_text": "${exec ~/.xutils/current_window_title.sh}","color": "\#dddddd"},
 
 TEXT
 ,[
-  {"full_text": "${exec ~/.xutils/current_window_title.sh}","color": "\#dddddd"},
-  {"full_text": "◢","color": "\#22cc22"},
-  {"full_text": "≈ ${if_up wlan0}${addr wlan0}${else}${addr eth0}${endif}","color": "\#aaaaaa"},
-  {"full_text": "◢","color": "\#22cc22"},
+  {"full_text": "≈ ${if_up wlan0}${addr wlan0}${else}[${addr eth0}]${endif}","color": "\#aaaaaa"},
   {"full_text": "❤ $acpitemp°C","color": "\#aaaaaa","align": "right"},
-  {"full_text": "◢","color": "\#22cc22"},
   {"full_text": "${time %H:%M:%S}","color": "\#dddddd"},
-  {"full_text": "◢","color": "\#22cc22"},
-  {"full_text": "${time %a %d.%m.%Y}","color": "\#aaaaaa"},
-  {"full_text": "◢  ","color": "\#22cc22"}
+  {"full_text": "${time %a %d.%m.%Y}","color": "\#aaaaaa"}
 ]
