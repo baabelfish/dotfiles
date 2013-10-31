@@ -11,6 +11,8 @@ else
     alias magnetminer='export TERM=screen-256color && magnetminer'
 fi
 
+[[ -e /usr/share/git-flow/git-flow-completion.zsh ]] && source /usr/share/git-flow/git-flow-completion.zsh
+
 ################################################################################
 # ZSH specific settings
 ################################################################################
