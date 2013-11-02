@@ -1,4 +1,25 @@
 #/bin/bash
+# Simple filemanager for bash
+# 
+# Run command in a directory and change the first character
+# on a line to one of following:
+# c - Copy files to existing folders
+# C - Copy files and creates new folders if they don't exist
+# m - Move files to existing folders
+# M - Move files and creates new folders if they don't exist
+# d - Remove files (rm -f)
+# D - Remove files recursively (rm -rf)
+# 
+# Example:
+# - file1.txt
+# - file2.txt
+# - file3.txt
+# 
+# ->
+#
+# M asd/file1.txt
+# - renamed_file2.txt
+# d file3.txt
 
 source "$HOME/.zsh/colorcodes.sh"
 
@@ -40,8 +61,25 @@ for (( i = 0; i < ${#UFILES[@]}; i++ )); do
         d) echo -e "${RED}Deleting${default} $FILE"
             rm -f $FILE
             ;;
-        -)  if [[ "$OLDFILE" != "$FILE" ]]; then
-                echo -e "${yellow}Renaming${default} $OLDFILE to $FILE"
+        C)  if [[ "$OLDFILE" != "$FILE" ]]; then
+                echo -e "${yellow}Copying${default} $OLDFILE to $FILE"
+                mkdir -p $(echo $FILE|rev|cut -f2- -d '/'|rev)
+                cp -r $OLDFILE $FILE
+            fi
+            ;;
+        c)  if [[ "$OLDFILE" != "$FILE" ]]; then
+                echo -e "${yellow}Copying${default} $OLDFILE to $FILE"
+                cp $OLDFILE $FILE
+            fi
+            ;;
+        M)  if [[ "$OLDFILE" != "$FILE" ]]; then
+                echo -e "${yellow}Moving${default} $OLDFILE to $FILE"
+                mkdir -p $(echo $FILE|rev|cut -f2- -d '/'|rev)
+                mv $OLDFILE $FILE
+            fi
+            ;;
+        -|m)  if [[ "$OLDFILE" != "$FILE" ]]; then
+                echo -e "${yellow}Moving${default} $OLDFILE to $FILE"
                 mv $OLDFILE $FILE
             fi
             ;;
