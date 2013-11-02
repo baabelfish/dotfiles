@@ -5,14 +5,18 @@ FILES=($(find *))
 CHANGEFILE=$HOME/.cache/changefile
 CHANGEFILEOLD=$HOME/.cache/changefileold
 
-echo -n "" > $CHANGEFILE
+rm -f $CHANGEFILE $CHANGEFILEOLD
 
 for i in ${FILES[@]}; do
-    echo "- $i" >> $CHANGEFILE
+    echo "- $i" >> $CHANGEFILEOLD
 done
 
-cp $CHANGEFILE $CHANGEFILEOLD
-vim $CHANGEFILE
+vim -c 0r\ $CHANGEFILEOLD $CHANGEFILE
+
+if [[ ! -e $CHANGEFILE ]]; then
+    echo "Aborting"
+    exit 1
+fi
 
 UFILES=($(cat $CHANGEFILE))
 OFILES=($(cat $CHANGEFILEOLD))
@@ -39,5 +43,3 @@ for (( i = 0; i < ${#UFILES[@]}; i++ )); do
             ;;
     esac
 done
-
-rm -f $CHANGEFILE $CHANGEFILEOLD
