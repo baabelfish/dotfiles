@@ -17,7 +17,7 @@ cl() {
 # Usual stuff
 alias o="/home/$USER/.zsh/open.sh"
 alias WC="wicd-curses"
-alias r="~/.zsh/rename.sh"
+alias r="~/.zsh/filemanager.sh"
 
 # XMMS2
 alias xa='xmms2 add'
