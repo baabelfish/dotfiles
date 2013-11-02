@@ -1,5 +1,6 @@
 #/bin/bash
-# Simple filemanager for bash
+
+# Simple filemanager for shell
 # 
 # Run command in a directory and change the first character
 # on a line to one of following:
