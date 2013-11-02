@@ -12,9 +12,13 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" NeoBundle 'daf-/vim-daylight'
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'vim-scripts/surrparen'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'junegunn/seoul256.vim'
+NeoBundle 'Valloric/vim-operator-highlight'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
 NeoBundle 'Blackrush/vim-gocode'
@@ -42,7 +46,6 @@ NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'glts/vim-textobj-comment'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mhinz/vim-signify'
@@ -258,9 +261,8 @@ nnoremap <C-w>d <C-^>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <leader>* :s/<C-r><C-w>/
 nnoremap <leader>C :!clear && octave -q %<CR>
-nnoremap <leader>s :%s//
+nnoremap <leader>S :%s//
 " nnoremap <leader>dw :call <SID>StripTrailingWhitespaces()
-nnoremap <leader>S :%s/
 nnoremap <leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <CR> <CR>
 nnoremap <leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <CR><CR>
 nnoremap <leader>w :set wrap!<cr>
@@ -409,8 +411,10 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 "   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " endif
 
+let g:matchparen_timeout = 10
+let g:matchparen_insert_timeout = 10
 
-
+let g:ycm_server_log_level = 'error'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -489,7 +493,7 @@ let g:switch_custom_definitions =
       \  ['up', 'right', 'left', 'down' ]
       \ ]
 
-let g:indentLine_color_term = 237
+let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
