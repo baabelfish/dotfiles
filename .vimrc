@@ -91,6 +91,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set langmenu=en_US.UTF-8
 set virtualedit=block
+set splitbelow
+set splitright
 set tildeop
 set autoread
 set backspace=indent,eol,start
@@ -212,6 +214,8 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent><space>r :Root<cr>
 nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
+nnoremap <M-r> r
+nnoremap <M-R> R
 nnoremap <M-j> j
 nnoremap <M-k> k
 nnoremap <M-l> l

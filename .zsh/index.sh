@@ -39,6 +39,7 @@ SOURCES=(
 .zsh/prompt.sh
 .zsh/tags.sh
 .zsh/vimfuncs.sh
+.local/tpm/.config
 )
 
 for i in ${SOURCES[@]}; do
