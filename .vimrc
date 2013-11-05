@@ -14,6 +14,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NeoBundle 'daf-/vim-daylight'
 NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'mechatroner/minimal_gdb'
 NeoBundle 'vim-scripts/surrparen'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'marijnh/tern_for_vim'
@@ -135,7 +136,7 @@ set pumheight=5
 set regexpengine=1
 set shortmess+=filmnrxoOtTI
 set noshowcmd
-set scrolljump=15
+set scrolljump=8
 set showfulltag
 set sidescroll=1
 set ttyfast
@@ -282,9 +283,6 @@ nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
 nnoremap <silent><leader>W  :set invwrap<CR> :set wrap?<CR>
 nnoremap <leader>f :find 
-nnoremap <silent><space>bR :call BreakpointRemoveAllInFile()<cr><cr>
-nnoremap <silent><space>ba :call BreakpointAdd()<cr><cr>
-nnoremap <silent><space>br :call BreakpointRemove()<cr><cr>
 nnoremap <silent><leader>cw :%s/\s\+$//<cr>
 " nnoremap <silent><leader>j :normal ]m<CR>
 " nnoremap <silent><leader>k :normal [m<CR>
@@ -622,34 +620,6 @@ fun! CppHeaderToSource()
 
   execute ":normal! G(xxkddVG"
 endfunction
-
-" Basic gdb breakpoint support
-" Usage: gdb -x breakpoints ./main
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent><leader>ba :call BreakpointAdd()<cr><cr>
-nnoremap <silent><leader>br :call BreakpointRemove()<cr><cr>
-nnoremap <silent><leader>bR :call BreakpointRemoveAllInFile()<cr><cr>
-
-fun! BreakpointAdd()
-  exe ":!echo break " . expand('%') . ":" . line('.') . " >> breakpoints"
-  sign define breakpoint text=▸ texthl=SyntasticErrorSign
-  exe ":sign place " . line('.') . " line=" . line('.') . " name=breakpoint file=" . expand("%:p")
-endfun
-
-fun! BreakpointRemove()
-  exe ":!sed -i \'\\," . expand('%') . ":" . line('.') . ",d\' breakpoints"
-  exe ":sign unplace " . line('.') . " file=" . expand("%:p")
-endfun
-
-fun! BreakpointRemoveAll()
-  exe ":!echo \"\" > breakpoints"
-  exe ":sign unplace *"
-endfun
-
-fun! BreakpointRemoveAllInFile()
-  exe ":!sed -i \'\\," . expand('%') . ",d\' breakpoints"
-  exe ":sign unplace * file=" . expand("%:p")
-endfun
 
 function! NumberToggle()
   if(&relativenumber == 1)
