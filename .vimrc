@@ -22,7 +22,7 @@ NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'Valloric/vim-operator-highlight'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
-NeoBundle 'Blackrush/vim-gocode'
+" NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'gregsexton/gitv'
@@ -46,7 +46,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'glts/vim-textobj-comment'
-NeoBundle 'junegunn/vim-easy-align'
+" NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mhinz/vim-signify'
@@ -90,37 +90,35 @@ endif
 
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set langmenu=en_US.UTF-8
-set virtualedit=block
-set splitbelow
-set splitright
-set tildeop
+" set foldmethod=syntax
+" set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+" set smarttab
 set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set complete-=i
 set completeopt=menu,longest
 set cscopetag
+set cursorline
 set display+=lastline " FIXME
 set fillchars+=vert:│
-" set foldmethod=syntax
-" set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 set formatoptions=qrn1tj
 set gdefault
 set hidden
 set history=100
 set ignorecase
 set incsearch
+set langmenu=en_US.UTF-8
 set laststatus=2
 set lazyredraw
 set list 
 set listchars=""
-set listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
+set listchars=tab:→\ ,trail:·,precedes:↶,nbsp:█
 set modelines=0
 set nobackup
-set cursorline
 set noerrorbells
 set nofoldenable
+set showcmd
 set noshowmode
 set nospell
 set noswapfile
@@ -131,31 +129,33 @@ set nrformats-=octal
 set number
 set numberwidth=4
 set path+=.,**,,
-set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set pumheight=5
 set regexpengine=1
-set shortmess+=filmnrxoOtTI
-set noshowcmd
 set scrolljump=8
+set shortmess+=filmnrxoOtTI
 set showfulltag
 set sidescroll=1
-set ttyfast
-set ttyscroll=1
 set smartcase
 set smartindent
-" set smarttab
+set splitbelow
 set splitbelow
 set splitright
+set splitright
+set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set t_vb=
+set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
+set ts=4 sts=4 sw=4 expandtab shiftround
 set ttimeout
 set ttimeoutlen=0
+set ttyfast
+set ttyscroll=1
 set viewoptions=folds,options,cursor,unix,slash
+set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu
 set wildmode=longest:full,full
 set wrapmargin=0
-set ts=4 sts=4 sw=4 expandtab shiftround
 
 if version >= 703
   set number
@@ -245,7 +245,7 @@ nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 " nnoremap <C-w> <nop>
 "
-vnoremap <silent><space><enter> :EasyAlign<cr>
+" vnoremap <silent><space><enter> :EasyAlign<cr>
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
 cnoremap <C-j> <down>
@@ -266,7 +266,7 @@ nnoremap <C-w>d <C-^>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <leader>* :s/<C-r><C-w>/
 nnoremap <leader>C :!clear && octave -q %<CR>
-nnoremap <leader>S :%s//
+nnoremap <leader>S yiwvip:s/0/
 " nnoremap <leader>dw :call <SID>StripTrailingWhitespaces()
 nnoremap <leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <CR> <CR>
 nnoremap <leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <CR><CR>
@@ -275,8 +275,8 @@ nnoremap <leader>wc :w !wc<CR>
 nnoremap <leader>§ :let @q='q'
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind<CR>
+nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
+nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
