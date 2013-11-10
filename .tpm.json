@@ -1,10 +1,6 @@
 {
     "packages": {
         "baabelfish/tpm": {},
-        "baabelfish/tpm-zsh-utils": {
-            "bin": {
-                "fm": "filemanager.sh"
-            }
-        }
+        "baabelfish/tpm-filemanagement": {}
     }
 }

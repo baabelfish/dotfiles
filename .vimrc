@@ -22,7 +22,7 @@ NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'Valloric/vim-operator-highlight'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
-" NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'gregsexton/gitv'
@@ -46,7 +46,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'glts/vim-textobj-comment'
-" NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mhinz/vim-signify'
@@ -113,7 +113,7 @@ set laststatus=2
 set lazyredraw
 set list 
 set listchars=""
-set listchars=tab:→\ ,trail:·,precedes:↶,nbsp:█
+set listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
 set modelines=0
 set nobackup
 set noerrorbells
@@ -245,7 +245,7 @@ nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 " nnoremap <C-w> <nop>
 "
-" vnoremap <silent><space><enter> :EasyAlign<cr>
+vnoremap <silent><space><enter> :EasyAlign<cr>
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
 cnoremap <C-j> <down>
