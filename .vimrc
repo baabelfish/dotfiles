@@ -28,6 +28,7 @@ NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'Shougo/unite-session'
+NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kurkale6ka/vim-pairs'
