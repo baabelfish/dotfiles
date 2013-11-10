@@ -2,6 +2,7 @@
     "packages": {
         "baabelfish/tpm": {},
         "baabelfish/tpm-filemanagement": {},
+        "baabelfish/tpm-urxvt": {},
         "git://code.i3wm.org/i3": {
             "bin": {
                 "i3": "i3",
