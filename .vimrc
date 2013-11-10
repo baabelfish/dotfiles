@@ -31,7 +31,7 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': './install.sh --clang-completer --system-libclang && git submodule update --init --recursive' } }
+NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': 'git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' } }
 NeoBundle 'drmikehenry/vim-fixkey'
 NeoBundle 'arecarn/crunch'
 NeoBundle 'b4winckler/vim-angry'

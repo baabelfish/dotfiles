@@ -32,4 +32,5 @@ xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
 
 # sxhkd&
 # exec bspwm
-exec i3
+# exec i3
+exec ~/bin/i3
