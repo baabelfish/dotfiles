@@ -30,7 +30,8 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 0 
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 8 50 &
 xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
 
-# sxhkd&
-# exec bspwm
-# exec i3
-exec ~/bin/i3
+if [[ -e ~/bin/i3 ]]; then
+    exec ~/bin/i3
+else
+    exec i3
+fi
