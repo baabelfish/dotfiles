@@ -12,9 +12,14 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" NeoBundle 'daf-/vim-daylight'
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'mechatroner/minimal_gdb'
+NeoBundle 'vim-scripts/surrparen'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'junegunn/seoul256.vim'
+NeoBundle 'Valloric/vim-operator-highlight'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mhinz/vim-toplevel'
 NeoBundle 'Blackrush/vim-gocode'
@@ -26,7 +31,7 @@ NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kurkale6ka/vim-pairs'
 NeoBundle 'AndrewRadev/switch.vim'
-" NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
@@ -42,7 +47,6 @@ NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'glts/vim-textobj-comment'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mhinz/vim-signify'
@@ -86,24 +90,25 @@ endif
 
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set langmenu=en_US.UTF-8
-set tildeop
+" set foldmethod=syntax
+" set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+" set smarttab
 set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set complete-=i
 set completeopt=menu,longest
 set cscopetag
+set cursorline
 set display+=lastline " FIXME
 set fillchars+=vert:│
-" set foldmethod=syntax
-" set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 set formatoptions=qrn1tj
 set gdefault
 set hidden
 set history=100
 set ignorecase
 set incsearch
+set langmenu=en_US.UTF-8
 set laststatus=2
 set lazyredraw
 set list 
@@ -111,9 +116,9 @@ set listchars=""
 set listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
 set modelines=0
 set nobackup
-set cursorline
 set noerrorbells
 set nofoldenable
+set showcmd
 set noshowmode
 set nospell
 set noswapfile
@@ -124,31 +129,33 @@ set nrformats-=octal
 set number
 set numberwidth=4
 set path+=.,**,,
-set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set pumheight=5
 set regexpengine=1
+set scrolljump=8
 set shortmess+=filmnrxoOtTI
-set noshowcmd
-set scrolljump=15
 set showfulltag
 set sidescroll=1
-set ttyfast
-set ttyscroll=1
 set smartcase
 set smartindent
-" set smarttab
+set splitbelow
 set splitbelow
 set splitright
+set splitright
+set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set t_vb=
+set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
+set ts=4 sts=4 sw=4 expandtab shiftround
 set ttimeout
 set ttimeoutlen=0
+set ttyfast
+set ttyscroll=1
 set viewoptions=folds,options,cursor,unix,slash
+set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu
 set wildmode=longest:full,full
 set wrapmargin=0
-set ts=4 sts=4 sw=4 expandtab shiftround
 
 if version >= 703
   set number
@@ -208,6 +215,8 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent><space>r :Root<cr>
 nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
+nnoremap <M-r> r
+nnoremap <M-R> R
 nnoremap <M-j> j
 nnoremap <M-k> k
 nnoremap <M-l> l
@@ -257,9 +266,8 @@ nnoremap <C-w>d <C-^>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <leader>* :s/<C-r><C-w>/
 nnoremap <leader>C :!clear && octave -q %<CR>
-nnoremap <leader>s :%s//
+nnoremap <leader>S yiwvip:s/0/
 " nnoremap <leader>dw :call <SID>StripTrailingWhitespaces()
-nnoremap <leader>S :%s/
 nnoremap <leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <CR> <CR>
 nnoremap <leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <CR><CR>
 nnoremap <leader>w :set wrap!<cr>
@@ -267,17 +275,14 @@ nnoremap <leader>wc :w !wc<CR>
 nnoremap <leader>§ :let @q='q'
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><leader>t :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind<CR>
+nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
+nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
 nnoremap <silent><leader>W  :set invwrap<CR> :set wrap?<CR>
 nnoremap <leader>f :find 
-nnoremap <silent><space>bR :call BreakpointRemoveAllInFile()<cr><cr>
-nnoremap <silent><space>ba :call BreakpointAdd()<cr><cr>
-nnoremap <silent><space>br :call BreakpointRemove()<cr><cr>
 nnoremap <silent><leader>cw :%s/\s\+$//<cr>
 " nnoremap <silent><leader>j :normal ]m<CR>
 " nnoremap <silent><leader>k :normal [m<CR>
@@ -408,8 +413,10 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 "   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " endif
 
+let g:matchparen_timeout = 10
+let g:matchparen_insert_timeout = 10
 
-
+let g:ycm_server_log_level = 'error'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -488,7 +495,7 @@ let g:switch_custom_definitions =
       \  ['up', 'right', 'left', 'down' ]
       \ ]
 
-let g:indentLine_color_term = 237
+let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -613,34 +620,6 @@ fun! CppHeaderToSource()
 
   execute ":normal! G(xxkddVG"
 endfunction
-
-" Basic gdb breakpoint support
-" Usage: gdb -x breakpoints ./main
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent><leader>ba :call BreakpointAdd()<cr><cr>
-nnoremap <silent><leader>br :call BreakpointRemove()<cr><cr>
-nnoremap <silent><leader>bR :call BreakpointRemoveAllInFile()<cr><cr>
-
-fun! BreakpointAdd()
-  exe ":!echo break " . expand('%') . ":" . line('.') . " >> breakpoints"
-  sign define breakpoint text=▸ texthl=SyntasticErrorSign
-  exe ":sign place " . line('.') . " line=" . line('.') . " name=breakpoint file=" . expand("%:p")
-endfun
-
-fun! BreakpointRemove()
-  exe ":!sed -i \'\\," . expand('%') . ":" . line('.') . ",d\' breakpoints"
-  exe ":sign unplace " . line('.') . " file=" . expand("%:p")
-endfun
-
-fun! BreakpointRemoveAll()
-  exe ":!echo \"\" > breakpoints"
-  exe ":sign unplace *"
-endfun
-
-fun! BreakpointRemoveAllInFile()
-  exe ":!sed -i \'\\," . expand('%') . ",d\' breakpoints"
-  exe ":sign unplace * file=" . expand("%:p")
-endfun
 
 function! NumberToggle()
   if(&relativenumber == 1)
