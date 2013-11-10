@@ -31,7 +31,6 @@ SOURCES=(
 .zsh/zshsettings.sh
 .xutils/init.sh
 .zsh/alias.sh
-.zsh/bookmarks.sh
 .zsh/help.sh
 .zsh/dev.sh
 .zsh/miscfuncs.sh
