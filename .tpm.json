@@ -1,7 +1,8 @@
 {
     "packages": {
         "baabelfish/tpm": {},
-        "baabelfish/tpm-filemanagement": {},"git://code.i3wm.org/i3": {
+        "baabelfish/tpm-filemanagement": {},
+        "git://code.i3wm.org/i3": {
             "bin": {
                 "i3": "i3",
                 "i3bar": "i3bar",
