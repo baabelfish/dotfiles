@@ -5,9 +5,6 @@
         "baabelfish/tpm-filemanagement": {},
         "baabelfish/tpm-urxvt": {},
         "baabelfish/tpm-prompt": {},
-        "nojhan/liquidprompt": {
-            "source": ["liquidprompt"]
-        },
         "http://code.stapelberg.de/git/i3lock": {
             "build": "make",
             "bin": {
