@@ -13,6 +13,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NeoBundle 'daf-/vim-daylight'
+NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'mechatroner/minimal_gdb'
 NeoBundle 'vim-scripts/surrparen'
