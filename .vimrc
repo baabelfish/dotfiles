@@ -139,7 +139,7 @@ set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set t_vb= novisualbell noerrorbells
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
-set ts=4 sts=4 sw=4 expandtab shiftround copyindent preserveindent smartindent
+set ts=4 sts=4 sw=4 expandtab shiftround copyindent preserveindent
 set ttyfast ttimeout ttyscroll=1 ttimeoutlen=0 lazyredraw
 set undofile undolevels=1000 undoreload=10000 undodir=~/.vim/undodir nobackup
 set viewoptions=folds,options,cursor,unix,slash
