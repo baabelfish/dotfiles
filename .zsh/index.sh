@@ -35,7 +35,6 @@ SOURCES=(
 .zsh/dev.sh
 .zsh/miscfuncs.sh
 .zsh/packages.sh
-.zsh/prompt.sh
 .zsh/tags.sh
 .zsh/vimfuncs.sh
 .local/tpm/.config

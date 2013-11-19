@@ -1,8 +1,16 @@
 {
+    "verbose": true,
     "packages": {
         "baabelfish/tpm": {},
         "baabelfish/tpm-filemanagement": {},
         "baabelfish/tpm-urxvt": {},
+        "baabelfish/tpm-prompt": {},
+        "http://code.stapelberg.de/git/i3lock": {
+            "build": "make",
+            "bin": {
+                "i3lock": "i3lock"
+            }
+        },
         "git://code.i3wm.org/i3": {
             "bin": {
                 "i3": "i3",
