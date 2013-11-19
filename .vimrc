@@ -148,42 +148,41 @@ set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Automatic commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if has("autocmd")
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-  autocmd FileType matlab set filetype=octave
-
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd Syntax * RainbowParanthesesLoadRound
-
-  autocmd InsertLeave * set nopaste
-  autocmd VimResized * exe "normal! \<c-w>="
-  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-
-  " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-  " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
   " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
-  autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
-  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
-  autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
-
+  " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   " autocmd FileType plaintex set filetype=tex
-  autocmd FileType tex set filetype=plaintex
-  autocmd FileType fish set filetype=sh
-  autocmd FileType ejs set filetype=javascript
+  " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
+  autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
+  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
   autocmd FileType cpp set nowrap
+  autocmd FileType ejs set filetype=javascript
+  autocmd FileType fish set filetype=sh
+  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
+  autocmd FileType matlab set filetype=octave
+  autocmd FileType tex set filetype=plaintex
+  autocmd InsertLeave * set nopaste
+  autocmd Syntax * RainbowParanthesesLoadRound
+  autocmd VimEnter * RainbowParenthesesToggle
+  autocmd VimResized * exe "normal! \<c-w>="
 endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let mapleader = 'ö'
 nnoremap ' `
 set pastetoggle=<M-p>
@@ -304,6 +303,7 @@ onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
 onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
 vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
 vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -474,6 +474,7 @@ let g:indentLine_char = '│'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set background=dark
 let g:droid_transparent = 0
 
@@ -490,6 +491,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if has("gui_running")
   set number
   set guifont=Termsyn\ 10
@@ -500,6 +502,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 abbr teh the
 abbr ture true
 cabbrev vh vert help
@@ -512,6 +515,7 @@ cabbrev E e
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 function OpenCw()
   execute ":redraw"
   execute ":Copen"
@@ -591,9 +595,11 @@ function! NumberToggle()
   endif
 endfunc
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 call textobj#user#plugin('line', {
       \   '-': {
       \     'select-a-function': 'CurrentLineA',
