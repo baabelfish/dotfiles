@@ -14,69 +14,71 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 
 " NeoBundle 'daf-/vim-daylight'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'mechatroner/minimal_gdb'
-NeoBundle 'vim-scripts/surrparen'
-NeoBundle 'scrooloose/nerdtree'
 " NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'junegunn/seoul256.vim'
-NeoBundle 'Valloric/vim-operator-highlight'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'mhinz/vim-toplevel'
-NeoBundle 'Blackrush/vim-gocode'
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'vim-scripts/octave.vim--'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'kurkale6ka/vim-pairs'
 NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'PeterRincker/vim-argumentative'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-session'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': 'git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' } }
-NeoBundle 'drmikehenry/vim-fixkey'
+NeoBundle 'Valloric/vim-operator-highlight'
 NeoBundle 'arecarn/crunch'
 NeoBundle 'b4winckler/vim-angry'
-NeoBundle 'PeterRincker/vim-argumentative'
+NeoBundle 'baabelfish/Bck'
+NeoBundle 'baabelfish/a.vim'
+NeoBundle 'baabelfish/vim-dispatch'
 NeoBundle 'baabelfish/vim-droid256'
+NeoBundle 'baabelfish/vim-vertigo'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
+NeoBundle 'drmikehenry/vim-fixkey'
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'glts/vim-textobj-comment'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'jwhitley/vim-matchit'
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'kurkale6ka/vim-pairs'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mechatroner/minimal_gdb'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'mhinz/vim-startify'
+NeoBundle 'mhinz/vim-toplevel'
 NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'paradigm/SkyBison'
 NeoBundle 'scottymoon/vim-twilight'
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'baabelfish/vim-vertigo'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'baabelfish/vim-dispatch'
+NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'baabelfish/Bck'
 NeoBundle 'vim-scripts/L9'
 NeoBundle 'vim-scripts/Vimchant'
 NeoBundle 'vim-scripts/VisIncr'
 NeoBundle 'vim-scripts/ZoomWin'
-NeoBundle 'baabelfish/a.vim'
 NeoBundle 'vim-scripts/django.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'jwhitley/vim-matchit'
+NeoBundle 'vim-scripts/octave.vim--'
+NeoBundle 'vim-scripts/surrparen'
 
 NeoBundleCheck
+
 
 filetype plugin indent on
 setlocal spell spelllang=en_us
@@ -90,11 +92,18 @@ if has("multi_byte")
   scriptencoding utf-8
 endif
 
+if &term =~ '256color'
+  set t_ut=
+endif
+
+if &shell =~# 'fish$'
+  set shell=/bin/zsh
+endif
+
+
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set foldmethod=syntax
-" set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-" set smarttab
+
 set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
@@ -105,198 +114,160 @@ set cursorline
 set display+=lastline " FIXME
 set fillchars+=vert:│
 set formatoptions=qrn1tj
-set gdefault
+set gdefault smartcase ignorecase incsearch
 set hidden
 set history=100
-set ignorecase
-set incsearch
 set langmenu=en_US.UTF-8
 set laststatus=2
-set lazyredraw
-set list 
-set listchars=""
-set listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
+set list listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
 set modelines=0
-set nobackup
-set noerrorbells
-set nofoldenable
-set showcmd
+set nofoldenable foldmethod=syntax
 set noshowmode
 set nospell
 set noswapfile
 set notimeout
-set novisualbell
-set nowrap
 set nrformats-=octal
-set number
-set numberwidth=4
+set number numberwidth=4
 set path+=.,**,,
 set pumheight=5
 set regexpengine=1
-set scrolljump=8
 set shortmess+=filmnrxoOtTI
+set showcmd
 set showfulltag
-set sidescroll=1
-set smartcase
-set smartindent
-set splitbelow
-set splitbelow
-set splitright
-set splitright
+set scrolljump=8 sidescroll=1
+set splitbelow splitright
 set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
-set t_vb=
+set t_vb= novisualbell noerrorbells
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
-set ts=4 sts=4 sw=4 expandtab shiftround
-set ttimeout
-set ttimeoutlen=0
-set ttyfast
-set ttyscroll=1
+set ts=4 sts=4 sw=4 expandtab shiftround copyindent preserveindent
+set ttyfast ttimeout ttyscroll=1 ttimeoutlen=0 lazyredraw
+set undofile undolevels=1000 undoreload=10000 undodir=~/.vim/undodir nobackup
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
-set wildmenu
-set wildmode=longest:full,full
-set wrapmargin=0
+set wildmenu wildignorecase wildmode=longest:full,full
+set wrapmargin=0 nowrap
 
-if version >= 703
-  set number
-  " set relativenumber
-  set undodir=~/.vim/undodir
-  set undofile
-  set undolevels=1000
-  set undoreload=10000
-  set wildignorecase
-endif
-
-if &shell =~# 'fish$'
-  set shell=/bin/zsh
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Automatic commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if has("autocmd")
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-  autocmd FileType matlab set filetype=octave
-
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd Syntax * RainbowParanthesesLoadRound
-
-  autocmd InsertLeave * set nopaste
-  autocmd VimResized * exe "normal! \<c-w>="
-  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-
-  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
   " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
-  autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
-  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
-  autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
-
   " autocmd FileType plaintex set filetype=tex
-  autocmd FileType tex set filetype=plaintex
-  autocmd FileType fish set filetype=sh
-  autocmd FileType ejs set filetype=javascript
+  " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
+  autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
+  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
   autocmd FileType cpp set nowrap
+  autocmd FileType ejs set filetype=javascript
+  autocmd FileType fish set filetype=sh
+  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
+  autocmd FileType matlab set filetype=octave
+  autocmd FileType tex set filetype=plaintex
+  autocmd InsertLeave * set nopaste
+  autocmd Syntax * RainbowParanthesesLoadRound
+  autocmd VimEnter * RainbowParenthesesToggle
+  autocmd VimResized * exe "normal! \<c-w>="
 endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let mapleader = 'ö'
 nnoremap ' `
 set pastetoggle=<M-p>
 
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <silent><space>r :Root<cr>
-nnoremap <M-a> :A<cr>
-nnoremap <M-h> h
-nnoremap <M-r> r
-nnoremap <M-R> R
-nnoremap <M-j> j
-nnoremap <M-k> k
-nnoremap <M-l> l
+inoremap <C-q> <C-o>ciW
+inoremap <M-q> <Esc><C-w>c:echo ""<cr>
+inoremap <M-z> <C-o>zz
 nnoremap <M-H> H
 nnoremap <M-J> J
 nnoremap <M-K> K
 nnoremap <M-L> L
-nnoremap <M-q> <C-w>c
-inoremap <C-q> <C-o>ciW
-inoremap <M-z> <C-o>zz
-inoremap <M-q> <Esc><C-w>c:echo ""<cr>
-" nnoremap <M-c> :tabclose<cr>:echo ""<cr>
+nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
+nnoremap <M-R> R
+nnoremap <M-a> :A<cr>
+nnoremap <M-h> h
+nnoremap <M-j> j
+nnoremap <M-k> k
+nnoremap <M-l> l
 nnoremap <M-m> <C-w>v
 nnoremap <M-n> <C-w>s
+nnoremap <M-q> <C-w>c
+nnoremap <M-r> r
 nnoremap <M-w> <C-w><C-w>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent><space>r :Root<cr>
 
-nnoremap vif :call SelectFunction(1)<cr>
-nnoremap vaf :call SelectFunction(0)<cr>
-nnoremap dif :call SelectFunction(1)<cr>d
-nnoremap daf :call SelectFunction(0)<cr>d
-nnoremap cif :call SelectFunction(1)<cr>c
-nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
+nnoremap caf :call SelectFunction(0)<cr>c
+nnoremap cif :call SelectFunction(1)<cr>c
+nnoremap daf :call SelectFunction(0)<cr>d
+nnoremap dif :call SelectFunction(1)<cr>d
+nnoremap vaf :call SelectFunction(0)<cr>
+nnoremap vif :call SelectFunction(1)<cr>
 
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
-" nnoremap <C-w> <nop>
-"
-vnoremap <silent><space><enter> :EasyAlign<cr>
+
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <Right>
-nnoremap <silent><space>T :!export TERM=screen-256color && tig<CR><CR>
-nnoremap <silent><space>t :Gitv<CR>
-nnoremap <silent><space>D :cd %:p:h<CR>
-nnoremap <silent><space>d :lcd %:p:h<CR>
-nnoremap <silent><space>f m':Unite -hide-status-line outline<CR>
-nnoremap <silent><space>m :Sex<CR>
-nnoremap <silent><space>M :Vex<CR>
 inoremap <C-c> <Esc>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <C-m> <C-a>
 nnoremap <C-w>d <C-^>
 nnoremap <F5> :GundoToggle<CR>
+nnoremap <M-S> :shell<CR>
 nnoremap <leader>* :s/<C-r><C-w>/
 nnoremap <leader>C :!clear && octave -q %<CR>
 nnoremap <leader>S yiwvip:s/0/
-" nnoremap <leader>dw :call <SID>StripTrailingWhitespaces()
+nnoremap <leader>f :find 
 nnoremap <leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <CR> <CR>
 nnoremap <leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <CR><CR>
 nnoremap <leader>w :set wrap!<cr>
 nnoremap <leader>wc :w !wc<CR>
 nnoremap <leader>§ :let @q='q'
 nnoremap <silent><c-b> :w\|Make<cr>
-nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>t :NERDTreeFind<cr>
-nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
 nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
 nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
 nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
+nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
 nnoremap <silent><leader>W  :set invwrap<CR> :set wrap?<CR>
-nnoremap <leader>f :find 
 nnoremap <silent><leader>cw :%s/\s\+$//<cr>
-" nnoremap <silent><leader>j :normal ]m<CR>
-" nnoremap <silent><leader>k :normal [m<CR>
+nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
+nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>ue :UltiSnipsEdit<CR>
+nnoremap <silent><space><c-b> :Make! clean<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
+nnoremap <silent><space>D :cd %:p:h<CR>
+nnoremap <silent><space>M :Vex<CR>
+nnoremap <silent><space>O :Unite -silent tab<CR>
+nnoremap <silent><space>T :!export TERM=screen-256color && tig<CR><CR>
 nnoremap <silent><space>bf :Bck FIXME<CR>
 nnoremap <silent><space>bt :Bck TODO<CR>
 nnoremap <silent><space>bw :Bck <C-r><C-w><CR>
-nnoremap <silent><space>p :Unite -silent file_rec/async<CR>
+nnoremap <silent><space>d :lcd %:p:h<CR>
+nnoremap <silent><space>f m':Unite -hide-status-line outline<CR>
+nnoremap <silent><space>m :Sex<CR>
 nnoremap <silent><space>o :Unite -silent buffer_tab<CR>
-nnoremap <silent><space>O :Unite -silent tab<CR>
+nnoremap <silent><space>p :Unite -silent file_rec/async<CR>
 nnoremap <silent><space>q :Bck<CR>
+nnoremap <silent><space>t :Gitv<CR>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<CR>
 nnoremap <silent>å :TComment<CR>
 nnoremap <space>N :cprev<CR>
@@ -304,12 +275,12 @@ nnoremap <space>l :SLoad <C-d>
 nnoremap <space>n :cnext<CR>
 nnoremap <space>s :Startify<CR>
 nnoremap K i<CR><Esc>k$
-nnoremap <M-S> :shell<CR>
 nnoremap Y y$
 nnoremap ` '
 nnoremap c_ c^
 nnoremap j gj
 nnoremap k gk
+nnoremap ¤ :'<,'>g/^/norm! 
 nnoremap § qqqqq
 nnoremap ½ @q
 nnoremap Ä :SyntasticCheck<CR>
@@ -322,17 +293,18 @@ vnoremap <leader>s :s/
 vnoremap <silent><leader>cw :s/\s\+$//<cr>
 vnoremap <silent><return> :NarrowRegion<CR>
 vnoremap <silent><return> :NarrowRegion<CR>
+vnoremap <silent><space><enter> :EasyAlign<cr>
 vnoremap ¤ :g/^/norm! 
-nnoremap ¤ :'<,'>g/^/norm! 
 vnoremap ½ @q
 vnoremap å :TComment<CR>
 
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
 nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
+onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
 onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
+vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
+vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -371,12 +343,12 @@ let BckOptions = 'cirw'
 
 let g:vimchant_spellcheck_lang = 'fi'
 
-let g:UltiSnipsSnippetDirectories = ["ultisnips"]
-let g:UltiSnipsNoPythonWarning = 1
+let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsListSnippets="<Nul>"
+let g:UltiSnipsNoPythonWarning = 1
+let g:UltiSnipsSnippetDirectories = ["ultisnips"]
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
@@ -438,13 +410,13 @@ let g:ycm_filetype_blacklist = {
       \ 'unite' : 1,
       \}
 
-let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
-let g:unite_source_history_yank_enable =1
+let g:unite_enable_ignore_case = 1
 let g:unite_enable_start_insert = 1
+let g:unite_prompt = '» '
+let g:unite_source_history_yank_enable =1
+let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
 let g:unite_split_rule = 'bot'
 let g:unite_winheight = 15
-let g:unite_enable_ignore_case = 1
-let g:unite_prompt = '» '
 
 let g:startify_show_files_number = 30
 let g:startify_change_to_dir = 0
@@ -454,7 +426,6 @@ let g:startify_session_dir = '~/.vim/session'
 let g:startify_enable_special = 1
 let g:startify_session_persistence = 2
 let g:startify_enable_special = 0
-" let g:startify_custom_indices = ['a','s','d','f']
 let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',
       \ $VIMRUNTIME .'/doc',
@@ -471,19 +442,19 @@ let g:startify_custom_header = [
       \'',
       \ ]
 
-let g:signify_sign_overwrite = 0
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
 let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'
 let g:signify_sign_delete            = '«'
 let g:signify_sign_delete_first_line = '-'
+let g:signify_sign_overwrite = 0
 
+let NERDTreeDirArrows = 1
 let NERDTreeHijackNetrw = 0
+let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
 
 let g:bl_no_implystart = 1
 
@@ -500,17 +471,13 @@ let g:switch_custom_definitions =
 let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set background=dark
 let g:droid_transparent = 0
-let g:droid_day = 0
-
-let hour = strftime("%H")
-if 8 <= hour && hour < 18
-  " let g:droid_day = 1
-endif
 
 syntax on
 if has("gui_running")
@@ -521,14 +488,11 @@ else
   colorscheme delek
 endif
 
-if &term =~ '256color'
-  set t_ut=
-endif
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if has("gui_running")
   set number
   set guifont=Termsyn\ 10
@@ -539,6 +503,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 abbr teh the
 abbr ture true
 cabbrev vh vert help
@@ -551,6 +516,7 @@ cabbrev E e
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 function OpenCw()
   execute ":redraw"
   execute ":Copen"
@@ -618,8 +584,7 @@ fun! CppHeaderToSource()
   execute ":silent! g/^virtual/norm 0daw"
   execute ":silent! g!/^.*(.*).*;/norm ddGp0f;Bd0f;xA()I, "
   execute ":silent! g/^.*(.*).*;/norm 0f(B\"zP"
-  execute ":silent! g/^.*(.*).*;/norm f;C {o}\
-
+  execute ":silent! g/^.*(.*).*;/norm f;C {o}"
   execute ":normal! G(xxkddVG"
 endfunction
 
@@ -631,9 +596,11 @@ function! NumberToggle()
   endif
 endfunc
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 call textobj#user#plugin('line', {
       \   '-': {
       \     'select-a-function': 'CurrentLineA',
@@ -688,5 +655,3 @@ call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
-
-set nofoldenable
