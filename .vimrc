@@ -46,6 +46,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'jwhitley/vim-matchit'
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'kurkale6ka/vim-pairs'
 NeoBundle 'mattn/emmet-vim'
@@ -146,7 +147,8 @@ set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
-set wrapmargin=0 nowrap
+set wrapmargin=0 nowrap linebreak
+" set wrap nolist
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,12 +156,12 @@ set wrapmargin=0 nowrap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has("autocmd")
-  " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-  " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  " autocmd FileType plaintex set filetype=tex
-  " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType plaintex set filetype=tex
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
