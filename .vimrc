@@ -4,7 +4,6 @@
 " sudo pacman -S the_silver_searcher
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -15,7 +14,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'daf-/vim-daylight'
 " NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'bilalq/lite-dfm'
 NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'PeterRincker/vim-argumentative'
 NeoBundle 'Shougo/unite-outline'
@@ -207,7 +208,11 @@ nnoremap <M-m> <C-w>v
 nnoremap <M-n> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
-nnoremap <M-w> <C-w><C-w>
+nnoremap <M-w> :BB<cr>
+nnoremap <M-W> :BF<cr>
+nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
+nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
+" nnoremap <M-w> <C-w><C-w>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent><space>r :Root<cr>
 
@@ -651,6 +656,30 @@ function! ColorPicker(insert)
 endfunction
 nnoremap <silent><space>c :call ColorPicker(0)<cr>
 inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
+
+let g:dfm_fullscreen=0
+let g:dfm_nd=0
+function! Fullscreen()
+  if g:dfm_nd
+    call NoDistraction()
+  endif
+  if g:dfm_fullscreen
+    tab close
+    set showtabline=1
+  else
+    tab split
+    set showtabline=0
+  endif
+  let g:dfm_fullscreen=!g:dfm_fullscreen
+endfunction
+
+function! NoDistraction()
+  SignifyToggle
+  SyntasticToggleMode
+  LiteDFMToggle
+  set cursorline!
+  let g:dfm_nd=!g:dfm_nd
+endfunction
 
 call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
