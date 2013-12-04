@@ -182,7 +182,6 @@ endif
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
-nnoremap ' `
 set pastetoggle=<M-p>
 
 " Window related
@@ -220,48 +219,47 @@ nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap cif :call SelectFunction(1)<cr>c
 nnoremap daf :call SelectFunction(0)<cr>d
 nnoremap dif :call SelectFunction(1)<cr>d
-nnoremap vaf :call SelectFunction(0)<cr>
-nnoremap vif :call SelectFunction(1)<cr>
+nnoremap <silent>vaf :call SelectFunction(0)<cr>
+nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
-nnoremap <silent> <Space>j :<C-U>VertigoDown n<cr>
-nnoremap <silent> <Space>k :<C-U>VertigoUp n<cr>
 nnoremap <silent><F5> :GundoToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
+nnoremap <silent><space><c-b> :Make! clean<cr>
 nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<cr>
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<cr>
 nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>ue :UltiSnipsEdit<cr>
-nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><space>M :Vex<cr>
-nnoremap <silent><space>N :cprev<cr>
-nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>bf :Bck FIXME<cr>
 nnoremap <silent><space>bt :Bck TODO<cr>
 nnoremap <silent><space>bw :Bck <C-r><C-w><cr>
-nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
-nnoremap <silent><space>l :SLoad <C-d>
+nnoremap <silent><space>M :Vex<cr>
 nnoremap <silent><space>m :Sex<cr>
+nnoremap <silent><space>N :cprev<cr>
 nnoremap <silent><space>n :cnext<cr>
-nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>q :Bck<cr>
-nnoremap <silent><space>s :Startify<cr>
+nnoremap <silent><space>S :Startify<cr>
 nnoremap <silent><space>t :Gitv<cr>
-nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent>Ä :SyntasticCheck<cr>
 nnoremap <silent>Ö :Switch<cr>
-nnoremap <silent>å :TComment<cr>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<cr>
-onoremap <silent> <Space>k :<C-U>VertigoUp o<cr>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<cr>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<cr>
+nnoremap <silent><space>j :<C-U>VertigoDown n<cr>
+nnoremap <silent><space>k :<C-U>VertigoUp n<cr>
+onoremap <silent><space>j :<C-U>VertigoDown o<cr>
+onoremap <silent><space>k :<C-U>VertigoUp o<cr>
+vnoremap <silent><space>j :<C-U>VertigoDown v<cr>
+vnoremap <silent><space>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
+nnoremap <silent>å :TComment<cr>
 vnoremap <silent>å :TComment<cr>
+nnoremap <silent><space>O :Unite -silent tab<cr>
+nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
+nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -275,10 +273,13 @@ nnoremap - <C-x>
 nnoremap K i<cr><Esc>k$
 nnoremap Y y$
 nnoremap ` '
-nnoremap c_ c^
+nnoremap ' `
 nnoremap j gj
+vnoremap j gj
 nnoremap k gk
-noremap x "_x
+vnoremap k gk
+nnoremap x "_x
+vnoremap x "_x
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
@@ -290,26 +291,26 @@ vnoremap <leader>C :w !octave -q<cr>
 vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<cr>
 
 " Refactoring
-nnoremap <silent><leader>* :s/<C-r><C-w>/
-nnoremap <silent><leader>S yiwvip:s/0/
+nnoremap <leader>* :s/<C-r><C-w>/
+nnoremap <leader>S yiwvip:s/<C-r>0/
 
 " Misc
+nnoremap <leader>f :find 
 nnoremap <silent><leader><leader>s :so $MYVIMRC<cr>
 nnoremap <silent><leader><leader>v :e $MYVIMRC<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>W :set invwrap<cr> :set wrap?<cr>
-nnoremap <silent><leader>f :find 
 nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><leader>wc :w !wc<cr>
-nnoremap <silent><leader>§ :let @q='q'
 nnoremap <silent><space><space> :set nohls!<cr>
 nnoremap <silent><space>D :cd %:p:h<cr>
 nnoremap <silent><space>d :lcd %:p:h<cr>
-nnoremap ¤ :'<,'>g/^/norm! 
-nnoremap § qqqqq
-nnoremap ½ @q
 nnoremap ä :w<cr>
+nnoremap <leader>§ :let @q='q'
+nnoremap § qqqqq
+nnoremap ¤ :'<,'>g/^/norm! 
 vnoremap ¤ :g/^/norm! 
+nnoremap ½ @q
 vnoremap ½ @q
 
 
