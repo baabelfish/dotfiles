@@ -14,9 +14,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'daf-/vim-daylight'
 " NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'bilalq/lite-dfm'
 NeoBundle 'Blackrush/vim-gocode'
-NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'PeterRincker/vim-argumentative'
 NeoBundle 'Shougo/unite-outline'
@@ -34,6 +32,7 @@ NeoBundle 'baabelfish/a.vim'
 NeoBundle 'baabelfish/vim-dispatch'
 NeoBundle 'baabelfish/vim-droid256'
 NeoBundle 'baabelfish/vim-vertigo'
+NeoBundle 'bilalq/lite-dfm'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
@@ -42,12 +41,11 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'glts/vim-textobj-comment'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'jwhitley/vim-matchit'
-NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'kurkale6ka/vim-pairs'
 NeoBundle 'mattn/emmet-vim'
@@ -57,7 +55,6 @@ NeoBundle 'mhinz/vim-startify'
 NeoBundle 'mhinz/vim-toplevel'
 NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'paradigm/SkyBison'
 NeoBundle 'scottymoon/vim-twilight'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
@@ -73,7 +70,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/L9'
 NeoBundle 'vim-scripts/Vimchant'
 NeoBundle 'vim-scripts/VisIncr'
-NeoBundle 'vim-scripts/ZoomWin'
+NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
@@ -104,7 +101,6 @@ endif
 
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
@@ -149,13 +145,10 @@ set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak
-" set wrap nolist
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Automatic commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 if has("autocmd")
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -182,14 +175,13 @@ if has("autocmd")
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let mapleader = 'ö'
 nnoremap ' `
 set pastetoggle=<M-p>
 
+" Window related
 inoremap <C-q> <C-o>ciW
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 inoremap <M-z> <C-o>zz
@@ -199,6 +191,7 @@ nnoremap <M-K> K
 nnoremap <M-L> L
 nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
 nnoremap <M-R> R
+nnoremap <M-W> :BF<cr>
 nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
 nnoremap <M-j> j
@@ -209,14 +202,16 @@ nnoremap <M-n> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
-nnoremap <M-W> :BF<cr>
-nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
-nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
-" nnoremap <M-w> <C-w><C-w>
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <silent><space>r :Root<cr>
 
+" Custom function callers
+inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
 nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
+nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
+nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
+nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
+nnoremap <silent><space>c :call ColorPicker(0)<cr>
 nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap cif :call SelectFunction(1)<cr>c
 nnoremap daf :call SelectFunction(0)<cr>d
@@ -224,9 +219,47 @@ nnoremap dif :call SelectFunction(1)<cr>d
 nnoremap vaf :call SelectFunction(0)<cr>
 nnoremap vif :call SelectFunction(1)<cr>
 
+" Plugin related
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
+nnoremap <silent> <Space>j :<C-U>VertigoDown n<cr>
+nnoremap <silent> <Space>k :<C-U>VertigoUp n<cr>
+nnoremap <silent><F5> :GundoToggle<cr>
+nnoremap <silent><c-b> :w\|Make<cr>
+nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<cr>
+nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<cr>
+nnoremap <silent><leader>t :NERDTreeFind<cr>
+nnoremap <silent><leader>ue :UltiSnipsEdit<cr>
+nnoremap <silent><space><c-b> :Make! clean<cr>
+nnoremap <silent><space>M :Vex<cr>
+nnoremap <silent><space>N :cprev<cr>
+nnoremap <silent><space>O :Unite -silent tab<cr>
+nnoremap <silent><space>bf :Bck FIXME<cr>
+nnoremap <silent><space>bt :Bck TODO<cr>
+nnoremap <silent><space>bw :Bck <C-r><C-w><cr>
+nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>l :SLoad <C-d>
+nnoremap <silent><space>m :Sex<cr>
+nnoremap <silent><space>n :cnext<cr>
+nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
+nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>q :Bck<cr>
+nnoremap <silent><space>s :Startify<cr>
+nnoremap <silent><space>t :Gitv<cr>
+nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
+nnoremap <silent>Ä :SyntasticCheck<cr>
+nnoremap <silent>Ö :Switch<cr>
+nnoremap <silent>å :TComment<cr>
+onoremap <silent> <Space>j :<C-U>VertigoDown o<cr>
+onoremap <silent> <Space>k :<C-U>VertigoUp o<cr>
+vnoremap <silent> <Space>j :<C-U>VertigoDown v<cr>
+vnoremap <silent> <Space>k :<C-U>VertigoUp v<cr>
+vnoremap <silent><return> :NarrowRegion<cr>
+vnoremap <silent><return> :NarrowRegion<cr>
+vnoremap <silent><space><enter> :EasyAlign<cr>
+vnoremap <silent>å :TComment<cr>
 
+" Vim builtin overrides
 cnoremap <C-h> <Left>
 cnoremap <C-j> <down>
 cnoremap <C-j> <down>
@@ -235,102 +268,65 @@ cnoremap <C-l> <Right>
 inoremap <C-c> <Esc>
 nnoremap + <C-a>
 nnoremap - <C-x>
-nnoremap <C-m> <C-a>
-nnoremap <C-w>d <C-^>
-nnoremap <F5> :GundoToggle<CR>
-nnoremap <M-S> :shell<CR>
-nnoremap <leader>* :s/<C-r><C-w>/
-nnoremap <leader>C :!clear && octave -q %<CR>
-nnoremap <leader>S yiwvip:s/0/
-nnoremap <leader>f :find 
-nnoremap <leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <CR> <CR>
-nnoremap <leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <CR><CR>
-nnoremap <leader>w :set wrap!<cr>
-nnoremap <leader>wc :w !wc<CR>
-nnoremap <leader>§ :let @q='q'
-nnoremap <silent><c-b> :w\|Make<cr>
-nnoremap <silent><leader><leader>s      :so $MYVIMRC<CR>
-nnoremap <silent><leader><leader>v      :e $MYVIMRC<CR>
-nnoremap <silent><leader><leader>y      :e ~/.ycm_extra_conf.py<CR>
-nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<CR>
-nnoremap <silent><leader>W  :set invwrap<CR> :set wrap?<CR>
-nnoremap <silent><leader>cw :%s/\s\+$//<cr>
-nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<CR>
-nnoremap <silent><leader>t :NERDTreeFind<cr>
-nnoremap <silent><leader>ue :UltiSnipsEdit<CR>
-nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><space><space> :set nohls!<cr>
-nnoremap <silent><space>D :cd %:p:h<CR>
-nnoremap <silent><space>M :Vex<CR>
-nnoremap <silent><space>O :Unite -silent tab<CR>
-nnoremap <silent><space>T :!export TERM=screen-256color && tig<CR><CR>
-nnoremap <silent><space>bf :Bck FIXME<CR>
-nnoremap <silent><space>bt :Bck TODO<CR>
-nnoremap <silent><space>bw :Bck <C-r><C-w><CR>
-nnoremap <silent><space>d :lcd %:p:h<CR>
-nnoremap <silent><space>f m':Unite -hide-status-line outline<CR>
-nnoremap <silent><space>m :Sex<CR>
-nnoremap <silent><space>o :Unite -silent buffer_tab<CR>
-nnoremap <silent><space>p :Unite -silent file_rec/async<CR>
-nnoremap <silent><space>q :Bck<CR>
-nnoremap <silent><space>t :Gitv<CR>
-nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<CR>
-nnoremap <silent>å :TComment<CR>
-nnoremap <space>N :cprev<CR>
-nnoremap <space>l :SLoad <C-d>
-nnoremap <space>n :cnext<CR>
-nnoremap <space>s :Startify<CR>
-nnoremap K i<CR><Esc>k$
+nnoremap K i<cr><Esc>k$
 nnoremap Y y$
 nnoremap ` '
 nnoremap c_ c^
 nnoremap j gj
 nnoremap k gk
+noremap x "_x
+
+" Shell interaction
+nnoremap <M-S> :shell<cr>
+nnoremap <silent><leader>C :!clear && octave -q %<cr>
+nnoremap <silent><leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <cr> <cr>
+nnoremap <silent><leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <cr><cr>
+nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
+vnoremap <leader>C :w !octave -q<cr>
+vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<cr>
+
+" Refactoring
+nnoremap <silent><leader>* :s/<C-r><C-w>/
+nnoremap <silent><leader>S yiwvip:s/0/
+
+" Misc
+nnoremap <silent><leader><leader>s :so $MYVIMRC<cr>
+nnoremap <silent><leader><leader>v :e $MYVIMRC<cr>
+nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
+nnoremap <silent><leader>W :set invwrap<cr> :set wrap?<cr>
+nnoremap <silent><leader>f :find 
+nnoremap <silent><leader>w :set wrap!<cr>
+nnoremap <silent><leader>wc :w !wc<cr>
+nnoremap <silent><leader>§ :let @q='q'
+nnoremap <silent><space><space> :set nohls!<cr>
+nnoremap <silent><space>D :cd %:p:h<cr>
+nnoremap <silent><space>d :lcd %:p:h<cr>
 nnoremap ¤ :'<,'>g/^/norm! 
 nnoremap § qqqqq
 nnoremap ½ @q
-nnoremap Ä :SyntasticCheck<CR>
-nnoremap Ö :Switch<CR>
-nnoremap ä :w<CR>
-noremap x "_x
-vnoremap <leader>C :w !octave -q<CR>
-vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<CR>
-vnoremap <leader>s :s/
-vnoremap <silent><leader>cw :s/\s\+$//<cr>
-vnoremap <silent><return> :NarrowRegion<CR>
-vnoremap <silent><return> :NarrowRegion<CR>
-vnoremap <silent><space><enter> :EasyAlign<cr>
+nnoremap ä :w<cr>
 vnoremap ¤ :g/^/norm! 
 vnoremap ½ @q
-vnoremap å :TComment<CR>
-
-nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
-nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
-onoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:BASH_Ctrl_j = 'off'
 
-let g:airline_detect_whitespace=0
-let g:airline_linecolumn_prefix = '¶'
 let g:airline_branch_prefix = ''
-let g:airline_paste_symbol = 'ρ'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:airline_powerline_fonts=0
+let g:airline_detect_iminsert=0
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_detect_whitespace=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
-let g:airline_detect_paste=1
-let g:airline_detect_iminsert=0
-let g:airline_theme='wombat'
-let g:airline_detect_modified=1
 let g:airline_exclude_preview = 0
+let g:airline_left_sep = '▶'
+let g:airline_linecolumn_prefix = '¶'
+let g:airline_paste_symbol = 'ρ'
+let g:airline_powerline_fonts=0
+let g:airline_right_sep = '◀'
+let g:airline_theme='wombat'
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
@@ -379,9 +375,6 @@ let g:syntastic_warning_symbol='✕'
 
 let g:user_emmet_expandabbr_key = '<c-e>'
 
-let g:skybison_fuzz = 1
-let g:skybison_input = 1
-
 let g:Vertigo_homerow = 'asdfghjklp'
 let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 
@@ -396,17 +389,17 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
 
-let g:ycm_server_log_level = 'error'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_server_log_level = 'error'
 let g:ycm_filetype_blacklist = {
       \ 'notes' : 1,
       \ 'gitcommit' : 1,
@@ -424,14 +417,14 @@ let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ign
 let g:unite_split_rule = 'bot'
 let g:unite_winheight = 15
 
-let g:startify_show_files_number = 30
-let g:startify_change_to_dir = 0
-let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 let g:startify_bookmarks = [ '~/.vimrc' ]
-let g:startify_session_dir = '~/.vim/session'
-let g:startify_enable_special = 1
-let g:startify_session_persistence = 2
+let g:startify_change_to_dir = 0
 let g:startify_enable_special = 0
+let g:startify_enable_special = 1
+let g:startify_list_order = ['bookmarks', 'sessions', 'files']
+let g:startify_session_dir = '~/.vim/session'
+let g:startify_session_persistence = 2
+let g:startify_show_files_number = 30
 let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',
       \ $VIMRUNTIME .'/doc',
@@ -478,10 +471,8 @@ let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set background=dark
 let g:droid_transparent = 0
 
@@ -495,10 +486,8 @@ else
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 if has("gui_running")
   set number
   set guifont=Termsyn\ 10
@@ -506,10 +495,8 @@ if has("gui_running")
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 abbr teh the
 abbr ture true
 cabbrev vh vert help
@@ -519,10 +506,8 @@ cabbrev Wq wq
 cabbrev E e
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 function OpenCw()
   execute ":redraw"
   execute ":Copen"
@@ -602,19 +587,42 @@ function! NumberToggle()
   endif
 endfunc
 
+let g:dfm_fullscreen=0
+let g:dfm_nd=0
+function! Fullscreen()
+  if g:dfm_nd
+    call NoDistraction()
+  endif
+  if g:dfm_fullscreen
+    tab close
+    set showtabline=1
+  else
+    tab split
+    set showtabline=0
+  endif
+  let g:dfm_fullscreen=!g:dfm_fullscreen
+endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Textobjs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! NoDistraction()
+  SignifyToggle
+  SyntasticToggleMode
+  LiteDFMToggle
+  set cursorline!
+  let g:dfm_nd=!g:dfm_nd
+endfunction
 
-call textobj#user#plugin('line', {
-      \   '-': {
-      \     'select-a-function': 'CurrentLineA',
-      \     'select-a': 'al',
-      \     'select-i-function': 'CurrentLineI',
-      \     'select-i': 'il',
-      \   },
-      \ })
+function! ColorPicker(insert)
+  let color = '\#' . expand('<cword>')
+  let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
+  if strlen(@z) != 0
+    if a:insert == 0
+      normal! diw"zP
+    else
+      let @z = '#' . @z
+      normal! "zp
+    endif
+  endif
+endfunction
 
 function! CurrentLineA()
   normal! 0
@@ -642,45 +650,21 @@ function! StripTrailingWhitespace()
   call setpos('.', save_cursor)
 endfunction
 
-function! ColorPicker(insert)
-  let color = '\#' . expand('<cword>')
-  let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
-  if strlen(@z) != 0
-    if a:insert == 0
-      normal! diw"zP
-    else
-      let @z = '#' . @z
-      normal! "zp
-    endif
-  endif
-endfunction
-nnoremap <silent><space>c :call ColorPicker(0)<cr>
-inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
 
-let g:dfm_fullscreen=0
-let g:dfm_nd=0
-function! Fullscreen()
-  if g:dfm_nd
-    call NoDistraction()
-  endif
-  if g:dfm_fullscreen
-    tab close
-    set showtabline=1
-  else
-    tab split
-    set showtabline=0
-  endif
-  let g:dfm_fullscreen=!g:dfm_fullscreen
-endfunction
+" Textobjs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call textobj#user#plugin('line', {
+      \   '-': {
+      \     'select-a-function': 'CurrentLineA',
+      \     'select-a': 'al',
+      \     'select-i-function': 'CurrentLineI',
+      \     'select-i': 'il',
+      \   },
+      \ })
 
-function! NoDistraction()
-  SignifyToggle
-  SyntasticToggleMode
-  LiteDFMToggle
-  set cursorline!
-  let g:dfm_nd=!g:dfm_nd
-endfunction
 
+" Random stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
