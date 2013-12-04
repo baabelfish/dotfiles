@@ -75,7 +75,6 @@ NeoBundle 'vim-scripts/surrparen'
 
 NeoBundleCheck
 
-
 filetype plugin indent on
 setlocal spell spelllang=en_us
 
@@ -299,14 +298,12 @@ nnoremap <leader>f :find
 nnoremap <silent><leader><leader>s :so $MYVIMRC<cr>
 nnoremap <silent><leader><leader>v :e $MYVIMRC<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
-nnoremap <silent><leader>W :set invwrap<cr> :set wrap?<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
-nnoremap <silent><leader>wc :w !wc<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
 nnoremap <silent><space>D :cd %:p:h<cr>
 nnoremap <silent><space>d :lcd %:p:h<cr>
 nnoremap ä :w<cr>
-nnoremap <leader>§ :let @q='q'
+nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
 nnoremap ¤ :'<,'>g/^/norm! 
 vnoremap ¤ :g/^/norm! 
