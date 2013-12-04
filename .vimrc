@@ -146,8 +146,14 @@ set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak
 
+if has("gui_running")
+  set number
+  set guifont=Termsyn\ 10
+  set guicursor+=a:blinkon0
+endif
 
-"" Automatic commands
+
+" Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -343,79 +349,30 @@ let g:airline_mode_map = {
 
 let BckOptions = 'cirw'
 
-let g:vimchant_spellcheck_lang = 'fi'
-
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsListSnippets="<Nul>"
-let g:UltiSnipsNoPythonWarning = 1
-let g:UltiSnipsSnippetDirectories = ["ultisnips"]
+let g:bl_no_implystart = 1
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
 
-let g:pydiction_location = '/usr/share/pydiction/complete-dict'
-
-let g:syntastic_auto_jump = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open=0
-let g:syntastic_check_on_wq=0
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
-let g:syntastic_enable_balloons = 0
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_error_symbol='✕'
-let g:syntastic_javascript_checkers = ['jslint']
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_warning_symbol='✕'
-
-let g:user_emmet_expandabbr_key = '<c-e>'
-
-let g:Vertigo_homerow = 'asdfghjklp'
-let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
-
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_refresh_always = 0
-" let g:neocomplete#enable_smart_case = 1
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"   let g:neocomplete#sources#omni#input_patterns = {}
-"   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-" endif
-
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
 
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_key_list_previous_completion=['<Up>']
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_server_log_level = 'error'
-let g:ycm_filetype_blacklist = {
-      \ 'notes' : 1,
-      \ 'gitcommit' : 1,
-      \ 'vim' : 1,
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1,
-      \}
+let NERDTreeDirArrows = 1
+let NERDTreeHijackNetrw = 0
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden = 1
+let NERDTreeShowLineNumbers = 0
 
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_start_insert = 1
-let g:unite_prompt = '» '
-let g:unite_source_history_yank_enable =1
-let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
-let g:unite_split_rule = 'bot'
-let g:unite_winheight = 15
+let g:pydiction_location = '/usr/share/pydiction/complete-dict'
+
+let g:signify_mapping_next_hunk = '<leader>gj'
+let g:signify_mapping_prev_hunk = '<leader>gk'
+let g:signify_sign_add               = '»'
+let g:signify_sign_change            = '∙'
+let g:signify_sign_delete            = '«'
+let g:signify_sign_delete_first_line = '-'
+let g:signify_sign_overwrite = 0
 
 let g:startify_bookmarks = [ '~/.vimrc' ]
 let g:startify_change_to_dir = 0
@@ -441,21 +398,20 @@ let g:startify_custom_header = [
       \'',
       \ ]
 
-let g:signify_mapping_next_hunk = '<leader>gj'
-let g:signify_mapping_prev_hunk = '<leader>gk'
-let g:signify_sign_add               = '»'
-let g:signify_sign_change            = '∙'
-let g:signify_sign_delete            = '«'
-let g:signify_sign_delete_first_line = '-'
-let g:signify_sign_overwrite = 0
-
-let NERDTreeDirArrows = 1
-let NERDTreeHijackNetrw = 0
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden = 1
-let NERDTreeShowLineNumbers = 0
-
-let g:bl_no_implystart = 1
+let g:syntastic_auto_jump = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open=0
+let g:syntastic_check_on_wq=0
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
+let g:syntastic_enable_balloons = 0
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_error_symbol='✕'
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_warning_symbol='✕'
 
 let g:switch_custom_definitions =
       \ [
@@ -470,6 +426,56 @@ let g:switch_custom_definitions =
 let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
 
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsListSnippets="<Nul>"
+let g:UltiSnipsNoPythonWarning = 1
+let g:UltiSnipsSnippetDirectories = ["ultisnips"]
+
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_start_insert = 1
+let g:unite_prompt = '» '
+let g:unite_source_history_yank_enable =1
+let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
+let g:unite_split_rule = 'bot'
+let g:unite_winheight = 15
+
+let g:user_emmet_expandabbr_key = '<c-e>'
+
+let g:Vertigo_homerow = 'asdfghjklp'
+let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
+
+let g:vimchant_spellcheck_lang = 'fi'
+
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_server_log_level = 'error'
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'gitcommit' : 1,
+      \ 'vim' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'unite' : 1,
+      \}
+
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_refresh_always = 0
+" let g:neocomplete#enable_smart_case = 1
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+"   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" endif
+
 
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -483,15 +489,6 @@ elseif &t_Co == 256
   colorscheme droid256
 else
   colorscheme delek
-endif
-
-
-" GUI
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-  set number
-  set guifont=Termsyn\ 10
-  set guicursor+=a:blinkon0
 endif
 
 
