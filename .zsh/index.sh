@@ -29,15 +29,15 @@ source ~/.zsh/helpers.sh
 SOURCES=(
 .zsh/colors.sh
 .zsh/zshsettings.sh
-.xutils/init.sh
-.zsh/alias.sh
-.zsh/help.sh
-.zsh/dev.sh
-.zsh/miscfuncs.sh
-.zsh/packages.sh
-.zsh/tags.sh
-.zsh/vimfuncs.sh
-.local/tpm/.config
+# .xutils/init.sh
+# .zsh/alias.sh
+# .zsh/help.sh
+# .zsh/dev.sh
+# .zsh/miscfuncs.sh
+# .zsh/packages.sh
+# .zsh/tags.sh
+# .zsh/vimfuncs.sh
+# .local/tpm/.config
 )
 
 for i in ${SOURCES[@]}; do

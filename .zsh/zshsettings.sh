@@ -1,7 +1,5 @@
 #!/bin/bash
 # Necessary for own applications
-PATH="$HOME/.local/bin:$PATH"
-
 if [[ $(tty) =~ /dev/tty ]]; then
     export TERM='linux'
 else
