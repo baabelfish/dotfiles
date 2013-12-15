@@ -64,14 +64,14 @@ bindsym $mod+Control+k move up 50px
 bindsym $mod+Control+l move right 50px
 
 # Resizing
-bindsym $mod+Shift+l resize grow width 40 px or 4 ppt
-bindsym $mod+Shift+k resize grow height 40 px or 4 ppt
-bindsym $mod+Shift+j resize shrink height 40 px or 4 ppt
-bindsym $mod+Shift+h resize shrink width 40 px or 4 ppt
-bindsym $mod+Shift+d resize grow width 40 px or 4 ppt
-bindsym $mod+Shift+w resize grow height 40 px or 4 ppt
-bindsym $mod+Shift+s resize shrink height 40 px or 4 ppt
-bindsym $mod+Shift+a resize shrink width 40 px or 4 ppt
+bindsym $mod+Shift+l resize grow width 50 px or 5 ppt
+bindsym $mod+Shift+k resize grow height 50 px or 5 ppt
+bindsym $mod+Shift+j resize shrink height 50 px or 5 ppt
+bindsym $mod+Shift+h resize shrink width 50 px or 5 ppt
+bindsym $mod+Shift+d resize grow width 50 px or 5 ppt
+bindsym $mod+Shift+w resize grow height 50 px or 5 ppt
+bindsym $mod+Shift+s resize shrink height 50 px or 5 ppt
+bindsym $mod+Shift+a resize shrink width 50 px or 5 ppt
 
 # Splits
 bindsym $mod+colon split h

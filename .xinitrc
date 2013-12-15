@@ -13,10 +13,12 @@ xset dpms 540 1000 2000&
 xset -b&
 xsetroot -cursor_name left_ptr&
 
+autocutsel -fork&
+autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 [[ -e /usr/bin/volumeicon ]] && volumeicon&
-[[ -e /usr/bin/clipit ]] && clipit&
+# [[ -e /usr/bin/clipit ]] && clipit&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/dunst ]] && dunst&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
