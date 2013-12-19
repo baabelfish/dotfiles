@@ -167,7 +167,7 @@ if has("autocmd")
   autocmd FileType cpp set nowrap
   autocmd FileType ejs set filetype=javascript
   autocmd FileType fish set filetype=sh
-  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+  " autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
   autocmd FileType matlab set filetype=octave
   autocmd FileType tex set filetype=plaintex

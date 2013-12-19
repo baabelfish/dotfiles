@@ -5,6 +5,13 @@
         "tpm-filemanagement": "baabelfish/tpm-filemanagement",
         "tpm-urxvt": "baabelfish/tpm-urxvt",
         "tpm-prompt": "baabelfish/tpm-prompt",
+        "bblock": {
+            "url": "https://github.com/baabelfish/bblock",
+            "build": "make",
+            "bin": {
+                "bblock": "bblock"
+            }
+        },
         "i3lock": {
             "url": "http://code.stapelberg.de/git/i3lock",
             "build": "make",
