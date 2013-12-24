@@ -257,9 +257,11 @@ vnoremap <silent><space><enter> :EasyAlign<cr>
 nnoremap <silent>å :TComment<cr>
 vnoremap <silent>å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
-nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>f :CtrlPBufTag<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+" nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 
 " Vim builtin overrides
@@ -346,7 +348,9 @@ let BckOptions = 'cirw'
 
 let g:bl_no_implystart = 1
 
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
@@ -404,11 +408,11 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
-let g:syntastic_error_symbol='✕'
+let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_warning_symbol='✕'
+let g:syntastic_warning_symbol='»'
 
 let g:switch_custom_definitions =
       \ [

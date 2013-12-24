@@ -52,8 +52,8 @@ XTerm*faceName: xft:Termsyn-10
 *saveLines:1000
 
 /*URxvt.background: [60]#1a1a1a*/
-! *background: #121212
-*background: [90]#121212
+*background: #121212
+! *background: [90]#121212
 *foreground: #d9d9d9
 *foreground_bold: #fedfed
 *foreground_dim: #888888
