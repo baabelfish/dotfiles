@@ -323,11 +323,11 @@ let g:airline_detect_whitespace=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
 let g:airline_exclude_preview = 0
-let g:airline_left_sep = '▶'
-let g:airline_linecolumn_prefix = '¶'
-let g:airline_paste_symbol = 'ρ'
-let g:airline_powerline_fonts=0
-let g:airline_right_sep = '◀'
+" let g:airline_left_sep = '▶'
+" let g:airline_linecolumn_prefix = '¶'
+" let g:airline_paste_symbol = 'ρ'
+let g:airline_powerline_fonts=1
+" let g:airline_right_sep = '◀'
 let g:airline_theme='wombat'
 let g:airline_mode_map = {
       \ '__' : '-',
