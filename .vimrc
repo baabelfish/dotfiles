@@ -42,6 +42,7 @@ NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'jwhitley/vim-matchit'
+NeoBundle 'kana/vim-arpeggio'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kien/rainbow_parentheses.vim'
@@ -72,6 +73,7 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
+NeoBundle 'kien/ctrlp.vim'
 
 NeoBundleCheck
 
@@ -266,7 +268,6 @@ cnoremap <C-j> <down>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <Right>
-inoremap <C-c> <Esc>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap K i<cr><Esc>k$
@@ -274,9 +275,7 @@ nnoremap Y y$
 nnoremap ` '
 nnoremap ' `
 nnoremap j gj
-vnoremap j gj
 nnoremap k gk
-vnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
 
@@ -346,6 +345,8 @@ let g:airline_mode_map = {
 let BckOptions = 'cirw'
 
 let g:bl_no_implystart = 1
+
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
@@ -662,3 +663,4 @@ call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
