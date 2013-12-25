@@ -13,6 +13,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'Matt-Stevens/vim-systemd-syntax'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'PeterRincker/vim-argumentative'
 NeoBundle 'Shougo/unite-outline'
