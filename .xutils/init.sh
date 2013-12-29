@@ -6,6 +6,9 @@ if [[ -e /home/$USER/.xutils/.has_been_initialized ]]; then
   return
 fi
 
+# Install necessary apps
+sudo pacman -S wget openssh
+
 # Create skeleton config file for the scripts
 if [[ ! -e ~/.xutils/config.sh ]]; then
   echo "#!/bin/bash
@@ -38,8 +41,8 @@ wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2444098.jpg' -O ~/.wallpaper
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 # Install software
-sudo pacman --noconfirm -S acpi clipit chromium dunst dzen2 feh feh gvim i3lock rxvt-unicode rxvt-unicode-terminfo the_silver_searcher urxvt-perls udiskie unclutter volumeicon zathura zsh
-yaourt --noconfirm -S compton dwb-git dmenu-xft i3-git termsyn
+sudo pacman --noconfirm -S acpi clipit chromium dunst dzen2 feh feh gvim rxvt-unicode rxvt-unicode-terminfo the_silver_searcher urxvt-perls udiskie unclutter volumeicon zathura zsh
+yaourt --noconfirm -S compton dwb-git dmenu-xft termsyn
 
 # Install laptop specific software
 ISLAPTOP=$(acpi) 2> /dev/null

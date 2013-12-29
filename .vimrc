@@ -42,6 +42,7 @@ NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'jwhitley/vim-matchit'
+NeoBundle 'kana/vim-arpeggio'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kien/rainbow_parentheses.vim'
@@ -72,6 +73,7 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
+NeoBundle 'kien/ctrlp.vim'
 
 NeoBundleCheck
 
@@ -255,9 +257,11 @@ vnoremap <silent><space><enter> :EasyAlign<cr>
 nnoremap <silent>å :TComment<cr>
 vnoremap <silent>å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
-nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>f :CtrlPBufTag<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+" nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 
 " Vim builtin overrides
@@ -266,7 +270,6 @@ cnoremap <C-j> <down>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <Right>
-inoremap <C-c> <Esc>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap K i<cr><Esc>k$
@@ -274,9 +277,7 @@ nnoremap Y y$
 nnoremap ` '
 nnoremap ' `
 nnoremap j gj
-vnoremap j gj
 nnoremap k gk
-vnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
 
@@ -323,11 +324,11 @@ let g:airline_detect_whitespace=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
 let g:airline_exclude_preview = 0
-let g:airline_left_sep = '▶'
-let g:airline_linecolumn_prefix = '¶'
-let g:airline_paste_symbol = 'ρ'
-let g:airline_powerline_fonts=0
-let g:airline_right_sep = '◀'
+" let g:airline_left_sep = '▶'
+" let g:airline_linecolumn_prefix = '¶'
+" let g:airline_paste_symbol = 'ρ'
+let g:airline_powerline_fonts=1
+" let g:airline_right_sep = '◀'
 let g:airline_theme='wombat'
 let g:airline_mode_map = {
       \ '__' : '-',
@@ -346,6 +347,10 @@ let g:airline_mode_map = {
 let BckOptions = 'cirw'
 
 let g:bl_no_implystart = 1
+
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
@@ -403,11 +408,11 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
-let g:syntastic_error_symbol='✕'
+let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_warning_symbol='✕'
+let g:syntastic_warning_symbol='»'
 
 let g:switch_custom_definitions =
       \ [
@@ -662,3 +667,4 @@ call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
