@@ -12,6 +12,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'vim-scripts/indenthtml.vim'
 NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'PeterRincker/vim-argumentative'
@@ -35,7 +36,6 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'drmikehenry/vim-fixkey'
-NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'glts/vim-textobj-comment'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'guns/vim-clojure-static'
@@ -169,7 +169,7 @@ if has("autocmd")
   autocmd FileType cpp set nowrap
   autocmd FileType ejs set filetype=javascript
   autocmd FileType fish set filetype=sh
-  " autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
   autocmd FileType matlab set filetype=octave
   autocmd FileType tex set filetype=plaintex
@@ -177,6 +177,7 @@ if has("autocmd")
   autocmd Syntax * RainbowParanthesesLoadRound
   autocmd VimEnter * RainbowParenthesesToggle
   autocmd VimResized * exe "normal! \<c-w>="
+  autocmd FileType html nnoremap <buffer> <leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
 endif
 
 
@@ -260,7 +261,7 @@ nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPBufTag<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-" nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 
@@ -441,8 +442,6 @@ let g:unite_source_history_yank_enable =1
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
 let g:unite_split_rule = 'bot'
 let g:unite_winheight = 15
-
-let g:user_emmet_expandabbr_key = '<c-e>'
 
 let g:Vertigo_homerow = 'asdfghjklp'
 let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
@@ -668,3 +667,8 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+
+try
+  set shortmess+=c
+catch /E539: Illegal character/
+endtry
