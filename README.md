@@ -20,6 +20,7 @@ dzen2
 elementary-icon-theme
 faenza-icon-theme
 feh
+nitrogen
 gifsicle
 gimp
 gimp

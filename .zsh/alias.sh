@@ -32,6 +32,7 @@ alias x='xmms2'
 # Misc
 alias cal='cal -m -y' # More verbose calendar
 alias sshp='killall mplayer; export DISPLAY=:0 && mplayer -fs' # Play video over ssh
+alias se='sudoedit'
 
 # Basic things more verbose
 alias cp='cp -iv'
