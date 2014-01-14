@@ -4,80 +4,156 @@
 " sudo pacman -S the_silver_searcher
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+" if has('vim_starting')
+  " set runtimepath+=~/.vim/bundle/neobundle.vim/
+" endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+" call neobundle#rc(expand('~/.vim/bundle/'))
+" NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'Blackrush/vim-gocode'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'Matt-Stevens/vim-systemd-syntax'
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-NeoBundle 'PeterRincker/vim-argumentative'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': 'git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' } }
-NeoBundle 'Valloric/vim-operator-highlight'
-NeoBundle 'arecarn/crunch'
-NeoBundle 'b4winckler/vim-angry'
-NeoBundle 'baabelfish/Bck'
-NeoBundle 'baabelfish/a.vim'
-NeoBundle 'baabelfish/vim-dispatch'
-NeoBundle 'baabelfish/vim-droid256'
-NeoBundle 'baabelfish/vim-vertigo'
-NeoBundle 'bilalq/lite-dfm'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'dag/vim-fish'
-NeoBundle 'drmikehenry/vim-fixkey'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'glts/vim-textobj-comment'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'jwhitley/vim-matchit'
-NeoBundle 'kana/vim-arpeggio'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'kurkale6ka/vim-pairs'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mechatroner/minimal_gdb'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'mhinz/vim-toplevel'
-NeoBundle 'mrtazz/DoxygenToolkit.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'scottymoon/vim-twilight'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/L9'
-NeoBundle 'vim-scripts/Vimchant'
-NeoBundle 'vim-scripts/VisIncr'
-NeoBundle 'vim-scripts/bufkill.vim'
-NeoBundle 'vim-scripts/django.vim'
-NeoBundle 'vim-scripts/octave.vim--'
-NeoBundle 'vim-scripts/surrparen'
-NeoBundle 'kien/ctrlp.vim'
+" NeoBundle 'AndrewRadev/switch.vim'
+" NeoBundle 'Blackrush/vim-gocode'
+" NeoBundle 'tpope/vim-vinegar'
+" NeoBundle 'Matt-Stevens/vim-systemd-syntax'
+" NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+" NeoBundle 'PeterRincker/vim-argumentative'
+" NeoBundle 'Shougo/unite-outline'
+" NeoBundle 'Shougo/unite-session'
+" NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
+" NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'Valloric/MatchTagAlways'
+" NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': 'git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' } }
+" NeoBundle 'Valloric/vim-operator-highlight'
+" NeoBundle 'arecarn/crunch'
+" NeoBundle 'b4winckler/vim-angry'
+" NeoBundle 'baabelfish/Bck'
+" NeoBundle 'baabelfish/a.vim'
+" NeoBundle 'baabelfish/vim-dispatch'
+" NeoBundle 'baabelfish/vim-droid256'
+" NeoBundle 'baabelfish/vim-vertigo'
+" NeoBundle 'bilalq/lite-dfm'
+" NeoBundle 'bling/vim-airline'
+" NeoBundle 'chrisbra/NrrwRgn'
+" NeoBundle 'dag/vim-fish'
+" NeoBundle 'drmikehenry/vim-fixkey'
+" NeoBundle 'editorconfig/editorconfig-vim'
+" NeoBundle 'glts/vim-textobj-comment'
+" NeoBundle 'gregsexton/gitv'
+" NeoBundle 'guns/vim-clojure-static'
+" NeoBundle 'junegunn/vim-easy-align'
+" NeoBundle 'justinmk/vim-sneak'
+" NeoBundle 'jwhitley/vim-matchit'
+" NeoBundle 'kana/vim-arpeggio'
+" NeoBundle 'kana/vim-textobj-indent'
+" NeoBundle 'kana/vim-textobj-user'
+" NeoBundle 'kien/rainbow_parentheses.vim'
+" NeoBundle 'kurkale6ka/vim-pairs'
+" NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'mechatroner/minimal_gdb'
+" " NeoBundle 'mhinz/vim-signify'
+" NeoBundle 'mhinz/vim-startify'
+" NeoBundle 'mhinz/vim-toplevel'
+" NeoBundle 'mrtazz/DoxygenToolkit.vim'
+" NeoBundle 'pangloss/vim-javascript'
+" NeoBundle 'scottymoon/vim-twilight'
+" NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'sjl/gundo.vim'
+" NeoBundle 'tomtom/tcomment_vim'
+" NeoBundle 'tpope/vim-abolish'
+" NeoBundle 'tpope/vim-fireplace'
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'tpope/vim-markdown'
+" NeoBundle 'tpope/vim-repeat'
+" NeoBundle 'tpope/vim-sleuth'
+" NeoBundle 'tpope/vim-surround'
+" NeoBundle 'vim-scripts/L9'
+" NeoBundle 'vim-scripts/Vimchant'
+" NeoBundle 'vim-scripts/VisIncr'
+" NeoBundle 'vim-scripts/bufkill.vim'
+" NeoBundle 'vim-scripts/django.vim'
+" NeoBundle 'vim-scripts/octave.vim--'
+" NeoBundle 'vim-scripts/surrparen'
+" NeoBundle 'kien/ctrlp.vim'
 
-NeoBundleCheck
+call plug#begin('~/.vim/plugged')
+
+Plug 'AndrewRadev/switch.vim'
+Plug 'Blackrush/vim-gocode'
+Plug 'tpope/vim-vinegar'
+Plug 'Matt-Stevens/vim-systemd-syntax'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite-session'
+Plug 'Shougo/unite.vim'
+" Plug 'Shougo/neocomplete.vim'
+Plug 'Rip-Rip/clang_complete'
+" make -f make_unix.mak
+Plug 'Shougo/vimproc.vim'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/MatchTagAlways'
+" git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/vim-operator-highlight'
+Plug 'arecarn/crunch'
+Plug 'b4winckler/vim-angry'
+Plug 'baabelfish/Bck'
+Plug 'baabelfish/a.vim'
+Plug 'baabelfish/vim-dispatch'
+Plug 'baabelfish/vim-droid256'
+Plug 'baabelfish/vim-vertigo'
+Plug 'osyo-manga/vim-marching'
+Plug 'osyo-manga/vim-reunions'
+Plug 'bilalq/lite-dfm'
+Plug 'bling/vim-airline'
+Plug 'chrisbra/NrrwRgn'
+Plug 'dag/vim-fish'
+Plug 'drmikehenry/vim-fixkey'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'glts/vim-textobj-comment'
+Plug 'gregsexton/gitv'
+Plug 'guns/vim-clojure-static'
+Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-sneak'
+Plug 'jwhitley/vim-matchit'
+Plug 'kana/vim-arpeggio'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'kurkale6ka/vim-pairs'
+Plug 'mattn/emmet-vim'
+Plug 'mechatroner/minimal_gdb'
+Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-toplevel'
+Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'scottymoon/vim-twilight'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/Vimchant'
+Plug 'vim-scripts/VisIncr'
+Plug 'vim-scripts/bufkill.vim'
+Plug 'vim-scripts/django.vim'
+Plug 'vim-scripts/octave.vim--'
+Plug 'vim-scripts/surrparen'
+Plug 'kien/ctrlp.vim'
+
+call plug#end()
+
+" NeoBundleCheck
 
 filetype plugin indent on
 setlocal spell spelllang=en_us
@@ -171,7 +247,7 @@ if has("autocmd")
   autocmd FileType cpp set nowrap
   autocmd FileType ejs set filetype=javascript
   autocmd FileType fish set filetype=sh
-  " autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
   autocmd FileType matlab set filetype=octave
   autocmd FileType tex set filetype=plaintex
@@ -354,6 +430,8 @@ let g:bl_no_implystart = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
+let g:clang_user_options="-std=c++1y"
+
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
@@ -471,13 +549,13 @@ let g:ycm_filetype_blacklist = {
       \ 'unite' : 1,
       \}
 
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_refresh_always = 0
-" let g:neocomplete#enable_smart_case = 1
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"   let g:neocomplete#sources#omni#input_patterns = {}
-"   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-" endif
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_refresh_always = 0
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+endif
 
 
 " Colorscheme
