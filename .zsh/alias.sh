@@ -29,7 +29,9 @@ alias xt='xmms2 toggle'
 alias xl='xmms2 list'
 alias x='xmms2'
 
+
 # Misc
+alias sshmount='sshfs -o reconnect,compression=yes,transform_symlinks,ServerAliveInterval=45,ServerAliveCountMax=2,ssh_command="autossh -M 0"'
 alias cal='cal -m -y' # More verbose calendar
 alias sshp='killall mplayer; export DISPLAY=:0 && mplayer -fs' # Play video over ssh
 alias se='sudoedit'
