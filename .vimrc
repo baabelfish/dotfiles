@@ -667,8 +667,3 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-
-try
-  set shortmess+=c
-catch /E539: Illegal character/
-endtry
