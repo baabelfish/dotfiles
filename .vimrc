@@ -10,20 +10,21 @@ call plug#begin('~/.vim/plugged')
 
 " After install/update
 " cd .vim/plugged/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+Plug 'jiangmiao/auto-pairs'
 Plug 'AndrewRadev/switch.vim'
 Plug 'Blackrush/vim-gocode'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'PeterRincker/vim-argumentative'
-Plug 'Rip-Rip/clang_complete'
-Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/YouCompleteMe'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/Bck'
@@ -80,8 +81,6 @@ Plug 'vim-scripts/octave.vim--'
 Plug 'vim-scripts/surrparen'
 
 " Old
-" cd .vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
-" Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
