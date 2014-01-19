@@ -303,10 +303,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
-nnoremap : q:
-xnoremap : q:
-nnoremap q: :
-xnoremap q: :
 
 
 " Shell interaction
