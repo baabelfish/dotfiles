@@ -20,9 +20,9 @@ autoload -U compinit promptinit
 autoload -U select-word-style
 autoload -U zmv
 bindkey -v
+# set -o vi
 compinit
 select-word-style bash
-set -o vi
 setopt APPEND_HISTORY
 setopt MAILWARN
 setopt NOHUP

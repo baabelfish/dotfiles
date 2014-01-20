@@ -13,6 +13,7 @@ chromium
 clipit
 cmus
 compton
+dnsutils
 dmenu
 dunst
 dwb
