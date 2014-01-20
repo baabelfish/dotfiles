@@ -1,81 +1,92 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Prequests:
-" git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+" mkdir -p ~/.vim/autoload
+" curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
 " sudo pacman -S the_silver_searcher
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 
-call neobundle#rc(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'Blackrush/vim-gocode'
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-NeoBundle 'PeterRincker/vim-argumentative'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-session'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak' } }
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'Valloric/YouCompleteMe', {'build': {'unix': 'git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' } }
-NeoBundle 'Valloric/vim-operator-highlight'
-NeoBundle 'arecarn/crunch'
-NeoBundle 'b4winckler/vim-angry'
-NeoBundle 'baabelfish/Bck'
-NeoBundle 'baabelfish/a.vim'
-NeoBundle 'baabelfish/vim-dispatch'
-NeoBundle 'baabelfish/vim-droid256'
-NeoBundle 'baabelfish/vim-vertigo'
-NeoBundle 'bilalq/lite-dfm'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'dag/vim-fish'
-NeoBundle 'drmikehenry/vim-fixkey'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'glts/vim-textobj-comment'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'jwhitley/vim-matchit'
-NeoBundle 'kana/vim-arpeggio'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'kurkale6ka/vim-pairs'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mechatroner/minimal_gdb'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'mhinz/vim-toplevel'
-NeoBundle 'mrtazz/DoxygenToolkit.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'scottymoon/vim-twilight'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/L9'
-NeoBundle 'vim-scripts/Vimchant'
-NeoBundle 'vim-scripts/VisIncr'
-NeoBundle 'vim-scripts/bufkill.vim'
-NeoBundle 'vim-scripts/django.vim'
-NeoBundle 'vim-scripts/octave.vim--'
-NeoBundle 'vim-scripts/surrparen'
-NeoBundle 'kien/ctrlp.vim'
+" After install/update
+" cd .vim/plugged/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-NeoBundleCheck
+Plug 'jiangmiao/auto-pairs'
+Plug 'AndrewRadev/switch.vim'
+Plug 'Blackrush/vim-gocode'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'Matt-Stevens/vim-systemd-syntax'
+Plug 'Mizuchi/STL-Syntax'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite-session'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/vim-operator-highlight'
+Plug 'b4winckler/vim-angry'
+Plug 'baabelfish/Bck'
+Plug 'baabelfish/a.vim'
+Plug 'baabelfish/vim-dispatch'
+Plug 'baabelfish/vim-droid256'
+Plug 'baabelfish/vim-vertigo'
+Plug 'bilalq/lite-dfm'
+Plug 'bling/vim-airline'
+Plug 'chrisbra/NrrwRgn'
+Plug 'dag/vim-fish'
+Plug 'drmikehenry/vim-fixkey'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'glts/vim-textobj-comment'
+Plug 'gregsexton/gitv'
+Plug 'guns/vim-clojure-static'
+Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-sneak'
+Plug 'jwhitley/vim-matchit'
+Plug 'kana/vim-arpeggio'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'kurkale6ka/vim-pairs'
+Plug 'mattn/emmet-vim'
+Plug 'mechatroner/minimal_gdb'
+" Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-toplevel'
+Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'scottymoon/vim-twilight'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/Vimchant'
+Plug 'vim-scripts/VisIncr'
+Plug 'vim-scripts/bufkill.vim'
+Plug 'vim-scripts/django.vim'
+Plug 'vim-scripts/octave.vim--'
+Plug 'vim-scripts/surrparen'
+
+" Old
+" cd .vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+" Plug 'Rip-Rip/clang_complete'
+" Plug 'Shougo/neocomplete.vim'
+
+call plug#end()
+
 
 filetype plugin indent on
 setlocal spell spelllang=en_us
@@ -169,7 +180,7 @@ if has("autocmd")
   autocmd FileType cpp set nowrap
   autocmd FileType ejs set filetype=javascript
   autocmd FileType fish set filetype=sh
-  " autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
   autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
   autocmd FileType matlab set filetype=octave
   autocmd FileType tex set filetype=plaintex
@@ -177,6 +188,18 @@ if has("autocmd")
   autocmd Syntax * RainbowParanthesesLoadRound
   autocmd VimEnter * RainbowParenthesesToggle
   autocmd VimResized * exe "normal! \<c-w>="
+  autocmd FileType html nnoremap <buffer> <leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+
+  augroup command_window
+    autocmd!
+    " have <Ctrl-C> leave cmdline-window
+    autocmd CmdwinEnter * nnoremap <buffer> <C-c> :q\|echo ""<cr>
+    autocmd CmdwinEnter * inoremap <buffer> <C-c> <esc>:q\|echo ""<cr>
+    " start command line window in insert mode and no line numbers
+    autocmd CmdwinEnter * startinsert
+    autocmd CmdwinEnter * set nonumber
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+  augroup END
 endif
 
 
@@ -206,7 +229,7 @@ nnoremap <M-n> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
+" nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <silent><space>r :Root<cr>
 
 " Custom function callers
@@ -214,7 +237,7 @@ inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
 nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
 nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
 nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
-nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
+" nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
 nnoremap <silent><space>c :call ColorPicker(0)<cr>
 nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap cif :call SelectFunction(1)<cr>c
@@ -245,12 +268,12 @@ nnoremap <silent><space>S :Startify<cr>
 nnoremap <silent><space>t :Gitv<cr>
 nnoremap <silent>Ä :SyntasticCheck<cr>
 nnoremap <silent>Ö :Switch<cr>
-nnoremap <silent><space>j :<C-U>VertigoDown n<cr>
-nnoremap <silent><space>k :<C-U>VertigoUp n<cr>
-onoremap <silent><space>j :<C-U>VertigoDown o<cr>
-onoremap <silent><space>k :<C-U>VertigoUp o<cr>
-vnoremap <silent><space>j :<C-U>VertigoDown v<cr>
-vnoremap <silent><space>k :<C-U>VertigoUp v<cr>
+nnoremap <silent><leader>j :<C-U>VertigoDown n<cr>
+nnoremap <silent><leader>k :<C-U>VertigoUp n<cr>
+onoremap <silent><leader>j :<C-U>VertigoDown o<cr>
+onoremap <silent><leader>k :<C-U>VertigoUp o<cr>
+vnoremap <silent><leader>j :<C-U>VertigoDown v<cr>
+vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
@@ -260,7 +283,7 @@ nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPBufTag<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-" nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 
@@ -280,15 +303,20 @@ nnoremap j gj
 nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
+nnoremap : q:
+xnoremap : q:
+nnoremap q: :
+xnoremap q: :
+
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
-nnoremap <silent><leader>C :!clear && octave -q %<cr>
+" nnoremap <silent><leader>C :!clear && octave -q %<cr>
 nnoremap <silent><leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <cr> <cr>
 nnoremap <silent><leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <cr><cr>
 nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
-vnoremap <leader>C :w !octave -q<cr>
-vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<cr>
+" vnoremap <leader>C :w !octave -q<cr>
+" vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<cr>
 
 " Refactoring
 nnoremap <leader>* :s/<C-r><C-w>/
@@ -310,6 +338,14 @@ nnoremap ¤ :'<,'>g/^/norm!
 vnoremap ¤ :g/^/norm! 
 nnoremap ½ @q
 vnoremap ½ @q
+
+" Ex stuff
+nnoremap <leader>m :move.<left><left><left><left><left>
+vnoremap <leader>m :.move
+nnoremap <leader>M :.move
+nnoremap <leader>c :copy.<left><left><left><left><left>
+vnoremap <leader>c :copy.
+nnoremap <leader>C :.copy
 
 
 " Plugins
@@ -352,6 +388,8 @@ let g:bl_no_implystart = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
+let g:clang_user_options="-std=c++1y"
+
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
@@ -371,8 +409,8 @@ let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
 let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'
-let g:signify_sign_delete            = '«'
-let g:signify_sign_delete_first_line = '-'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '»'
 let g:signify_sign_overwrite = 0
 
 let g:startify_bookmarks = [ '~/.vimrc' ]
@@ -442,8 +480,6 @@ let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ign
 let g:unite_split_rule = 'bot'
 let g:unite_winheight = 15
 
-let g:user_emmet_expandabbr_key = '<c-e>'
-
 let g:Vertigo_homerow = 'asdfghjklp'
 let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 
@@ -469,13 +505,13 @@ let g:ycm_filetype_blacklist = {
       \ 'unite' : 1,
       \}
 
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_refresh_always = 0
-" let g:neocomplete#enable_smart_case = 1
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"   let g:neocomplete#sources#omni#input_patterns = {}
-"   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-" endif
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_refresh_always = 0
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+endif
 
 
 " Colorscheme

@@ -13,9 +13,6 @@ cpi() {
     done
 }
 
-# Clear
-
-
 # Forward port over ssh
 sshl() {
     [[ -z $2 ]] && echo "sshl <address> <local_port>"

@@ -41,7 +41,7 @@ wget 'http://wallpapers.wallbase.cc/rozne/wallpaper-2444098.jpg' -O ~/.wallpaper
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 # Install software
-sudo pacman --noconfirm -S acpi clipit chromium dunst dzen2 feh feh gvim rxvt-unicode rxvt-unicode-terminfo the_silver_searcher urxvt-perls udiskie unclutter volumeicon zathura zsh
+sudo pacman --noconfirm -S acpi clipit chromium dunst dzen2 feh feh gvim rxvt-unicode rxvt-unicode-terminfo the_silver_searcher urxvt-perls udiskie unclutter volumeicon zathura zsh tree
 yaourt --noconfirm -S compton dwb-git dmenu-xft termsyn
 
 # Install laptop specific software

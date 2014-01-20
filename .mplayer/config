@@ -1,3 +1,8 @@
 # Write your default config options here!
-
+[default]
+lavdopts=threads=2
 utf8=yes
+framedrop=yes
+softvol=1
+softvol-max=400
+idx=yes

@@ -1,6 +1,8 @@
 #!/bin/bash
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-nitrogen --restore
+feh --bg-center ~/.wallpapers/arch.png
+export AWT_TOOLKIT=XToolkit
+export VDPAU_NVIDIA_NO_OVERLAY=1
 
 urxvtd -q -f -o&
 setxkbmap -layout fi
