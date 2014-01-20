@@ -22,7 +22,6 @@ autoload -U zmv
 bindkey -v
 compinit
 select-word-style bash
-set -o vi
 setopt APPEND_HISTORY
 setopt MAILWARN
 setopt NOHUP
