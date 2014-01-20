@@ -5,25 +5,28 @@
 " sudo pacman -S the_silver_searcher
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 
 call plug#begin('~/.vim/plugged')
 
 " After install/update
 " cd .vim/plugged/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+Plug 'jiangmiao/auto-pairs'
 Plug 'AndrewRadev/switch.vim'
 Plug 'Blackrush/vim-gocode'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Matt-Stevens/vim-systemd-syntax'
+Plug 'Mizuchi/STL-Syntax'
 Plug 'PeterRincker/vim-argumentative'
-Plug 'Rip-Rip/clang_complete'
-Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/YouCompleteMe'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/Bck'
@@ -51,12 +54,10 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mechatroner/minimal_gdb'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-toplevel'
 Plug 'mrtazz/DoxygenToolkit.vim'
-Plug 'osyo-manga/vim-marching'
-Plug 'osyo-manga/vim-reunions'
 Plug 'pangloss/vim-javascript'
 Plug 'scottymoon/vim-twilight'
 Plug 'scrooloose/nerdtree'
@@ -81,7 +82,8 @@ Plug 'vim-scripts/surrparen'
 
 " Old
 " cd .vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
-" Plug 'Valloric/YouCompleteMe'
+" Plug 'Rip-Rip/clang_complete'
+" Plug 'Shougo/neocomplete.vim'
 
 call plug#end()
 
@@ -187,6 +189,17 @@ if has("autocmd")
   autocmd VimEnter * RainbowParenthesesToggle
   autocmd VimResized * exe "normal! \<c-w>="
   autocmd FileType html nnoremap <buffer> <leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+
+  augroup command_window
+    autocmd!
+    " have <Ctrl-C> leave cmdline-window
+    autocmd CmdwinEnter * nnoremap <buffer> <C-c> :q\|echo ""<cr>
+    autocmd CmdwinEnter * inoremap <buffer> <C-c> <esc>:q\|echo ""<cr>
+    " start command line window in insert mode and no line numbers
+    autocmd CmdwinEnter * startinsert
+    autocmd CmdwinEnter * set nonumber
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+  augroup END
 endif
 
 
@@ -216,7 +229,7 @@ nnoremap <M-n> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
+" nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <silent><space>r :Root<cr>
 
 " Custom function callers
@@ -255,12 +268,12 @@ nnoremap <silent><space>S :Startify<cr>
 nnoremap <silent><space>t :Gitv<cr>
 nnoremap <silent>Ä :SyntasticCheck<cr>
 nnoremap <silent>Ö :Switch<cr>
-nnoremap <silent><space>j :<C-U>VertigoDown n<cr>
-nnoremap <silent><space>k :<C-U>VertigoUp n<cr>
-onoremap <silent><space>j :<C-U>VertigoDown o<cr>
-onoremap <silent><space>k :<C-U>VertigoUp o<cr>
-vnoremap <silent><space>j :<C-U>VertigoDown v<cr>
-vnoremap <silent><space>k :<C-U>VertigoUp v<cr>
+nnoremap <silent><leader>j :<C-U>VertigoDown n<cr>
+nnoremap <silent><leader>k :<C-U>VertigoUp n<cr>
+onoremap <silent><leader>j :<C-U>VertigoDown o<cr>
+onoremap <silent><leader>k :<C-U>VertigoUp o<cr>
+vnoremap <silent><leader>j :<C-U>VertigoDown v<cr>
+vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
@@ -290,6 +303,11 @@ nnoremap j gj
 nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
+nnoremap : q:
+xnoremap : q:
+nnoremap q: :
+xnoremap q: :
+
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
@@ -391,8 +409,8 @@ let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
 let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'
-let g:signify_sign_delete            = '«'
-let g:signify_sign_delete_first_line = '-'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '»'
 let g:signify_sign_overwrite = 0
 
 let g:startify_bookmarks = [ '~/.vimrc' ]
