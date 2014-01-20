@@ -17,6 +17,9 @@ URxvt.borderLess:        no
 URxvt.buffered:          false
 URxvt.depth:             32
 URxvt.font:              xft:Terminess Powerline:size=8
+! URxvt.font:              xft:terminus-8
+! URxvt.font:              xft:Termsyn-12
+! URxvt*font: xft:DejaVu Sans Mono-10
 ! URxvt.boldFont:          xft:Termsyn-10:style=bold
 URxvt.hold:              true
 URxvt.internalBorder:    0
@@ -32,7 +35,7 @@ URxvt.secondaryScreen:   false
 URxvt.skipScroll:        true
 URxvt.smallfont_key:     p
 URxvt.tripleclickwords:  on
-URxvt.url-select.launcher:  dwb
+URxvt.url-select.launcher:  chromium
 URxvt.url-select.underline: true
 URxvt*keysym.Control-Up:    \033[1;5A
 URxvt*keysym.Control-Down:  \033[1;5B
