@@ -5,7 +5,6 @@
         "tpm-filemanagement": "baabelfish/tpm-filemanagement",
         "tpm-urxvt": "baabelfish/tpm-urxvt",
         "tpm-prompt": "baabelfish/tpm-prompt",
-        "powerline-shell": "https://github.com/milkbikis/powerline-shell",
         "bblock": {
             "url": "https://github.com/baabelfish/bblock",
             "build": "make",

@@ -206,7 +206,7 @@ endif
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
-set pastetoggle=<M-p>
+set pastetoggle=<M-P>
 
 " Window related
 inoremap <C-q> <C-o>ciW
@@ -225,7 +225,7 @@ nnoremap <M-j> j
 nnoremap <M-k> k
 nnoremap <M-l> l
 nnoremap <M-m> <C-w>v
-nnoremap <M-n> <C-w>s
+nnoremap <M-M> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
@@ -700,3 +700,7 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+call arpeggio#map('icvx', '', 0, 'jl', '<End>')
+call arpeggio#map('icvx', '', 0, 'hl', '<Home>')
+call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
+call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
