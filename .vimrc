@@ -19,6 +19,7 @@ Plug 'Blackrush/vim-gocode'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'Mizuchi/STL-Syntax'
+Plug 'tommcdo/vim-exchange'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
@@ -701,6 +702,6 @@ call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'jl', '<End>')
-call arpeggio#map('icvx', '', 0, 'hl', '<Home>')
+call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
