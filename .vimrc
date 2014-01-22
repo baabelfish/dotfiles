@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
 Plug 'jiangmiao/auto-pairs'
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'AndrewRadev/switch.vim'
 Plug 'Blackrush/vim-gocode'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -55,7 +56,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mechatroner/minimal_gdb'
-" Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-toplevel'
 Plug 'mrtazz/DoxygenToolkit.vim'
@@ -231,7 +232,7 @@ nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
 " nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
-nnoremap <silent><space>r :Root<cr>
+" nnoremap <silent><space>r :Root<cr>
 
 " Custom function callers
 inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
@@ -282,11 +283,12 @@ nnoremap <silent>å :TComment<cr>
 vnoremap <silent>å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
-nnoremap <silent><space>f :CtrlPBufTag<cr>
+nnoremap <silent><space>f :CtrlPFunky<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
+nnoremap <silent><space>w :SignifyToggle<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
