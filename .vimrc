@@ -56,7 +56,6 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mechatroner/minimal_gdb'
 Plug 'mhinz/vim-signify'
-Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-toplevel'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'pangloss/vim-javascript'
@@ -166,42 +165,29 @@ endif
 
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("autocmd")
-  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType plaintex set filetype=tex
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
-  autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
-  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
-  autocmd FileType cpp set nowrap
-  autocmd FileType ejs set filetype=javascript
-  autocmd FileType fish set filetype=sh
-  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-  autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
-  autocmd FileType matlab set filetype=octave
-  autocmd FileType tex set filetype=plaintex
-  autocmd InsertLeave * set nopaste
-  autocmd Syntax * RainbowParanthesesLoadRound
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd VimResized * exe "normal! \<c-w>="
-  autocmd FileType html nnoremap <buffer> <leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-
-  augroup command_window
-    autocmd!
-    " have <Ctrl-C> leave cmdline-window
-    autocmd CmdwinEnter * nnoremap <buffer> <C-c> :q\|echo ""<cr>
-    autocmd CmdwinEnter * inoremap <buffer> <C-c> <esc>:q\|echo ""<cr>
-    " start command line window in insert mode and no line numbers
-    autocmd CmdwinEnter * startinsert
-    autocmd CmdwinEnter * set nonumber
-    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-  augroup END
-endif
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType plaintex set filetype=tex
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
+autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
+autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
+autocmd FileType cpp set nowrap
+autocmd FileType ejs set filetype=javascript
+autocmd FileType fish set filetype=sh
+autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
+autocmd FileType matlab set filetype=octave
+autocmd FileType tex set filetype=plaintex
+autocmd InsertLeave * set nopaste
+autocmd Syntax * RainbowParanthesesLoadRound
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd VimResized * exe "normal! \<c-w>="
+autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
 
 
 " Shortcuts

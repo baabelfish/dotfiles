@@ -6,3 +6,5 @@ framedrop=yes
 softvol=1
 softvol-max=400
 idx=yes
+vo=vdpau
+vc=ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdpau,
