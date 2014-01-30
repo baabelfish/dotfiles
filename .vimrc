@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+Plug 'elzr/vim-json'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'AndrewRadev/switch.vim'
@@ -28,8 +29,6 @@ Plug 'Shougo/vimproc.vim'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe'
-Plug 'Valloric/vim-operator-highlight'
-Plug 'dgrnbrg/vim-redl'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/Bck'
 Plug 'baabelfish/a.vim'
@@ -66,7 +65,7 @@ Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
-" Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-eunuch'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
@@ -204,17 +203,18 @@ set pastetoggle=<F3>
 inoremap <C-q> <C-o>ciW
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 inoremap <M-z> <C-o>zz
-nnoremap <M-H> H
-nnoremap <M-J> J
-nnoremap <M-K> K
-nnoremap <M-L> L
+" FIXME: clojure...
+" nnoremap <M-H> H
+" nnoremap <M-J> J
+" nnoremap <M-K> K
+" nnoremap <M-L> L
 nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
-nnoremap <M-R> R
-nnoremap <M-W> :BF<cr>
-nnoremap <M-h> h
-nnoremap <M-j> j
-nnoremap <M-k> k
-nnoremap <M-l> l
+" nnoremap <M-R> R
+" nnoremap <M-W> :BF<cr>
+" nnoremap <M-h> h
+" nnoremap <M-j> j
+" nnoremap <M-k> k
+" nnoremap <M-l> l
 nnoremap <M-m> <C-w>v
 nnoremap <M-M> <C-w>s
 nnoremap <M-q> <C-w>c
@@ -277,6 +277,8 @@ nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
+nnoremap <space>r :Repl<cr>
+nnoremap <space>R :ReplHere<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -396,6 +398,8 @@ let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
 let g:pydiction_location = '/usr/share/pydiction/complete-dict'
+
+let g:sexp_enable_insert_mode_mappings = 0
 
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
@@ -705,3 +709,4 @@ call arpeggio#map('icvx', '', 0, 'jl', '<End>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
+call arpeggio#map('icvx', '', 0, 'ui', '<Esc>u')
