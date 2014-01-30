@@ -10,7 +10,7 @@ set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/v
 call plug#begin('~/.vim/plugged')
 
 " After install/update
-" cd .vim/plugged/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
 Plug 'jiangmiao/auto-pairs'
@@ -29,6 +29,7 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Valloric/vim-operator-highlight'
+Plug 'dgrnbrg/vim-redl'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/Bck'
 Plug 'baabelfish/a.vim'
@@ -65,6 +66,9 @@ Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
+" Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-eunuch'
+Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
@@ -193,7 +197,8 @@ autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
-set pastetoggle=<M-P>
+let maplocalleader = 'å'
+set pastetoggle=<F3>
 
 " Window related
 inoremap <C-q> <C-o>ciW
@@ -264,8 +269,8 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap <silent>å :TComment<cr>
-vnoremap <silent>å :TComment<cr>
+nnoremap <silent>Å :TComment<cr>
+vnoremap <silent>Å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPFunky<cr>
@@ -373,6 +378,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
 let g:clang_user_options="-std=c++1y"
+
+let g:clojure_fuzzy_indent_patterns = ['.']
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
@@ -489,6 +496,9 @@ let g:ycm_filetype_blacklist = {
       \ 'text' : 1,
       \ 'unite' : 1,
       \}
+let g:ycm_semantic_triggers = {
+      \ 'clojure' : ['(', '/'],
+      \ }
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_refresh_always = 0
