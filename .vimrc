@@ -10,7 +10,7 @@ set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/v
 call plug#begin('~/.vim/plugged')
 
 " After install/update
-" cd .vim/plugged/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
 Plug 'jiangmiao/auto-pairs'
@@ -29,6 +29,7 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Valloric/vim-operator-highlight'
+Plug 'dgrnbrg/vim-redl'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/Bck'
 Plug 'baabelfish/a.vim'
@@ -56,7 +57,6 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mechatroner/minimal_gdb'
 Plug 'mhinz/vim-signify'
-Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-toplevel'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'pangloss/vim-javascript'
@@ -66,6 +66,9 @@ Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
+" Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-eunuch'
+Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
@@ -166,47 +169,35 @@ endif
 
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("autocmd")
-  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType plaintex set filetype=tex
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
-  autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
-  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
-  autocmd FileType cpp set nowrap
-  autocmd FileType ejs set filetype=javascript
-  autocmd FileType fish set filetype=sh
-  autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-  autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
-  autocmd FileType matlab set filetype=octave
-  autocmd FileType tex set filetype=plaintex
-  autocmd InsertLeave * set nopaste
-  autocmd Syntax * RainbowParanthesesLoadRound
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd VimResized * exe "normal! \<c-w>="
-  autocmd FileType html nnoremap <buffer> <leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-
-  augroup command_window
-    autocmd!
-    " have <Ctrl-C> leave cmdline-window
-    autocmd CmdwinEnter * nnoremap <buffer> <C-c> :q\|echo ""<cr>
-    autocmd CmdwinEnter * inoremap <buffer> <C-c> <esc>:q\|echo ""<cr>
-    " start command line window in insert mode and no line numbers
-    autocmd CmdwinEnter * startinsert
-    autocmd CmdwinEnter * set nonumber
-    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-  augroup END
-endif
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType plaintex set filetype=tex
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
+autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
+autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
+autocmd FileType cpp set nowrap
+autocmd FileType ejs set filetype=javascript
+autocmd FileType fish set filetype=sh
+autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
+autocmd FileType matlab set filetype=octave
+autocmd FileType tex set filetype=plaintex
+autocmd InsertLeave * set nopaste
+autocmd Syntax * RainbowParanthesesLoadRound
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd VimResized * exe "normal! \<c-w>="
+autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
 
 
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
+let maplocalleader = 'å'
 set pastetoggle=<F3>
 
 " Window related
@@ -277,8 +268,8 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap <silent>å :TComment<cr>
-vnoremap <silent>å :TComment<cr>
+nnoremap <silent>Å :TComment<cr>
+vnoremap <silent>Å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPFunky<cr>
@@ -390,6 +381,8 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-
 
 let g:clang_user_options="-std=c++1y"
 
+let g:clojure_fuzzy_indent_patterns = ['.']
+
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
@@ -450,6 +443,7 @@ let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_warning_symbol='»'
 
 let g:switch_custom_definitions =
@@ -505,6 +499,9 @@ let g:ycm_filetype_blacklist = {
       \ 'text' : 1,
       \ 'unite' : 1,
       \}
+let g:ycm_semantic_triggers = {
+      \ 'clojure' : ['(', '/'],
+      \ }
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_refresh_always = 0
