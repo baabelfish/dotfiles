@@ -207,7 +207,7 @@ endif
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
-set pastetoggle=<M-P>
+set pastetoggle=<F3>
 
 " Window related
 inoremap <C-q> <C-o>ciW
@@ -220,7 +220,6 @@ nnoremap <M-L> L
 nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
 nnoremap <M-R> R
 nnoremap <M-W> :BF<cr>
-nnoremap <M-a> :A<cr>
 nnoremap <M-h> h
 nnoremap <M-j> j
 nnoremap <M-k> k
@@ -377,6 +376,9 @@ let g:airline_mode_map = {
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
+
+let g:AutoPairsShortcutToggle = '<M-a>'
+let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 
 let BckOptions = 'cirw'
 
