@@ -197,7 +197,7 @@ autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
-let maplocalleader = 'å'
+let maplocalleader = 'ä'
 set pastetoggle=<F3>
 
 " Window related
@@ -257,7 +257,6 @@ nnoremap <silent><space>n :cnext<cr>
 nnoremap <silent><space>q :Bck<cr>
 nnoremap <silent><space>S :Startify<cr>
 nnoremap <silent><space>t :Gitv<cr>
-nnoremap <silent>Ä :SyntasticCheck<cr>
 nnoremap <silent>Ö :Switch<cr>
 nnoremap <silent><leader>j :<C-U>VertigoDown n<cr>
 nnoremap <silent><leader>k :<C-U>VertigoUp n<cr>
@@ -268,8 +267,8 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap <silent>Å :TComment<cr>
-vnoremap <silent>Å :TComment<cr>
+nnoremap <silent>å :TComment<cr>
+vnoremap <silent>å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPFunky<cr>
@@ -319,7 +318,7 @@ nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
 nnoremap <silent><space>D :cd %:p:h<cr>
 nnoremap <silent><space>d :lcd %:p:h<cr>
-nnoremap ä :w<cr>
+nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
 nnoremap ¤ :'<,'>g/^/norm! 
@@ -369,7 +368,7 @@ let g:airline_mode_map = {
       \ }
 
 let g:AutoPairsShortcutToggle = '<M-a>'
-let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+" let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 
 let BckOptions = 'cirw'
 
