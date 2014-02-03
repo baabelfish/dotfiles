@@ -46,7 +46,6 @@ Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
 Plug 'guns/vim-clojure-static'
 Plug 'junegunn/vim-easy-align'
-Plug 'justinmk/vim-sneak'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-textobj-indent'
@@ -702,7 +701,8 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-call arpeggio#map('icvx', '', 0, 'jl', '<End>')
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
+call arpeggio#map('icvx', '', 0, 'cw', '<Esc>cw')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
