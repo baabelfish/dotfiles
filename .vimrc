@@ -268,8 +268,6 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap <silent>å :TComment<cr>
-vnoremap <silent>å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPFunky<cr>
@@ -383,7 +381,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-
 
 let g:clang_user_options="-std=c++1y"
 
-let g:clojure_fuzzy_indent_patterns = ['.']
+" let g:clojure_fuzzy_indent = 1
+" let g:clojure_fuzzy_indent_patterns = ['.']
+" let g:clojure_fuzzy_indent_blacklist = []
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
