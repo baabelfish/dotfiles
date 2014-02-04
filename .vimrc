@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-Plug 'dgrnbrg/vim-redl'
+" Plug 'dgrnbrg/vim-redl'
 Plug 'elzr/vim-json'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tacahiroy/ctrlp-funky'
@@ -278,6 +278,8 @@ nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <space>r :Repl<cr>
 nnoremap <space>R :ReplHere<cr>
+nnoremap <localleader>r :Require<cr>
+nnoremap <localleader>R :Require!<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>

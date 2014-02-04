@@ -4,3 +4,9 @@ snippet defn "" !b
   [${3}]
   $0)
 endsnippet
+
+snippet deftest "" !b
+(deftest ${1:name}
+  (testing "${2:case}"
+    (is (= $0))))
+endsnippet
