@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-Plug 'dgrnbrg/vim-redl'
+Plug 'justinmk/vim-gtfo'
 Plug 'elzr/vim-json'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tacahiroy/ctrlp-funky'
@@ -221,6 +221,15 @@ nnoremap <M-M> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
+nnoremap <leader>1 1<C-w><C-w>
+nnoremap <leader>2 2<C-w><C-w>
+nnoremap <leader>3 3<C-w><C-w>
+nnoremap <leader>4 4<C-w><C-w>
+nnoremap <leader>5 5<C-w><C-w>
+nnoremap <leader>6 6<C-w><C-w>
+nnoremap <leader>7 7<C-w><C-w>
+nnoremap <leader>8 8<C-w><C-w>
+nnoremap <leader>9 9<C-w><C-w>
 " nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 " nnoremap <silent><space>r :Root<cr>
 
@@ -278,6 +287,7 @@ nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <space>r :Repl<cr>
 nnoremap <space>R :ReplHere<cr>
+nnoremap <space>C :Connect nrepl://localhost:8110<cr><cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -295,6 +305,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
+nnoremap gV `[v`]
 
 
 " Shell interaction
