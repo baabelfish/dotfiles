@@ -239,7 +239,7 @@ nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
 nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
 nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
 " nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
-nnoremap <silent><space>c :call ColorPicker(0)<cr>
+nnoremap <silent><space>cp :call ColorPicker(0)<cr>
 nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap cif :call SelectFunction(1)<cr>c
 nnoremap daf :call SelectFunction(0)<cr>d
@@ -285,9 +285,7 @@ nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
-nnoremap <space>r :Repl<cr>
-nnoremap <space>R :ReplHere<cr>
-nnoremap <space>C :Connect nrepl://localhost:8110<cr><cr>
+nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
