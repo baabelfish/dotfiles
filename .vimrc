@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'justinmk/vim-gtfo'
 Plug 'elzr/vim-json'
 Plug 'jiangmiao/auto-pairs'
@@ -205,17 +206,17 @@ inoremap <C-q> <C-o>ciW
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 inoremap <M-z> <C-o>zz
 " FIXME: clojure...
-" nnoremap <M-H> H
-" nnoremap <M-J> J
-" nnoremap <M-K> K
-" nnoremap <M-L> L
+nnoremap <M-H> H
+nnoremap <M-J> J
+nnoremap <M-K> K
+nnoremap <M-L> L
 nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
 " nnoremap <M-R> R
 " nnoremap <M-W> :BF<cr>
-" nnoremap <M-h> h
-" nnoremap <M-j> j
-" nnoremap <M-k> k
-" nnoremap <M-l> l
+nnoremap <M-h> h
+nnoremap <M-j> j
+nnoremap <M-k> k
+nnoremap <M-l> l
 nnoremap <M-m> <C-w>v
 nnoremap <M-M> <C-w>s
 nnoremap <M-q> <C-w>c
