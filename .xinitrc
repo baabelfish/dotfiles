@@ -4,7 +4,7 @@ feh --bg-center ~/.wallpapers/arch.png
 
 export AWT_TOOLKIT=XToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 urxvtd -q -f -o&
 setxkbmap -layout fi
