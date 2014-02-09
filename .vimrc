@@ -10,9 +10,12 @@ set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/v
 call plug#begin('~/.vim/plugged')
 
 " After install/update
-" cd .vim/plugged/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'justinmk/vim-gtfo'
+Plug 'elzr/vim-json'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'AndrewRadev/switch.vim'
@@ -28,7 +31,6 @@ Plug 'Shougo/vimproc.vim'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe'
-Plug 'Valloric/vim-operator-highlight'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/Bck'
 Plug 'baabelfish/a.vim'
@@ -44,8 +46,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
 Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-slamhound'
 Plug 'junegunn/vim-easy-align'
-Plug 'justinmk/vim-sneak'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-textobj-indent'
@@ -65,6 +67,9 @@ Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-eunuch'
+Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
@@ -193,20 +198,21 @@ autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
-set pastetoggle=<M-P>
+let maplocalleader = 'ä'
+set pastetoggle=<F3>
 
 " Window related
 inoremap <C-q> <C-o>ciW
 inoremap <M-q> <Esc><C-w>c:echo ""<cr>
 inoremap <M-z> <C-o>zz
+" FIXME: clojure...
 nnoremap <M-H> H
 nnoremap <M-J> J
 nnoremap <M-K> K
 nnoremap <M-L> L
 nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
-nnoremap <M-R> R
-nnoremap <M-W> :BF<cr>
-nnoremap <M-a> :A<cr>
+" nnoremap <M-R> R
+" nnoremap <M-W> :BF<cr>
 nnoremap <M-h> h
 nnoremap <M-j> j
 nnoremap <M-k> k
@@ -216,6 +222,15 @@ nnoremap <M-M> <C-w>s
 nnoremap <M-q> <C-w>c
 nnoremap <M-r> r
 nnoremap <M-w> :BB<cr>
+nnoremap <leader>1 1<C-w><C-w>
+nnoremap <leader>2 2<C-w><C-w>
+nnoremap <leader>3 3<C-w><C-w>
+nnoremap <leader>4 4<C-w><C-w>
+nnoremap <leader>5 5<C-w><C-w>
+nnoremap <leader>6 6<C-w><C-w>
+nnoremap <leader>7 7<C-w><C-w>
+nnoremap <leader>8 8<C-w><C-w>
+nnoremap <leader>9 9<C-w><C-w>
 " nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 " nnoremap <silent><space>r :Root<cr>
 
@@ -225,7 +240,7 @@ nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
 nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
 nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
 " nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
-nnoremap <silent><space>c :call ColorPicker(0)<cr>
+nnoremap <silent><space>cp :call ColorPicker(0)<cr>
 nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap cif :call SelectFunction(1)<cr>c
 nnoremap daf :call SelectFunction(0)<cr>d
@@ -253,7 +268,6 @@ nnoremap <silent><space>n :cnext<cr>
 nnoremap <silent><space>q :Bck<cr>
 nnoremap <silent><space>S :Startify<cr>
 nnoremap <silent><space>t :Gitv<cr>
-nnoremap <silent>Ä :SyntasticCheck<cr>
 nnoremap <silent>Ö :Switch<cr>
 nnoremap <silent><leader>j :<C-U>VertigoDown n<cr>
 nnoremap <silent><leader>k :<C-U>VertigoUp n<cr>
@@ -264,8 +278,6 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap <silent>å :TComment<cr>
-vnoremap <silent>å :TComment<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
 nnoremap <silent><space>f :CtrlPFunky<cr>
@@ -274,6 +286,7 @@ nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
+nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -291,6 +304,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
+nnoremap gV `[v`]
 
 
 " Shell interaction
@@ -315,7 +329,7 @@ nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
 nnoremap <silent><space>D :cd %:p:h<cr>
 nnoremap <silent><space>d :lcd %:p:h<cr>
-nnoremap ä :w<cr>
+nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
 nnoremap ¤ :'<,'>g/^/norm! 
@@ -364,6 +378,9 @@ let g:airline_mode_map = {
       \ '' : 'S',
       \ }
 
+let g:AutoPairsShortcutToggle = '<M-a>'
+" let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
+
 let BckOptions = 'cirw'
 
 let g:bl_no_implystart = 1
@@ -373,6 +390,10 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
 let g:clang_user_options="-std=c++1y"
+
+" let g:clojure_fuzzy_indent = 1
+" let g:clojure_fuzzy_indent_patterns = ['.']
+" let g:clojure_fuzzy_indent_blacklist = []
 
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
@@ -388,6 +409,8 @@ let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
 let g:pydiction_location = '/usr/share/pydiction/complete-dict'
+
+let g:sexp_enable_insert_mode_mappings = 0
 
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
@@ -434,6 +457,7 @@ let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_warning_symbol='»'
 
 let g:switch_custom_definitions =
@@ -476,7 +500,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_invoke_completion = '<c-e>'
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_register_as_syntastic_checker = 1
@@ -489,6 +513,9 @@ let g:ycm_filetype_blacklist = {
       \ 'text' : 1,
       \ 'unite' : 1,
       \}
+let g:ycm_semantic_triggers = {
+      \ 'clojure' : ['(', '/'],
+      \ }
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_refresh_always = 0
@@ -689,7 +716,9 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-call arpeggio#map('icvx', '', 0, 'jl', '<End>')
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
+call arpeggio#map('icvx', '', 0, 'cw', '<Esc>cw')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
+call arpeggio#map('icvx', '', 0, 'ui', '<Esc>u')

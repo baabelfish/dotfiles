@@ -3,6 +3,10 @@
 source /home/$USER/.zsh/colors.sh
 DELTA=3
 
+lrepl() {
+    LEIN_REPL_PORT=8110 lein repl
+}
+
 set_title() {
     echo -e "\e]2;$a$*$2\a"
 }

@@ -201,6 +201,7 @@ for_window [class="^feh$"] floating enable
 for_window [class="^hl_linux$"] floating enable
 for_window [title="^Dynamite Jack$"] floating enable
 for_window [title="^Install.*$"] floating enable
+for_window [title="^TRON$"] floating enable
 for_window [title="^Product Activation$"] floating enable
 for_window [title="^Serious Sam 3 - Linux$"] floating enable
 for_window [title="^float$"] floating enable

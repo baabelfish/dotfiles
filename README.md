@@ -55,3 +55,8 @@ zathura
 zenity
 zsh
 ```
+
+```
+jslint
+nodejs-jshint
+```
