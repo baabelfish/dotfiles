@@ -146,15 +146,12 @@ bindsym $mod+F5 exec --no-startup-id ~/.local/bin/i3lock -c 090909
 bindsym $mod+shift+F5 exec ~/.xutils/suspend.sh
 
 # Volume keys
-bindsym $mod+F1 exec  --no-startup-id ~/.xutils/gvol.sh -t
+bindsym $mod+F1 exec --no-startup-id ~/.xutils/gvol.sh -t
 bindsym $mod+F2 exec --no-startup-id ~/.xutils/gvol.sh -d 4
 bindsym $mod+F3 exec --no-startup-id ~/.xutils/gvol.sh -i 4
-bindsym XF86AudioMute exec  --no-startup-id ~/.xutils/gvol.sh -t
+bindsym XF86AudioMute exec --no-startup-id ~/.xutils/gvol.sh -t
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.xutils/gvol.sh -i 4
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xutils/gvol.sh -d 4
-bindsym $mod+m exec --no-startup-id ~/.xutils/gvol.sh -t
-bindsym $mod+plus exec --no-startup-id ~/.xutils/gvol.sh -i 3
-bindsym $mod+minus exec --no-startup-id ~/.xutils/gvol.sh -d 3
 
 # Monitors
 bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xutils/select_monitors.sh'

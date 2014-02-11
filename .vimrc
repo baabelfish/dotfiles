@@ -318,7 +318,7 @@ nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
 
 " Refactoring
 nnoremap <leader>* :s/<C-r><C-w>/
-nnoremap <leader>S yiwvip:s/<C-r>0/
+nnoremap <leader>S yiwvip:s/\<<C-r>0\>/
 
 " Misc
 nnoremap <leader>f :find 
