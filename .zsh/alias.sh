@@ -115,14 +115,14 @@ bmux() {
     killall tmx; tmux -u attach -d -t $session; logout
   else
     local app="ssh"
-    local params="$SERVERI -t"
+    local params="-t"
     local moshpath=$(which mosh)
     if [[ -e "$moshpath" ]]; then
       app="mosh"
-      params="$SERVERI"
+      params=""
     fi
     ssh $SERVERI -t "killall bblock; logout; killall tmx"
-    $app $params -- tmux -u attach -d -t $session
+    $app $SERVERI $params -- tmux -u attach -d -t $session
   fi
 }
 
