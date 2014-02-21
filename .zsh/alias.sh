@@ -29,7 +29,6 @@ alias xt='xmms2 toggle'
 alias xl='xmms2 list'
 alias x='xmms2'
 
-
 # Misc
 alias sshmount='sshfs -o reconnect,compression=yes,transform_symlinks,ServerAliveInterval=45,ServerAliveCountMax=2,ssh_command="autossh -M 0"'
 alias cal='cal -m -y' # More verbose calendar
@@ -103,3 +102,53 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# TMUX
+bmux() {
+  local session=$1
+  if [[ -z "$session" ]]; then
+      session="bmux"
+  fi
+
+  if [[ "$HOST" == "$SERVERI_HOSTNAME" ]]; then
+    killall bblock; 
+    killall tmx; tmux -u attach -d -t $session; logout
+  else
+    local $app="ssh"
+    which mosh > /dev/null
+    if [[ $? -eq 0 ]]; then
+      local $app="mosh"
+    fi
+    $app -X $SERVER -t "killall bblock; logout"
+    $app -X $SERVER -t "killall tmx; tmux -u attach -d -t $session; logout"
+  fi
+  clear
+}
+
+bmx() {
+  local session=$1
+  if [[ -z "$session" ]]; then
+      session="bmux"
+  fi
+    if [[ "$HOST" == "$SERVERI_HOSTNAME" ]]; then
+        tmx $session
+    else
+        ssh -X $SERVER -t "tmx $session $1"
+    fi
+}
+
+bmuxd() {
+  tmux kill-session -t $1
+}
+
+bmuxn() {
+  if [[ -z "$1" ]]; then
+    echo "Specify the name (e.g. bmuxn asdqwe)"
+  fi
+
+  if [[ -z "$(tmux ls|awk '{print $1}'|grep "$1")" ]]; then
+    tmux -2 new-session -d -s $1
+    return
+  fi
+}
+
