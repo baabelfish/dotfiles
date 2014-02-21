@@ -114,15 +114,16 @@ bmux() {
     killall bblock; 
     killall tmx; tmux -u attach -d -t $session; logout
   else
-    local $app="ssh"
-    which mosh > /dev/null
-    if [[ $? -eq 0 ]]; then
-      local $app="mosh"
+    local app="ssh"
+    local params="$SERVERI -t"
+    local moshpath=$(which mosh)
+    if [[ -e "$moshpath" ]]; then
+      app="mosh"
+      params="$SERVERI"
     fi
-    $app -X $SERVER -t "killall bblock; logout"
-    $app -X $SERVER -t "killall tmx; tmux -u attach -d -t $session; logout"
+    ssh $SERVERI -t "killall bblock; logout; killall tmx"
+    $app $params -- tmux -u attach -d -t $session
   fi
-  clear
 }
 
 bmx() {
@@ -133,7 +134,12 @@ bmx() {
     if [[ "$HOST" == "$SERVERI_HOSTNAME" ]]; then
         tmx $session
     else
-        ssh -X $SERVER -t "tmx $session $1"
+        local app="ssh -t"
+        local moshpath=$(which mosh)
+        if [[ -e "$moshpath" ]]; then
+          app="mosh"
+        fi
+        $app $SERVERI -- tmx $session
     fi
 }
 
