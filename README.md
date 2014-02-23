@@ -54,6 +54,7 @@ yaourt
 zathura
 zenity
 zsh
+autojump
 ```
 
 ```
