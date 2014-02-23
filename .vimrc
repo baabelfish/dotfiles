@@ -132,6 +132,7 @@ set history=100
 set langmenu=en_US.UTF-8
 set laststatus=2
 set list listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
+set magic
 set modelines=0
 set nofoldenable foldmethod=syntax
 set noshowmode
@@ -159,7 +160,7 @@ set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
-set wrapmargin=0 nowrap linebreak
+set wrapmargin=0 nowrap linebreak breakat+=" "
 
 if has("gui_running")
   set number
@@ -305,7 +306,8 @@ nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
 nnoremap gV `[v`]
-
+nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
+nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
