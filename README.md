@@ -15,6 +15,7 @@ cmus
 compton
 dnsutils
 dmenu
+urxvt-font-size-git
 dunst
 dwb
 dzen2
