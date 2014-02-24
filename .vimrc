@@ -319,8 +319,8 @@ nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
 " vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<cr>
 
 " Refactoring
-nnoremap <leader>* :s/<C-r><C-w>/
-nnoremap <leader>S yiwvip:s/\<<C-r>0\>/
+nnoremap <leader>* :%s/\<<C-r><C-w>\>/
+nnoremap <leader>S yiwvip:s/<C-r>0/
 
 " Misc
 nnoremap <leader>f :find 
@@ -718,7 +718,6 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-call arpeggio#map('icvx', '', 0, 'JK', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'cw', '<Esc>cw')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
