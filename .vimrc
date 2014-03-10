@@ -14,7 +14,9 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'jaxbot/github-issues.vim'
 Plug 'justinmk/vim-gtfo'
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'elzr/vim-json'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tacahiroy/ctrlp-funky'
@@ -400,6 +402,8 @@ let g:clang_user_options="-std=c++1y"
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
+
+let g:livepreview_previewer = 'zathura'
 
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
