@@ -103,6 +103,21 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+function fuck() {
+  killall -9 $1;
+  if [[ $? == 0 ]]; then
+    echo ""
+    echo -n "(╯°□°）╯  "
+    if [[ -e /usr/bin/toilet ]]; then
+      echo ""
+      echo "$1"|/usr/bin/toilet -F rotate -F gay
+    else
+      echo "$1"|~/.zsh/flip
+    fi
+    echo ""
+  fi
+}
+
 # TMUX
 bmux() {
   local session=$1
