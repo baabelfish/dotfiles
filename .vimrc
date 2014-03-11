@@ -190,7 +190,6 @@ autocmd FileType fish set filetype=sh
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
 autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
 autocmd FileType matlab set filetype=octave
-autocmd FileType tex set filetype=plaintex
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
