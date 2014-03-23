@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+Plug 'wellle/targets.vim'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'jaxbot/github-issues.vim'
 Plug 'justinmk/vim-gtfo'
@@ -417,6 +418,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
+let g:signify_update_on_bufenter = 1
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
 let g:signify_sign_add               = '»'
@@ -500,6 +502,7 @@ let g:vimchant_spellcheck_lang = 'fi'
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
