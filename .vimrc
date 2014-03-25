@@ -467,6 +467,7 @@ let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_tex_checkers = ['lacheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
