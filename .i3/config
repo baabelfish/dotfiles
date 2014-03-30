@@ -125,14 +125,15 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # Bar
 bar {
-    modifier         Mod2
-    tray_output      primary
-    status_command   ~/.i3conky
+    modifier         Mod4
+    tray_output      LVDS1
+    mode             hide
+    status_command   i3status
     position         bottom
 
     colors {
-        background         #151515
-        statusline         #151515
+        background         #1a1a1a
+        statusline         #bbbbbb
 
                            #border #backgr #text
         focused_workspace  #606060 #404040 #58FF58

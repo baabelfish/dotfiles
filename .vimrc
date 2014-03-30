@@ -1,97 +1,105 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Prequests:
-" mkdir -p ~/.vim/autoload
-" curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+" mkdir -p ~/.vim/bundle
+" git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 " sudo pacman -S the_silver_searcher
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 
-call plug#begin('~/.vim/plugged')
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " After install/update
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'justinmk/vim-gtfo'
-Plug 'elzr/vim-json'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'AndrewRadev/switch.vim'
-Plug 'Blackrush/vim-gocode'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'Matt-Stevens/vim-systemd-syntax'
-Plug 'Mizuchi/STL-Syntax'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'Shougo/unite-outline'
-Plug 'Shougo/unite-session'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'SirVer/ultisnips'
-Plug 'Valloric/MatchTagAlways'
-Plug 'Valloric/YouCompleteMe'
-Plug 'b4winckler/vim-angry'
-Plug 'baabelfish/Bck'
-Plug 'baabelfish/a.vim'
-Plug 'baabelfish/vim-dispatch'
-Plug 'baabelfish/vim-droid256'
-Plug 'baabelfish/vim-vertigo'
-Plug 'bilalq/lite-dfm'
-Plug 'bling/vim-airline'
-Plug 'chrisbra/NrrwRgn'
-Plug 'dag/vim-fish'
-Plug 'drmikehenry/vim-fixkey'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'glts/vim-textobj-comment'
-Plug 'gregsexton/gitv'
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-slamhound'
-Plug 'junegunn/vim-easy-align'
-Plug 'jwhitley/vim-matchit'
-Plug 'kana/vim-arpeggio'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-user'
-Plug 'kien/ctrlp.vim'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'kurkale6ka/vim-pairs'
-Plug 'mattn/emmet-vim'
-Plug 'mechatroner/minimal_gdb'
-Plug 'mhinz/vim-signify'
-Plug 'mhinz/vim-toplevel'
-Plug 'mrtazz/DoxygenToolkit.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'scottymoon/vim-twilight'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'sjl/gundo.vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-classpath'
-Plug 'tpope/vim-eunuch'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/Vimchant'
-Plug 'vim-scripts/VisIncr'
-Plug 'vim-scripts/bufkill.vim'
-Plug 'vim-scripts/django.vim'
-Plug 'vim-scripts/octave.vim--'
-Plug 'vim-scripts/surrparen'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'Matt-Stevens/vim-systemd-syntax'
+NeoBundle 'Mizuchi/STL-Syntax'
+NeoBundle 'PeterRincker/vim-argumentative'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-session'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'b4winckler/vim-angry'
+NeoBundle 'baabelfish/Bck'
+NeoBundle 'baabelfish/a.vim'
+NeoBundle 'baabelfish/vim-dispatch'
+NeoBundle 'baabelfish/vim-droid256'
+NeoBundle 'baabelfish/vim-vertigo'
+NeoBundle 'bilalq/lite-dfm'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'dag/vim-fish'
+NeoBundle 'drmikehenry/vim-fixkey'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'glts/vim-textobj-comment'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'guns/vim-sexp'
+NeoBundle 'guns/vim-slamhound'
+NeoBundle 'jaxbot/github-issues.vim'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'justinmk/vim-gtfo'
+NeoBundle 'jwhitley/vim-matchit'
+NeoBundle 'kana/vim-arpeggio'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'kurkale6ka/vim-pairs'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mechatroner/minimal_gdb'
+NeoBundle 'mhinz/vim-signify'
+NeoBundle 'mhinz/vim-toplevel'
+NeoBundle 'mrtazz/DoxygenToolkit.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'scottymoon/vim-twilight'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-classpath'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'vim-scripts/L9'
+NeoBundle 'vim-scripts/Vimchant'
+NeoBundle 'vim-scripts/VisIncr'
+NeoBundle 'vim-scripts/bufkill.vim'
+NeoBundle 'vim-scripts/django.vim'
+NeoBundle 'vim-scripts/octave.vim--'
+NeoBundle 'vim-scripts/surrparen'
+NeoBundle 'wellle/targets.vim'
+NeoBundle 'xuhdev/vim-latex-live-preview'
+NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure'] } }
+
+NeoBundleCheck
 
 " Old
 " cd .vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 " Plug 'Rip-Rip/clang_complete'
 " Plug 'Shougo/neocomplete.vim'
-
-call plug#end()
-
 
 filetype plugin indent on
 setlocal spell spelllang=en_us
@@ -132,6 +140,7 @@ set history=100
 set langmenu=en_US.UTF-8
 set laststatus=2
 set list listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
+set magic
 set modelines=0
 set nofoldenable foldmethod=syntax
 set noshowmode
@@ -159,7 +168,7 @@ set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
-set wrapmargin=0 nowrap linebreak
+set wrapmargin=0 nowrap linebreak breakat+=" "
 
 if has("gui_running")
   set number
@@ -187,7 +196,6 @@ autocmd FileType fish set filetype=sh
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
 autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
 autocmd FileType matlab set filetype=octave
-autocmd FileType tex set filetype=plaintex
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
@@ -305,7 +313,8 @@ nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
 nnoremap gV `[v`]
-
+nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
+nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
@@ -317,8 +326,8 @@ nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
 " vnoremap <leader>c :!octave --silent --no-window-system\|cut -c8-<cr>
 
 " Refactoring
-nnoremap <leader>* :s/<C-r><C-w>/
-nnoremap <leader>S yiwvip:s/\<<C-r>0\>/
+nnoremap <leader>* :%s/\<<C-r><C-w>\>/
+nnoremap <leader>S yiwvip:s/<C-r>0/
 
 " Misc
 nnoremap <leader>f :find 
@@ -400,10 +409,12 @@ let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
 
+let g:livepreview_previewer = 'zathura'
+
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
 
-let NERDTreeDirArrows = 1
+let NERDTreeDirArrows = 0
 let NERDTreeHijackNetrw = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
@@ -413,6 +424,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
+let g:signify_update_on_bufenter = 1
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
 let g:signify_sign_add               = '»'
@@ -456,6 +468,7 @@ let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_tex_checkers = ['lacheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
@@ -496,6 +509,7 @@ let g:vimchant_spellcheck_lang = 'fi'
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -513,6 +527,7 @@ let g:ycm_filetype_blacklist = {
       \ 'markdown' : 1,
       \ 'text' : 1,
       \ 'unite' : 1,
+      \ 'javascript' : 1,
       \}
 let g:ycm_semantic_triggers = {
       \ 'clojure' : ['(', '/'],
@@ -717,9 +732,182 @@ call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-call arpeggio#map('icvx', '', 0, 'JK', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'cw', '<Esc>cw')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
 call arpeggio#map('icvx', '', 0, 'ui', '<Esc>u')
+
+" FROM http://vim.wikia.com/wiki/Have_Vim_check_automatically_if_the_file_has_changed_externally
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" If you are using a console version of Vim, or dealing
+" with a file that changes externally (e.g. a web server log)
+" then Vim does not always check to see if the file has been changed.
+" The GUI version of Vim will check more often (for example on Focus change),
+" and prompt you if you want to reload the file.
+"
+" There can be cases where you can be working away, and Vim does not
+" realize the file has changed. This command will force Vim to check
+" more often.
+"
+" Calling this command sets up autocommands that check to see if the
+" current buffer has been modified outside of vim (using checktime)
+" and, if it has, reload it for you.
+"
+" This check is done whenever any of the following events are triggered:
+" * BufEnter
+" * CursorMoved
+" * CursorMovedI
+" * CursorHold
+" * CursorHoldI
+"
+" In other words, this check occurs whenever you enter a buffer, move the cursor,
+" or just wait without doing anything for 'updatetime' milliseconds.
+"
+" Normally it will ask you if you want to load the file, even if you haven't made
+" any changes in vim. This can get annoying, however, if you frequently need to reload
+" the file, so if you would rather have it to reload the buffer *without*
+" prompting you, add a bang (!) after the command (WatchForChanges!).
+" This will set the autoread option for that buffer in addition to setting up the
+" autocommands.
+"
+" If you want to turn *off* watching for the buffer, just call the command again while
+" in the same buffer. Each time you call the command it will toggle between on and off.
+"
+" WatchForChanges sets autocommands that are triggered while in *any* buffer.
+" If you want vim to only check for changes to that buffer while editing the buffer
+" that is being watched, use WatchForChangesWhileInThisBuffer instead.
+"
+command! -bang WatchForChanges                  :call WatchForChanges(@%,  {'toggle': 1, 'autoread': <bang>0})
+command! -bang WatchForChangesWhileInThisBuffer :call WatchForChanges(@%,  {'toggle': 1, 'autoread': <bang>0, 'while_in_this_buffer_only': 1})
+command! -bang WatchForChangesAllFile           :call WatchForChanges('*', {'toggle': 1, 'autoread': <bang>0})
+
+" WatchForChanges function
+"
+" This is used by the WatchForChanges* commands, but it can also be
+" useful to call this from scripts. For example, if your script executes a
+" long-running process, you can have your script run that long-running process
+" in the background so that you can continue editing other files, redirects its
+" output to a file, and open the file in another buffer that keeps reloading itself
+" as more output from the long-running command becomes available.
+"
+" Arguments:
+" * bufname: The name of the buffer/file to watch for changes.
+"     Use '*' to watch all files.
+" * options (optional): A Dict object with any of the following keys:
+"   * autoread: If set to 1, causes autoread option to be turned on for the buffer in
+"     addition to setting up the autocommands.
+"   * toggle: If set to 1, causes this behavior to toggle between on and off.
+"     Mostly useful for mappings and commands. In scripts, you probably want to
+"     explicitly enable or disable it.
+"   * disable: If set to 1, turns off this behavior (removes the autocommand group).
+"   * while_in_this_buffer_only: If set to 0 (default), the events will be triggered no matter which
+"     buffer you are editing. (Only the specified buffer will be checked for changes,
+"     though, still.) If set to 1, the events will only be triggered while
+"     editing the specified buffer.
+"   * more_events: If set to 1 (the default), creates autocommands for the events
+"     listed above. Set to 0 to not create autocommands for CursorMoved, CursorMovedI,
+"     (Presumably, having too much going on for those events could slow things down,
+"     since they are triggered so frequently...)
+function! WatchForChanges(bufname, ...)
+  " Figure out which options are in effect
+  if a:bufname == '*'
+    let id = 'WatchForChanges'.'AnyBuffer'
+    " If you try to do checktime *, you'll get E93: More than one match for * is given
+    let bufspec = ''
+  else
+    if bufnr(a:bufname) == -1
+      echoerr "Buffer " . a:bufname . " doesn't exist"
+      return
+    end
+    let id = 'WatchForChanges'.bufnr(a:bufname)
+    let bufspec = a:bufname
+  end
+
+  if len(a:000) == 0
+    let options = {}
+  else
+    if type(a:1) == type({})
+      let options = a:1
+    else
+      echoerr "Argument must be a Dict"
+    end
+  end
+  let autoread    = has_key(options, 'autoread')    ? options['autoread']    : 0
+  let toggle      = has_key(options, 'toggle')      ? options['toggle']      : 0
+  let disable     = has_key(options, 'disable')     ? options['disable']     : 0
+  let more_events = has_key(options, 'more_events') ? options['more_events'] : 1
+  let while_in_this_buffer_only = has_key(options, 'while_in_this_buffer_only') ? options['while_in_this_buffer_only'] : 0
+
+  if while_in_this_buffer_only
+    let event_bufspec = a:bufname
+  else
+    let event_bufspec = '*'
+  end
+
+  let reg_saved = @"
+  "let autoread_saved = &autoread
+  let msg = "\n"
+
+  " Check to see if the autocommand already exists
+  redir @"
+    silent! exec 'au '.id
+  redir END
+  let l:defined = (@" !~ 'E216: No such group or event:')
+
+  " If not yet defined...
+  if !l:defined
+    if l:autoread
+      let msg = msg . 'Autoread enabled - '
+      if a:bufname == '*'
+        set autoread
+      else
+        setlocal autoread
+      end
+    end
+    silent! exec 'augroup '.id
+      if a:bufname != '*'
+        "exec "au BufDelete    ".a:bufname . " :silent! au! ".id . " | silent! augroup! ".id
+        "exec "au BufDelete    ".a:bufname . " :echomsg 'Removing autocommands for ".id."' | au! ".id . " | augroup! ".id
+        exec "au BufDelete    ".a:bufname . " execute 'au! ".id."' | execute 'augroup! ".id."'"
+      end
+        exec "au BufEnter     ".event_bufspec . " :checktime ".bufspec
+        exec "au CursorHold   ".event_bufspec . " :checktime ".bufspec
+        exec "au CursorHoldI  ".event_bufspec . " :checktime ".bufspec
+
+      " The following events might slow things down so we provide a way to disable them...
+      " vim docs warn:
+      "   Careful: Don't do anything that the user does
+      "   not expect or that is slow.
+      if more_events
+        exec "au CursorMoved  ".event_bufspec . " :checktime ".bufspec
+        exec "au CursorMovedI ".event_bufspec . " :checktime ".bufspec
+      end
+    augroup END
+    let msg = msg . 'Now watching ' . bufspec . ' for external updates...'
+  end
+
+  " If they want to disable it, or it is defined and they want to toggle it,
+  if l:disable || (l:toggle && l:defined)
+    if l:autoread
+      let msg = msg . 'Autoread disabled - '
+      if a:bufname == '*'
+        set noautoread
+      else
+        setlocal noautoread
+      end
+    end
+    " Using an autogroup allows us to remove it easily with the following
+    " command. If we do not use an autogroup, we cannot remove this
+    " single :checktime command
+    " augroup! checkforupdates
+    silent! exec 'au! '.id
+    silent! exec 'augroup! '.id
+    let msg = msg . 'No longer watching ' . bufspec . ' for external updates.'
+  elseif l:defined
+    let msg = msg . 'Already watching ' . bufspec . ' for external updates'
+  end
+
+  echo msg
+  let @"=reg_saved
+endfunction

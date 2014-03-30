@@ -14,7 +14,6 @@ fi
 ################################################################################
 # ZSH specific settings
 ################################################################################
-#setopt SHARE_HISTORY
 autoload -U colors && colors
 autoload -U compinit promptinit
 autoload -U select-word-style
@@ -24,6 +23,8 @@ bindkey -v
 compinit
 select-word-style bash
 setopt APPEND_HISTORY
+setopt inc_append_history
+setopt share_history
 setopt MAILWARN
 setopt NOHUP
 setopt NOTIFY
