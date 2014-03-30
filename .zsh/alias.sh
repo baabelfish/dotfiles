@@ -18,6 +18,7 @@ cl() {
 alias o="/home/$USER/.zsh/open.sh"
 alias WC="wicd-curses"
 alias r="tpm-filemanager"
+alias latex2pdf='latexmk -pdf -pvc'
 
 # XMMS2
 alias xa='xmms2 add'
