@@ -387,7 +387,8 @@ let g:bl_no_implystart = 1
 
 " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
 
 let g:clang_user_options="-std=c++1y"
 
