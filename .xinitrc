@@ -8,6 +8,7 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 
+xrandr --output LVDS1 --primary
 urxvtd -q -f -o&
 setxkbmap -layout fi
 setxkbmap -option caps:escape
@@ -20,7 +21,6 @@ autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
-[[ -e /usr/bin/volumeicon ]] && volumeicon&
 # [[ -e /usr/bin/clipit ]] && clipit&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/dunst ]] && dunst&
