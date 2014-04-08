@@ -7,6 +7,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+alias vim="~/.local/apps/vim/src/vim"
+
 cl() {
     clear
     for (( i = 0; i < $LINES; i++ )); do

@@ -16,8 +16,8 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " After install/update
-" cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
-" cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+" cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'Blackrush/vim-gocode'
