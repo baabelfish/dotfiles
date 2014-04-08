@@ -19,7 +19,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+" NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Matt-Stevens/vim-systemd-syntax'
@@ -92,7 +95,7 @@ NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
 NeoBundle 'wellle/targets.vim'
 NeoBundle 'xuhdev/vim-latex-live-preview'
-NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure'] } }
+NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
 NeoBundleCheck
 
@@ -283,8 +286,8 @@ onoremap <silent><leader>j :<C-U>VertigoDown o<cr>
 onoremap <silent><leader>k :<C-U>VertigoUp o<cr>
 vnoremap <silent><leader>j :<C-U>VertigoDown v<cr>
 vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
-vnoremap <silent><return> :NarrowRegion<cr>
-vnoremap <silent><return> :NarrowRegion<cr>
+vnoremap <silent><space><return> :NarrowRegion<cr>
+vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
@@ -424,6 +427,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
+let g:signify_disable_by_default = 1
 let g:signify_update_on_bufenter = 1
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
@@ -509,7 +513,6 @@ let g:vimchant_spellcheck_lang = 'fi'
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -530,6 +533,7 @@ let g:ycm_filetype_blacklist = {
       \ 'unite' : 1,
       \ 'vim' : 1,
       \}
+      " \ 'javascript' : 1,
 let g:ycm_semantic_triggers = {
       \ 'clojure' : ['(', '/'],
       \ }
