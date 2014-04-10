@@ -19,7 +19,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'gcmt/wildfire.vim'
@@ -403,6 +403,14 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-
 let g:ctrlp_use_caching = 0
 
 let g:clang_user_options="-std=c++1y"
+
+let g:clang_format#style_options = {
+      \"BasedOnStyle": "LLVM",
+      \ "AccessModifierOffset" : -4,
+      \ "AllowShortIfStatementsOnASingleLine" : "true",
+      \ "AlwaysBreakTemplateDeclarations" : "true",
+      \ "Standard" : "C++11",
+      \ "BreakBeforeBraces" : "Stroustrup"}
 
 " let g:clojure_fuzzy_indent = 1
 " let g:clojure_fuzzy_indent_patterns = ['.']
