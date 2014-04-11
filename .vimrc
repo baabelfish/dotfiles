@@ -268,10 +268,11 @@ nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFi
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<cr>
 nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>ue :UltiSnipsEdit<cr>
-nnoremap <silent><space>bf :vimgrep /FIXME/gj ** \| :cw<cr>
-nnoremap <silent><space>bt :vimgrep /TODO/gj ** \| :cw<cr>
-nnoremap <silent><space>bw :vimgrep /<C-r><C-w>/gj ** \| :cw<cr>
-nnoremap <silent><space>bp :vimgrep /<C-r>"/gj ** \| :cw<cr>
+nnoremap <space>bf :vimgrep /FIXME/gj ** \| :cw<cr>
+nnoremap <space>bt :vimgrep /TODO/gj ** \| :cw<cr>
+nnoremap <space>bw :vimgrep /<C-r><C-w>/gj ** \| :cw<cr>
+nnoremap <space>bp :vimgrep /<C-r>"/gj ** \| :cw<cr>
+nnoremap <space>B :vimgrep //gj ** \| :cw<left><left><left><left><left><left><left><left><left><left><left><left>
 nnoremap <silent><space>M :Vex<cr>
 nnoremap <silent><space>m :Sex<cr>
 nnoremap <silent><space>N :cprev<cr>
