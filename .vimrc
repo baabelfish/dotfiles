@@ -36,7 +36,6 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'b4winckler/vim-angry'
-NeoBundle 'baabelfish/Bck'
 NeoBundle 'baabelfish/a.vim'
 NeoBundle 'baabelfish/vim-dispatch'
 NeoBundle 'baabelfish/vim-droid256'
@@ -269,9 +268,10 @@ nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFi
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<cr>
 nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>ue :UltiSnipsEdit<cr>
-nnoremap <silent><space>bf :Bck FIXME<cr>
-nnoremap <silent><space>bt :Bck TODO<cr>
-nnoremap <silent><space>bw :Bck <C-r><C-w><cr>
+nnoremap <silent><space>bf :vimgrep /FIXME/gj ** \| :cw<cr>
+nnoremap <silent><space>bt :vimgrep /TODO/gj ** \| :cw<cr>
+nnoremap <silent><space>bw :vimgrep /<C-r><C-w>/gj ** \| :cw<cr>
+nnoremap <silent><space>bp :vimgrep /<C-r>"/gj ** \| :cw<cr>
 nnoremap <silent><space>M :Vex<cr>
 nnoremap <silent><space>m :Sex<cr>
 nnoremap <silent><space>N :cprev<cr>
