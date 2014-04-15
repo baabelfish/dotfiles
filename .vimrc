@@ -19,7 +19,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'gcmt/wildfire.vim'
@@ -40,7 +39,6 @@ NeoBundle 'baabelfish/a.vim'
 NeoBundle 'baabelfish/vim-dispatch'
 NeoBundle 'baabelfish/vim-droid256'
 NeoBundle 'baabelfish/vim-vertigo'
-NeoBundle 'bilalq/lite-dfm'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
@@ -92,7 +90,6 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
-NeoBundle 'wellle/targets.vim'
 NeoBundle 'xuhdev/vim-latex-live-preview'
 NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
@@ -306,8 +303,7 @@ cnoremap <C-j> <down>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <Right>
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap <C-m> <C-a>
 nnoremap K i<cr><Esc>k$
 nnoremap Y y$
 nnoremap ` '
