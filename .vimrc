@@ -19,8 +19,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
-" NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'Blackrush/vim-gocode'
@@ -36,12 +35,10 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'b4winckler/vim-angry'
-NeoBundle 'baabelfish/Bck'
 NeoBundle 'baabelfish/a.vim'
 NeoBundle 'baabelfish/vim-dispatch'
 NeoBundle 'baabelfish/vim-droid256'
 NeoBundle 'baabelfish/vim-vertigo'
-NeoBundle 'bilalq/lite-dfm'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'dag/vim-fish'
@@ -93,7 +90,6 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
-NeoBundle 'wellle/targets.vim'
 NeoBundle 'xuhdev/vim-latex-live-preview'
 NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
@@ -269,9 +265,11 @@ nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFi
 nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<cr>
 nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <silent><leader>ue :UltiSnipsEdit<cr>
-nnoremap <silent><space>bf :Bck FIXME<cr>
-nnoremap <silent><space>bt :Bck TODO<cr>
-nnoremap <silent><space>bw :Bck <C-r><C-w><cr>
+nnoremap <space>bf :vimgrep /FIXME/gj ** \| :cw<cr>
+nnoremap <space>bt :vimgrep /TODO/gj ** \| :cw<cr>
+nnoremap <space>bw :vimgrep /<C-r><C-w>/gj ** \| :cw<cr>
+nnoremap <space>bp :vimgrep /<C-r>"/gj ** \| :cw<cr>
+nnoremap <space>B :vimgrep //gj ** \| :cw<left><left><left><left><left><left><left><left><left><left><left><left>
 nnoremap <silent><space>M :Vex<cr>
 nnoremap <silent><space>m :Sex<cr>
 nnoremap <silent><space>N :cprev<cr>
@@ -305,8 +303,7 @@ cnoremap <C-j> <down>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <Right>
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap <C-m> <C-a>
 nnoremap K i<cr><Esc>k$
 nnoremap Y y$
 nnoremap ` '
@@ -403,6 +400,14 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-
 let g:ctrlp_use_caching = 0
 
 let g:clang_user_options="-std=c++1y"
+
+let g:clang_format#style_options = {
+      \"BasedOnStyle": "LLVM",
+      \ "AccessModifierOffset" : -4,
+      \ "AllowShortIfStatementsOnASingleLine" : "true",
+      \ "AlwaysBreakTemplateDeclarations" : "true",
+      \ "Standard" : "C++11",
+      \ "BreakBeforeBraces" : "Stroustrup"}
 
 " let g:clojure_fuzzy_indent = 1
 " let g:clojure_fuzzy_indent_patterns = ['.']
