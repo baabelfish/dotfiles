@@ -19,6 +19,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+NeoBundle 'junegunn/vim-scroll-position'
+NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'zirrostig/vim-schlepp'
 NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'gcmt/wildfire.vim'
@@ -256,6 +259,14 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
+vmap <unique> <up>    <Plug>SchleppUp
+vmap <unique> <down>  <Plug>SchleppDown
+vmap <unique> <left>  <Plug>SchleppLeft
+vmap <unique> <right> <Plug>SchleppRight
+vmap <unique> Dk <Plug>SchleppDupUp
+vmap <unique> Dj <Plug>SchleppDupDown
+vmap <unique> Dh <Plug>SchleppDupLeft
+vmap <unique> Dl <Plug>SchleppDupRight
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 nnoremap <silent><F5> :GundoToggle<cr>
