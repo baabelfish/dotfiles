@@ -182,7 +182,7 @@ autocmd FileType matlab set filetype=octave
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
-autocmd VimResized * exe "normal! \<c-w>="
+" autocmd VimResized * exe "normal! \<c-w>="
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
 
 

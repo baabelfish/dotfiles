@@ -126,7 +126,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Bar
 bar {
     modifier         Mod4
-    tray_output      LVDS1
+    tray_output      primary
     mode             hide
     status_command   i3status
     position         bottom
