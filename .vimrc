@@ -19,6 +19,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 
+NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'AndrewRadev/switch.vim'
