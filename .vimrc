@@ -62,6 +62,7 @@ NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'scottymoon/vim-twilight'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'tpope/vim-abolish'
@@ -82,7 +83,7 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
-NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
+" NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
 NeoBundleCheck
 
@@ -544,6 +545,8 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 endif
 
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
 
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
