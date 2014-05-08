@@ -19,7 +19,6 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
