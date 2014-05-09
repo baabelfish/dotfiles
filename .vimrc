@@ -9,7 +9,8 @@
 " cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
 " cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
+set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
+set rtp+=/usr/share/go/misc/vim
 
 if has('vim_starting')
   set nocompatible
@@ -19,6 +20,7 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" NeoBundle 'fatih/vim-go'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
