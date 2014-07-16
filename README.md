@@ -1,9 +1,3 @@
-dotfiles
-========
-
-First of all, I must state that not everything in this repo was originally produced by me.
-
-
 Dependencies
 ============
 
