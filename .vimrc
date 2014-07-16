@@ -20,7 +20,6 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" NeoBundle 'fatih/vim-go'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'AndrewRadev/gapply.vim'
 NeoBundle 'paradigm/TextObjectify'
@@ -90,6 +89,7 @@ NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
 NeoBundle 'tomtom/tComment_vim'
+NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
 NeoBundleCheck
 
