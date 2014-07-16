@@ -29,6 +29,18 @@ passu() {
   pass --clip $* && killall gpg-agent
 }
 
+passi() {
+  pass git pull && pass insert $* && pass git push origin master && killall gpg-agent
+}
+
+passr() {
+  pass git pull && pass rm $* && pass git push origin master && killall gpg-agent
+}
+
+passs() {
+  pass git pull --rebase origin master && pass git push origin master
+}
+
 # XMMS2
 alias xa='xmms2 add'
 alias xp='xmms2 prev'
