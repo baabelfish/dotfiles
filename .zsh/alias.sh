@@ -24,6 +24,11 @@ alias latex2pdf='latexmk -pdf -pvc'
 
 alias tree="tree -A"
 
+# password management
+passu() {
+  pass --clip $* && killall gpg-agent
+}
+
 # XMMS2
 alias xa='xmms2 add'
 alias xp='xmms2 prev'

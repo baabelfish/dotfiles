@@ -28,6 +28,7 @@ bindsym $mod+Shift+Return exec urxvtc -T "float"
 bindsym $mod+Shift+t exec urxvtc -T "float"
 
 bindsym $mod+p exec --no-startup-id ~/.xutils/menu.sh
+bindsym $mod+Control+p exec --no-startup-id ~/.xutils/pass.sh
 bindsym $mod+Shift+p exec --no-startup-id gmrun
 # bindsym $mod+Shift+p exec --no-startup-id bmenu_run
 bindsym $mod+i move container to output left
