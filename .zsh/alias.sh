@@ -30,11 +30,11 @@ passu() {
 }
 
 passi() {
-  pass git pull && pass insert $* && pass git push origin master && killall gpg-agent
+  pass git pull origin master && pass insert $* && pass git push origin master && killall gpg-agent
 }
 
 passr() {
-  pass git pull && pass rm $* && pass git push origin master && killall gpg-agent
+  pass git pull origin master && pass rm $* && pass git push origin master && killall gpg-agent
 }
 
 passs() {
