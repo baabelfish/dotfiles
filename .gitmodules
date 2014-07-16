@@ -1,0 +1,6 @@
+[submodule ".zsh"]
+	path = .zsh
+	url = github:baabelfish/dotfiles-zsh
+[submodule "temp/sigslots/lib/ytest"]
+	path = temp/sigslots/lib/ytest
+	url = https://github.com/baabelfish/ytest

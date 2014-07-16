@@ -21,6 +21,10 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NeoBundle 'fatih/vim-go'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'AndrewRadev/gapply.vim'
+NeoBundle 'paradigm/TextObjectify'
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -63,7 +67,7 @@ NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'scottymoon/vim-twilight'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Raimondi/delimitMate'
+" NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'tpope/vim-abolish'
@@ -74,6 +78,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tomtom/tcomment_vim'
@@ -84,7 +89,7 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
-" NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
+NeoBundle 'tomtom/tComment_vim'
 
 NeoBundleCheck
 
@@ -283,8 +288,8 @@ vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
-nnoremap <silent><space>F m':Unite -hide-status-line outline<cr>
-nnoremap <silent><space>f :CtrlPFunky<cr>
+nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
+nnoremap <silent><space>F :CtrlPFunky<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
@@ -308,6 +313,7 @@ nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
 nnoremap gV `[v`]
+nnoremap <expr> gP '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
 nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
 

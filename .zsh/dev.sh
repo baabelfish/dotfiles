@@ -1,5 +1,7 @@
 #!/bin/bash
 
+alias ccpp='g++ -g -std=c++11 -o main'
+
 source /home/$USER/.zsh/colors.sh
 DELTA=3
 
