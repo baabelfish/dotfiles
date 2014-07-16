@@ -82,6 +82,8 @@ flags = [
 '-I',
 './../include',
 '-I',
+'./lib',
+'-I',
 './include',
 '-I',
 '.',

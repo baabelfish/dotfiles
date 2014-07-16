@@ -4,8 +4,7 @@ feh --bg-center ~/.wallpapers/arch.png
 
 export AWT_TOOLKIT=XToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
-export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS='-Xmx2048m -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 
 xrandr --output LVDS1 --primary

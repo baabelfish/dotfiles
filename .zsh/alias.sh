@@ -7,7 +7,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-alias vim="~/.local/apps/vim/src/vim"
+# alias vim="~/.local/apps/vim/src/vim"
 
 cl() {
     clear
@@ -21,6 +21,8 @@ alias o="/home/$USER/.zsh/open.sh"
 alias WC="wicd-curses"
 alias r="tpm-filemanager"
 alias latex2pdf='latexmk -pdf -pvc'
+
+alias tree="tree -A"
 
 # XMMS2
 alias xa='xmms2 add'
@@ -176,3 +178,6 @@ bmuxn() {
   fi
 }
 
+eti() {
+  grep -i -r --line-number $* .
+}
