@@ -6,8 +6,8 @@
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " After:
-" cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
-" cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+" cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 set rtp+=/usr/share/go/misc/vim
@@ -25,6 +25,7 @@ NeoBundle 'AndrewRadev/gapply.vim'
 NeoBundle 'paradigm/TextObjectify'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Matt-Stevens/vim-systemd-syntax'
