@@ -7,6 +7,9 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+# alias vim="~/.local/apps/vim/src/vim"
+alias vim="[[ -e ~/.local/apps/vim/src/vim ]] && ~/.local/apps/vim/src/vim || /usr/bin/vim"
+
 cl() {
     clear
     for (( i = 0; i < $LINES; i++ )); do
@@ -21,6 +24,23 @@ alias r="tpm-filemanager"
 alias latex2pdf='latexmk -pdf -pvc'
 
 alias tree="tree -A"
+
+# password management
+passu() {
+  pass --clip $* && killall gpg-agent
+}
+
+passi() {
+  pass git pull origin master && pass insert $* && pass git push origin master && killall gpg-agent
+}
+
+passr() {
+  pass git pull origin master && pass rm $* && pass git push origin master && killall gpg-agent
+}
+
+passs() {
+  pass git pull --rebase origin master && pass git push origin master
+}
 
 # XMMS2
 alias xa='xmms2 add'
@@ -176,3 +196,6 @@ bmuxn() {
   fi
 }
 
+eti() {
+  grep -i -r --line-number $* .
+}

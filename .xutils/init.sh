@@ -6,6 +6,8 @@ if [[ -e /home/$USER/.xutils/.has_been_initialized ]]; then
   return
 fi
 
+sudo echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+
 # Install necessary apps
 sudo pacman -S wget openssh
 

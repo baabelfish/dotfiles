@@ -27,19 +27,20 @@ fi
 source ~/.zsh/helpers.sh
 
 SOURCES=(
-.zsh/colors.sh
-.zsh/zshsettings.sh
-.xutils/init.sh
-.zsh/alias.sh
-.zsh/help.sh
-.zsh/dev.sh
-.zsh/miscfuncs.sh
-.zsh/packages.sh
-.zsh/tags.sh
-.zsh/vimfuncs.sh
-.local/tpm/.config
+$HOME/.zsh/colors.sh
+$HOME/.zsh/zshsettings.sh
+$HOME/.xutils/init.sh
+$HOME/.zsh/alias.sh
+$HOME/.zsh/help.sh
+$HOME/.zsh/dev.sh
+$HOME/.zsh/miscfuncs.sh
+$HOME/.zsh/packages.sh
+$HOME/.zsh/tags.sh
+$HOME/.zsh/vimfuncs.sh
+$HOME/.local/tpm/.config
+/etc/bash_completion.d/password-store
 )
 
 for i in ${SOURCES[@]}; do
-    [[ -e "$HOME/$i" ]] && source "$HOME/$i"
+    [[ -e "$i" ]] && source "$i"
 done

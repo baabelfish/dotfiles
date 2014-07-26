@@ -6,8 +6,8 @@
 " mkdir ~/.vim/undodir
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " After:
-" cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak
-" cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+" cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
+" cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 set rtp+=/usr/share/go/misc/vim
@@ -20,8 +20,15 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" NeoBundle 'fatih/vim-go'
+" NeoBundle 'bbchung/clighter'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'junegunn/limelight.vim'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'AndrewRadev/gapply.vim'
+NeoBundle 'paradigm/TextObjectify'
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'Matt-Stevens/vim-systemd-syntax'
@@ -63,7 +70,7 @@ NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'scottymoon/vim-twilight'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Raimondi/delimitMate'
+" NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'tpope/vim-abolish'
@@ -74,6 +81,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tomtom/tcomment_vim'
@@ -84,7 +92,8 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'vim-scripts/django.vim'
 NeoBundle 'vim-scripts/octave.vim--'
 NeoBundle 'vim-scripts/surrparen'
-" NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
+NeoBundle 'tomtom/tComment_vim'
+NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
 NeoBundleCheck
 
@@ -279,6 +288,7 @@ onoremap <silent><leader>j :<C-U>VertigoDown o<cr>
 onoremap <silent><leader>k :<C-U>VertigoUp o<cr>
 vnoremap <silent><leader>j :<C-U>VertigoDown v<cr>
 vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
+nnoremap <silent><leader><space> :Goyo<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
@@ -308,6 +318,7 @@ nnoremap k gk
 nnoremap x "_x
 vnoremap x "_x
 nnoremap gV `[v`]
+nnoremap <expr> gP '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
 nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
 
@@ -577,6 +588,16 @@ cabbrev E e
 
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GoyoBefore()
+  Limelight
+endfunction
+
+function! GoyoAfter()
+  Limelight!
+endfunction
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
 function OpenCw()
   execute ":redraw"
   execute ":Copen"
