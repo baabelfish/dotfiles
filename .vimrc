@@ -20,6 +20,9 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'AndrewRadev/gapply.vim'
 NeoBundle 'paradigm/TextObjectify'
@@ -285,6 +288,7 @@ onoremap <silent><leader>j :<C-U>VertigoDown o<cr>
 onoremap <silent><leader>k :<C-U>VertigoUp o<cr>
 vnoremap <silent><leader>j :<C-U>VertigoDown v<cr>
 vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
+nnoremap <silent><leader><space> :Goyo<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
@@ -584,6 +588,16 @@ cabbrev E e
 
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GoyoBefore()
+  Limelight
+endfunction
+
+function! GoyoAfter()
+  Limelight!
+endfunction
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
 function OpenCw()
   execute ":redraw"
   execute ":Copen"

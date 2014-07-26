@@ -9,6 +9,10 @@ else
     alias magnetminer='export TERM=screen-256color && magnetminer'
 fi
 
+if test "$SSH_CONNECTION" != ""; then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+fi
+
 [[ -e /usr/share/git-flow/git-flow-completion.zsh ]] && source /usr/share/git-flow/git-flow-completion.zsh
 
 ################################################################################
