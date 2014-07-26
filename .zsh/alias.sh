@@ -8,6 +8,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # alias vim="~/.local/apps/vim/src/vim"
+alias vim="[[ -e ~/.local/apps/vim/src/vim ]] && ~/.local/apps/vim/src/vim || /usr/bin/vim"
 
 cl() {
     clear
