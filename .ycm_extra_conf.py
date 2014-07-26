@@ -48,7 +48,7 @@ flags = [
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=c++1y',
+'-std=c++11',
 '-I',
 '/usr/include/qt/QtWidgets',
 '-I',
