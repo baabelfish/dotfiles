@@ -21,7 +21,7 @@ autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
 # [[ -e /usr/bin/clipit ]] && clipit&
 [[ -e /usr/bin/udiskie ]] && udiskie&
-[[ -e /usr/bin/dunst ]] && dunst&
+# [[ -e /usr/bin/dunst ]] && dunst&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/compton ]] && compton&
 
