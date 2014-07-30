@@ -321,6 +321,13 @@ nnoremap gV `[v`]
 nnoremap <expr> gP '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
 nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
+nnoremap # #<c-o>:set hlsearch<cr>
+nnoremap H ^
+nnoremap L $
+nnoremap <silent><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+inoremap <c-l> <c-x><c-l>
+inoremap <c-f> <c-x><c-f>
+inoremap <c-e> <c-x><c-o>
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
@@ -333,7 +340,7 @@ nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
 
 " Refactoring
 nnoremap <leader>* :%s/\<<C-r><C-w>\>/
-nnoremap <leader>S yiwvip:s/<C-r>0/
+nnoremap S yiwvip:s/<C-r>0/
 
 " Misc
 nnoremap <leader>f :find 
@@ -351,6 +358,11 @@ nnoremap ¤ :'<,'>g/^/norm
 vnoremap ¤ :g/^/norm! 
 nnoremap ½ @q
 vnoremap ½ @q
+
+onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
+xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
+onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
+xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
 
 " Ex stuff
 nnoremap <leader>m :move.<left><left><left><left><left>
@@ -588,6 +600,19 @@ cabbrev E e
 
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:NextTextObject(motion, dir)
+  let c = nr2char(getchar())
+  if c ==# "b"
+    let c = "("
+  elseif c ==# "B"
+    let c = "{"
+  elseif c ==# "d"
+    let c = "["
+  endif
+  
+  exe "normal!".a:dir.c."v".a:motion.c
+endfunction
+
 function! GoyoBefore()
   Limelight
 endfunction
