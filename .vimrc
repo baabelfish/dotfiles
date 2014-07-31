@@ -429,6 +429,8 @@ let g:clang_format#style_options = {
 " let g:clojure_fuzzy_indent_patterns = ['.']
 " let g:clojure_fuzzy_indent_blacklist = []
 
+let g:goyo_width = 120
+
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
@@ -494,7 +496,7 @@ let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol='»'
 let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_tex_checkers = ['lacheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_warning_symbol='»'
@@ -613,10 +615,12 @@ endfunction
 
 function! GoyoBefore()
   Limelight
+  set scrolloff=999
 endfunction
 
 function! GoyoAfter()
   Limelight!
+  set scrolloff=0
 endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
