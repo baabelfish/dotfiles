@@ -321,7 +321,6 @@ nnoremap gV `[v`]
 nnoremap <expr> gP '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
 nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
-nnoremap # #<c-o>:set hlsearch<cr>
 nnoremap H ^
 nnoremap L $
 nnoremap <silent><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
@@ -549,9 +548,9 @@ let g:ycm_server_log_level = 'error'
 let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1,
       \ 'javascript' : 1,
-      \ 'tex' : 1,
       \ 'markdown' : 1,
       \ 'notes' : 1,
+      \ 'tex' : 1,
       \ 'text' : 1,
       \ 'unite' : 1,
       \ 'vim' : 1,

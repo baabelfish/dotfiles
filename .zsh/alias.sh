@@ -10,6 +10,8 @@ alias ......='cd ../../../../..'
 # alias vim="~/.local/apps/vim/src/vim"
 alias vim="[[ -e ~/.local/apps/vim/src/vim ]] && ~/.local/apps/vim/src/vim || /usr/bin/vim"
 
+alias initProject="bash <(curl -kL https://raw.github.com/baabelfish/templates/master/init.sh)"
+
 cl() {
     clear
     for (( i = 0; i < $LINES; i++ )); do
