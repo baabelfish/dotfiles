@@ -20,7 +20,6 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" NeoBundle 'bbchung/clighter'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
