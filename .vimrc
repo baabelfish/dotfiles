@@ -17,6 +17,16 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
+  echo "Setting vim up..."
+  echo ""
+  silent !mkdir ~/.vim/undodir
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
+  silent !cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
+  silent !cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+endif
+
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -302,6 +312,7 @@ nnoremap <silent><space>f :CtrlPFunky<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
+nnoremap <silent><space>l :CtrlPLine<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
