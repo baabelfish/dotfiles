@@ -292,8 +292,8 @@ vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><enter> :EasyAlign<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
-nnoremap <silent><space>f m':Unite -hide-status-line outline<cr>
-nnoremap <silent><space>F :CtrlPFunky<cr>
+nnoremap <silent><space>F m':Unite outline<cr>
+nnoremap <silent><space>f :CtrlPFunky<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
