@@ -1,5 +1,5 @@
 set $mod Mod4
-font pango:Termsyn 6
+font pango:Termsyn 8
 floating_modifier $mod
 
 workspace_auto_back_and_forth no
@@ -20,6 +20,9 @@ focus_follows_mouse no
 bindsym $mod+Shift+r restart
 bindsym $mod+Control+Shift+F4 i3-msg exit
 bindsym $mod+q kill
+
+# Panic button
+bindcode $mod+119 killall java
 
 # Terminal
 bindsym $mod+Return exec urxvtc

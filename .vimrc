@@ -326,6 +326,10 @@ nnoremap <silent><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 inoremap <c-e> <c-x><c-o>
+nnoremap <M-up> :resize +5<cr>
+nnoremap <M-down> :resize -5<cr>
+nnoremap <M-left> :vertical resize +5<cr>
+nnoremap <M-right> :vertical resize -5<cr>
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
