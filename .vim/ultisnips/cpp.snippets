@@ -278,7 +278,13 @@ namespace ${1:Name} {$0
 } // namespace $1
 endsnippet
 
-snippet for "C++11 auto for loop" !
+snippet fora "C++11 auto for loop" !
+for (auto ${1:it} = ${2:0}; $1 != ${3:value}; ${4:++$1}) {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet fori "C++11 size for loop" !
 for (std::size_t ${1:i} = ${2:0}; $1 < ${3:value}; ${4:++$1}) {
     ${VISUAL}$0
 }
@@ -305,6 +311,16 @@ snippet else "" !w
 else {
     ${VISUAL}$0
 }
+endsnippet
+
+snippet describe "" !w
+describe("${1}", [${2}]{
+});
+endsnippet
+
+snippet it "" !w
+it("${1}", [${2}]{
+});
 endsnippet
 
 snippet lisence_mit "MIT lisence" !
