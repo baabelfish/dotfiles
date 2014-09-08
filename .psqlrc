@@ -4,5 +4,5 @@
 \pset linestyle unicode
 \pset border 2
 \pset null ¤
-\pset format wrappedo
+\pset format wrapped
 \pset pager off
