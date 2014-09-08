@@ -1,0 +1,8 @@
+\set ON_ERROR_ROLLBACK interactive
+\set COMP_KEYWORD_CASE upper
+
+\pset linestyle unicode
+\pset border 2
+\pset null ¤
+\pset format wrappedo
+\pset pager off
