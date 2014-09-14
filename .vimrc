@@ -20,6 +20,7 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'xolox/vim-lua-inspect'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'Shougo/neomru.vim'
