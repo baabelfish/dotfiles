@@ -20,6 +20,8 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'leafo/moonscript-vim'
 NeoBundle 'junegunn/goyo.vim'
@@ -446,6 +448,8 @@ let g:gundo_right = 1
 let g:gundo_width = 40
 
 let g:livepreview_previewer = 'zathura'
+
+let g:lua_check_syntax = 0
 
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
