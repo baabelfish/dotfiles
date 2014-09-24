@@ -38,7 +38,6 @@ NeoBundle 'leafo/moonscript-vim'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'AndrewRadev/gapply.vim'
-NeoBundle 'paradigm/TextObjectify'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'jonathanfilip/vim-lucius'
@@ -528,6 +527,7 @@ let g:syntastic_warning_symbol='»'
 
 let g:switch_custom_definitions =
       \ [
+      \  ['yes', 'no' ],
       \  ['on', 'off' ],
       \  ['active', 'passive' ],
       \  ['start', 'stop' ],
