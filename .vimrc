@@ -138,7 +138,7 @@ set hidden
 set history=100
 set langmenu=en_US.UTF-8
 set laststatus=2
-set list listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
+set list listchars=tab:→\ ,trail:◥,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set nofoldenable foldmethod=syntax
