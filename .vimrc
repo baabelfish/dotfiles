@@ -1,14 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Prequests:
-" mkdir -p ~/.vim/bundle
-" git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-" sudo pacman -S the_silver_searcher
-" mkdir ~/.vim/undodir
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" After:
-" cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
-" cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 set rtp+=/usr/share/go/misc/vim
 
@@ -25,6 +14,8 @@ if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
   silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
   silent !cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
   silent !cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+  !sudo pacman -S the_silver_searcher --noconfirm
+  !sudo pacman -S ctags --noconfirm
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
