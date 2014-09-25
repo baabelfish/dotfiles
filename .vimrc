@@ -30,6 +30,8 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'idanarye/vim-dutyl'
 NeoBundle 'xolox/vim-lua-inspect'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-lua-ftplugin'
@@ -201,7 +203,6 @@ autocmd FileType cpp set nowrap
 autocmd FileType ejs set filetype=javascript
 autocmd FileType fish set filetype=sh
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
 autocmd FileType matlab set filetype=octave
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
@@ -313,6 +314,8 @@ nnoremap <silent><space>p :CtrlPCurWD<cr>
 nnoremap <silent><space>l :CtrlPLine<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
+nnoremap <silent><leader>a :TagbarToggle<cr>
+nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 inoremap <buffer> <c-j> <Plug>(unite_insert_leave)
 inoremap <buffer> <c-k> <Plug>(unite_insert_leave)
@@ -411,6 +414,11 @@ let g:airline_exclude_preview = 0
 let g:airline_powerline_fonts=1
 " let g:airline_right_sep = '◀'
 let g:airline_theme='wombat'
+let g:airline#extensions#tagbar#enabled = 1
+
+" let g:airline#extensions#tagbar#flags = 'f'
+" let g:airline#extensions#tagbar#flags = 's'
+" let g:airline#extensions#tagbar#flags = 'p'
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
@@ -535,6 +543,11 @@ let g:switch_custom_definitions =
       \  ['float', 'double' ],
       \  ['up', 'right', 'left', 'down' ]
       \ ]
+
+let g:tagbar_left = 1
+" let g:tagbar_width = 36
+let g:tagbar_compact = 1
+let g:tagbar_autoshowtag = 1
 
 let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
