@@ -398,17 +398,12 @@ let g:airline_detect_whitespace=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
 let g:airline_exclude_preview = 0
-" let g:airline_left_sep = '▶'
-" let g:airline_linecolumn_prefix = '¶'
-" let g:airline_paste_symbol = 'ρ'
 let g:airline_powerline_fonts=1
-" let g:airline_right_sep = '◀'
 let g:airline_theme='wombat'
 let g:airline#extensions#tagbar#enabled = 1
-
-" let g:airline#extensions#tagbar#flags = 'f'
-" let g:airline#extensions#tagbar#flags = 's'
-" let g:airline#extensions#tagbar#flags = 'p'
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#trailing_format = '%s'
+let g:airline#extensions#whitespace#mixed_indent_format = '%s'
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
