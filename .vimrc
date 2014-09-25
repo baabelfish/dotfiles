@@ -75,7 +75,6 @@ NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'scottymoon/vim-twilight'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'tpope/vim-abolish'
@@ -455,6 +454,7 @@ let g:goyo_width = 120
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
+let g:gundo_playback_delay = 200
 
 let g:livepreview_previewer = 'zathura'
 
@@ -463,7 +463,7 @@ let g:lua_check_syntax = 0
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
 
-let NERDTreeDirArrows = 0
+" let NERDTreeDirArrows = 0
 let NERDTreeHijackNetrw = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
@@ -535,7 +535,7 @@ let g:switch_custom_definitions =
       \  ['up', 'right', 'left', 'down' ]
       \ ]
 
-let g:tagbar_left = 1
+let g:tagbar_left = 0
 " let g:tagbar_width = 36
 let g:tagbar_compact = 1
 let g:tagbar_autoshowtag = 1
