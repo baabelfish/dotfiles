@@ -22,6 +22,7 @@ autoload -U colors && colors
 autoload -U compinit promptinit
 autoload -U select-word-style
 autoload -U zmv
+
 bindkey -v
 # set -o vi
 compinit
@@ -102,5 +103,9 @@ bindkey '^W' backward-delete-to-slash
 bindkey '^i' expand-or-complete-prefix
 bindkey -s '^O' '^qpopd && clear && l\n'
 bindkey "^R" history-incremental-pattern-search-backward 
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 stty -ixon

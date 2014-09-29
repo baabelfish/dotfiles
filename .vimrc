@@ -1,14 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Prequests:
-" mkdir -p ~/.vim/bundle
-" git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-" sudo pacman -S the_silver_searcher
-" mkdir ~/.vim/undodir
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" After:
-" cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
-" cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 set rtp+=/usr/share/go/misc/vim
 
@@ -17,15 +6,31 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
+  echo "Setting vim up..."
+  echo ""
+  silent !mkdir ~/.vim/undodir
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
+  silent !cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
+  silent !cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang
+  !sudo pacman -S the_silver_searcher --noconfirm
+  !sudo pacman -S ctags --noconfirm
+endif
+
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'idanarye/vim-dutyl'
+NeoBundle 'xolox/vim-lua-inspect'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-lua-ftplugin'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'leafo/moonscript-vim'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'junegunn/limelight.vim'
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'AndrewRadev/gapply.vim'
-NeoBundle 'paradigm/TextObjectify'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'jonathanfilip/vim-lucius'
@@ -70,7 +75,6 @@ NeoBundle 'mrtazz/DoxygenToolkit.vim'
 NeoBundle 'scottymoon/vim-twilight'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'tpope/vim-abolish'
@@ -134,7 +138,7 @@ set hidden
 set history=100
 set langmenu=en_US.UTF-8
 set laststatus=2
-set list listchars=tab:→\ ,trail:·,extends:↷,precedes:↶,nbsp:█
+set list listchars=tab:→\ ,trail:◥,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set nofoldenable foldmethod=syntax
@@ -189,7 +193,6 @@ autocmd FileType cpp set nowrap
 autocmd FileType ejs set filetype=javascript
 autocmd FileType fish set filetype=sh
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-autocmd FileType js nnoremap <silent><space>b :%!js-beautify -i<cr>
 autocmd FileType matlab set filetype=octave
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
@@ -298,9 +301,16 @@ nnoremap <silent><space>f :CtrlPFunky<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
 nnoremap <silent><space>p :CtrlPCurWD<cr>
+nnoremap <silent><space>l :CtrlPLine<cr>
 nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
+nnoremap <silent><leader>a :TagbarToggle<cr>
+nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
+inoremap <buffer> <c-j> <Plug>(unite_insert_leave)
+inoremap <buffer> <c-k> <Plug>(unite_insert_leave)
+nnoremap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
+nnoremap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -388,12 +398,12 @@ let g:airline_detect_whitespace=0
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=0
 let g:airline_exclude_preview = 0
-" let g:airline_left_sep = '▶'
-" let g:airline_linecolumn_prefix = '¶'
-" let g:airline_paste_symbol = 'ρ'
 let g:airline_powerline_fonts=1
-" let g:airline_right_sep = '◀'
 let g:airline_theme='wombat'
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#trailing_format = '%s'
+let g:airline#extensions#whitespace#mixed_indent_format = '%s'
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
@@ -439,13 +449,16 @@ let g:goyo_width = 120
 let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
+let g:gundo_playback_delay = 200
 
 let g:livepreview_previewer = 'zathura'
+
+let g:lua_check_syntax = 0
 
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
 
-let NERDTreeDirArrows = 0
+" let NERDTreeDirArrows = 0
 let NERDTreeHijackNetrw = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
@@ -508,6 +521,7 @@ let g:syntastic_warning_symbol='»'
 
 let g:switch_custom_definitions =
       \ [
+      \  ['yes', 'no' ],
       \  ['on', 'off' ],
       \  ['active', 'passive' ],
       \  ['start', 'stop' ],
@@ -515,6 +529,11 @@ let g:switch_custom_definitions =
       \  ['float', 'double' ],
       \  ['up', 'right', 'left', 'down' ]
       \ ]
+
+let g:tagbar_left = 0
+" let g:tagbar_width = 36
+let g:tagbar_compact = 1
+let g:tagbar_autoshowtag = 1
 
 let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
@@ -791,6 +810,24 @@ call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ 'lib/Cake/',
+      \ 'node_modules/',
+      \ 'vendor/',
+      \ 'Vendor/',
+      \ 'app_old/',
+      \ 'acf-laravel/',
+      \ 'plugins/',
+      \ 'bower_components/',
+      \ '.sass-cache',
+      \ 'web/wp',
+      \ ], '\|'))
+
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
