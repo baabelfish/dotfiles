@@ -138,7 +138,7 @@ set hidden
 set history=100
 set langmenu=en_US.UTF-8
 set laststatus=2
-set list listchars=tab:→\ ,trail:◥,extends:▸,precedes:◂,nbsp:␣
+set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set nofoldenable foldmethod=syntax
@@ -157,6 +157,7 @@ set showcmd
 set showfulltag
 set splitbelow splitright
 set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
+set synmaxcol=1024
 set t_vb= novisualbell noerrorbells
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
