@@ -22,6 +22,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'tommcdo/vim-kangaroo'
 NeoBundle 'idanarye/vim-dutyl'
 NeoBundle 'xolox/vim-lua-inspect'
 NeoBundle 'xolox/vim-misc'
