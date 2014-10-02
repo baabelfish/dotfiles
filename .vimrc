@@ -313,10 +313,6 @@ nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
-inoremap <buffer> <c-j> <Plug>(unite_insert_leave)
-inoremap <buffer> <c-k> <Plug>(unite_insert_leave)
-nnoremap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
-nnoremap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
