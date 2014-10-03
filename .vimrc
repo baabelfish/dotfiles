@@ -79,7 +79,6 @@ NeoBundle 'tommcdo/vim-fugitive-blame-ext'
 NeoBundle 'tommcdo/vim-kangaroo'
 NeoBundle 'tommcdo/vim-ninja-feet'
 NeoBundle 'tomtom/tComment_vim'
-NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-classpath'
 NeoBundle 'tpope/vim-eunuch'
@@ -102,7 +101,6 @@ NeoBundle 'vim-scripts/surrparen'
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'xolox/vim-lua-inspect'
 NeoBundle 'xolox/vim-misc'
-NeoBundleLazy 'jiangmiao/auto-pairs', { 'autoload' : { 'filetypes' : ['clojure', 'html'] } }
 
 NeoBundleCheck
 
