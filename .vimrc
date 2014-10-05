@@ -21,6 +21,10 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'gcmt/wildfire.vim'
+NeoBundle 'tommcdo/vim-lion'
+NeoBundle 'bps/vim-textobj-python'
+NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'AndrewRadev/gapply.vim'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -595,6 +599,12 @@ endif
 
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+
+let g:wildfire_objects = {
+    \ "*" : ["i'", 'i"', "ia", "i)", "i]", "i}", "ip"],
+    \ "html,xml" : ["it", "at"],
+    \}
+
 
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
