@@ -36,4 +36,3 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 8 50 &
 xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
 
 [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
-# exec i3

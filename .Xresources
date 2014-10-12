@@ -50,6 +50,11 @@ URxvt.keysym.C-S-Down: perl:font-size:decglobal
 ! URxvt.blurRadius:           5
 ! URxvt.fading:               30
 
+! URxvt.transparent:          true
+! URxvt.shading:              25
+! URxvt.blurRadius:           25
+! URxvt.fading:               0
+
 XTerm*borderWidth: 0
 XTerm*termName: xterm-256color
 XTerm*locale: true

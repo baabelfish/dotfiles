@@ -383,6 +383,7 @@ nnoremap ¤ :'<,'>g/^/norm
 vnoremap ¤ :g/^/norm! 
 nnoremap ½ @q
 vnoremap ½ @q
+nnoremap å :w<cr>
 
 onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
