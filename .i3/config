@@ -132,7 +132,8 @@ bar {
     modifier         Mod4
     tray_output      primary
     mode             hide
-    status_command   i3status
+    status_command   i3blocks
+    # status_command   i3status
     position         bottom
 
     colors {
@@ -151,9 +152,13 @@ bindsym $mod+F5 exec --no-startup-id i3lock -c 090909
 bindsym $mod+shift+F5 exec ~/.xutils/suspend.sh
 
 # Volume keys
-bindsym $mod+F1 exec --no-startup-id ~/.xutils/gvol.sh -t
-bindsym $mod+F2 exec --no-startup-id ~/.xutils/gvol.sh -d 4
-bindsym $mod+F3 exec --no-startup-id ~/.xutils/gvol.sh -i 4
+# bindsym $mod+F1 exec --no-startup-id ~/.xutils/gvol.sh -t
+# bindsym $mod+F2 exec --no-startup-id ~/.xutils/gvol.sh -d 4
+# bindsym $mod+F3 exec --no-startup-id ~/.xutils/gvol.sh -i 4
+# FIXME && pkill -RTMIN+1 i3bloc
+bindsym $mod+F1 exec --no-startup-id ponymix -N toggle
+bindsym $mod+F2 exec --no-startup-id ponymix -N decrease 2
+bindsym $mod+F3 exec --no-startup-id ponymix -N increase 2
 bindsym XF86AudioMute exec --no-startup-id ~/.xutils/gvol.sh -t
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.xutils/gvol.sh -i 4
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xutils/gvol.sh -d 4
