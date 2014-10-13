@@ -160,6 +160,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xutils/gvol.sh -d 4
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next && notify-send "$(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)" -t 2000
+bindsym $mod+shift+F4 exec --no-startup-id playerctl next
 bindsym $mod+F4 exec --no-startup-id playerctl play-pause
 bindsym $mod+n exec --no-startup-id playerctl next
 
