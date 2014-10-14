@@ -1,7 +1,7 @@
 #!/bin/sh
 
-rm -rf ~/.local/apps/i3
 mkdir -p ~/.local/apps
+rm -rf ~/.local/apps/i3
 cd ~/.local/apps
 git clone --depth=1 https://github.com/o4dev/i3
 cd i3
