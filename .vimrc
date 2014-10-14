@@ -668,13 +668,13 @@ endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
-function OpenCw()
+function! OpenCw()
   execute ":redraw"
   execute ":Copen"
   execute ":bo cw 2"
 endfunc
 
-function SynStack()
+function! SynStack()
   if !exists("*synstack")
     return
   endif
