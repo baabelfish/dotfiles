@@ -163,12 +163,12 @@ bindsym $mod+F3 exec --no-startup-id ponymix -N increase 2 && pkill -RTMIN+1 i3b
 bindsym XF86AudioMute exec --no-startup-id ~/.xutils/gvol.sh -t
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.xutils/gvol.sh -i 4
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.xutils/gvol.sh -d 4
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioNext exec --no-startup-id playerctl next && notify-send "$(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)" -t 2000
-bindsym $mod+shift+F4 exec --no-startup-id playerctl next
-bindsym $mod+F4 exec --no-startup-id playerctl play-pause
-bindsym $mod+n exec --no-startup-id playerctl next
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioNext exec --no-startup-id playerctl next && pkill -RTMIN+10 i3blocks
+bindsym $mod+shift+F4 exec --no-startup-id playerctl next && pkill -RTMIN+10 i3blocks
+bindsym $mod+F4 exec --no-startup-id playerctl play-pause && pkill -RTMIN+10 i3blocks
+bindsym $mod+n exec --no-startup-id playerctl next && pkill -RTMIN+10 i3blocks
 
 # Monitors
 bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xutils/select_monitors.sh'
