@@ -103,6 +103,13 @@ bindcode $mod+47 focus parent
 bindsym $mod+c move scratchpad
 bindsym $mod+v scratchpad show floating toggle
 
+# Workspaces
+set $steam 5
+set $spotify 9
+assign[class="Spotify"] → $spotify
+assign[class="Steam"] → $steam
+for_window [class="^(Spotify)$"] border pixel 0
+
 # Switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -171,6 +178,8 @@ bindsym $mod+n exec --no-startup-id playerctl next && pkill -RTMIN+10 i3blocks
 bindsym $mod+F6 exec --no-startup-id urxvt -T float +hold -e zsh -c '~/.xutils/select_monitors.sh'
 bindsym $mod+F7 exec --no-startup-id ~/.xutils/toggle_compton.sh
 bindsym $mod+Shift+F8 exec --no-startup-id "killall compton; compton"
+bindsym XF86MonBrightnessDown exec xbacklight - 5
+bindsym XF86MonBrightnessUp exec xbacklight + 5
 
 # Configuration commands
 bindsym $mod+F9  exec --no-startup-id urxvt -T float -e zsh -c alsamixer
@@ -185,6 +194,7 @@ bindsym $mod+Shift+F11 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.Xde
 
 # Window orientations
 for_window [class="^Amnesia$"] floating enable
+for_window [class="^Awesomenauts$"] floating enable
 for_window [class="^Braid$"] floating enable
 for_window [class="^Closure$"] floating enable
 for_window [class="^Defcon$"] floating enable
@@ -192,7 +202,6 @@ for_window [class="^DungeonDefenders-x86$"] floating enable
 for_window [class="^Dustforce$"] floating enable
 for_window [class="^FTL$"] floating enable
 for_window [class="^FrozenSynapse$"] floating enable
-for_window [class="^The Chaos Engine - Remastered$"] floating enable
 for_window [class="^Gmrun$"] floating enable
 for_window [class="^Guake$"] floating enable
 for_window [class="^Limbo$"] floating enable
@@ -200,35 +209,25 @@ for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Rochard$"] floating enable
 for_window [class="^SPAZ$"] floating enable
 for_window [class="^SPAZ$"] fullscreen
-for_window [class="^hl2_linux$"] floating enable
 for_window [class="^SpaceChem$"] floating enable
 for_window [class="^SpaceChem$"] fullscreen
 for_window [class="^Splice$"] floating enable
-for_window [class="^Spotify$"] floating enable
 for_window [class="^Steam$"] floating enable
-for_window [class="^Awesomenauts$"] floating enable
+for_window [class="^The Chaos Engine - Remastered$"] floating enable
 for_window [class="^Trine2.*$"] border none
 for_window [class="^Trine2.*$"] floating enable
 for_window [class="^Wine$"] floating enable
 for_window [class="^Yakuake$"] floating enable
 for_window [class="^feh$"] floating enable
+for_window [class="^hl2_linux$"] floating enable
 for_window [class="^hl_linux$"] floating enable
 for_window [title="^Dynamite Jack$"] floating enable
+for_window [title="^Grid$"] floating enable
 for_window [title="^Install.*$"] floating enable
-for_window [title="^TRON$"] floating enable
 for_window [title="^Product Activation$"] floating enable
 for_window [title="^Serious Sam 3 - Linux$"] floating enable
+for_window [title="^TRON$"] floating enable
 for_window [title="^float$"] floating enable
-for_window [title="^Grid$"] floating enable
 for_window [window_role="pop-up"] floating enable
 
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS1' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS2' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output LVDS3' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA2' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA1' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output VGA0' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI1' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output HDMI2' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP1' 0.9
-exec --no-startup-id sleep 3 && transset-df -n 'i3bar for output DP2' 0.9
+exec --no-startup-id sleep 3 && transset-df -n i3bar 0.7
