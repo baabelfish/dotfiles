@@ -1,13 +1,13 @@
 set $mod Mod4
-font pango:Termsyn 8
+font pango:Terminess Powerline 8
 floating_modifier $mod
 
 workspace_auto_back_and_forth no
 
 # class                  border   backgr.  text     indicator
 client.focused           #999999  #999999  #000000  #cccccc
-client.focused_inactive  #222222  #222222  #222222  #222222
-client.unfocused         #222222  #222222  #222222  #222222
+client.focused_inactive  #222222  #222222  #999999  #222222
+client.unfocused         #222222  #222222  #999999  #222222
 client.urgent            #992222  #992222  #222222  #222222
 client.background        #1d1d1d
 
@@ -88,7 +88,7 @@ bindcode $mod+Shift+94 split v
 # Layouts
 bindsym $mod+f fullscreen
 bindsym $mod+space layout toggle split
-bindsym $mod+Shift+space layout tabbed
+bindsym $mod+Shift+space layout stacked
 
 bindsym $mod+Tab focus mode_toggle
 bindsym $mod+Shift+Tab floating toggle
@@ -145,13 +145,13 @@ bar {
     position         bottom
 
     colors {
-        background         #1a1a1a
+        background         #202020
         statusline         #bbbbbb
 
                            #border #backgr #text
         focused_workspace  #606060 #404040 #58FF58
         inactive_workspace #606060 #202020 #777777
-        urgent_workspace   #ffffff #900000 #ff5555
+        urgent_workspace   #707070 #303030 #FFFFFF
    }
 }
 

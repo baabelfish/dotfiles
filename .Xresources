@@ -17,10 +17,6 @@ URxvt.borderLess:        no
 ! URxvt.buffered:          false
 URxvt.depth:             32
 URxvt.font:              xft:Terminess Powerline:size=8
-! URxvt.font:              xft:terminus-8
-! URxvt.font:              xft:Termsyn-10
-! URxvt*font: xft:DejaVu Sans Mono-10
-! URxvt.boldFont:          xft:Termsyn-10:style=bold
 URxvt.hold:              true
 URxvt.internalBorder:    0
 URxvt.jumpScroll:        true

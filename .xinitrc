@@ -18,7 +18,7 @@ xsetroot -cursor_name left_ptr&
 autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
-[[ -e /usr/bin/unclutter ]] && unclutter -idle 3 -noevents&
+[[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
 # [[ -e /usr/bin/clipit ]] && clipit&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 # [[ -e /usr/bin/dunst ]] && dunst&
