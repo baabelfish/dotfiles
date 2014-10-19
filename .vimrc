@@ -2,8 +2,10 @@ set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfi
 set rtp+=/usr/share/go/misc/vim
 
 if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+if has('nvim')
+  runtime! plugin/python_setup.vim
 endif
 
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
