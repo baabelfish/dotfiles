@@ -1,0 +1,48 @@
+#!/bin/bash
+
+LOCATION=~/.local/apps
+NAME=vim
+
+update() {
+    cd $NAME/src
+    wget "https://groups.google.com/group/vim_dev/attach/89c9d5c83ccf1231/pum-silent.diff?part=2&authuser=0" -O ycmpatch.diff
+    hg import ycmpatch.diff
+    [[ -e ./auto/config.cache ]] && rm ./auto/config.cache
+    ./configure \
+        --prefix=/usr \
+        --localstatedir=/var/lib/vim \
+        --with-features=huge \
+        --with-compiledby='Arch Linux' \
+        --enable-gpm \
+        --enable-acl \
+        --with-x=yes \
+        --enable-gui=gtk2 \
+        --enable-multibyte \
+        --enable-cscope \
+        --enable-netbeans \
+        --enable-perlinterp \
+        --enable-pythoninterp \
+        --disable-python3interp \
+        --enable-rubyinterp \
+        --enable-luainterp
+    make VIMRUNTIMEDIR=/usr/share/vim/vim74
+    make
+}
+
+if [[ "$1" == "install" ]]; then
+    cd $LOCATION
+    rm -rf $LOCATION/$NAME
+    hg clone https://vim.googlecode.com/hg/ $NAME
+    update
+elif [[ "$1" == "remove" ]]; then
+    rm -rf $LOCATION/$NAME
+elif [[ "$1" == "update" ]]; then
+    cd $LOCATION/$NAME
+    hg incoming --bundle incoming.hg && hg pull --update incoming.hg && update
+elif [[ "$1" == "exists" ]]; then
+    if [[ -e $LOCATION/$NAME/src/vim ]]; then
+        echo "yes"
+    else
+        echo "no"
+    fi
+fi
