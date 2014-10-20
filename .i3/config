@@ -149,7 +149,7 @@ bar {
     position         bottom
 
     colors {
-        background         #202020
+        background         #090909
         statusline         #bbbbbb
 
                            #border #backgr #text
