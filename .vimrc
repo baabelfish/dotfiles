@@ -273,14 +273,9 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
-vmap <unique> <up>    <Plug>SchleppUp
-vmap <unique> <down>  <Plug>SchleppDown
-vmap <unique> <left>  <Plug>SchleppLeft
-vmap <unique> <right> <Plug>SchleppRight
-vmap <unique> Dk <Plug>SchleppDupUp
-vmap <unique> Dj <Plug>SchleppDupDown
-vmap <unique> Dh <Plug>SchleppDupLeft
-vmap <unique> Dl <Plug>SchleppDupRight
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 nnoremap <silent><F5> :GundoToggle<cr>

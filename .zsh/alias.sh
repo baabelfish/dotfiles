@@ -76,7 +76,7 @@ alias alsi='alsi -u'
 # Package management
 alias pa='yaourt'
 alias pai='yaourt -S --noconfirm'
-alias par='sudo yaourt -R'
+alias par='yaourt -R'
 alias pau='yaourt -Syyu'
 alias pac='sudo pacman -Syc'
 
