@@ -20,6 +20,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'haya14busa/incsearch.vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
