@@ -38,4 +38,5 @@ if [[ "$(hostname)" == "edge" ]]; then
     xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
 fi
 
+eval "sleep 8 && transset-df -n i3bar 0.7"&
 [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
