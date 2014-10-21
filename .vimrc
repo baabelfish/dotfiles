@@ -1,5 +1,5 @@
-set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
-set rtp+=/usr/share/go/misc/vim
+" set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
+" set rtp+=/usr/share/go/misc/vim
 
 if has('vim_starting')
 endif
@@ -551,8 +551,8 @@ let g:indentLine_char = '│'
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsListSnippets="<Nul>"
-let g:UltiSnipsNoPythonWarning = 1
+let g:UltiSnipsListSnippets="<c-r><tab>"
+" let g:UltiSnipsNoPythonWarning = 1
 let g:UltiSnipsSnippetDirectories = ["ultisnips"]
 
 let g:unite_enable_ignore_case = 1
