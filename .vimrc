@@ -382,8 +382,7 @@ nnoremap ½ @q
 vnoremap ½ @q
 nnoremap å :w<cr>
 nnoremap Å :Gwrite<cr>
-nnoremap <space>å :Gcommit<cr>
-nnoremap <space>Å :Gcommit -a<cr>
+nnoremap <space>Å :Gcommit<cr>
 nnoremap <space>åi :w \| source $MYVIMRC \| PlugInstall<cr>
 nnoremap <space>åu :w \| source $MYVIMRC \| PlugUpdate<cr>
 nnoremap <space>åc :w \| source $MYVIMRC \| PlugClean<cr>
