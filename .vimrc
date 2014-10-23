@@ -20,6 +20,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/incsearch.vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
@@ -370,7 +371,7 @@ nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
 nnoremap ¤ :'<,'>g/^/norm 
-vnoremap ¤ :g/^/norm! 
+vnoremap ¤ :g/^/norm 
 nnoremap ½ @q
 vnoremap ½ @q
 nnoremap å :w<cr>
