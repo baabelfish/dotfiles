@@ -3,6 +3,8 @@ font pango:Terminess Powerline 8
 floating_modifier $mod
 
 workspace_auto_back_and_forth no
+popup_during_fullscreen leave_fullscreen
+force_display_urgency_hint 2000 ms
 
 # class                  border   backgr.  text     indicator
 client.focused           #999999  #999999  #000000  #cccccc
@@ -234,3 +236,5 @@ for_window [window_role="pop-up"] floating enable
 # Startup
 bindsym $mod+Mod5+h exec --no-startup-id urxvtc -title i3-launch-htop -e htop
 bindsym $mod+Mod5+c exec --no-startup-id chromium
+bindsym $mod+Mod5+s exec --no-startup-id spotify
+bindsym $mod+Mod5+Shift+s exec --no-startup-id steam
