@@ -111,6 +111,7 @@ set $steam 5
 set $spotify 9
 assign[class="Spotify"] → $spotify
 assign[class="Steam"] → $steam
+assign[class="NetBeans Platform.*"] → 3
 for_window [class="^(Spotify)$"] border pixel 0
 
 # Switch to workspace

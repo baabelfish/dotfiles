@@ -36,6 +36,8 @@ pip
 playerctl
 ponymix
 powerline-fonts-git
+rxvt-unicode
+rxvt-unicode-terminfo
 screen
 soprano
 spotify
@@ -45,12 +47,11 @@ the_silver_searcher
 tmux
 transset-df
 tree
+ttf-droid
 udiskie
 unclutter
-rxvt-unicode
-rxvt-unicode-terminfo
-urxvt-perls
 urxvt-font-size-git
+urxvt-perls
 weechat
 xautolock
 xcape-git
