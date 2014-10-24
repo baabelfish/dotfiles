@@ -103,7 +103,7 @@ Plug 'vim-scripts/django.vim'
 Plug 'vim-scripts/octave.vim--'
 Plug 'vim-scripts/surrparen'
 Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-lua-inspect'
+" Plug 'xolox/vim-lua-inspect'
 Plug 'xolox/vim-misc'
 
 if !has('nvim')
