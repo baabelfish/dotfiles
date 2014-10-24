@@ -8,9 +8,9 @@ TIME=$(echo "$COM" | awk '{print $3}')
 
 if [[ -n "$PERCENT" ]]; then
     if [[ "$DIRECTION" == "Discharging," ]]; then
-        echo -n "↓ "
+        echo -n "↓"
     else
-        echo -n "↑ "
+        echo -n "↑"
     fi
     if [[ -n "${TIME}" ]]; then
         echo "${PERCENT} (${TIME})"
