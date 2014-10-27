@@ -174,7 +174,7 @@ bindsym XF86AudioRaiseVolume exec ~/.xutils/audio.sh inc
 bindsym XF86AudioPrev exec ~/.xutils/audio.sh prev
 bindsym XF86AudioNext exec ~/.xutils/audio.sh next
 bindsym $mod+shift+F4 exec ~/.xutils/audio.sh next
-bindsym XF86AudioPlay ~/.xutils/audio.sh pause
+bindsym XF86AudioPlay exec ~/.xutils/audio.sh pause
 bindsym $mod+F4 exec ~/.xutils/audio.sh pause
 bindsym $mod+n exec ~/.xutils/audio.sh next
 
