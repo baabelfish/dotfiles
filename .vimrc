@@ -106,7 +106,7 @@ Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
 
 if !has('nvim')
-  Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+  " Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 endif
 
 call plug#end()
