@@ -10,4 +10,3 @@ else
     TOTAL=$(wicd-cli --wired -d)
     echo "- $IP"
 fi
-
