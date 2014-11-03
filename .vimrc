@@ -211,6 +211,7 @@ autocmd FileType ejs set filetype=javascript
 autocmd FileType fish set filetype=sh
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
 autocmd FileType matlab set filetype=octave
+autocmd FileType cljx set filetype=clj
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
