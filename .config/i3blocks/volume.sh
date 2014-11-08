@@ -1,9 +1,9 @@
 #!/bin/bash
 if ponymix is-muted; then
-    echo -n "✘ "
+    echo -n " ✖ "
 else
-    echo -n "♫ "
+    echo -n " ♫ "
 fi
 
 ponymix get-volume | tr -d '\n'
-echo "%"
+echo "% "

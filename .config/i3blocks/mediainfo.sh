@@ -7,11 +7,11 @@ if [[ $STATUS != "" ]]; then
     TRACK="$(playerctl metadata title | cut -d'(' -f1)"
     STR="$(echo "$ARTIST - $TRACK" | sed -e 's/^ *//' | sed -e 's/ *$//' | cut -c 1-50)"
 
-    echo -n "$STR"
+    echo -n " $STR"
     if [[ $STATUS == "Playing" ]]; then
         echo " (►)"
     elif [[ $STATUS == "Paused" ]]; then
-        echo " (Paused)"
+        echo " (Paused) "
     fi
 fi
 

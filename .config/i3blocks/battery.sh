@@ -15,24 +15,24 @@ if [[ -n "$PERCENT" ]]; then
     if [[ "$DIRECTION" == "Discharging," ]]; then
         if [[ $PERCENTNUMBER -lt 15 ]]; then
             DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
-            if [[ "$PERCENTNUMBER" -lt 6 ]]; then
+            if [[ "$PERCENTNUMBER" -lt 9 ]]; then
                 systemctl suspend
-            elif [[ "$PERCENTNUMBER" -lt 9 ]]; then
-                $DIR/notification.sh urgent "✘ Going to suspend now... Seriously!"
             elif [[ "$PERCENTNUMBER" -lt 12 ]]; then
+                $DIR/notification.sh urgent "✘ Going to suspend now... Seriously!"
+            elif [[ "$PERCENTNUMBER" -lt 15 ]]; then
                 $DIR/notification.sh urgent "✘ Going to suspend now..."
             else
                 $DIR/notification.sh warning "⚠ Battery is low"
             fi
         fi
-        echo -n "↓ "
+        echo -n " ☇ "
     else
-        echo -n "↑ "
+        echo -n " ☈ "
     fi
 
     if [[ -n "${TIME}" ]]; then
-        echo "${PERCENT} (${TIME})"
+        echo "${PERCENT} (${TIME}) "
     else
-        echo "${PERCENT}"
+        echo "${PERCENT} "
     fi
 fi

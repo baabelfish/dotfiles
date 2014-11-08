@@ -1,5 +1,5 @@
 set $mod Mod4
-font pango:Terminess Powerline 7
+font pango:Terminess Powerline 7.4
 floating_modifier $mod
 
 workspace_auto_back_and_forth no
@@ -149,7 +149,7 @@ bar {
     position         bottom
 
     colors {
-        background         #090909
+        background         #151515
         statusline         #bbbbbb
 
                            #border #backgr #text
