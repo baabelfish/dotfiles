@@ -106,7 +106,7 @@ Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
 
 if !has('nvim')
-  " Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+  Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 endif
 
 call plug#end()
@@ -151,7 +151,7 @@ set laststatus=2
 set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
-set nofoldenable foldmethod=syntax
+set nofoldenable foldmethod=manual
 set noshowmode
 set nospell
 set noswapfile
