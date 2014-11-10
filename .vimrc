@@ -396,19 +396,12 @@ nnoremap <leader>C :.copy
 " From others
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://bitbucket.org/s/dotfiles/src/tip/vim/vimrc
-nnoremap <silent><leader>h1 :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h2 :execute '2match InterestingWord2 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h4 :execute '4match InterestingWord4 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h5 :execute '5match InterestingWord5 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h6 :execute '6match InterestingWord6 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>hc1 :execute 'match'<cr>
-nnoremap <silent><leader>hc2 :execute '2match'<cr>
-nnoremap <silent><leader>hc3 :execute '3match'<cr>
-nnoremap <silent><leader>hc4 :execute '4match'<cr>
-nnoremap <silent><leader>hc5 :execute '5match'<cr>
-nnoremap <silent><leader>hc6 :execute '6match'<cr>
-nnoremap <silent><leader>hC :execute 'match \| 2match \| 3match \| 4match \| 5match \| 6match'<cr>
+nnoremap <silent><leader>h1 :match InterestingWord2 /\<<c-r><c-w>\>/<cr>
+nnoremap <silent><leader>h2 :2match InterestingWord1 /\<<c-r><c-w>\>/<cr>
+nnoremap <silent><leader>h3 :3match InterestingWord5 /\<<c-r><c-w>\>/<cr>
+nnoremap <silent><leader>H1 :match<cr>
+nnoremap <silent><leader>H2 :2match<cr>
+nnoremap <silent><leader>H3 :3match<cr>
 
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
