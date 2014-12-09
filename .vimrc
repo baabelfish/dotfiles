@@ -328,6 +328,8 @@ nnoremap K i<cr><Esc>k$
 nnoremap Y y$
 nnoremap ` '
 nnoremap ' `
+nnoremap gj j
+nnoremap gk k
 nnoremap j gj
 nnoremap k gk
 nnoremap x "_x
@@ -346,6 +348,8 @@ nnoremap <M-up> :resize +5<cr>
 nnoremap <M-down> :resize -5<cr>
 nnoremap <M-left> :vertical resize +5<cr>
 nnoremap <M-right> :vertical resize -5<cr>
+
+nnoremap J mzJ`z
 
 " Shell interaction
 nnoremap <M-S> :shell<cr>
