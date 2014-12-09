@@ -20,7 +20,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
