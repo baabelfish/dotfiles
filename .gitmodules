@@ -1,3 +1,9 @@
 [submodule ".zsh"]
 	path = .zsh
 	url = github:baabelfish/dotfiles-zsh
+[submodule ".modules/tpm-prompt"]
+	path = .modules/tpm-prompt
+	url = https://github.com/baabelfish/tpm-prompt
+[submodule ".modules/tpm-filemanagement"]
+	path = .modules/tpm-filemanagement
+	url = https://github.com/baabelfish/tpm-filemanagement

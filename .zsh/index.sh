@@ -37,7 +37,7 @@ $HOME/.zsh/miscfuncs.sh
 $HOME/.zsh/packages.sh
 $HOME/.zsh/tags.sh
 $HOME/.zsh/vimfuncs.sh
-$HOME/.local/tpm/.config
+$HOME/.modules/source.sh
 /etc/bash_completion.d/password-store
 )
 
