@@ -1,4 +1,7 @@
 #!/bin/bash
+
+export PATH="$HOME/.local/bin:$PATH"
+
 # Start X-session when logged in from tty1
 if [[ -z "$DISPLAY" ]] && [[ $(tty) =~ /dev/tty ]]; then
     clear
