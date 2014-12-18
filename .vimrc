@@ -22,7 +22,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'airblade/vim-gitgutter'
-Plug 'haya14busa/incsearch.vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -267,9 +266,6 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 nnoremap <silent><F5> :GundoToggle<cr>
