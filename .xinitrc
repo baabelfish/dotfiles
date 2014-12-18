@@ -1,6 +1,6 @@
 #!/bin/bash
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-feh --bg-center ~/.wallpapers/arch.png
+feh --bg-center ~/.wallpaper
 
 export AWT_TOOLKIT=XToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1
