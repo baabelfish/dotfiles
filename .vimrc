@@ -20,6 +20,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'idanarye/vim-vebugger'
+Plug 'idanarye/vim-merginal'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/gapply.vim'
@@ -105,9 +107,9 @@ Plug 'xolox/vim-lua-ftplugin'
 " Plug 'xolox/vim-lua-inspect'
 Plug 'xolox/vim-misc'
 
-if !has('nvim')
+" if !has('nvim')
   Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.vim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
-endif
+" endif
 
 call plug#end()
 
@@ -464,6 +466,8 @@ let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
 let g:gundo_playback_delay = 200
+
+let g:indentLine_faster = 1
 
 let g:livepreview_previewer = 'zathura'
 
