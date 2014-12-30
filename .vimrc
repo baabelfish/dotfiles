@@ -873,8 +873,8 @@ function! Ag_textobj(motion_wiseness)
   let stop_col = stop[2]
   " echo linestart colstart
   if start_line == stop_line
-      let stuff = getline(start_line)[ start_col - 1 : stop_col ]
-      let command = 'Ag ' .'"' . stuff . '"'
+      let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
+      let command = 'Ag! ' . '"' . stuff . '"'
       exec command
   endif
   " echo a:motion_wiseness
