@@ -862,6 +862,25 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'web/wp',
       \ ], '\|'))
 
+map _ <Plug>(operator-adjust)
+call operator#user#define('adjust', 'Ag_textobj')
+function! Ag_textobj(motion_wiseness)
+  let start = getpos("'[")
+  let stop = getpos("']")
+  let start_line = start[1]
+  let start_col = start[2]
+  let stop_line = stop[1]
+  let stop_col = stop[2]
+  " echo linestart colstart
+  if start_line == stop_line
+      let stuff = getline(start_line)[ start_col - 1 : stop_col ]
+      let command = 'Ag ' .'"' . stuff . '"'
+      exec command
+  endif
+  " echo a:motion_wiseness
+  " normal! zz
+endfunction
+
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
