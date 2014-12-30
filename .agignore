@@ -1,0 +1,11 @@
+.git
+.svn
+.tags
+bower_components
+components
+coverage
+log
+node_modules
+public
+tmp
+vendor

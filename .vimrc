@@ -20,6 +20,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'rking/ag.vim'
+Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-vebugger'
 Plug 'idanarye/vim-merginal'
 Plug 'Yggdroot/indentLine'
@@ -59,6 +61,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-gtfo'
 Plug 'jwhitley/vim-matchit'
+Plug 'kana/vim-operator-user'
 Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
@@ -268,6 +271,7 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
+map g/ <Plug>(operator-ag)
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 nnoremap <silent><F5> :GundoToggle<cr>
@@ -445,6 +449,10 @@ let g:bl_no_implystart = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
+
+let g:agprg="ag --smart-case --column"
+let g:aghighlight=1
+let g:agformat="%f:%l:%m"
 
 let g:clang_user_options="-std=c++1y"
 
