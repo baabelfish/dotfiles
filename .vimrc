@@ -26,6 +26,10 @@ Plug 'idanarye/vim-vebugger'
 Plug 'idanarye/vim-merginal'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+<<<<<<< HEAD
+=======
+" Plug 'haya14busa/incsearch.vim'
+>>>>>>> asdf
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -271,7 +275,6 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
-map g/ <Plug>(operator-ag)
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 nnoremap <silent><F5> :GundoToggle<cr>
