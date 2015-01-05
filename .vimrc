@@ -24,12 +24,8 @@ Plug 'rking/ag.vim'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-vebugger'
 Plug 'idanarye/vim-merginal'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-<<<<<<< HEAD
-=======
-" Plug 'haya14busa/incsearch.vim'
->>>>>>> asdf
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -869,7 +865,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'web/wp',
       \ ], '\|'))
 
-map _ <Plug>(operator-adjust)
+map g? <Plug>(operator-adjust)
 call operator#user#define('adjust', 'Ag_textobj')
 function! Ag_textobj(motion_wiseness)
   let start = getpos("'[")
@@ -884,8 +880,6 @@ function! Ag_textobj(motion_wiseness)
       let command = 'Ag! ' . '"' . stuff . '"'
       exec command
   endif
-  " echo a:motion_wiseness
-  " normal! zz
 endfunction
 
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
