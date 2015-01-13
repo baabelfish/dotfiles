@@ -16,7 +16,8 @@ if [[ -n "$PERCENT" ]]; then
         if [[ $PERCENTNUMBER -lt 15 ]]; then
             DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
             if [[ "$PERCENTNUMBER" -lt 9 ]]; then
-                systemctl suspend
+                $DIR/notification.sh urgent "✘ BATTERY!!!!"
+                # systemctl suspend
             elif [[ "$PERCENTNUMBER" -lt 12 ]]; then
                 $DIR/notification.sh urgent "✘ Going to suspend now... Seriously!"
             elif [[ "$PERCENTNUMBER" -lt 15 ]]; then

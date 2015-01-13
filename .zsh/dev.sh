@@ -1,6 +1,8 @@
 #!/bin/bash
 
-alias ccpp='g++ -g -std=c++11 -o main'
+ccpp() {
+    clang++ -g -std=c++1y $* -o main && ./main
+}
 
 source /home/$USER/.zsh/colors.sh
 DELTA=3

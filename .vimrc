@@ -157,7 +157,7 @@ set laststatus=2
 set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
-set nofoldenable foldmethod=manual
+set nofoldenable foldmethod=syntax
 set noshowmode
 set nospell
 set noswapfile

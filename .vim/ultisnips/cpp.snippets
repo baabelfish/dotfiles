@@ -1,3 +1,11 @@
+snippet ro5 "" !w
+${1:C}(const $1&) = default;
+$1($1&&) = default;
+$1& operator=(const $1&)& = default;
+$1& operator=($1&&)& = default;
+virtual ~$1() {}
+endsnippet
+
 snippet cenum "" !w
 enum class ${1:Name} {
     $0
