@@ -43,17 +43,19 @@ Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
+Plug 'Raimondi/delimitMate'
 Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
 Plug 'bps/vim-textobj-python'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dag/vim-fish'
 Plug 'drmikehenry/vim-fixkey'
-Plug 'gcmt/wildfire.vim'
 Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
 Plug 'guns/vim-sexp'
 Plug 'guns/vim-slamhound'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
 Plug 'idanarye/vim-dutyl'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'junegunn/goyo.vim'
@@ -413,13 +415,14 @@ nnoremap <silent><leader>H3 :3match<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:BASH_Ctrl_j = 'off'
 
-let g:airline_branch_prefix = ''
+" let g:airline_branch_prefix = ''
 let g:airline_detect_iminsert=0
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
-let g:airline_detect_whitespace=0
-let g:airline_enable_branch=1
-let g:airline_enable_syntastic=0
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#paste#enabled = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 let g:airline_exclude_preview = 0
 let g:airline_powerline_fonts=1
 let g:airline_theme='wombat'
@@ -456,6 +459,11 @@ let g:ctrlp_use_caching = 0
 let g:agprg="ag --smart-case --column"
 let g:aghighlight=1
 let g:agformat="%f:%l:%m"
+
+let g:clojure_syntax_keywords = {
+    \ 'clojureMacro': ["defproject", "defcustom"],
+    \ 'clojureFunc': ["string/join", "string/replace", "defroutes", "GET", "POST", "PUT", "DELETE"]
+    \ }
 
 let g:clang_user_options="-std=c++1y"
 
