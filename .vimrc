@@ -11,7 +11,6 @@ endif
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
   silent !mkdir ~/.vim/undodir
   silent !mkdir -p ~/.vim/autoload
-  silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
   ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
   !vim +'PlugUpdate | quit!'
@@ -485,6 +484,8 @@ let g:gundo_preview_bottom = 1
 let g:gundo_right = 1
 let g:gundo_width = 40
 let g:gundo_playback_delay = 200
+
+let g:gitgutter_max_signs = 4000
 
 let g:indentLine_faster = 1
 

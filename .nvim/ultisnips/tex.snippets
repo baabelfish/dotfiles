@@ -1,0 +1,40 @@
+snippet turha "" !w
+name: $1
+params: $2
+return: $0
+endsnippet
+
+snippet begin "block" !w
+\begin{$1}
+    $2
+\end{$1}
+endsnippet
+
+snippet frac "fraction"
+\frac{$1}{$2}$0
+endsnippet
+
+snippet section "" !w
+\section\{${1}\}$0
+endsnippet
+
+snippet cite "" !w
+\cite{$1}$0
+endsnippet
+
+snippet chapter "" !w
+\chapter\{${1}\}$0
+endsnippet
+
+snippet subsection "" !w
+\subsection\{${1}\}$0
+endsnippet
+
+snippet figure "" !bw
+\begin{figure}$1
+    \centering
+    \includegraphics[scale=${2:0.5}]{$3}
+    \caption{$4}
+    \label{$5}
+\end{figure}
+endsnippet
