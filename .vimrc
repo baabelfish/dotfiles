@@ -89,9 +89,9 @@ Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tomtom/tComment_vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-classpath'
+" Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fireplace'
+" Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
@@ -167,7 +167,7 @@ set number numberwidth=4
 set path+=.,**,,
 set pumheight=5
 set regexpengine=1
-set scrolljump=8 sidescroll=1
+set scrolljump=8 sidescroll=10
 set shortmess+=filmnrxoOtTI
 set showcmd
 set showfulltag
@@ -216,6 +216,7 @@ autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+autocmd FileType cpp nnoremap gd :YcmCompleter GoTo<cr>
 
 
 " Shortcuts
@@ -599,8 +600,8 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 let g:vimchant_spellcheck_lang = 'fi'
 
 let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0

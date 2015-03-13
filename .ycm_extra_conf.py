@@ -72,6 +72,8 @@ flags = [
 '-isystem',
 '../llvm/tools/clang/include',
 '-I',
+'/usr/local/include',
+'-I',
 '/usr/include/SFML',
 '-I',
 '/usr/include/c++/4.8.0',
