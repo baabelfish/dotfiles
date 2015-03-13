@@ -73,7 +73,6 @@ Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'rking/ag.vim'
 Plug 'scottymoon/vim-twilight'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'tacahiroy/ctrlp-funky'
@@ -106,6 +105,13 @@ Plug 'vim-scripts/surrparen'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
 
+if has('nvim')
+  " Plug 'benekastah/neomake'
+  Plug 'scrooloose/syntastic'
+else
+  Plug 'scrooloose/syntastic'
+endif
+
 call plug#end()
 
 filetype plugin indent on
@@ -130,6 +136,7 @@ endif
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread
+set updatetime=4000
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set complete-=i
@@ -206,13 +213,17 @@ autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+" autocmd! BufWritePost * Neomake
+" autocmd! CursorHold * Neomake
+
 
 
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
 let maplocalleader = 'ä'
-set pastetoggle=<F3>
+nnoremap <F3> :set paste! \| echo ""<cr>
+inoremap <F3> <c-o>:set paste! \| echo ""<cr>
 
 " Window related
 inoremap <C-q> <C-o>ciW
@@ -476,6 +487,10 @@ let g:gundo_width = 40
 let g:gundo_playback_delay = 200
 
 let g:gitgutter_max_signs = 4000
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+let g:gitgutter_signs = 1
 
 let g:indentLine_faster = 1
 
@@ -491,6 +506,8 @@ let NERDTreeHijackNetrw = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
+
+let g:neomake_verbose = 0
 
 let g:plug_window = 'topleft new'
 
@@ -599,6 +616,7 @@ let g:ycm_key_invoke_completion = '<c-e>'
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_server_log_level = 'error'
 let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1,
@@ -655,230 +673,230 @@ cabbrev E e
 
 " " Functions
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" function! s:NextTextObject(motion, dir)
-"   let c = nr2char(getchar())
-"   if c ==# "b"
-"     let c = "("
-"   elseif c ==# "B"
-"     let c = "{"
-"   elseif c ==# "d"
-"     let c = "["
-"   endif
-"   
-"   exe "normal!".a:dir.c."v".a:motion.c
-" endfunction
-"
-" function! GoyoBefore()
-"   Limelight
-"   set scrolloff=999
-" endfunction
-"
-" function! GoyoAfter()
-"   Limelight!
-"   set scrolloff=0
-" endfunction
-"
-" let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-"
-" function! OpenCw()
-"   execute ":redraw"
-"   execute ":Copen"
-"   execute ":bo cw 2"
-" endfunc
-"
-" function! SynStack()
-"   if !exists("*synstack")
-"     return
-"   endif
-"   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-" endfunc
-"
-" fun! <SID>StripTrailingWhitespaces()
-"   let l = line(".")
-"   let c = col(".")
-"   silent! %s/\s\+$//e
-"   call cursor(l, c)
-" endfun
-"
-" fun! SelectFunction(inside)
-"   if &ft == "cpp" || &ft == "c" || &ft == "js" ||
-"         \ &ft == "java" || &ft == "js" || &ft == "cs" || &ft == "scala"
-"     execute "normal! V"
-"     if a:inside == 1
-"       execute "normal! iBiBiBiBiBiBiB"
-"     else
-"       execute "normal! aBaBaBaBaBaBaB"
-"     endif
-"     execute "normal! oV0"
-"   elseif &ft == 'clojure'
-"     execute "normal! V"
-"     if a:inside == 1
-"       execute "normal! ibibibibibibib"
-"     else
-"       execute "normal! ababababababab"
-"     endif
-"   elseif &ft == "vim"
-"     execute "normal! $"
-"     call search("^fun!.*(.*)", "b")
-"     if a:inside == 1
-"       execute "normal! j"
-"     endif
-"     execute "normal! V"
-"     call search("^endfun")
-"     if a:inside == 1
-"         execute "normal! k"
-"     endif
-"   endif
-" endfunction
-"
-" fun! CppHeaderToSource()
-"   let @z = input('Prefix: ')
-"   execute ":silent! g/^public\:/d"
-"   execute ":silent! g/^class/d"
-"   execute ":silent! g/protected\:/d"
-"   execute ":silent! g/^private\:/d"
-"   execute ":silent! g/^#include/d"
-"   execute ":silent! g/^#pragma/d"
-"   execute ":silent! g/}/d"
-"   execute ":silent! g/{/d"
-"   execute ":silent! g/^\s*$/d"
-"   execute ":%s/^\\s\\+//e"
-"   execute ":silent! g/^static/norm 0daw"
-"   execute ":silent! g/^virtual/norm 0daw"
-"   execute ":silent! g!/^.*(.*).*;/norm ddGp0f;Bd0f;xA()I, "
-"   execute ":silent! g/^.*(.*).*;/norm 0f(B\"zP"
-"   execute ":silent! g/^.*(.*).*;/norm f;C {o}"
-"   execute ":normal! G(xxkddVG"
-" endfunction
-"
-" function! NumberToggle()
-"   if(&relativenumber == 1)
-"     set number
-"   else
-"     set relativenumber
-"   endif
-" endfunc
-"
-" let g:dfm_fullscreen=0
-" let g:dfm_nd=0
-" function! Fullscreen()
-"   if g:dfm_nd
-"     call NoDistraction()
-"   endif
-"   if g:dfm_fullscreen
-"     tab close
-"     set showtabline=1
-"   else
-"     tab split
-"     set showtabline=0
-"   endif
-"   let g:dfm_fullscreen=!g:dfm_fullscreen
-" endfunction
-"
-" function! NoDistraction()
-"   SignifyToggle
-"   SyntasticToggleMode
-"   LiteDFMToggle
-"   set cursorline!
-"   let g:dfm_nd=!g:dfm_nd
-" endfunction
-"
-" function! ColorPicker(insert)
-"   let color = '\#' . expand('<cword>')
-"   let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
-"   if strlen(@z) != 0
-"     if a:insert == 0
-"       normal! diw"zP
-"     else
-"       let @z = '#' . @z
-"       normal! "zp
-"     endif
-"   endif
-" endfunction
-"
-" function! CurrentLineA()
-"   normal! 0
-"   let head_pos = getpos('.')
-"   normal! $
-"   let tail_pos = getpos('.')
-"   return ['v', head_pos, tail_pos]
-" endfunction
-"
-" function! CurrentLineI()
-"   normal! ^
-"   let head_pos = getpos('.')
-"   normal! g_
-"   let tail_pos = getpos('.')
-"   let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
-"   return
-"         \ non_blank_char_exists_p
-"         \ ? ['v', head_pos, tail_pos]
-"         \ : 0
-" endfunction
-"
-" function! StripTrailingWhitespace()
-"   let save_cursor = getpos(".")
-"   %s/\s\+$//e
-"   call setpos('.', save_cursor)
-" endfunction
-"
-"
-" " Textobjs
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" call textobj#user#plugin('line', {
-"       \   '-': {
-"       \     'select-a-function': 'CurrentLineA',
-"       \     'select-a': 'al',
-"       \     'select-i-function': 'CurrentLineI',
-"       \     'select-i': 'il',
-"       \   },
-"       \ })
-"
-"
-" " Random stuff
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-"       \ 'ignore_pattern', join([
-"       \ '\.git/',
-"       \ 'git5/.*/review/',
-"       \ 'google/obj/',
-"       \ 'tmp/',
-"       \ 'lib/Cake/',
-"       \ 'node_modules/',
-"       \ 'vendor/',
-"       \ 'Vendor/',
-"       \ 'app_old/',
-"       \ 'acf-laravel/',
-"       \ 'plugins/',
-"       \ 'bower_components/',
-"       \ '.sass-cache',
-"       \ 'web/wp',
-"       \ ], '\|'))
-"
-" map g? <Plug>(operator-adjust)
-" call operator#user#define('adjust', 'Ag_textobj')
-" function! Ag_textobj(motion_wiseness)
-"   let start = getpos("'[")
-"   let stop = getpos("']")
-"   let start_line = start[1]
-"   let start_col = start[2]
-"   let stop_line = stop[1]
-"   let stop_col = stop[2]
-"   " echo linestart colstart
-"   if start_line == stop_line
-"       let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
-"       let command = 'Ag! ' . '"' . stuff . '"'
-"       exec command
-"   endif
-" endfunction
-"
-" call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-" call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
-" call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
-" call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
-" call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
-" call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
+function! s:NextTextObject(motion, dir)
+  let c = nr2char(getchar())
+  if c ==# "b"
+    let c = "("
+  elseif c ==# "B"
+    let c = "{"
+  elseif c ==# "d"
+    let c = "["
+  endif
+
+  exe "normal!".a:dir.c."v".a:motion.c
+endfunction
+
+function! GoyoBefore()
+  Limelight
+  set scrolloff=999
+endfunction
+
+function! GoyoAfter()
+  Limelight!
+  set scrolloff=0
+endfunction
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
+function! OpenCw()
+  execute ":redraw"
+  execute ":Copen"
+  execute ":bo cw 2"
+endfunc
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  silent! %s/\s\+$//e
+  call cursor(l, c)
+endfun
+
+fun! SelectFunction(inside)
+  if &ft == "cpp" || &ft == "c" || &ft == "js" ||
+        \ &ft == "java" || &ft == "js" || &ft == "cs" || &ft == "scala"
+    execute "normal! V"
+    if a:inside == 1
+      execute "normal! iBiBiBiBiBiBiB"
+    else
+      execute "normal! aBaBaBaBaBaBaB"
+    endif
+    execute "normal! oV0"
+  elseif &ft == 'clojure'
+    execute "normal! V"
+    if a:inside == 1
+      execute "normal! ibibibibibibib"
+    else
+      execute "normal! ababababababab"
+    endif
+  elseif &ft == "vim"
+    execute "normal! $"
+    call search("^fun!.*(.*)", "b")
+    if a:inside == 1
+      execute "normal! j"
+    endif
+    execute "normal! V"
+    call search("^endfun")
+    if a:inside == 1
+        execute "normal! k"
+    endif
+  endif
+endfunction
+
+fun! CppHeaderToSource()
+  let @z = input('Prefix: ')
+  execute ":silent! g/^public\:/d"
+  execute ":silent! g/^class/d"
+  execute ":silent! g/protected\:/d"
+  execute ":silent! g/^private\:/d"
+  execute ":silent! g/^#include/d"
+  execute ":silent! g/^#pragma/d"
+  execute ":silent! g/}/d"
+  execute ":silent! g/{/d"
+  execute ":silent! g/^\s*$/d"
+  execute ":%s/^\\s\\+//e"
+  execute ":silent! g/^static/norm 0daw"
+  execute ":silent! g/^virtual/norm 0daw"
+  execute ":silent! g!/^.*(.*).*;/norm ddGp0f;Bd0f;xA()I, "
+  execute ":silent! g/^.*(.*).*;/norm 0f(B\"zP"
+  execute ":silent! g/^.*(.*).*;/norm f;C {o}"
+  execute ":normal! G(xxkddVG"
+endfunction
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+let g:dfm_fullscreen=0
+let g:dfm_nd=0
+function! Fullscreen()
+  if g:dfm_nd
+    call NoDistraction()
+  endif
+  if g:dfm_fullscreen
+    tab close
+    set showtabline=1
+  else
+    tab split
+    set showtabline=0
+  endif
+  let g:dfm_fullscreen=!g:dfm_fullscreen
+endfunction
+
+function! NoDistraction()
+  SignifyToggle
+  SyntasticToggleMode
+  LiteDFMToggle
+  set cursorline!
+  let g:dfm_nd=!g:dfm_nd
+endfunction
+
+function! ColorPicker(insert)
+  let color = '\#' . expand('<cword>')
+  let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
+  if strlen(@z) != 0
+    if a:insert == 0
+      normal! diw"zP
+    else
+      let @z = '#' . @z
+      normal! "zp
+    endif
+  endif
+endfunction
+
+function! CurrentLineA()
+  normal! 0
+  let head_pos = getpos('.')
+  normal! $
+  let tail_pos = getpos('.')
+  return ['v', head_pos, tail_pos]
+endfunction
+
+function! CurrentLineI()
+  normal! ^
+  let head_pos = getpos('.')
+  normal! g_
+  let tail_pos = getpos('.')
+  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+  return
+        \ non_blank_char_exists_p
+        \ ? ['v', head_pos, tail_pos]
+        \ : 0
+endfunction
+
+function! StripTrailingWhitespace()
+  let save_cursor = getpos(".")
+  %s/\s\+$//e
+  call setpos('.', save_cursor)
+endfunction
+
+
+" Textobjs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call textobj#user#plugin('line', {
+      \   '-': {
+      \     'select-a-function': 'CurrentLineA',
+      \     'select-a': 'al',
+      \     'select-i-function': 'CurrentLineI',
+      \     'select-i': 'il',
+      \   },
+      \ })
+
+
+" Random stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
+call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
+call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
+call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ 'lib/Cake/',
+      \ 'node_modules/',
+      \ 'vendor/',
+      \ 'Vendor/',
+      \ 'app_old/',
+      \ 'acf-laravel/',
+      \ 'plugins/',
+      \ 'bower_components/',
+      \ '.sass-cache',
+      \ 'web/wp',
+      \ ], '\|'))
+
+map g? <Plug>(operator-adjust)
+call operator#user#define('adjust', 'Ag_textobj')
+function! Ag_textobj(motion_wiseness)
+  let start = getpos("'[")
+  let stop = getpos("']")
+  let start_line = start[1]
+  let start_col = start[2]
+  let stop_line = stop[1]
+  let stop_col = stop[2]
+  " echo linestart colstart
+  if start_line == stop_line
+      let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
+      let command = 'Ag! ' . '"' . stuff . '"'
+      exec command
+  endif
+endfunction
+
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
+call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
+call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
+call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
+call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')

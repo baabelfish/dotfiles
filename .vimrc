@@ -487,6 +487,7 @@ let g:gundo_width = 40
 let g:gundo_playback_delay = 200
 
 let g:gitgutter_max_signs = 4000
+let g:gitgutter_sign_column_always = 1
 
 let g:indentLine_faster = 1
 
