@@ -12,12 +12,13 @@ clickable_url = true
 font = Terminus 8
 scrollback_lines = 10000
 search_wrap = true
-cursor_blink = system
+cursor_blink = off
 cursor_shap = block
 browser = chromium
+geometry = 800x600
 
 [colors]
 foreground = #d9d9d9
-background = rgba(25, 25, 25, 95)
+background = rgba(25, 25, 25, 0.95)
 highlight = #ffffff
 cursor = #ffffff
