@@ -70,7 +70,9 @@ Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'myint/syntastic-extras'
 Plug 'rking/ag.vim'
+Plug 'roktas/syntastic-more'
 Plug 'scottymoon/vim-twilight'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -136,7 +138,6 @@ endif
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread
-set updatetime=4000
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set complete-=i
@@ -213,9 +214,7 @@ autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-" autocmd! BufWritePost * Neomake
-" autocmd! CursorHold * Neomake
-
+autocmd CursorHold * SyntasticCheck
 
 
 " Shortcuts
@@ -549,22 +548,23 @@ let g:startify_custom_header = [
       \'',
       \ ]
 
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open=0
+let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/QtGui' ]
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
-let g:syntastic_error_symbol='»'
-let g:syntastic_javascript_checkers = ['jslint']
-let g:syntastic_tex_checkers = ['lacheck']
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_javascript_checkers = ['jslint', 'jshint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_warning_symbol='»'
+let g:syntastic_tex_checkers = ['lacheck']
+let g:syntastic_warning_symbol='✗'
+
 
 let g:switch_custom_definitions =
       \ [

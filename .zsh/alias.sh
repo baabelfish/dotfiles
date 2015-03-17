@@ -8,7 +8,8 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 # alias vim="~/.local/apps/vim/src/vim"
-alias vim="[[ -e ~/.local/apps/vim/src/vim ]] && ~/.local/apps/vim/src/vim || /usr/bin/vim"
+# alias vim="[[ -e ~/.local/apps/vim/src/vim ]] && ~/.local/apps/vim/src/vim || /usr/bin/vim"
+alias vi="[[ -e /usr/bin/nvim ]] && /usr/bin/nvim || /usr/bin/vim"
 
 alias initProject="bash <(curl -skL https://raw.github.com/baabelfish/templates/master/init.sh)"
 
