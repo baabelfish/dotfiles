@@ -1,0 +1,23 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = false
+clickable_url = true
+font = Terminus 8
+scrollback_lines = 10000
+search_wrap = true
+cursor_blink = system
+cursor_shap = block
+browser = chromium
+
+[colors]
+foreground = #d9d9d9
+background = rgba(25, 25, 25, 95)
+highlight = #ffffff
+cursor = #ffffff
