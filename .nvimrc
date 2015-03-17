@@ -21,7 +21,7 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'Mizuchi/STL-Syntax'
 Plug 'PeterRincker/vim-argumentative'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
@@ -454,6 +454,7 @@ let g:bl_no_implystart = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
+let g:ctrlp_max_height = 200
 
 let g:agprg="ag --smart-case --column"
 let g:aghighlight=1
