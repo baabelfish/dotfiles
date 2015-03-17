@@ -366,8 +366,8 @@ nnoremap S yiwvip:s/<C-r>0/
 
 " Misc
 nnoremap <leader>f :find 
-nnoremap <silent><leader><leader>s :so $MYVIMRC<cr>
-nnoremap <silent><leader><leader>v :e $MYVIMRC<cr>
+nnoremap <silent><leader><leader>s :so ~/.nvimrc<cr>
+nnoremap <silent><leader><leader>v :e ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><space><space> :set nohls!<cr>

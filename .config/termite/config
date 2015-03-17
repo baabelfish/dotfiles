@@ -1,21 +1,22 @@
 [options]
-resize_grip = false
-scroll_on_output = false
-scroll_on_keystroke = true
-audible_bell = false
-visible_bell = false
-mouse_autohide = false
 allow_bold = true
-dynamic_title = true
-urgent_on_bell = false
+allow_italic = false
+audible_bell = false
+browser = chromium
 clickable_url = true
-font = Terminus 8
-scrollback_lines = 10000
-search_wrap = true
 cursor_blink = off
 cursor_shap = block
-browser = chromium
+dynamic_title = true
+font = Termsyn 8
 geometry = 800x600
+mouse_autohide = false
+resize_grip = false
+scroll_on_keystroke = false
+scroll_on_output = false
+scrollback_lines = 10000
+search_wrap = true
+urgent_on_bell = false
+visible_bell = false
 
 [colors]
 foreground = #d9d9d9
