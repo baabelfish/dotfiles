@@ -13,19 +13,25 @@ end
 endsnippet
 
 snippet forp "pair for loop" b
-for ${1:name},${2:val} in pairs(${3:table_name}) do
+for ${1:k}, ${2:v} in pairs(${3:table_name}) do
    $0
 end
 endsnippet
 
-snippet fori "ipair for foop" b
-for ${1:idx},${2:val} in ipairs(${3:table_name}) do
+snippet fore "foreach loop" b
+for _, ${2:v} in ipairs(${3:table_name}) do
+   $0
+end
+endsnippet
+
+snippet fori "ipair for loop" b
+for ${1:i}, ${2:v} in ipairs(${3:table_name}) do
    $0
 end
 endsnippet
 
 snippet for "numeric for loop" b
-for ${1:i}=${2:first},${3:last}${4/^..*/(?0:,:)/}${4:step} do
+for ${1:i} = ${2:first}, ${3:last}${4/^..*/(?0:, :)/}${4:step} do
    $0
 end
 endsnippet
@@ -35,7 +41,7 @@ local ${1:x} = ${0:1}
 endsnippet
 
 snippet if ""
-if (${1:true}) then
+if ${1:true} then
    $0
 end
 endsnippet

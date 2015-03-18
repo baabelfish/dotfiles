@@ -19,6 +19,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+
 Plug 'rking/ag.vim'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-vebugger'
@@ -496,6 +499,12 @@ let g:indentLine_faster = 1
 let g:livepreview_previewer = 'zathura'
 
 let g:lua_check_syntax = 0
+let g:lua_check_globals = 0
+let g:lua_complete_omni = 0
+let g:lua_complete_globals = 0
+let g:lua_complete_library = 0
+let g:lua_complete_dynamic = 0
+let g:lua_complete_keywords = 0
 
 let g:matchparen_timeout = 10
 let g:matchparen_insert_timeout = 10
@@ -618,6 +627,7 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1,
       \ 'javascript' : 1,
       \ 'markdown' : 1,
+      \ 'lua' : 1,
       \ 'notes' : 1,
       \ 'tex' : 1,
       \ 'text' : 1,

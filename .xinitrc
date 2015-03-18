@@ -23,7 +23,8 @@ autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/udiskie ]] && bluedevil-monolithic&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/compton ]] && compton&
-# [[ -e /usr/bin/clipit ]] && clipit&
+[[ -e /usr/bin/nm-applet ]] && nm-applet&
+[[ -e /usr/bin/clipit ]] && clipit&
 
 xinput set-int-prop "DualPoint Stick" "Device Enabled" 8 1
 xinput set-int-prop "AlpsPS/2 ALPS DualPoint TouchPad" "Device Enabled" 8 0
