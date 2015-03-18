@@ -139,7 +139,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread
 set backspace=indent,eol,start
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 set complete-=i
 set completeopt=menu,longest
 set cscopetag
