@@ -58,8 +58,7 @@ function fish_right_prompt
 end
 
 function fish_greeting
-    # clear
-    bind L 'clear; commandline -f repaint'
+    clear
 end
 
 set -x TERM "rxvt-unicode-256color"
