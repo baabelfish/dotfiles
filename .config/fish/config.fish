@@ -1,3 +1,6 @@
+# Essentials
+fish_vi_mode
+
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
@@ -11,7 +14,7 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
-function fish_prompt
+function fish_vi_prompt
     set_color -b 333
     set last_status $status
     printf ' %s ' (hostname)
@@ -22,8 +25,8 @@ function fish_prompt
     printf ' » '
     set_color normal
     set_color 222
+    set_color -b 111
     printf ' '
-
     set_color normal
 end
 
@@ -45,7 +48,8 @@ function fish_right_prompt
 end
 
 function fish_greeting
-    clear
+    # clear
+    bind L 'clear; commandline -f repaint'
 end
 
 set -x TERM "rxvt-unicode-256color"
@@ -144,3 +148,11 @@ set fish_pager_color_completion AAA
 set fish_pager_color_description 55bb55
 set fish_pager_color_progress magenta
 set fish_pager_color_secondary magenta
+
+# Binds
+function my_vi_key_bindings
+    fish_vi_key_bindings
+    bind L 'clear; commandline -f repaint'
+    bind -M insert \cl 'clear; commandline -f repaint'
+end
+set -g fish_key_bindings my_vi_key_bindings
