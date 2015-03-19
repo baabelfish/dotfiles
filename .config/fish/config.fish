@@ -2,7 +2,7 @@
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
 set __fish_git_prompt_showupstream 'yes'
-set __fish_git_prompt_color_branch yellow
+# set __fish_git_prompt_color_branch yellow
 
 # Status Chars
 set __fish_git_prompt_char_dirtystate '⚡'
@@ -12,11 +12,35 @@ set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
 function fish_prompt
+    set_color -b 333
     set last_status $status
-    set_color $fish_color_cwd
-    printf '%s' (prompt_pwd)
+    printf ' %s ' (hostname)
+    set_color 333
+    set_color -b 222
+    printf ''
+    set_color 0f0
+    printf ' » '
     set_color normal
+    set_color 222
+    printf ' '
+
+    set_color normal
+end
+
+function fish_right_prompt
+    set_color 222
+    printf ''
+
+    set_color -b 222
+    set_color 3e3
     printf '%s ' (__fish_git_prompt)
+
+    set_color 333
+    printf ''
+
+    set_color -b 333
+    set_color ddd
+    printf ' %s ' (prompt_pwd)
     set_color normal
 end
 
