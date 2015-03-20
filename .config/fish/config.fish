@@ -35,7 +35,6 @@ function fish_vi_prompt
     printf ' %s ' $my_vi_indicator
     set_color normal
     set_color 222
-    set_color -b 111
     printf ' '
     set_color normal
 end
@@ -61,7 +60,7 @@ function fish_greeting
     clear
 end
 
-set -x TERM 'rxvt-unicode-256color'
+# set -x TERM 'rxvt-unicode-256color'
 set -x EDITOR 'nvim'
 set -x NEDITOR 'nvim'
 set -x VISUAL 'nvim'

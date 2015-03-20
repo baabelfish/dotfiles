@@ -27,10 +27,14 @@ bindsym $mod+q kill
 bindcode $mod+119 killall java
 
 # Terminal
-bindsym $mod+Return exec --no-startup-id urxvt -e fish
-bindsym $mod+t exec --no-startup-id urxvt -e fish
-bindsym $mod+Shift+Return exec --no-startup-id urxvt -title "float" -e fish
-bindsym $mod+Shift+t exec --no-startup-id urxvt -title "float" -e fish
+bindsym $mod+Return exec --no-startup-id termite -e fish
+bindsym $mod+t exec --no-startup-id termite -e fish
+bindsym $mod+Shift+Return exec --no-startup-id termite --title "float" -e fish
+bindsym $mod+Shift+t exec --no-startup-id termite --title "float" -e fish
+# bindsym $mod+Return exec --no-startup-id termite -e fish
+# bindsym $mod+t exec --no-startup-id urxvt -e fish
+# bindsym $mod+Shift+Return exec --no-startup-id urxvt -title "float" -e fish
+# bindsym $mod+Shift+t exec --no-startup-id urxvt -title "float" -e fish
 
 bindsym $mod+p exec --no-startup-id ~/.xutils/menu.sh
 bindsym $mod+Control+p exec --no-startup-id ~/.xutils/pass.sh

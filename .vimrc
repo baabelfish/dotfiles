@@ -659,7 +659,7 @@ let g:wildfire_objects = {
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-let g:droid_transparent = 0
+let g:droid_transparent = 1
 
 syntax on
 if has("gui_running")

@@ -649,7 +649,7 @@ let delimitMate_expand_space = 1
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-let g:droid_transparent = 0
+let g:droid_transparent = 1
 
 syntax on
 if has("gui_running")
