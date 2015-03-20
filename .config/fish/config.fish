@@ -61,7 +61,7 @@ function fish_greeting
     clear
 end
 
-set -x TERM "rxvt-unicode-256color"
+set -x TERM "xterm-256color"
 set -x EDITOR "nvim"
 set -x NEDITOR "nvim"
 set -x VISUAL "nvim"
@@ -163,5 +163,6 @@ function my_vi_key_bindings
     fish_vi_key_bindings
     bind L 'clear; commandline -f repaint'
     bind -M insert \cl 'clear; commandline -f repaint'
+    bind -M insert \ce end-of-line
 end
 set -g fish_key_bindings my_vi_key_bindings
