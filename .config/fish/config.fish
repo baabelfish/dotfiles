@@ -172,6 +172,16 @@ function my_next_dir
     commandline -f repaint
 end
 
+function browse_all
+    tree -C|less -R
+    commandline -f repaint
+end
+
+function browse_dirs
+    tree -C -d|less -R
+    commandline -f repaint
+end
+
 # Binds
 function my_vi_key_bindings
     fish_vi_key_bindings
@@ -181,6 +191,10 @@ function my_vi_key_bindings
     bind H my_previous_dir
     bind L my_next_dir
     bind J my_back_dir
+    bind \ct browse_all
+    bind -M insert \ct browse_all
+    bind \cb browse_dirs
+    bind -M insert \cb browse_dirs
 end
 set -g fish_key_bindings my_vi_key_bindings
 
