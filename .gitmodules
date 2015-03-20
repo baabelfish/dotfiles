@@ -7,3 +7,12 @@
 [submodule ".modules/tpm-filemanagement"]
 	path = .modules/tpm-filemanagement
 	url = https://github.com/baabelfish/tpm-filemanagement
+[submodule ".config/fish/extensions/fishmarks"]
+	path = .config/fish/extensions/fishmarks
+	url = https://github.com/techwizrd/fishmarks
+[submodule ".config/fish/addons/fishmarks"]
+	path = .config/fish/addons/fishmarks
+	url = https://github.com/baabelfish/fishmarks
+[submodule ".config/fish/plugins/fishmarks"]
+	path = .config/fish/plugins/fishmarks
+	url = https://github.com/techwizrd/fishmarks

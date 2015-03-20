@@ -61,7 +61,7 @@ function fish_greeting
     clear
 end
 
-set -x TERM "xterm-256color"
+set -x TERM "rxvt-unicode-256color"
 set -x EDITOR "nvim"
 set -x NEDITOR "nvim"
 set -x VISUAL "nvim"
@@ -166,3 +166,11 @@ function my_vi_key_bindings
     bind -M insert \ce end-of-line
 end
 set -g fish_key_bindings my_vi_key_bindings
+
+# Sources
+. ~/.config/fish/plugins/fishmarks/marks.fish
+set -x NO_FISHMARKS_COMPAT_ALIASES
+alias M save_bookmark
+alias m go_to_bookmark
+alias md delete_bookmark
+alias ml list_bookmarks
