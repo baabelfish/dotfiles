@@ -155,7 +155,6 @@ set fish_pager_color_description 55bb55
 set fish_pager_color_progress magenta
 set fish_pager_color_secondary magenta
 
-<<<<<<< HEAD
 function my_back_dir
     cd ..
     commandline -f repaint
