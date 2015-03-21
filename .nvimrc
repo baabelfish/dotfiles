@@ -15,6 +15,7 @@ call plug#begin('~/.nvim/plugged')
 
 " Plug 'Yggdroot/indentLine'
 " Plug 'xolox/vim-lua-inspect'
+Plug 'flazz/vim-colorschemes'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
