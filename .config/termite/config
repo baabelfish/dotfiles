@@ -20,6 +20,6 @@ visible_bell = false
 
 [colors]
 foreground = #d9d9d9
-background = rgba(25, 25, 25, 0.95)
+background = rgba(25, 25, 25, 0.98)
 highlight = #ffffff
-cursor = #ffffff
+cursor = #888888

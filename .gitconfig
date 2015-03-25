@@ -1,0 +1,12 @@
+[push]
+	default = simple
+
+[color]
+	ui = auto
+	decorate = short
+
+[alias]
+	ci = commit
+	cia = commit -a
+	di = diff
+	st = status

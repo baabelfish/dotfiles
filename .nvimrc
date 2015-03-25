@@ -31,7 +31,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f ma
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/vim-dispatch'
@@ -146,7 +146,7 @@ set completeopt=menu,longest
 set cscopetag
 set cursorline
 set display+=lastline " FIXME
-set fillchars+=vert:│
+set fillchars+=vert: 
 set formatoptions=qrn1tj
 set gdefault smartcase ignorecase incsearch
 set hidden
