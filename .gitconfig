@@ -10,3 +10,8 @@
 	cia = commit -a
 	di = diff
 	st = status
+	pu = pull --rebase
+	out      = !git fetch && git log FETCH_HEAD..
+	outgoing = !git fetch && git log FETCH_HEAD..
+	in       = !git fetch && git log ..FETCH_HEAD
+	incoming = !git fetch && git log ..FETCH_HEAD
