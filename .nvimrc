@@ -2,120 +2,126 @@ if has('nvim')
   runtime! plugin/python_setup.vim
 endif
 
-if !filereadable(expand('~/.nvim/autoload/plug.vim'))
-  silent !mkdir -p ~/.nvim/undodir
-  silent !mkdir -p ~/.nvim/autoload
-  ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
-  ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
-  !nvim +'PlugUpdate | quit!'
-  quit!
+if !filereadable(expand('~/.nvim/bundle/neobundle.vim/README.md'))
+  silent !mkdir -p ~/.nvim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundle/neobundle.vim
+  " silent !mkdir -p ~/.nvim/undodir
+  " silent !mkdir -p ~/.nvim/autoload
+  " ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
+  " ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
+  " !nvim +'PlugUpdate | quit!'
+  " quit!
 endif
 
-call plug#begin('~/.nvim/plugged')
+if has('vim_starting')
+  set runtimepath+=~/.nvim/bundle/neobundle.vim/
+endif
 
-" Plug 'Yggdroot/indentLine'
-" Plug 'xolox/vim-lua-inspect'
-Plug 'flazz/vim-colorschemes'
-Plug 'AndrewRadev/gapply.vim'
-Plug 'AndrewRadev/switch.vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'Matt-Stevens/vim-systemd-syntax'
-Plug 'Mizuchi/STL-Syntax'
-Plug 'PeterRincker/vim-argumentative'
+call neobundle#begin('~/.nvim/bundle')
+
+NeoBundleFetch 'Shougo/neobundle.vim' 
+NeoBundle 'Shougo/vimproc.vim', { 'build': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
+
+" NeoBundle 'Valloric/YouCompleteMe', { 'build': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 " Plug 'Raimondi/delimitMate'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/unite-outline'
-Plug 'Shougo/unite-session'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
-Plug 'SirVer/ultisnips'
-Plug 'Valloric/MatchTagAlways'
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+" Plug 'Yggdroot/indentLine'
 " Plug 'airblade/vim-gitgutter'
-Plug 'b4winckler/vim-angry'
-Plug 'baabelfish/a.vim'
-Plug 'baabelfish/vim-dispatch'
-Plug 'baabelfish/vim-droid256'
-Plug 'baabelfish/vim-vertigo'
-Plug 'bling/vim-airline'
-Plug 'bps/vim-textobj-python'
-Plug 'chrisbra/NrrwRgn'
-Plug 'dag/vim-fish'
-Plug 'drmikehenry/vim-fixkey'
-Plug 'glts/vim-textobj-comment'
-Plug 'gregsexton/gitv'
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-sexp'
-Plug 'guns/vim-slamhound'
-Plug 'idanarye/vim-casetrate'
-Plug 'idanarye/vim-dutyl'
-Plug 'idanarye/vim-merginal'
-Plug 'idanarye/vim-vebugger'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'justinmk/vim-gtfo'
-Plug 'jwhitley/vim-matchit'
-Plug 'kana/vim-arpeggio'
-Plug 'kana/vim-operator-user'
-Plug 'kana/vim-textobj-function'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-user'
-Plug 'kien/ctrlp.vim'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'kurkale6ka/vim-pairs'
-Plug 'leafo/moonscript-vim'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
-Plug 'mhinz/vim-signify'
-Plug 'mrtazz/DoxygenToolkit.vim'
-Plug 'myint/syntastic-extras'
-Plug 'rking/ag.vim'
-Plug 'roktas/syntastic-more'
-Plug 'scottymoon/vim-twilight'
-Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
-Plug 'sjl/gundo.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tommcdo/vim-express'
-Plug 'tommcdo/vim-fugitive-blame-ext'
-Plug 'tommcdo/vim-kangaroo'
-Plug 'tommcdo/vim-lion'
-Plug 'tommcdo/vim-ninja-feet'
-Plug 'tomtom/tComment_vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-classpath'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/Vimchant'
-Plug 'vim-scripts/VisIncr'
-Plug 'vim-scripts/bufkill.vim'
-Plug 'vim-scripts/django.vim'
-Plug 'vim-scripts/octave.vim--'
-Plug 'vim-scripts/surrparen'
-Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-misc'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'xolox/vim-lua-inspect'
+" NeoBundle 'Mizuchi/STL-Syntax'
+" NeoBundle 'sheerun/vim-polyglot'
 
-if has('nvim')
-  " Plug 'benekastah/neomake'
-  Plug 'scrooloose/syntastic'
-else
-  Plug 'scrooloose/syntastic'
-endif
+NeoBundle 'AndrewRadev/gapply.vim'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'Matt-Stevens/vim-systemd-syntax'
+NeoBundle 'PeterRincker/vim-argumentative'
+NeoBundle 'PotatoesMaster/i3-vim-syntax'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-session'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'b4winckler/vim-angry'
+NeoBundle 'baabelfish/a.vim'
+NeoBundle 'baabelfish/vim-dispatch'
+NeoBundle 'baabelfish/vim-droid256'
+NeoBundle 'baabelfish/vim-vertigo'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'bps/vim-textobj-python'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'dag/vim-fish'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'glts/vim-textobj-comment'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'guns/vim-clojure-highlight'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'guns/vim-sexp'
+NeoBundle 'guns/vim-slamhound'
+NeoBundle 'idanarye/vim-casetrate'
+NeoBundle 'idanarye/vim-dutyl'
+NeoBundle 'idanarye/vim-merginal'
+NeoBundle 'idanarye/vim-vebugger'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'junegunn/limelight.vim'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'justinmk/vim-gtfo'
+NeoBundle 'jwhitley/vim-matchit'
+NeoBundle 'kana/vim-arpeggio'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'kurkale6ka/vim-pairs'
+NeoBundle 'leafo/moonscript-vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mhinz/vim-signify'
+NeoBundle 'mrtazz/DoxygenToolkit.vim'
+NeoBundle 'myint/syntastic-extras'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'roktas/syntastic-more'
+NeoBundle 'scottymoon/vim-twilight'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tommcdo/vim-express'
+NeoBundle 'tommcdo/vim-fugitive-blame-ext'
+NeoBundle 'tommcdo/vim-kangaroo'
+NeoBundle 'tommcdo/vim-lion'
+NeoBundle 'tommcdo/vim-ninja-feet'
+NeoBundle 'tomtom/tComment_vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-classpath'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-projectionist'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'vim-scripts/L9'
+NeoBundle 'vim-scripts/Vimchant'
+NeoBundle 'vim-scripts/VisIncr'
+NeoBundle 'vim-scripts/bufkill.vim'
+NeoBundle 'vim-scripts/django.vim'
+NeoBundle 'vim-scripts/octave.vim--'
+NeoBundle 'vim-scripts/surrparen'
+NeoBundle 'xolox/vim-lua-ftplugin'
+NeoBundle 'xolox/vim-misc'
 
-call plug#end()
+call neobundle#end()
 
 filetype plugin indent on
 
@@ -140,9 +146,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread
 set backspace=indent,eol,start
-" set clipboard+=unnamedplus
 set complete-=i
 set completeopt=menu,longest
+set conceallevel=0
 set cscopetag
 set cursorline
 set display+=lastline " FIXME
@@ -193,7 +199,7 @@ endif
 
 
 " Autocommands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -215,7 +221,7 @@ autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-autocmd CursorHold * SyntasticCheck
+" autocmd CursorHold * SyntasticCheck
 
 
 " Shortcuts
@@ -264,6 +270,7 @@ nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
 nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
 nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
 " nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
+nnoremap <silent><space>C :call ToggleConceal()<cr>
 nnoremap <silent><space>cp :call ColorPicker(0)<cr>
 nnoremap caf :call SelectFunction(0)<cr>c
 nnoremap cif :call SelectFunction(1)<cr>c
@@ -456,6 +463,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_height = 200
+
+let g:cpp_class_scope_highlight = 1
 
 let g:agprg="ag --smart-case --column"
 let g:aghighlight=1
@@ -654,13 +663,12 @@ let g:droid_transparent = 1
 
 syntax on
 if has("gui_running")
-  colorscheme twilight
+  colorscheme gotham
 elseif &t_Co == 256 
-  colorscheme droid256
+  colorscheme gotham
 else
   colorscheme delek
 endif
-
 
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -834,6 +842,14 @@ function! CurrentLineI()
         \ non_blank_char_exists_p
         \ ? ['v', head_pos, tail_pos]
         \ : 0
+endfunction
+
+function! ToggleConceal()
+  if(&conceallevel == 2)
+    set conceallevel=0
+  else
+    set conceallevel=2
+  endif
 endfunction
 
 function! StripTrailingWhitespace()

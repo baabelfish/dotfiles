@@ -15,3 +15,5 @@
 	outgoing = !git fetch && git log FETCH_HEAD..
 	in       = !git fetch && git log ..FETCH_HEAD
 	incoming = !git fetch && git log ..FETCH_HEAD
+[github]
+	user = baabelfish
