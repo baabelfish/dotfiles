@@ -21,8 +21,8 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " NeoBundle 'Mizuchi/STL-Syntax'
 " NeoBundle 'sheerun/vim-polyglot'
 
-Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+" Plug 'Raimondi/delimitMate'
+" Plug 'marijnh/tern_for_vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -33,8 +33,10 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/vim-dispatch'
