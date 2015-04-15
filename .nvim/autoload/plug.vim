@@ -71,11 +71,11 @@ set cpo&vim
 let s:plug_src = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:plug_tab = get(s:, 'plug_tab', -1)
 let s:plug_buf = get(s:, 'plug_buf', -1)
-let s:mac_gui = has('gui_macvim') && has('gui_running')
-let s:is_win = has('win32') || has('win64')
-let s:py2 = has('python') && !s:is_win && !has('win32unix')
-let s:ruby = has('ruby') && (v:version >= 703 || v:version == 702 && has('patch374'))
-let s:nvim = has('nvim') && !s:is_win
+let s:mac_gui = 0
+let s:is_win = 0
+let s:py2 = 1
+let s:ruby = 0
+let s:nvim = 1
 let s:me = resolve(expand('<sfile>:p'))
 let s:base_spec = { 'branch': 'master', 'frozen': 0 }
 let s:TYPE = {
@@ -2017,4 +2017,3 @@ endif
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
-

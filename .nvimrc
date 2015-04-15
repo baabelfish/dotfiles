@@ -13,7 +13,7 @@ endif
 
 call plug#begin('~/.nvim/plugged')
 
-" Plug 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'Yggdroot/indentLine'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'octol/vim-cpp-enhanced-highlight'
@@ -47,8 +47,8 @@ Plug 'dag/vim-fish'
 Plug 'flazz/vim-colorschemes'
 Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'guns/vim-sexp'
 Plug 'guns/vim-slamhound'
 Plug 'idanarye/vim-casetrate'
@@ -79,7 +79,6 @@ Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'myint/syntastic-extras'
 Plug 'rking/ag.vim'
 Plug 'roktas/syntastic-more'
-Plug 'scottymoon/vim-twilight'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
@@ -92,13 +91,13 @@ Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tomtom/tComment_vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
