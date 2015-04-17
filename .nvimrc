@@ -68,7 +68,7 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'leafo/moonscript-vim'
@@ -226,25 +226,29 @@ inoremap <F3> <c-o>:set paste! \| echo ""<cr>
 
 " Window related
 inoremap <C-q> <C-o>ciW
-inoremap <M-q> <Esc><C-w>c:echo ""<cr>
-inoremap <M-z> <C-o>zz
+inoremap <A-q> <Esc><C-w>c:echo ""<cr>
+inoremap <A-z> <C-o>zz
 " FIXME: clojure...
-nnoremap <M-H> H
-nnoremap <M-J> J
-nnoremap <M-K> K
-nnoremap <M-L> L
-nnoremap <M-Q> :tabclose<cr>:echo ""<cr>
-" nnoremap <M-R> R
-" nnoremap <M-W> :BF<cr>
-nnoremap <M-h> h
-nnoremap <M-j> j
-nnoremap <M-k> k
-nnoremap <M-l> l
-nnoremap <M-m> <C-w>v
-nnoremap <M-M> <C-w>s
-nnoremap <M-q> <C-w>c
-nnoremap <M-r> r
-nnoremap <M-w> :BB<cr>
+nnoremap <A-H> H
+nnoremap <A-J> J
+nnoremap <A-K> K
+nnoremap <A-L> L
+nnoremap <A-Q> :tabclose<cr>:echo ""<cr>
+" nnoremap <A-R> R
+" nnoremap <A-W> :BF<cr>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+nnoremap <A-m> <C-w>v
+nnoremap <A-M> <C-w>s
+nnoremap <A-q> <C-w>c
+nnoremap <A-r> r
+nnoremap <A-w> :BB<cr>
 nnoremap <leader>1 1<C-w><C-w>
 nnoremap <leader>2 2<C-w><C-w>
 nnoremap <leader>3 3<C-w><C-w>
@@ -258,10 +262,10 @@ nnoremap <leader>9 9<C-w><C-w>
 " nnoremap <silent><space>r :Root<cr>
 
 " Custom function callers
-inoremap <silent><M-c> <C-o>:call ColorPicker(1)<cr>
+inoremap <silent><A-c> <C-o>:call ColorPicker(1)<cr>
 nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
-nnoremap <silent><M-F> :call NoDistraction()<cr>:echo ""<cr>
-nnoremap <silent><M-f> :call Fullscreen()<cr>:echo ""<cr>
+nnoremap <silent><A-F> :call NoDistraction()<cr>:echo ""<cr>
+nnoremap <silent><A-f> :call Fullscreen()<cr>:echo ""<cr>
 " nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
 nnoremap <silent><space>C :call ToggleConceal()<cr>
 nnoremap <silent><space>cp :call ColorPicker(0)<cr>
@@ -345,15 +349,15 @@ nnoremap <silent><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 inoremap <c-e> <c-x><c-o>
-nnoremap <M-up> :resize +5<cr>
-nnoremap <M-down> :resize -5<cr>
-nnoremap <M-left> :vertical resize +5<cr>
-nnoremap <M-right> :vertical resize -5<cr>
+nnoremap <A-up> :resize +5<cr>
+nnoremap <A-down> :resize -5<cr>
+nnoremap <A-left> :vertical resize +5<cr>
+nnoremap <A-right> :vertical resize -5<cr>
 
 nnoremap J mzJ`z
 
 " Shell interaction
-nnoremap <M-S> :shell<cr>
+nnoremap <A-S> :shell<cr>
 " nnoremap <silent><leader>C :!clear && octave -q %<cr>
 nnoremap <silent><leader>umlc :!suml --font-family=termsyn --png --class "$(cat %)" > %.png && feh %.png <cr> <cr>
 nnoremap <silent><leader>umls :!suml --png --sequence "$(cat %)" > %.png && feh %.png <cr><cr>
@@ -415,6 +419,8 @@ nnoremap <silent><leader>H3 :3match<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:BASH_Ctrl_j = 'off'
 
+let g:python_host_skip_check=1
+
 " let g:airline_branch_prefix = ''
 let g:airline_detect_iminsert=0
 let g:airline_detect_modified=1
@@ -444,7 +450,7 @@ let g:airline_mode_map = {
       \ '' : 'S',
       \ }
 
-let g:AutoPairsShortcutToggle = '<M-a>'
+let g:AutoPairsShortcutToggle = '<A-a>'
 " let g:AutoPairs = {'(':')', '[':']', '{':'}','"':'"'}
 
 let BckOptions = 'cirw'
