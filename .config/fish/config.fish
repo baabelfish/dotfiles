@@ -66,6 +66,7 @@ set -x EDITOR 'nvim'
 set -x NEDITOR 'nvim'
 set -x VISUAL 'nvim'
 set -x BROWSER 'chromium'
+set -x LESS '-i -M -R -q'
 
 alias fishcfg='nvim ~/.config/fish/config.fish'
 

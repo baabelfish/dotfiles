@@ -916,6 +916,7 @@ function! Ag_textobj(motion_wiseness)
 endfunction
 
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+call arpeggio#map('icvx', '', 0, 'j.', '<Esc>:w<cr>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
