@@ -62,6 +62,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-gtfo'
+Plug 'osyo-manga/vim-hopping'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-operator-user'
@@ -321,6 +322,7 @@ nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
+nnoremap <silent><space>/ :HoppingStart<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>

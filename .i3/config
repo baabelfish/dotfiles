@@ -7,8 +7,8 @@ popup_during_fullscreen leave_fullscreen
 force_display_urgency_hint 2000 ms
 
 # class                  border   backgr.  text     indicator
-client.focused           #999999  #999999  #000000  #cccccc
-client.focused_inactive  #222222  #222222  #999999  #222222
+client.focused           #eeeeee  #eeeeee  #000000  #cccccc
+client.focused_inactive  #999999  #999999  #999999  #666666
 client.unfocused         #222222  #222222  #999999  #222222
 client.urgent            #22FF22  #22FF22  #222222  #222222
 client.background        #1d1d1d
