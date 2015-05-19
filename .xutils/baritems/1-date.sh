@@ -7,4 +7,5 @@ fi
 DATE=$(date +"%m-%d-%y")
 TIME=$(date +"%H:%M:%S")
 
-echo "^fg(#22ff22)$TIME ^fg(#229922)$DATE"
+echo "^fg(#22ff22)$TIME"
+echo "^fg(#229922)$DATE"
