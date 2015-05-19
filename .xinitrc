@@ -40,4 +40,5 @@ if [[ "$(hostname)" == "edge" ]]; then
 fi
 
 eval "sleep 8 && transset-df -n i3bar 0.85"&
-[[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
+# [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
+[[ -e ~/.local/apps/i3gaps/i3 ]] && exec ~/.local/apps/i3gaps/i3 || exec i3

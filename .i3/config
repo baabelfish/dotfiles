@@ -1,5 +1,6 @@
 set $mod Mod4
-font pango:Terminess Powerline 7.4
+# font pango:Terminess Powerline 7.4
+font pango:Terminess Powerline 0
 floating_modifier $mod
 
 workspace_auto_back_and_forth no
@@ -7,13 +8,13 @@ popup_during_fullscreen leave_fullscreen
 force_display_urgency_hint 2000 ms
 
 # class                  border   backgr.  text     indicator
-client.focused           #eeeeee  #eeeeee  #000000  #cccccc
-client.focused_inactive  #999999  #999999  #999999  #666666
+client.focused           #fa00ff  #fa00ff  #000000  #fa00ff
+client.focused_inactive  #999999  #999999  #999999  #999999
 client.unfocused         #222222  #222222  #999999  #222222
-client.urgent            #22FF22  #22FF22  #222222  #222222
+client.urgent            #22FF22  #22FF22  #222222  #22FF22
 client.background        #1d1d1d
 
-new_window pixel 2
+new_window pixel 1
 
 focus_follows_mouse no
 
@@ -22,6 +23,7 @@ focus_follows_mouse no
 bindsym $mod+Shift+r restart
 bindsym $mod+Control+Shift+F4 i3-msg exit
 bindsym $mod+q kill
+bindsym $mod+b exec --no-startup-id ~/.xutils/tempbar.sh
 
 # Panic button
 bindcode $mod+119 killall java
@@ -142,23 +144,23 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # Bar
 bar {
-    modifier         Mod4
-    tray_output      primary
-    # mode             hide
-    status_command   ~/.local/apps/i3blocks/i3blocks
+    # modifier         Mod4
+    # tray_output      primary
+    mode             invisible
+    # status_command   ~/.local/apps/i3blocks/i3blocks
  
     # status_command   i3status
-    position         bottom
+    # position         bottom
 
-    colors {
-        background         #151515
-        statusline         #bbbbbb
-
-                           #border #backgr #text
-        focused_workspace  #606060 #404040 #58FF58
-        inactive_workspace #606060 #202020 #777777
-        urgent_workspace   #707070 #303030 #FFFFFF
-   }
+   #  colors {
+   #      background         #151515
+   #      statusline         #bbbbbb
+   #
+   #                         #border #backgr #text
+   #      focused_workspace  #606060 #404040 #58FF58
+   #      inactive_workspace #606060 #202020 #777777
+   #      urgent_workspace   #707070 #303030 #FFFFFF
+   # }
 }
 
 # Lock screen
@@ -241,3 +243,8 @@ bindsym $mod+Mod5+h exec --no-startup-id urxvtc -title i3-launch-htop -e htop
 bindsym $mod+Mod5+c exec --no-startup-id chromium
 bindsym $mod+Mod5+s exec --no-startup-id spotify
 bindsym $mod+Mod5+Shift+s exec --no-startup-id steam
+
+# Nonstandard
+gaps inner 12
+smart_gaps on
+hide_edge_borders both
