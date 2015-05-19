@@ -1,5 +1,5 @@
 #!/bin/sh
-SCRIPTS=($(find ~/.xutils/baritems/|sed '1d'))
+SCRIPTS=($(find ~/.xutils/baritems/|sed '1d'|sort))
 ITEMS=()
 for script in ${SCRIPTS[@]}; do
     ITEMS+=($($script))
