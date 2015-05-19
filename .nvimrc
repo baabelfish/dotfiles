@@ -26,6 +26,8 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'floobits/floobits-neovim'
+" Plug 'floobits/floobits-vim'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'PotatoesMaster/i3-vim-syntax'

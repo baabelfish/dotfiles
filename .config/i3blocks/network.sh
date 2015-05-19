@@ -1,12 +1,12 @@
 #!/bin/sh
-TOTAL=$(wicd-cli --wireless -d)
+CONNECTION=$(nmcli d|grep connected|awk '{print $4}')
 
-if [[ -n "$TOTAL" ]]; then
-    IP=$(echo "$TOTAL" | grep '^IP:' | cut -f2- -d' ')
-    ESSID=$(echo "$TOTAL" | grep '^Essid:' | cut -f2- -d' ')
-    QUALITY=$(echo "$TOTAL" | grep '^Quality:' | cut -f2- -d' ')
-    echo " ∿ $ESSID ($IP) "
-else
-    TOTAL=$(wicd-cli --wired -d)
-    echo " - $IP "
+if [[ "$CONNECTION" != "--" ]]; then
+    TYPE=$(nmcli d|grep connected|awk '{print $2}')
+    MARK='-'
+
+    if [[ "$TYPE" == "wifi" ]]; then
+        MARK='∿'
+    fi
+    echo " $MARK $CONNECTION "
 fi
