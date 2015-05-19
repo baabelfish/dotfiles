@@ -245,6 +245,5 @@ bindsym $mod+Mod5+s exec --no-startup-id spotify
 bindsym $mod+Mod5+Shift+s exec --no-startup-id steam
 
 # Nonstandard
+gaps outer 4
 gaps inner 12
-smart_gaps on
-hide_edge_borders both

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 COM=$(acpi)
 COM="$(echo $COM | cut -f2- -d':')"
 DIRECTION=$(echo "$COM" | awk '{print $1}')
