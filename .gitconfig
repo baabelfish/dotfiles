@@ -19,3 +19,7 @@
 
 [github]
 	user = baabelfish
+	email = baabelfish@gmail.com
+[user]
+	email = baabelfish@gmail.com
+	name = baabelfish
