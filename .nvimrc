@@ -468,7 +468,7 @@ let g:bl_no_implystart = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
-let g:ctrlp_max_height = 200
+let g:ctrlp_max_height = 40
 
 let g:cpp_class_scope_highlight = 1
 

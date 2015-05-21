@@ -1,6 +1,11 @@
 #!/bin/sh
 IFS=$'\n'
 OLDPID=$(ps aux|grep dzen2|grep -v grep|awk '{print $2}')
+DURATION=$1
+
+if [[ ! -n "$DURATION" ]]; then
+    DURATION="3"
+fi
 
 if [[ -n "$OLDPID" ]]; then
     kill -9 "$OLDPID"
@@ -27,7 +32,9 @@ else
     ITEMSSTR+=$SEPARATOR
 
     IFS=" "
-    echo -e "$ITEMSSTR" | dzen2 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p 3 -e 'button1=exit:13' &
+    echo -e "$ITEMSSTR" | dzen2 -xs 1 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
+    echo -e "$ITEMSSTR" | dzen2 -xs 2 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
+    echo -e "$ITEMSSTR" | dzen2 -xs 3 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
     sleep 0.05
     transset-df -n 'dzen title' 0.9
 fi

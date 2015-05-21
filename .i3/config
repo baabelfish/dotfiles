@@ -1,5 +1,4 @@
 set $mod Mod4
-# font pango:Terminess Powerline 7.4
 font pango:Terminess Powerline 0
 floating_modifier $mod
 
