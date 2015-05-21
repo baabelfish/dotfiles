@@ -24,7 +24,10 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'Raimondi/delimitMate'
 " Plug 'marijnh/tern_for_vim'
 Plug 'AndrewRadev/gapply.vim'
+Plug 'osyo-manga/vim-hopping'
+Plug 'groenewege/vim-less'
 Plug 'AndrewRadev/switch.vim'
+Plug 'vim-scripts/dbext.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'floobits/floobits-neovim'
 Plug 'kchmck/vim-coffee-script'
@@ -599,6 +602,8 @@ let g:tagbar_autoshowtag = 1
 let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
 
+let g:omni_sql_no_default_maps = 1
+
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
@@ -640,6 +645,7 @@ let g:ycm_filetype_blacklist = {
       \ 'tex' : 1,
       \ 'text' : 1,
       \ 'unite' : 1,
+      \ 'sql' : 1,
       \ 'vim' : 1,
       \}
       " \ 'javascript' : 1,
