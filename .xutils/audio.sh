@@ -13,8 +13,7 @@ elif [[ "$1" == "dec" ]]; then
     ~/.xutils/tempbar.sh 1
 elif [[ "$1" == "toggle" ]]; then
     ponymix -N toggle
-elif [[ "$1" == "toggle" ]]; then
-    ponymix -N toggle
+    ~/.xutils/tempbar.sh 1
 elif [[ "$1" == "pause" ]]; then
     playerctl play-pause
 elif [[ "$1" == "next" ]]; then
