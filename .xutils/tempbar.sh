@@ -33,7 +33,7 @@ if [[ -n "$OLDPID" ]]; then
 fi
 
 IFS=" "
-echo -e "$OLDPID $ITEMSSTR" | dzen2 -xs 1 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
+echo -e "$ITEMSSTR" | dzen2 -xs 1 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
 echo -e "$ITEMSSTR" | dzen2 -xs 2 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
 echo -e "$ITEMSSTR" | dzen2 -xs 3 -h $BARHEIGHT -w $WIDTH -ta c -fg $FG -bg $BG -fn $FONT -p $DURATION -e 'button1=exit:13' &
 sleep 0.05
