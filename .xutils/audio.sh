@@ -7,8 +7,10 @@ AMOUNT=2
 
 if [[ "$1" == "inc" ]]; then
     ponymix -N increase $AMOUNT
+    ~/.xutils/tempbar.sh 1
 elif [[ "$1" == "dec" ]]; then
     ponymix -N decrease $AMOUNT
+    ~/.xutils/tempbar.sh 1
 elif [[ "$1" == "toggle" ]]; then
     ponymix -N toggle
 elif [[ "$1" == "toggle" ]]; then
