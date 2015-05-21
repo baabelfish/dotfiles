@@ -17,7 +17,7 @@ elif [[ "$1" == "pause" ]]; then
     playerctl play-pause
 elif [[ "$1" == "next" ]]; then
     playerctl next
-    ~/.xutils/tempbar.sh 1
+    ~/.xutils/tempbar.sh 2
 elif [[ "$1" == "prev" ]]; then
     playerctl previous
     ~/.xutils/tempbar.sh 1
