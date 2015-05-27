@@ -330,6 +330,8 @@ nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 nnoremap <silent><space>/ :HoppingStart<cr>
+nnoremap ct :YcmCompleter GetType<cr>
+nnoremap gt :YcmCompleter GoTo<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
