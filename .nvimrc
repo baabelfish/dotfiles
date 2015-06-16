@@ -283,6 +283,8 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
+nnoremap <space>ct :YcmCompleter GetType<cr>
+nnoremap <space>gt :YcmCompleter GoTo<cr>
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 nnoremap <silent><F5> :GundoToggle<cr>

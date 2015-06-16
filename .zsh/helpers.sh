@@ -39,22 +39,22 @@ inc() {
     echo $(($1+1))
 }
 
-# Pseudofuzzy match
-# 1: Input string
-# 2: String to match
-pfmatch() {
-    HASMATCHED=0
-    for (( i = 0; i < $(size $2); i++ )); do
-        if [[ $(at $2 $i) == $(at $1 $HASMATCHED) ]]; then
-            HASMATCHED=$(inc $HASMATCHED)
-        fi
-        if [[ $HASMATCHED == $(size $1) ]]; then
-            echo 1
-            return
-        fi
-    done
-    echo 0
-}
+# # Pseudofuzzy match
+# # 1: Input string
+# # 2: String to match
+# pfmatch() {
+#     HASMATCHED=0
+#     for (( i = 0; i < $(size $2); i++ )); do
+#         if [[ $(at $2 $i) == $(at $1 $HASMATCHED) ]]; then
+#             HASMATCHED=$(inc $HASMATCHED)
+#         fi
+#         if [[ $HASMATCHED == $(size $1) ]]; then
+#             echo 1
+#             return
+#         fi
+#     done
+#     echo 0
+# }
 
 clear_rest_of_screen() {
     WIDTH=$(term_width)

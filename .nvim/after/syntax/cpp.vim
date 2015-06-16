@@ -68,7 +68,6 @@ syntax match Operator ">=" conceal cchar=≥
 syntax match cppStatement "\S*sqrt" conceal cchar=√
 syntax match cppStatement "std::" conceal
 syntax match cppStatement "std::move" conceal cchar=↑
-syntax match cppStatement "std::forward" conceal cchar=⏩
 syntax match cppStatement "std::swap" conceal cchar=⇿
 syntax match cppStatement "std::all_of" conceal cchar=∀
 syntax match cppStatement "std::any_of" conceal cchar=∃
