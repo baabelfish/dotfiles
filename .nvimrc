@@ -392,8 +392,8 @@ nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
 nnoremap ¤ :'<,'>g/^/norm 
 vnoremap ¤ :g/^/norm 
-nnoremap ½ @q
-vnoremap ½ @q
+nmap ½ @q
+vmap ½ @q
 nnoremap å :w<cr>
 nnoremap Å :Gwrite<cr>
 nnoremap <space>Å :Gcommit<cr>
