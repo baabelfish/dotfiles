@@ -24,6 +24,8 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'Raimondi/delimitMate'
 " Plug 'marijnh/tern_for_vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'leafgarland/typescript-vim'
+Plug 'clausreinke/typescript-tools.vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'osyo-manga/vim-hopping'
 Plug 'groenewege/vim-less'
@@ -330,7 +332,7 @@ nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 nnoremap <silent><space>/ :HoppingStart<cr>
-nnoremap ct :YcmCompleter GetType<cr>
+nnoremap gT :YcmCompleter GetType<cr>
 nnoremap gt :YcmCompleter GoTo<cr>
 
 " Vim builtin overrides
