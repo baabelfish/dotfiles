@@ -23,6 +23,7 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 
 " Plug 'Raimondi/delimitMate'
 " Plug 'marijnh/tern_for_vim'
+Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'leafgarland/typescript-vim'
 Plug 'clausreinke/typescript-tools.vim'
@@ -45,7 +46,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f ma
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
-Plug 'b4winckler/vim-angry'
+" Plug 'baabelfish/vim-angry'
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
@@ -630,6 +631,9 @@ let g:Vertigo_homerow_onedigit = 'ASDFGHJKLP'
 
 let g:vimchant_spellcheck_lang = 'fi'
 
+let g:targets_argOpening = '[({[<]'
+let g:targets_argClosing = '[]})>]'
+
 let g:EclimCompletionMethod = 'omnifunc'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -839,25 +843,25 @@ function! ColorPicker(insert)
   endif
 endfunction
 
-function! CurrentLineA()
-  normal! 0
-  let head_pos = getpos('.')
-  normal! $
-  let tail_pos = getpos('.')
-  return ['v', head_pos, tail_pos]
-endfunction
+" function! CurrentLineA()
+"   normal! 0
+"   let head_pos = getpos('.')
+"   normal! $
+"   let tail_pos = getpos('.')
+"   return ['v', head_pos, tail_pos]
+" endfunction
 
-function! CurrentLineI()
-  normal! ^
-  let head_pos = getpos('.')
-  normal! g_
-  let tail_pos = getpos('.')
-  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
-  return
-        \ non_blank_char_exists_p
-        \ ? ['v', head_pos, tail_pos]
-        \ : 0
-endfunction
+" function! CurrentLineI()
+"   normal! ^
+"   let head_pos = getpos('.')
+"   normal! g_
+"   let tail_pos = getpos('.')
+"   let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+"   return
+"         \ non_blank_char_exists_p
+"         \ ? ['v', head_pos, tail_pos]
+"         \ : 0
+" endfunction
 
 function! ToggleConceal()
   if(&conceallevel == 2)
@@ -876,14 +880,14 @@ endfunction
 
 " Textobjs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call textobj#user#plugin('line', {
-      \   '-': {
-      \     'select-a-function': 'CurrentLineA',
-      \     'select-a': 'al',
-      \     'select-i-function': 'CurrentLineI',
-      \     'select-i': 'il',
-      \   },
-      \ })
+" call textobj#user#plugin('line', {
+"       \   '-': {
+"       \     'select-a-function': 'CurrentLineA',
+"       \     'select-a': 'al',
+"       \     'select-i-function': 'CurrentLineI',
+"       \     'select-i': 'il',
+"       \   },
+"       \ })
 
 
 " Random stuff
