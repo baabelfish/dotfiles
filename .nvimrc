@@ -93,7 +93,7 @@ Plug 'rking/ag.vim'
 Plug 'roktas/syntastic-more'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-express'
@@ -291,7 +291,7 @@ nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
-nnoremap <silent><F5> :GundoToggle<cr>
+nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
 nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<cr>
