@@ -123,6 +123,7 @@ Plug 'vim-scripts/octave.vim--'
 Plug 'vim-scripts/surrparen'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
+Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
