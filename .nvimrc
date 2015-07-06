@@ -27,6 +27,7 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 
 Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'haya14busa/incsearch.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'clausreinke/typescript-tools.vim'
 Plug 'AndrewRadev/gapply.vim'
@@ -91,11 +92,10 @@ Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'myint/syntastic-extras'
 Plug 'rking/ag.vim'
 Plug 'roktas/syntastic-more'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
-Plug 'mbbill/undotree'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'tommcdo/vim-express'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tommcdo/vim-kangaroo'
@@ -334,7 +334,9 @@ nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
-nnoremap <silent><space>/ :HoppingStart<cr>
+nnoremap <silent><space>g/ :HoppingStart<cr>
+map <space>/  <Plug>(incsearch-forward)
+map <space>?  <Plug>(incsearch-backward)
 nnoremap gT :YcmCompleter GetType<cr>
 nnoremap gt :YcmCompleter GoTo<cr>
 
