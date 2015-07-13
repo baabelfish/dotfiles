@@ -6,8 +6,8 @@
 	decorate = short
 
 [alias]
-	ci = commit
-	cia = commit -a
+	co = commit
+	coa = commit -a
 	di = diff
 	st = status
 	pu = pull --rebase

@@ -26,6 +26,7 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'baabelfish/vim-angry'
 
 Plug 'wellle/targets.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'haya14busa/incsearch.vim'
 Plug 'leafgarland/typescript-vim'
