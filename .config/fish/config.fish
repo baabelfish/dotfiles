@@ -104,6 +104,9 @@ alias use_dvorak='setxkbmap fi dvorak'
 alias use_neo='setxkbmap fi neo'
 alias use_qwerty='setxkbmap fi qwerty'
 
+# Dev
+alias nimc='nim c -r --verbosity:0'
+
 
 if test -e /usr/bin/dircolors
     alias l='ls --group-directories-first -X --color=auto'

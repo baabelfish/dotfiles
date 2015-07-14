@@ -75,8 +75,8 @@ bindsym $mod+Control+l move right 50px
 
 # Resizing
 bindsym $mod+Shift+l resize grow width 50 px or 5 ppt
-bindsym $mod+Shift+k resize grow height 50 px or 5 ppt
-bindsym $mod+Shift+j resize shrink height 50 px or 5 ppt
+bindsym $mod+Shift+k resize shrink height 50 px or 5 ppt
+bindsym $mod+Shift+j resize grow height 50 px or 5 ppt
 bindsym $mod+Shift+h resize shrink width 50 px or 5 ppt
 bindsym $mod+Shift+d resize grow width 50 px or 5 ppt
 bindsym $mod+Shift+w resize grow height 50 px or 5 ppt

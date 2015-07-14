@@ -25,6 +25,7 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'lambdalisue/vim-gita'
 " Plug 'baabelfish/vim-angry'
 
+Plug 'zah/nim.vim'
 Plug 'wellle/targets.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -640,8 +641,8 @@ let g:targets_argOpening = '[({[<]'
 let g:targets_argClosing = '[]})>]'
 
 let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
@@ -881,6 +882,18 @@ function! StripTrailingWhitespace()
   %s/\s\+$//e
   call setpos('.', save_cursor)
 endfunction
+
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
 
 
 " Textobjs
