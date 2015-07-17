@@ -38,6 +38,8 @@ Plug 'groenewege/vim-less'
 Plug 'AndrewRadev/switch.vim'
 Plug 'vim-scripts/dbext.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'baabelfish/mycolors'
 Plug 'floobits/floobits-neovim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'Matt-Stevens/vim-systemd-syntax'
@@ -510,10 +512,7 @@ let g:clang_format#style_options = {
 
 let g:goyo_width = 120
 
-let g:gundo_preview_bottom = 1
-let g:gundo_right = 1
-let g:gundo_width = 40
-let g:gundo_playback_delay = 200
+let g:undotree_WindowLayout = 2
 
 let g:gitgutter_max_signs = 4000
 let g:gitgutter_sign_column_always = 1
@@ -752,65 +751,6 @@ fun! <SID>StripTrailingWhitespaces()
   silent! %s/\s\+$//e
   call cursor(l, c)
 endfun
-
-fun! SelectFunction(inside)
-  if &ft == "cpp" || &ft == "c" || &ft == "js" ||
-        \ &ft == "java" || &ft == "js" || &ft == "cs" || &ft == "scala"
-    execute "normal! V"
-    if a:inside == 1
-      execute "normal! iBiBiBiBiBiBiB"
-    else
-      execute "normal! aBaBaBaBaBaBaB"
-    endif
-    execute "normal! oV0"
-  elseif &ft == 'clojure'
-    execute "normal! V"
-    if a:inside == 1
-      execute "normal! ibibibibibibib"
-    else
-      execute "normal! ababababababab"
-    endif
-  elseif &ft == "vim"
-    execute "normal! $"
-    call search("^fun!.*(.*)", "b")
-    if a:inside == 1
-      execute "normal! j"
-    endif
-    execute "normal! V"
-    call search("^endfun")
-    if a:inside == 1
-        execute "normal! k"
-    endif
-  endif
-endfunction
-
-fun! CppHeaderToSource()
-  let @z = input('Prefix: ')
-  execute ":silent! g/^public\:/d"
-  execute ":silent! g/^class/d"
-  execute ":silent! g/protected\:/d"
-  execute ":silent! g/^private\:/d"
-  execute ":silent! g/^#include/d"
-  execute ":silent! g/^#pragma/d"
-  execute ":silent! g/}/d"
-  execute ":silent! g/{/d"
-  execute ":silent! g/^\s*$/d"
-  execute ":%s/^\\s\\+//e"
-  execute ":silent! g/^static/norm 0daw"
-  execute ":silent! g/^virtual/norm 0daw"
-  execute ":silent! g!/^.*(.*).*;/norm ddGp0f;Bd0f;xA()I, "
-  execute ":silent! g/^.*(.*).*;/norm 0f(B\"zP"
-  execute ":silent! g/^.*(.*).*;/norm f;C {o}"
-  execute ":normal! G(xxkddVG"
-endfunction
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
 
 let g:dfm_fullscreen=0
 let g:dfm_nd=0
