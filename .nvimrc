@@ -686,6 +686,7 @@ set background=dark
 let g:droid_transparent = 1
 
 syntax on
+
 if has("gui_running")
   colorscheme gotham
 elseif &t_Co == 256 
@@ -693,6 +694,13 @@ elseif &t_Co == 256
 else
   colorscheme delek
 endif
+
+hi InterestingWord1 guifg=#000000 guibg=#7aa06b
+hi InterestingWord2 guifg=#000000 guibg=#d2e564
+hi InterestingWord3 guifg=#000000 guibg=#0097c1
+hi InterestingWord4 guifg=#000000 guibg=#22ff22
+hi InterestingWord5 guifg=#000000 guibg=#0097c1
+hi InterestingWord6 guifg=#000000 guibg=#0097c1
 
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -895,4 +903,8 @@ call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
+call arpeggio#map('icvx', '', 0, 'h1', '<Esc>iHodor ')
+call arpeggio#map('icvx', '', 0, 'h2', '<Esc>ihodor. ')
+call arpeggio#map('icvx', '', 0, 'h3', '<Esc>iHodor! ')
+call arpeggio#map('icvx', '', 0, 'h4', '<Esc>iHODOR! ')
 call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
