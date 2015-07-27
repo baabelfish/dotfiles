@@ -195,7 +195,7 @@ function my_vi_key_bindings
     bind L my_next_dir
     bind gh my_back_dir
     bind \ca browse_all
-    bind -M insert \ca ranger-cd
+    bind -M insert \ca 'ranger-cd; commandline -f repaint'
     bind \cd browse_all
     bind -M insert \cd browse_all
     bind \cs 'cmatrix; commandline -f repaint'
