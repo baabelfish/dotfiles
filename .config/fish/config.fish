@@ -60,6 +60,7 @@ function fish_greeting
 end
 
 set -x NVIM_TUI_ENABLE_TRUE_COLOR '1'
+set -x NVIM_TUI_ENABLE_CURSOR_SHAPE '1'
 set -x TERM 'xterm-termite'
 set -x NO_FISHMARKS_COMPAT_ALIASES
 set -x EDITOR 'nvim'

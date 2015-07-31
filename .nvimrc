@@ -294,7 +294,7 @@ nnoremap <silent>vif :call SelectFunction(1)<cr>
 nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
 nmap <; <Plug>Argumentative_MoveLeft
-nmap >; <Plug>Argumentative_MoveRight
+nmap >; <Plug>Aargumentative_MoveRight
 nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
