@@ -14,7 +14,7 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
-function fish_vi_prompt
+function fish_prompt
     if [ $fish_bind_mode = 'default' ]
         set my_vi_indicator 'N'
     else if [ $fish_bind_mode = 'visual' ]
@@ -66,7 +66,7 @@ set -x NO_FISHMARKS_COMPAT_ALIASES
 set -x EDITOR 'nvim'
 set -x NEDITOR 'nvim'
 set -x VISUAL 'nvim'
-set -x BROWSER 'chromium'
+set -x BROWSER 'google-chrome-stable'
 set -x LESS '-i -M -R -q'
 
 alias fishcfg='nvim ~/.config/fish/config.fish'

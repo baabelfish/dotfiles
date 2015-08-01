@@ -18,7 +18,7 @@ xsetroot -cursor_name left_ptr&
 autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
-[[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
+# [[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/udiskie ]] && bluedevil-monolithic&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
@@ -41,4 +41,4 @@ fi
 
 eval "sleep 8 && transset-df -n i3bar 0.85"&
 # [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
-[[ -e ~/.local/apps/i3gaps/i3 ]] && exec ~/.local/apps/i3gaps/i3 || exec i3
+[[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
