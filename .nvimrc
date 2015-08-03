@@ -127,6 +127,7 @@ Plug 'vim-scripts/surrparen'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
 Plug 'peterhoeg/vim-qml'
+Plug 'lambdalisue/vim-gita'
 
 call plug#end()
 
@@ -666,14 +667,6 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_semantic_triggers = {
       \ 'clojure' : ['(', '/'],
       \ }
-
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_refresh_always = 0
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif
 
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
