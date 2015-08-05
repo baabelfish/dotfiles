@@ -106,8 +106,14 @@ alias use_neo='setxkbmap fi neo'
 alias use_qwerty='setxkbmap fi qwerty'
 
 # Dev
-alias nimc='nim c -r --verbosity:0'
+alias nimc='nim c --verbosity:0'
+alias nimcr='nim c -r --verbosity:0'
+alias nimd='nim c --debugger:native --verbosity:0'
 
+function nimdr
+    nim c --debugger:native --verbosity:0 $argv
+    cgdb (echo $argv|cut -d'.' -f1)
+end
 
 if test -e /usr/bin/dircolors
     alias l='ls --group-directories-first -X --color=auto'
