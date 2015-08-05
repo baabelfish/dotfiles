@@ -666,6 +666,7 @@ let g:ycm_filetype_blacklist = {
       " \ 'javascript' : 1,
 let g:ycm_semantic_triggers = {
       \ 'clojure' : ['(', '/'],
+      \ 'nim' : ['.'],
       \ }
 
 let delimitMate_expand_cr = 1
