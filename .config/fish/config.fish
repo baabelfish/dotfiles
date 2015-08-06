@@ -234,9 +234,12 @@ function nmcli-l
     nmcli dev wifi
 end
 
-function bbl_syncpackage
+function bbl_syncpackages
     yaourt -S --needed --noconfirm (cat ~/.packagelist)
-    yaourt -Syu --aur
+end
+
+function bbl_update
+    yaourt -Syu --aur --noconfirm
 end
 
 function nmcli-con
