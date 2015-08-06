@@ -144,7 +144,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Bar
 bar {
     # modifier         Mod4
-    # tray_output      primary
+    tray_output      none
     mode             invisible
     # status_command   ~/.local/apps/i3blocks/i3blocks
  

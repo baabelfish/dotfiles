@@ -1,6 +1,7 @@
 alsaequal
-angelscript
 aseprite
+autocutsel
+calc
 chromium
 chromium-pepper-flash
 clipit
@@ -17,6 +18,7 @@ feh
 gifsicle
 gimp
 google-chrome
+htop
 i3-wm
 i3blocks
 i3lock
@@ -26,9 +28,14 @@ leiningen-completions
 libav
 lua-messagepack
 lwks
+lxde
 moka-theme
 mps-youtube-git
 mutt
+neovim-git
+network-manager-applet
+nim
+nimble
 nitrogen
 pip
 playerctl
@@ -50,6 +57,7 @@ udiskie
 unclutter
 urxvt-font-size-git
 urxvt-perls
+vim
 weechat
 xautolock
 xcape-git
@@ -63,5 +71,3 @@ yle-dl
 zathura
 zenity
 zsh
-lxde
-autocutsel

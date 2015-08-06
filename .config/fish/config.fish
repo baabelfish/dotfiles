@@ -234,8 +234,20 @@ function nmcli-l
     nmcli dev wifi
 end
 
+function bbl_syncpackage
+    yaourt -S --needed --noconfirm (cat ~/.packagelist)
+    yaourt -Syu --aur
+end
+
 function nmcli-con
     nmcli dev wifi connect $argv[1] password $argv[2]
+end
+
+function nmconfig
+    stalonetray&
+    nm-applet
+    killall nm-applet
+    killall stalonetray
 end
 
 function ranger-cd

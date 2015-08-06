@@ -11,10 +11,11 @@ urxvtd -q -f -o&
 setxkbmap -layout fi
 setxkbmap -option caps:escape
 xmodmap ~/.xbqwerty
-# xset dpms 540 1000 2000&
+xset dpms 5400 10000 20000
+xset -b
+xsetroot -cursor_name left_ptr
 xset -dpms
-xset -b&
-xsetroot -cursor_name left_ptr&
+xset s off
 
 autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
