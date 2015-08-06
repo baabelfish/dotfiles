@@ -70,7 +70,6 @@ Plug 'guns/vim-slamhound'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-dutyl'
 Plug 'idanarye/vim-merginal'
-Plug 'idanarye/vim-vebugger'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -142,10 +141,6 @@ if has("multi_byte")
   scriptencoding utf-8
 endif
 
-if &term =~ '256color'
-  set t_ut=
-endif
-
 if &shell =~# 'fish$'
   set shell=/bin/zsh
 endif
@@ -187,11 +182,11 @@ set showfulltag
 set splitbelow splitright
 set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set synmaxcol=1024
-set t_vb= novisualbell noerrorbells
+set novisualbell noerrorbells
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
 set ts=4 sts=4 sw=4 expandtab shiftround copyindent preserveindent
-set ttyfast ttimeout ttimeoutlen=0 lazyredraw
+set ttimeout ttimeoutlen=0 lazyredraw
 set undofile undolevels=1000 undoreload=10000 undodir=~/.vim/undodir nobackup
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
@@ -717,7 +712,6 @@ function! s:NextTextObject(motion, dir)
   elseif c ==# "d"
     let c = "["
   endif
-
   exe "normal!".a:dir.c."v".a:motion.c
 endfunction
 
@@ -823,18 +817,6 @@ function! StripTrailingWhitespace()
   %s/\s\+$//e
   call setpos('.', save_cursor)
 endfunction
-
-fun! JumpToDef()
-  if exists("*GotoDefinition_" . &filetype)
-    call GotoDefinition_{&filetype}()
-  else
-    exe "norm! \<C-]>"
-  endif
-endf
-
-" Jump to tag
-nn <M-g> :call JumpToDef()<cr>
-ino <M-g> <esc>:call JumpToDef()<cr>i
 
 
 " Textobjs
