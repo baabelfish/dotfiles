@@ -13,7 +13,6 @@ endif
 
 call plug#begin('~/.nvim/plugged')
 
-Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'Yggdroot/indentLine'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'octol/vim-cpp-enhanced-highlight'
@@ -25,25 +24,13 @@ Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 " Plug 'lambdalisue/vim-gita'
 " Plug 'baabelfish/vim-angry'
 
-Plug 'baabelfish/nim.vim'
-Plug 'wellle/targets.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'haya14busa/incsearch.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'clausreinke/typescript-tools.vim'
 Plug 'AndrewRadev/gapply.vim'
-Plug 'osyo-manga/vim-hopping'
-Plug 'groenewege/vim-less'
 Plug 'AndrewRadev/switch.vim'
-Plug 'vim-scripts/dbext.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'baabelfish/mycolors'
-Plug 'floobits/floobits-neovim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
@@ -53,20 +40,27 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe ;and git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'baabelfish/a.vim'
+Plug 'baabelfish/mycolors'
+Plug 'baabelfish/nim.vim'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
 Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
 Plug 'bps/vim-textobj-python'
 Plug 'chrisbra/NrrwRgn'
+Plug 'clausreinke/typescript-tools.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish'
 Plug 'flazz/vim-colorschemes'
+Plug 'floobits/floobits-neovim'
 Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
+Plug 'groenewege/vim-less'
 Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'guns/vim-sexp'
 Plug 'guns/vim-slamhound'
+Plug 'haya14busa/incsearch.vim'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-dutyl'
 Plug 'idanarye/vim-merginal'
@@ -74,29 +68,35 @@ Plug 'jonathanfilip/vim-lucius'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-gtfo'
-Plug 'osyo-manga/vim-hopping'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'lambdalisue/vim-gita'
+Plug 'leafgarland/typescript-vim'
 Plug 'leafo/moonscript-vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'mhinz/vim-signify'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'myint/syntastic-extras'
+Plug 'osyo-manga/vim-hopping'
+Plug 'osyo-manga/vim-hopping'
+Plug 'peterhoeg/vim-qml'
 Plug 'rking/ag.vim'
 Plug 'roktas/syntastic-more'
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'tommcdo/vim-express'
 Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -120,13 +120,13 @@ Plug 'vim-scripts/L9'
 Plug 'vim-scripts/Vimchant'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/bufkill.vim'
+Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/django.vim'
 Plug 'vim-scripts/octave.vim--'
 Plug 'vim-scripts/surrparen'
+Plug 'wellle/targets.vim'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
-Plug 'peterhoeg/vim-qml'
-Plug 'lambdalisue/vim-gita'
 
 call plug#end()
 
@@ -155,7 +155,8 @@ set conceallevel=0
 set cscopetag
 set cursorline
 set display+=lastline " FIXME
-set fillchars+=vert: 
+" set fillchars+=vert: 
+set fillchars+=vert:│
 set formatoptions=qrn1tj
 set gdefault smartcase ignorecase incsearch
 set hidden
@@ -683,6 +684,7 @@ else
   colorscheme delek
 endif
 
+hi VertSplit guifg=#222222 guibg=none
 hi InterestingWord1 guifg=#000000 guibg=#7aa06b
 hi InterestingWord2 guifg=#000000 guibg=#d2e564
 hi InterestingWord3 guifg=#000000 guibg=#0097c1
