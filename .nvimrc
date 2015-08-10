@@ -126,6 +126,7 @@ Plug 'wellle/targets.vim'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
 Plug 'lambdalisue/vim-manpager'
+Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
@@ -347,6 +348,7 @@ xmap i; <Plug>Argumentative_InnerTextObject
 xmap a; <Plug>Argumentative_OuterTextObject
 omap i; <Plug>Argumentative_OpPendingInnerTextObject
 omap a; <Plug>Argumentative_OpPendingOuterTextObject
+nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>

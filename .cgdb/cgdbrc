@@ -1,0 +1,4 @@
+set arrowstyle=short
+set syntax=ada
+set ignorecase
+highlight SelectedLineNr cterm=bold ctermfg=DarkGreen
