@@ -481,6 +481,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_height = 40
 
+
 let g:cpp_class_scope_highlight = 1
 
 let g:agprg="ag --smart-case --column"
@@ -650,7 +651,6 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_server_log_level = 'error'
 let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1,
-      \ 'javascript' : 1,
       \ 'markdown' : 1,
       \ 'notes' : 1,
       \ 'tex' : 1,
@@ -685,6 +685,23 @@ else
 endif
 
 hi VertSplit guifg=#222222 guibg=none
+hi CtrlPNoEntries guifg=#FF6B00 guibg=none
+hi CtrlPMatch guifg=#BAFF00 guibg=none
+hi CtrlPLinePre guifg=none guibg=none
+hi CtrlPPrtBase guifg=#A8A8A8 guibg=none
+hi CtrlPPrtText guifg=C8C8C8 guibg=none
+hi CtrlPPrtCursor guifg=none guibg=none
+hi CtrlPTabExtra guifg=#FFFFFF guibg=none
+hi CtrlPBufName guifg=#FFFFFF guibg=none
+hi CtrlPTagKind guifg=#FFFFFF guibg=none
+hi CtrlPqfLineCol guifg=#FFFFFF guibg=none
+hi CtrlPUndoT guifg=#FFFFFF guibg=none
+hi CtrlPUndoBr guifg=#FFFFFF guibg=none
+hi CtrlPUndoNr guifg=#FFFFFF guibg=none
+hi CtrlPUndoSv guifg=#FFFFFF guibg=none
+hi CtrlPUndoPo guifg=#FFFFFF guibg=none
+hi CtrlPBookmark guifg=#FFFFFF guibg=none
+
 hi InterestingWord1 guifg=#000000 guibg=#7aa06b
 hi InterestingWord2 guifg=#000000 guibg=#d2e564
 hi InterestingWord3 guifg=#000000 guibg=#0097c1

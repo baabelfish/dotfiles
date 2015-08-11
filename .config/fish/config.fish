@@ -105,6 +105,15 @@ alias use_dvorak='setxkbmap fi dvorak'
 alias use_neo='setxkbmap fi neo'
 alias use_qwerty='setxkbmap fi qwerty'
 
+function kov
+    eval $argv
+    if test $status -ne 0
+        mplayer -really-quiet ~/.kop.ogg 2> /dev/null
+    else
+        mplayer -really-quiet ~/.success.ogg 2> /dev/null
+    end
+end
+
 # Dev
 alias nimc='nim c --verbosity:0'
 alias nimcr='nim c -r --verbosity:0'
