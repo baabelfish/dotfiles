@@ -118,6 +118,7 @@ end
 alias nimc='nim c --verbosity:0'
 alias nimcr='nim c -r --verbosity:0'
 alias nimd='nim c --debugger:native --verbosity:0'
+alias testIE9='curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | IEVMS_VERSIONS="9" bash'
 
 function nimdr
     nim c --debugger:native --verbosity:0 $argv

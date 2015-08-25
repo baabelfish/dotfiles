@@ -52,7 +52,7 @@ Plug 'clausreinke/typescript-tools.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish'
 Plug 'flazz/vim-colorschemes'
-Plug 'floobits/floobits-neovim'
+" Plug 'floobits/floobits-neovim'
 Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
 Plug 'groenewege/vim-less'
@@ -64,11 +64,9 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-dutyl'
 Plug 'idanarye/vim-merginal'
-Plug 'jonathanfilip/vim-lucius'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-gtfo'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-arpeggio'
@@ -89,7 +87,6 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'mhinz/vim-signify'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'myint/syntastic-extras'
-Plug 'osyo-manga/vim-hopping'
 Plug 'osyo-manga/vim-hopping'
 Plug 'peterhoeg/vim-qml'
 Plug 'rking/ag.vim'
@@ -166,6 +163,7 @@ set laststatus=2
 set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
+set mouse=
 set nofoldenable foldmethod=manual
 set noshowmode
 set nospell
@@ -480,6 +478,11 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 let g:ctrlp_max_height = 40
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 
 let g:cpp_class_scope_highlight = 1
@@ -685,11 +688,12 @@ else
 endif
 
 hi VertSplit guifg=#222222 guibg=none
+
 hi CtrlPNoEntries guifg=#FF6B00 guibg=none
 hi CtrlPMatch guifg=#BAFF00 guibg=none
 hi CtrlPLinePre guifg=none guibg=none
 hi CtrlPPrtBase guifg=#A8A8A8 guibg=none
-hi CtrlPPrtText guifg=C8C8C8 guibg=none
+hi CtrlPPrtText guifg=#C8C8C8 guibg=none
 hi CtrlPPrtCursor guifg=none guibg=none
 hi CtrlPTabExtra guifg=#FFFFFF guibg=none
 hi CtrlPBufName guifg=#FFFFFF guibg=none
@@ -873,6 +877,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.sass-cache',
       \ 'web/wp',
       \ ], '\|'))
+call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
 map g? <Plug>(operator-adjust)
 call operator#user#define('adjust', 'Ag_textobj')
