@@ -22,11 +22,11 @@ call plug#begin('~/.nvim/plugged')
 " Plug 'Raimondi/delimitMate'
 " Plug 'marijnh/tern_for_vim'
 " Plug 'lambdalisue/vim-gita'
-" Plug 'baabelfish/vim-angry'
+" Plug 'floobits/floobits-neovim'
 
 Plug 'AndrewRadev/gapply.vim'
+Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -42,6 +42,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe ;and gi
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/mycolors'
 Plug 'baabelfish/nim.vim'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
 Plug 'baabelfish/vim-vertigo'
@@ -52,7 +53,6 @@ Plug 'clausreinke/typescript-tools.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish'
 Plug 'flazz/vim-colorschemes'
-" Plug 'floobits/floobits-neovim'
 Plug 'glts/vim-textobj-comment'
 Plug 'gregsexton/gitv'
 Plug 'groenewege/vim-less'
@@ -288,8 +288,6 @@ nnoremap <silent>vif :call SelectFunction(1)<cr>
 " Plugin related
 nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
-nmap <; <Plug>Argumentative_MoveLeft
-nmap >; <Plug>Aargumentative_MoveRight
 nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
@@ -337,6 +335,16 @@ map <space>/  <Plug>(incsearch-forward)
 map <space>?  <Plug>(incsearch-backward)
 nnoremap gT :YcmCompleter GetType<cr>
 nnoremap gt :YcmCompleter GoTo<cr>
+nmap [; <Plug>Argumentative_Prev
+nmap ]; <Plug>Argumentative_Next
+xmap [; <Plug>Argumentative_XPrev
+xmap ]; <Plug>Argumentative_XNext
+nmap <; <Plug>Argumentative_MoveLeft
+nmap >; <Plug>Argumentative_MoveRight
+xmap i; <Plug>Argumentative_InnerTextObject
+xmap a; <Plug>Argumentative_OuterTextObject
+omap i; <Plug>Argumentative_OpPendingInnerTextObject
+omap a; <Plug>Argumentative_OpPendingOuterTextObject
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
