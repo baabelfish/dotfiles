@@ -244,7 +244,7 @@ for_window [window_role="pop-up"] floating enable
 
 # Startup
 bindsym $mod+Mod5+h exec --no-startup-id urxvtc -title i3-launch-htop -e htop
-bindsym $mod+Mod5+c exec --no-startup-id google-chrome-stable
+bindsym $mod+Mod5+c exec --no-startup-id $BROWSER
 bindsym $mod+Mod5+s exec --no-startup-id spotify
 bindsym $mod+Mod5+Shift+s exec --no-startup-id steam
 

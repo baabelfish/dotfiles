@@ -124,6 +124,7 @@ Plug 'vim-scripts/surrparen'
 Plug 'wellle/targets.vim'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
+Plug 'lambdalisue/vim-manpager'
 
 call plug#end()
 

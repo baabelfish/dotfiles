@@ -66,8 +66,9 @@ set -x NO_FISHMARKS_COMPAT_ALIASES
 set -x EDITOR 'nvim'
 set -x NEDITOR 'nvim'
 set -x VISUAL 'nvim'
-set -x BROWSER 'google-chrome-stable'
+set -x BROWSER 'chromium'
 set -x LESS '-i -M -R -q'
+# set -x MANPAGER 'nvim -c Man -'
 
 alias fishcfg='nvim ~/.config/fish/config.fish'
 
@@ -230,6 +231,10 @@ alias ml list_bookmarks
 # Commands
 function C
     builtin cd (cat /home/$USER/.cache/curdir)
+end
+
+function Man
+    man $argv|col -b|nvim -R -c 'MANPAGER' -
 end
 
 function cd
