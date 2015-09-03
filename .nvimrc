@@ -279,7 +279,7 @@ inoremap <silent><A-c> <C-o>:call ColorPicker(1)<cr>
 nnoremap <leader>r yiw:call SelectFunction(0)<cr>:s/\<0\>/
 nnoremap <silent><A-F> :call NoDistraction()<cr>:echo ""<cr>
 nnoremap <silent><A-f> :call Fullscreen()<cr>:echo ""<cr>
-" nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
+nnoremap <silent><leader>cw :call StripTrailingWhitespace()<cr>
 nnoremap <silent><space>C :call ToggleConceal()<cr>
 nnoremap <silent><space>cp :call ColorPicker(0)<cr>
 nnoremap caf :call SelectFunction(0)<cr>c

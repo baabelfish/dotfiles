@@ -25,6 +25,7 @@
 	in       = !git fetch && git log ..FETCH_HEAD
 	incoming = !git fetch && git log ..FETCH_HEAD
 	lo = log --oneline --date-order --graph --decorate --full-history --pretty=format:'%C(64)%h %C(46)%s %C(245)- %C(253)%an %C(253)(%C(245)%ar%C(253))'
+	undo = git reset HEAD~1
 
 [github]
 	user = baabelfish
