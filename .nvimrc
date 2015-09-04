@@ -23,6 +23,7 @@ call plug#begin('~/.nvim/plugged')
 " Plug 'marijnh/tern_for_vim'
 " Plug 'lambdalisue/vim-gita'
 " Plug 'floobits/floobits-neovim'
+" Plug 'wincent/ferret' " Works like shit
 
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/sideways.vim'
