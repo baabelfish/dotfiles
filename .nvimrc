@@ -409,8 +409,8 @@ nnoremap <silent><space>d :lcd %:p:h<cr>
 nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
-nnoremap ¤ :'<,'>g/^/norm 
-vnoremap ¤ :g/^/norm 
+nnoremap ¤ :'<,'>g/^/norm! 
+vnoremap ¤ :g/^/norm! 
 nmap ½ @q
 vmap ½ @q
 nnoremap å :w<cr>
