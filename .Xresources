@@ -126,7 +126,7 @@ rofi.run-command:                    {cmd}
 rofi.run-list-command:               
 rofi.run-shell-command:              {terminal} -e {cmd}
 rofi.disable-history:                false
-rofi.levenshtein-sort:               false
+rofi.levenshtein-sort:               true
 rofi.case-sensitive:                 false
 rofi.sidebar-mode:                   false
 rofi.lazy-filter-limit:              0
@@ -134,7 +134,7 @@ rofi.eh:                             1
 rofi.auto-select:                    false
 rofi.parse-hosts:                    false
 rofi.combi-modi:                     window,run
-rofi.fuzzy:                          true
+rofi.fuzzy:                          false
 rofi.pid:                            /run/user/1000/rofi.pid
 rofi.kb-primary-paste:               Control+Shift+v,Shift+Insert
 rofi.kb-secondary-paste:             Control+v,Insert
