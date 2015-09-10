@@ -24,7 +24,9 @@ call plug#begin('~/.nvim/plugged')
 " Plug 'lambdalisue/vim-gita'
 " Plug 'floobits/floobits-neovim'
 " Plug 'wincent/ferret' " Works like shit
+" Plug 'baabelfish/mycolors'
 
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/switch.vim'
@@ -41,7 +43,6 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe ;and git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'baabelfish/a.vim'
-Plug 'baabelfish/mycolors'
 Plug 'baabelfish/nim.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'baabelfish/vim-dispatch'
@@ -157,7 +158,7 @@ set cursorline
 set display+=lastline " FIXME
 " set fillchars+=vert: 
 set fillchars+=vert:│
-set formatoptions=qrn1tj
+set formatoptions=qrn1tj tw=400 " tcqj
 set gdefault smartcase ignorecase incsearch
 set hidden
 set history=100
@@ -167,7 +168,7 @@ set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set mouse=
-set nofoldenable foldmethod=manual
+set nofoldenable foldmethod=manual foldlevel=999
 set noshowmode
 set nospell
 set noswapfile
@@ -331,6 +332,11 @@ nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>l :CtrlPLine<cr>
 nnoremap <silent><space>y m':Unite -silent history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
+nnoremap <silent><space>W :SignifyToggleHighlight<cr>kj
+" nnoremap <leader>gj <plug>(signify-next-hunk)
+" nnoremap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader><space>j <plug>(signify-next-hunk)
+nmap <leader><space>k <plug>(signify-prev-hunk)
 nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
@@ -558,11 +564,9 @@ let g:sexp_enable_insert_mode_mappings = 0
 
 let g:signify_disable_by_default = 0
 let g:signify_update_on_bufenter = 1
-let g:signify_mapping_next_hunk = '<leader>gj'
-let g:signify_mapping_prev_hunk = '<leader>gk'
 let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'
-let g:signify_sign_delete            = '_'
+let g:signify_sign_delete            = '†'
 let g:signify_sign_delete_first_line = '»'
 let g:signify_sign_overwrite = 0
 
@@ -700,8 +704,12 @@ else
   colorscheme delek
 endif
 
+let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
+
+hi Normal                  guifg=#99d1ce guibg=none    gui=none
+hi NonText                 guifg=#111111 guibg=none    gui=none
 hi VertSplit               guifg=#222222 guibg=none
-hi CtrlPNoEntries          guifg=#FF6B00 guibg=none
+hi CtrlPNoEntries          guifg=#FF8B00 guibg=none
 hi CtrlPMatch              guifg=#BAFF00 guibg=none
 hi CtrlPLinePre            guifg=none    guibg=none
 hi CtrlPPrtBase            guifg=#A8A8A8 guibg=none
@@ -717,24 +725,140 @@ hi CtrlPUndoNr             guifg=#FFFFFF guibg=none
 hi CtrlPUndoSv             guifg=#FFFFFF guibg=none
 hi CtrlPUndoPo             guifg=#FFFFFF guibg=none
 hi CtrlPBookmark           guifg=#FFFFFF guibg=none
-hi mbechanged              guifg=255     guibg=none gui=none
-hi mbenormal               guifg=187     guibg=none gui=none
-hi mbevisiblechanged       guifg=255     guibg=none gui=none
-hi mbevisiblenormal        guifg=252     guibg=none gui=none
-hi multiple_cursors_cursor guifg=232     guibg=none
-hi perlspecialmatch        guifg=176     guibg=none gui=none
-hi perlspecialstring       guifg=176     guibg=none gui=none
-hi taglisttagname          guifg=105     guibg=none gui=none
-hi SignColumn              guifg=none    guibg=none gui=none
-hi SignifySignAdd          guifg=#46CF3A guibg=none gui=bold
-hi SignifySignChange       guifg=#CFC93A guibg=none gui=bold
-hi SignifySignDelete       guifg=#CB1F1F guibg=none gui=bold
+" hi mbechanged              guifg=255     guibg=none    gui=none
+" hi mbenormal               guifg=187     guibg=none    gui=none
+" hi mbevisiblechanged       guifg=255     guibg=none    gui=none
+" hi mbevisiblenormal        guifg=252     guibg=none    gui=none
+" hi multiple_cursors_cursor guifg=232     guibg=none
+" hi perlspecialmatch        guifg=176     guibg=none    gui=none
+" hi perlspecialstring       guifg=176     guibg=none    gui=none
+" hi taglisttagname          guifg=105     guibg=none    gui=none
+hi SignColumn              guifg=none    guibg=none    gui=none
+hi SignifyLineAdd          guifg=none    guibg=#032007 gui=bold
+hi SignifyLineChange       guifg=none    guibg=#1F1900 gui=bold
+hi SignifyLineDelete       guifg=none    guibg=#180505 gui=bold
+hi SignifySignAdd          guifg=#36bF2A guibg=none    gui=bold
+hi SignifySignChange       guifg=#bFb92A guibg=none    gui=bold
+hi SignifySignDelete       guifg=#bB0F0F guibg=none    gui=bold
 hi InterestingWord1        guifg=#000000 guibg=#7aa06b
 hi InterestingWord2        guifg=#000000 guibg=#d2e564
 hi InterestingWord3        guifg=#000000 guibg=#0097c1
 hi InterestingWord4        guifg=#000000 guibg=#22ff22
 hi InterestingWord5        guifg=#000000 guibg=#0097c1
 hi InterestingWord6        guifg=#000000 guibg=#0097c1
+
+" Syntax
+" hi Block                     guifg=#79AE4E  guibg=none gui=bold
+" hi Boolean                     guifg=154  guibg=none gui=bold
+" hi Character                   guifg=112  guibg=none gui=none
+" hi Comment                     guifg=239  guibg=none gui=italic
+" hi Constant                    guifg=154  guibg=none gui=bold
+" hi Define                      guifg=129  guibg=none gui=none
+" hi Delimiter                   guifg=106  guibg=none gui=none
+" hi Exception                   guifg=252  guibg=none
+" hi Float                       guifg=112  guibg=none gui=none
+" hi Identifier                  guifg=255  guibg=none gui=italic
+" hi Include                     guifg=245  guibg=none gui=none
+" hi Keyword                     guifg=106  guibg=none gui=none
+" hi Macro                       guifg=129  guibg=none gui=none
+" hi Operator                    guifg=247  guibg=none
+" hi PreCondit                   guifg=129  guibg=none gui=none
+" hi PreProc                     guifg=200  guibg=none gui=none
+" hi Special                     guifg=148  guibg=none gui=none
+" hi StorageClass                guifg=245  guibg=none gui=none
+" hi Structure                   guifg=246  guibg=none gui=bold
+" hi Tag                         guifg=142  guibg=none gui=none
+" hi Todo                        guifg=196  guibg=none gui=italic,bold
+" hi Type                        guifg=148  guibg=none gui=italic
+hi Function    guifg=#79EC1C guibg=none gui=bold
+hi Number      guifg=#af5f87 guibg=none gui=none
+hi Statement   guifg=#C16FE8 guibg=none gui=none
+hi String      guifg=#79AE4E guibg=none gui=bold
+hi Conditional guifg=#37BEBE guibg=none gui=bold
+
+" Javascript is special
+hi javaScriptNumber guifg=#af5f87 guibg=none gui=none
+hi javaScriptIdentifier guifg=#DCB323 guibg=none gui=none
+hi javaScriptBraces guifg=#777777 guibg=none gui=none
+hi javaScriptParens guifg=#888888 guibg=none gui=none
+hi javascriptRTop guifg=#C99EFF guibg=none gui=none
+hi javascript_collections guifg=#C99EFF guibg=none gui=none
+hi javascript_objects guifg=#C99EFF guibg=none gui=none
+hi javascript_lodash guifg=#C99EFF guibg=none gui=none
+hi javascript_arrays guifg=#C99EFF guibg=none gui=none
+hi javascript_chaining guifg=#D9AEFF guibg=none gui=italic
+hi javascript_chaining guifg=#D9AEFF guibg=none gui=italic
+hi javascriptBModelAttrs guifg=#777777 guibg=none gui=none
+hi javascriptBCollectionAttrs guifg=#779777 guibg=none gui=italic
+
+" hi Cursor                      guifg=232  guibg=254  gui=none
+" hi Debug                       guifg=214  guibg=none gui=none
+" hi DiffAdd                     guifg=112  guibg=none gui=bold
+" hi DiffChange                  guifg=220  guibg=none gui=bold
+" hi DiffDelete                  guifg=160  guibg=none gui=bold
+" hi Directory                   guifg=172  guibg=none gui=none
+" hi EasyMotionTarget            guifg=46   guibg=233
+" hi Error                       guifg=196  guibg=none gui=bold
+" hi ErrorMsg                    guifg=172  guibg=none gui=none
+" hi Folded                      guifg=103  guibg=238  gui=none
+" hi Label                       guifg=249  guibg=none gui=italic
+" hi MatchParen                  guifg=118  guibg=none gui=underline
+" hi ModeMsg                     guifg=249  guibg=none gui=none
+" hi Question                    guifg=178  guibg=none gui=none
+" hi Repeat                      guifg=254  guibg=none gui=bold
+" hi Search                      guifg=227  guibg=none gui=bold
+" hi SpecialKey                  guifg=235  guibg=none gui=none
+" hi SpellBad                    guifg=166  guibg=none gui=none
+" hi SpellCap                    guifg=166  guibg=none gui=none
+" hi SpellLocal                  guifg=166  guibg=none gui=none
+" hi SpellRare                   guifg=166  guibg=none gui=bold
+" hi StartifyBracket             guifg=236
+" hi StartifyHeader              guifg=154
+" hi StartifyNumber              guifg=148
+" hi StartifyPath                guifg=246
+" hi StartifySlash               guifg=240
+" hi StatusLine                  guifg=255  guibg=235  gui=none
+" hi StatusLineNC                guifg=236  guibg=235  gui=none
+" hi TabLine                     guifg=none guibg=none gui=none
+" hi TabLineFill                 guifg=247  guibg=none gui=none
+" hi TabLineSel                  guifg=none guibg=255  gui=none
+" hi Title                       guifg=143  guibg=none gui=none
+" hi Underlined                  gui=underline
+" hi VertSplit                   guifg=236  guibg=none gui=none
+" hi Visual                      guifg=none guibg=235  gui=none
+" hi cformat                     guifg=176  guibg=238  gui=none
+" hi cspecialcharacter           guifg=172  guibg=234  gui=none
+" hi cspecialcharacter           guifg=176  guibg=238  gui=none
+" hi cursorim                    guifg=238  guibg=105  gui=none
+" hi doxygenbrief                guifg=215  guibg=none gui=none
+" hi doxygencomment              guifg=130  guibg=none gui=none
+" hi doxygenparam                guifg=222  guibg=none gui=none
+" hi doxygenprev                 guifg=222  guibg=none gui=none
+" hi doxygensmallspecial         guifg=222  guibg=none gui=none
+" hi doxygenspecial              guifg=222  guibg=none gui=none
+" hi doxygenspecialmultilinedesc guifg=130  guibg=none gui=none
+" hi doxygenspecialonelinedesc   guifg=130  guibg=none gui=none
+" hi lcursor                     guifg=238  guibg=120  gui=none
+" hi mbechanged                  guifg=255  guibg=237  gui=none
+" hi mbenormal                   guifg=187  guibg=237  gui=none
+" hi mbevisiblechanged           guifg=255  guibg=60   gui=none
+" hi mbevisiblenormal            guifg=252  guibg=60   gui=none
+" hi multiple_cursors_cursor     guifg=232  guibg=253
+" hi perlspecialmatch            guifg=176  guibg=238  gui=none
+" hi perlspecialstring           guifg=176  guibg=238  gui=none
+" hi taglisttagname              guifg=105  guibg=none gui=none
+hi ColorColumn          guibg=none
+hi CursorColumn         guifg=none    guibg=#262626 gui=none
+hi CursorLine           guibg=#1c1c1c gui=none
+hi CursorLineNr         guifg=#67cf30 guibg=none    gui=none
+hi LineNr               guifg=#444944 guibg=none    gui=none
+hi PMenu                guifg=#dadada guibg=#262626 gui=none
+hi PMenuSbar            guifg=none    guibg=#3a3a3a gui=none
+hi PMenuSel             guifg=#afff00 guibg=#121212 gui=none
+hi PMenuThumb           guifg=#afff00 guibg=#afff00 gui=none
+hi SyntasticErrorSign   guifg=#ff4444 guibg=none
+hi SyntasticWarningSign guifg=#d7ff5f guibg=none
+hi WildMenu             guifg=#080808 guibg=#afd700 gui=bold
 
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
