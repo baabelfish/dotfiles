@@ -5,10 +5,19 @@
 	ui = auto
 	decorate = short
 
+[diff]
+	tool = nvim -d
+
+[merge]
+	tool = nvim -d
+	conflictstyle = diff3
+	prompt = false
+
 [alias]
 	co = commit
 	coa = commit -a
-	di = diff
+	d = diff
+	m = mergetool
 	st = status
 	pu = pull --rebase
 	out      = !git fetch && git log FETCH_HEAD..
@@ -20,6 +29,7 @@
 [github]
 	user = baabelfish
 	email = baabelfish@gmail.com
+
 [user]
 	email = baabelfish@gmail.com
 	name = baabelfish

@@ -777,18 +777,18 @@ hi String      guifg=#79AE4E guibg=none gui=bold
 hi Conditional guifg=#37BEBE guibg=none gui=bold
 
 " Javascript is special
-hi javaScriptNumber guifg=#af5f87 guibg=none gui=none
-hi javaScriptIdentifier guifg=#DCB323 guibg=none gui=none
-hi javaScriptBraces guifg=#777777 guibg=none gui=none
-hi javaScriptParens guifg=#888888 guibg=none gui=none
-hi javascriptRTop guifg=#C99EFF guibg=none gui=none
-hi javascript_collections guifg=#C99EFF guibg=none gui=none
-hi javascript_objects guifg=#C99EFF guibg=none gui=none
-hi javascript_lodash guifg=#C99EFF guibg=none gui=none
-hi javascript_arrays guifg=#C99EFF guibg=none gui=none
-hi javascript_chaining guifg=#D9AEFF guibg=none gui=italic
-hi javascript_chaining guifg=#D9AEFF guibg=none gui=italic
-hi javascriptBModelAttrs guifg=#777777 guibg=none gui=none
+hi javaScriptNumber           guifg=#af5f87 guibg=none gui=none
+hi javaScriptIdentifier       guifg=#DCB323 guibg=none gui=none
+hi javaScriptBraces           guifg=#777777 guibg=none gui=none
+hi javaScriptParens           guifg=#888888 guibg=none gui=none
+hi javascriptRTop             guifg=#C99EFF guibg=none gui=none
+hi javascript_collections     guifg=#C99EFF guibg=none gui=none
+hi javascript_objects         guifg=#C99EFF guibg=none gui=none
+hi javascript_lodash          guifg=#C99EFF guibg=none gui=none
+hi javascript_arrays          guifg=#C99EFF guibg=none gui=none
+hi javascript_chaining        guifg=#D9AEFF guibg=none gui=italic
+hi javascript_chaining        guifg=#D9AEFF guibg=none gui=italic
+hi javascriptBModelAttrs      guifg=#777777 guibg=none gui=none
 hi javascriptBCollectionAttrs guifg=#779777 guibg=none gui=italic
 
 " hi Cursor                      guifg=232  guibg=254  gui=none
