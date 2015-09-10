@@ -310,7 +310,6 @@ nnoremap <silent><space>n :cnext<cr>
 nnoremap <silent><space>q :Bck<cr>
 nnoremap <silent><space>S :Startify<cr>
 nnoremap <silent><space>t :Gitv<cr>
-nnoremap <silent>Ö :Switch<cr>
 nnoremap <silent><leader>j :<C-U>VertigoDown n<cr>
 nnoremap <silent><leader>k :<C-U>VertigoUp n<cr>
 onoremap <silent><leader>j :<C-U>VertigoDown o<cr>
@@ -320,15 +319,17 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 nnoremap <silent><leader><space> :Goyo<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
-vnoremap <silent><space><enter> :EasyAlign<cr>
-nnoremap <silent><space>O :Unite -silent tab<cr>
-nnoremap <silent><space>F m':Unite outline<cr>
-nnoremap <silent><space>f :CtrlPFunky<cr>
+nmap <space><enter> <Plug>(LiveEasyAlign)
+vmap <space><enter> <Plug>(LiveEasyAlign)
+vmap <space><space><enter> :EasyAlign*\ <cr>
+nnoremap <si<space>lent><space>O :Unite -silent tab<cr>
+nnoremap <silent><space>f m':Unite outline<cr>
+nnoremap <silent><space>F :CtrlPFunky<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-nnoremap <silent><space>P :Unite -silent file_rec/async<cr>
-nnoremap <silent><space>p :CtrlPCurWD<cr>
+nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
+nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>l :CtrlPLine<cr>
-nnoremap <silent><space>y m':Unite -silent -hide-status-line history/yank<cr>
+nnoremap <silent><space>y m':Unite -silent history/yank<cr>
 nnoremap <silent><space>w :SignifyToggle<cr>
 nnoremap <silent><leader>a :TagbarToggle<cr>
 nnoremap <silent><leader>A :TagbarShowTag<cr>
@@ -555,7 +556,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
-let g:signify_disable_by_default = 1
+let g:signify_disable_by_default = 0
 let g:signify_update_on_bufenter = 1
 let g:signify_mapping_next_hunk = '<leader>gj'
 let g:signify_mapping_prev_hunk = '<leader>gk'
@@ -699,31 +700,41 @@ else
   colorscheme delek
 endif
 
-hi VertSplit guifg=#222222 guibg=none
-
-hi CtrlPNoEntries guifg=#FF6B00 guibg=none
-hi CtrlPMatch guifg=#BAFF00 guibg=none
-hi CtrlPLinePre guifg=none guibg=none
-hi CtrlPPrtBase guifg=#A8A8A8 guibg=none
-hi CtrlPPrtText guifg=#C8C8C8 guibg=none
-hi CtrlPPrtCursor guifg=none guibg=none
-hi CtrlPTabExtra guifg=#FFFFFF guibg=none
-hi CtrlPBufName guifg=#FFFFFF guibg=none
-hi CtrlPTagKind guifg=#FFFFFF guibg=none
-hi CtrlPqfLineCol guifg=#FFFFFF guibg=none
-hi CtrlPUndoT guifg=#FFFFFF guibg=none
-hi CtrlPUndoBr guifg=#FFFFFF guibg=none
-hi CtrlPUndoNr guifg=#FFFFFF guibg=none
-hi CtrlPUndoSv guifg=#FFFFFF guibg=none
-hi CtrlPUndoPo guifg=#FFFFFF guibg=none
-hi CtrlPBookmark guifg=#FFFFFF guibg=none
-
-hi InterestingWord1 guifg=#000000 guibg=#7aa06b
-hi InterestingWord2 guifg=#000000 guibg=#d2e564
-hi InterestingWord3 guifg=#000000 guibg=#0097c1
-hi InterestingWord4 guifg=#000000 guibg=#22ff22
-hi InterestingWord5 guifg=#000000 guibg=#0097c1
-hi InterestingWord6 guifg=#000000 guibg=#0097c1
+hi VertSplit               guifg=#222222 guibg=none
+hi CtrlPNoEntries          guifg=#FF6B00 guibg=none
+hi CtrlPMatch              guifg=#BAFF00 guibg=none
+hi CtrlPLinePre            guifg=none    guibg=none
+hi CtrlPPrtBase            guifg=#A8A8A8 guibg=none
+hi CtrlPPrtText            guifg=#C8C8C8 guibg=none
+hi CtrlPPrtCursor          guifg=none    guibg=none
+hi CtrlPTabExtra           guifg=#FFFFFF guibg=none
+hi CtrlPBufName            guifg=#FFFFFF guibg=none
+hi CtrlPTagKind            guifg=#FFFFFF guibg=none
+hi CtrlPqfLineCol          guifg=#FFFFFF guibg=none
+hi CtrlPUndoT              guifg=#FFFFFF guibg=none
+hi CtrlPUndoBr             guifg=#FFFFFF guibg=none
+hi CtrlPUndoNr             guifg=#FFFFFF guibg=none
+hi CtrlPUndoSv             guifg=#FFFFFF guibg=none
+hi CtrlPUndoPo             guifg=#FFFFFF guibg=none
+hi CtrlPBookmark           guifg=#FFFFFF guibg=none
+hi mbechanged              guifg=255     guibg=none gui=none
+hi mbenormal               guifg=187     guibg=none gui=none
+hi mbevisiblechanged       guifg=255     guibg=none gui=none
+hi mbevisiblenormal        guifg=252     guibg=none gui=none
+hi multiple_cursors_cursor guifg=232     guibg=none
+hi perlspecialmatch        guifg=176     guibg=none gui=none
+hi perlspecialstring       guifg=176     guibg=none gui=none
+hi taglisttagname          guifg=105     guibg=none gui=none
+hi SignColumn              guifg=none    guibg=none gui=none
+hi SignifySignAdd          guifg=#46CF3A guibg=none gui=bold
+hi SignifySignChange       guifg=#CFC93A guibg=none gui=bold
+hi SignifySignDelete       guifg=#CB1F1F guibg=none gui=bold
+hi InterestingWord1        guifg=#000000 guibg=#7aa06b
+hi InterestingWord2        guifg=#000000 guibg=#d2e564
+hi InterestingWord3        guifg=#000000 guibg=#0097c1
+hi InterestingWord4        guifg=#000000 guibg=#22ff22
+hi InterestingWord5        guifg=#000000 guibg=#0097c1
+hi InterestingWord6        guifg=#000000 guibg=#0097c1
 
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
