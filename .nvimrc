@@ -1024,7 +1024,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.sass-cache',
       \ 'web/wp',
       \ ], '\|'))
-call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
 map g? <Plug>(operator-adjust)
 call operator#user#define('adjust', 'Ag_textobj')
