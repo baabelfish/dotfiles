@@ -129,7 +129,7 @@ rofi.disable-history:                false
 rofi.levenshtein-sort:               true
 rofi.case-sensitive:                 false
 rofi.sidebar-mode:                   false
-rofi.lazy-filter-limit:              0
+rofi.lazy-filter-limit:              9999
 rofi.eh:                             1
 rofi.auto-select:                    false
 rofi.parse-hosts:                    false
