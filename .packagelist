@@ -1,6 +1,7 @@
 alsaequal
 fzf
 aseprite
+atool
 autocutsel
 calc
 chromium
@@ -18,6 +19,7 @@ gifsicle
 gimp
 gksu
 google-chrome
+highlight
 htop
 i3-wm
 i3blocks
@@ -28,10 +30,11 @@ leiningen-completions
 lua-messagepack
 lwks
 lxde
+lynx
+mediainfo
 mps-youtube-git
 mutt
 neovim-git
-network-manager-applet
 network-manager-applet
 nim
 nimble
@@ -41,8 +44,6 @@ playerctl
 ponymix
 powerline-fonts-git
 rofi
-rxvt-unicode
-rxvt-unicode-terminfo
 screen
 spotify
 stalonetray
