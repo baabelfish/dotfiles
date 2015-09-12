@@ -6,7 +6,8 @@ clickable_url = false
 cursor_blink = off
 cursor_shape = block
 dynamic_title = true
-font = Terminus 8
+font = terminess powerline 8
+# font = Termsyn 9
 geometry = 800x600
 mouse_autohide = false
 resize_grip = false
@@ -16,6 +17,7 @@ scrollback_lines = 10000
 search_wrap = true
 urgent_on_bell = false
 visible_bell = false
+padding = 0
 
 [colors]
 foreground = #d9d9d9

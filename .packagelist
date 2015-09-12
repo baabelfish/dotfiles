@@ -7,9 +7,7 @@ chromium-pepper-flash
 clipit
 cmus
 compton
-coyaml
 cunit
-dmenu-xft
 dnsutils
 dzen2
 elementary-icon-theme
@@ -17,6 +15,7 @@ faenza-icon-theme
 feh
 gifsicle
 gimp
+gksu
 google-chrome
 htop
 i3-wm
@@ -25,11 +24,9 @@ i3lock
 i3status
 leiningen
 leiningen-completions
-libav
 lua-messagepack
 lwks
 lxde
-moka-theme
 mps-youtube-git
 mutt
 neovim-git
@@ -38,6 +35,7 @@ network-manager-applet
 nim
 nimble
 nitrogen
+pass
 playerctl
 ponymix
 powerline-fonts-git
@@ -48,7 +46,7 @@ screen
 spotify
 stalonetray
 termite
-termsyn
+texlive-most
 the_silver_searcher
 tmux
 transset-df
@@ -56,8 +54,6 @@ tree
 ttf-droid
 udiskie
 unclutter
-urxvt-font-size-git
-urxvt-perls
 vim
 weechat
 xautolock
