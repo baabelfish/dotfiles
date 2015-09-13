@@ -21,6 +21,6 @@ padding = 0
 
 [colors]
 foreground = #d9d9d9
-background = rgba(10, 10, 10, 0.94)
+background = rgba(15, 15, 15, 0.97)
 highlight = #ffffff
 cursor = #888888
