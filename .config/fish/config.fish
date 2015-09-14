@@ -291,7 +291,11 @@ if test -e "/usr/share/fish/functions/fzf.fish"
     fzf_key_bindings
 end
 
-if test -e "$HOME/.localdf"
-    source "$HOME/.localdf/local.fish"
+if test -e "$HOME/.localdf/private.fish"
+    source "$HOME/.localdf/private.fish"
+end
+
+if test -e "$HOME/.local.fish"
+    source "$HOME/.local.fish"
 end
 
