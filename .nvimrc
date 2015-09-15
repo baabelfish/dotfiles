@@ -320,9 +320,15 @@ vnoremap <silent><leader>k :<C-U>VertigoUp v<cr>
 nnoremap <silent><leader><space> :Goyo<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
 vnoremap <silent><space><return> :NarrowRegion<cr>
-nmap <space><enter> <Plug>(LiveEasyAlign)
-vmap <space><enter> <Plug>(LiveEasyAlign)
-vmap <space><space><enter> :EasyAlign*\ <cr>
+nmap <tab><enter> <Plug>(LiveEasyAlign)
+vmap <tab><enter> <Plug>(LiveEasyAlign)
+vmap <tab><tab> :EasyAlign*\ <cr>
+vmap <tab>1 :EasyAlign1\ <cr>
+vmap <tab>2 :EasyAlign2\ <cr>
+vmap <tab>3 :EasyAlign3\ <cr>
+vmap <tab>4 :EasyAlign4\ <cr>
+vmap <tab>= :EasyAlign=<cr>
+vmap <tab>: :EasyAlign:<cr>
 nnoremap <si<space>lent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>f m':Unite outline<cr>
 nnoremap <silent><space>F :CtrlPFunky<cr>
