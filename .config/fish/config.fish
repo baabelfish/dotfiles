@@ -1,4 +1,6 @@
-
+if test -e "$HOME/.config/fish/env.fish"
+    source "$HOME/.config/fish/env.fish"
+end
 
 # Essentials
 fish_vi_mode
@@ -60,17 +62,6 @@ end
 
 function fish_greeting
 end
-
-set -x NVIM_TUI_ENABLE_TRUE_COLOR '1'
-set -x NVIM_TUI_ENABLE_CURSOR_SHAPE '1'
-set -x TERM 'xterm-termite'
-set -x NO_FISHMARKS_COMPAT_ALIASES
-set -x EDITOR 'nvim'
-set -x NEDITOR 'nvim'
-set -x VISUAL 'nvim'
-set -x BROWSER 'chromium'
-set -x LESS '-i -M -R -q'
-# set -x MANPAGER 'nvim -c Man -'
 
 alias fishcfg='nvim ~/.config/fish/config.fish'
 
@@ -300,4 +291,3 @@ end
 if test -e "$HOME/.local.fish"
     source "$HOME/.local.fish"
 end
-
