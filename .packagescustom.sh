@@ -24,8 +24,8 @@ if [[ ! -e "$nim_folder" ]]; then
     bin/nim e install_nimble.nims
 fi
 
-if [[ ! -e "$HOME/.local/apps/nimsuggest" ]]; then
-    nimsuggest_folder=$apps_folder/nimsuggest
+nimsuggest_folder=$apps_folder/nimsuggest
+if [[ ! -e "$nimsuggest_folder" ]]; then
     cd $apps_folder
     git clone https://github.com/nim-lang/nimsuggest
     cd nimsuggest
