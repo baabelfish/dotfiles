@@ -130,6 +130,10 @@ Plug 'vim-scripts/surrparen'
 Plug 'wellle/targets.vim'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
+Plug 'lambdalisue/vim-manpager'
+Plug 'peterhoeg/vim-qml'
+Plug 't9md/vim-choosewin'
+>>>>>>> added choosewin
 
 call plug#end()
 
@@ -366,6 +370,8 @@ xmap a; <Plug>Argumentative_OuterTextObject
 omap i; <Plug>Argumentative_OpPendingInnerTextObject
 omap a; <Plug>Argumentative_OpPendingOuterTextObject
 nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
+nnoremap <silent><leader>f :ChooseWin<cr>
+nnoremap <silent><leader>F :ChooseWinSwap<cr>
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -415,7 +421,6 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>/
 nnoremap S yiwvip:s/<C-r>0/
 
 " Misc
-nnoremap <leader>f :find 
 nnoremap <silent><leader><leader>s :so ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>v :e ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
@@ -621,6 +626,7 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_tex_checkers = ['lacheck']
 let g:syntastic_warning_symbol='✗'
 
+let g:choosewin_overlay_enable = 1
 
 let g:switch_custom_definitions =
       \ [
