@@ -291,3 +291,13 @@ end
 if test -e "$HOME/.local.fish"
     source "$HOME/.local.fish"
 end
+
+function run-on-change
+    if test -z "$argv[2]"
+        echo "Usage: run-on-change <file> <command>"
+    end
+
+    inotifywait -e modify $argv[1..-2]
+    eval $argv[-1]
+    run-on-change $argv
+end

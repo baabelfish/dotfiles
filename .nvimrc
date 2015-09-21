@@ -1029,6 +1029,13 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'bower_components/',
       \ '.sass-cache',
       \ 'web/wp',
+      \ '.toc$',
+      \ '.bak$',
+      \ '.log$',
+      \ '.out$',
+      \ '.aux$',
+      \ '.a$',
+      \ '.pdf$',
       \ ], '\|'))
 " call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
