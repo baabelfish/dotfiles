@@ -18,6 +18,7 @@
 	coa = commit -a
 	d = diff
 	m = mergetool
+	me = merge --no-ff
 	st = status
 	pu = pull --rebase
 	out      = !git fetch && git log FETCH_HEAD..
