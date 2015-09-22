@@ -9,8 +9,6 @@ FONT='-*-terminus-*-r-normal-*-12-120-*-*-*-*-iso8859-*'
 IFS=$'\n'
 OLDPID=$(ps aux|grep dzen2|grep -v grep|awk '{print $2}')
 
-killall dzen2
-
 SCRIPTS=($(find ~/.xutils/baritems/|sed '1d'|sort))
 ITEMS=()
 for script in ${SCRIPTS[@]}; do

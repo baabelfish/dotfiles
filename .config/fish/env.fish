@@ -7,6 +7,7 @@ set -x NEDITOR 'nvim'
 set -x VISUAL 'nvim'
 set -x BROWSER 'chromium'
 set -x LESS '-i -M -R -q'
+set -x FZF_DEFAULT_OPTS '-e --no-mouse --prompt=: --toggle-sort=f1 --color=dark,fg:251,bg:0,hl:156,fg+:255,bg+:0,prompt:118,pointer:112'
 
 mkdir -p $HOME/.local/apps/bin 
 set -gx PATH $HOME/.local/bin $PATH

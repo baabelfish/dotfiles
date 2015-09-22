@@ -196,6 +196,13 @@ function browse_dirs
     commandline -f repaint
 end
 
+function backisearch
+    history | uniq -u | eval (__fzfcmd) +s +m --tiebreak=index --toggle-sort=ctrl-r > $TMPDIR/fzf.result
+    and commandline (cat $TMPDIR/fzf.result)
+    commandline -f repaint
+    rm -f $TMPDIR/fzf.result
+end
+
 # Binds
 function my_vi_key_bindings
     fish_vi_key_bindings
@@ -212,9 +219,8 @@ function my_vi_key_bindings
     bind \cs 'cmatrix; commandline -f repaint'
     bind -M insert \cs 'cmatrix; commandline -f repaint'
     bind -M insert \ct '__fzf_ctrl_t'
-    bind -M insert \cr '__fzf_ctrl_r'
-    bind gr '__fzf_ctrl_r'
-    bind -M insert \ec '__fzf_alt_c'
+    bind -M insert \cr 'backisearch'
+    bind gr 'backisearch'
 end
 set -g fish_key_bindings my_vi_key_bindings
 
