@@ -94,6 +94,9 @@ alias gitca!='git commit -a -m'
 alias äpärä='git'
 alias gut='git'
 
+# Bash stuff
+alias erename='~/.zsh/rename.sh'
+
 # Keyboard layout
 alias use_dvorak='setxkbmap fi dvorak'
 alias use_neo='setxkbmap fi neo'
