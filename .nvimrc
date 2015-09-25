@@ -26,12 +26,16 @@ call plug#begin('~/.nvim/plugged')
 " Plug 'wincent/ferret' " Works like shit
 " Plug 'baabelfish/mycolors'
 
-Plug 'othree/javascript-libraries-syntax.vim'
+let g:tsuquyomi_disable_quickfix = 1
+Plug 'Quramy/tsuquyomi'
+
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/switch.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Matt-Stevens/vim-systemd-syntax'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 Plug 'Shougo/neomru.vim'
@@ -44,7 +48,6 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe ;and git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/nim.vim'
-Plug 'PeterRincker/vim-argumentative'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
 Plug 'baabelfish/vim-vertigo'
@@ -78,8 +81,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'lambdalisue/vim-gita'
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
+Plug 'lambdalisue/vim-manpager'
 Plug 'leafo/moonscript-vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
@@ -90,6 +92,8 @@ Plug 'mhinz/vim-signify'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'myint/syntastic-extras'
 Plug 'osyo-manga/vim-hopping'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'peterhoeg/vim-qml'
 Plug 'peterhoeg/vim-qml'
 Plug 'rking/ag.vim'
 Plug 'roktas/syntastic-more'
@@ -126,8 +130,6 @@ Plug 'vim-scripts/surrparen'
 Plug 'wellle/targets.vim'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
-Plug 'lambdalisue/vim-manpager'
-Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
@@ -206,6 +208,7 @@ endif
 
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType typescript setlocal completeopt+=preview
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -290,6 +293,7 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
+nnoremap <C-^> <Plug>(TsuquyomiReferences)
 nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
 nnoremap <silent><F5> :UndotreeToggle<cr>
@@ -612,7 +616,7 @@ let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_javascript_checkers = ['jslint', 'jshint']
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html', 'ts', 'tsc', 'typescript'] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_tex_checkers = ['lacheck']
 let g:syntastic_warning_symbol='✗'
@@ -633,6 +637,19 @@ let g:tagbar_left = 0
 " let g:tagbar_width = 36
 let g:tagbar_compact = 1
 let g:tagbar_autoshowtag = 1
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+  \ }
 
 let g:indentLine_color_term = 236
 let g:indentLine_char = '│'
@@ -684,6 +701,7 @@ let g:ycm_filetype_blacklist = {
       \ 'unite' : 1,
       \ 'sql' : 1,
       \ 'vim' : 1,
+      \ 'typescript' : 1,
       \}
       " \ 'javascript' : 1,
 let g:ycm_semantic_triggers = {
@@ -1016,6 +1034,7 @@ call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
       \ '\.git/',
+      \ '\.tscache/',
       \ 'git5/.*/review/',
       \ 'google/obj/',
       \ 'tmp/',
