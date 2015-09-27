@@ -13,7 +13,6 @@ endif
 
 call plug#begin('~/.nvim/plugged')
 
-" Plug 'Yggdroot/indentLine'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'xolox/vim-lua-inspect'
@@ -25,6 +24,8 @@ call plug#begin('~/.nvim/plugged')
 " Plug 'floobits/floobits-neovim'
 " Plug 'wincent/ferret' " Works like shit
 " Plug 'baabelfish/mycolors'
+
+Plug 'Yggdroot/indentLine'
 
 let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
@@ -297,16 +298,13 @@ nnoremap <silent><A-f> :call Fullscreen()<cr>:echo ""<cr>
 nnoremap <silent><space>C :call ToggleConceal()<cr>
 
 " Plugin related
-nnoremap <silent><space><return> :call Shortcut_discover()<cr>
+nnoremap <silent><space><space> :call Shortcut_discover()<cr>
 snoremap <silent><C-^> <Plug>(TsuquyomiReferences)
 nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
 nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
-nnoremap <silent><leader>T :NERDTree $PWD  \| wincmd = \| wincmd p \| NERDTreeFind \| wincmd p<cr>
-nnoremap <silent><leader>d :NERDTreeToggle \| wincmd = \| wincmd p<cr>
-nnoremap <silent><leader>t :NERDTreeFind<cr>
 nnoremap <space>bf :vimgrep /FIXME/gj ** \| :cw<cr>
 nnoremap <space>bt :vimgrep /TODO/gj ** \| :cw<cr>
 nnoremap <space>bw :vimgrep /<C-r><C-w>/gj ** \| :cw<cr>
@@ -417,7 +415,7 @@ nnoremap <silent><leader><leader>s :so ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>v :e ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
-nnoremap <silent><space><space> :set nohls!<cr>
+nnoremap <silent><space><return> :set nohls!<cr>
 nnoremap <silent><space>D :cd %:p:h<cr>
 nnoremap <silent><space>d :lcd %:p:h<cr>
 nnoremap Ä :w<cr>
@@ -1100,70 +1098,70 @@ call arpeggio#map('icvx', '', 0, 'h4', '<Esc>iHODOR! ')
 call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
 
 " https://github.com/sunaku/.vim/tree/spacey/shortcut
-call shortcut#map('<space> Z K',           'Zeal - Search for.',                 'ZvK')
-call shortcut#map('<space> Z d',           'Zeal - Select d',                    'ZvKD')
-call shortcut#map('<space> Z v',           'Zeal - Find visual s',               'ZvV')
-call shortcut#map('<space> Z w',           'Zeal - Find word under c',           'Zeavim')
-call shortcut#map('<space> b R',           'Buffer - Reload (force)',            'edit!')
-call shortcut#map('<space> b S',           'Buffer - Save as c',                 'call feedkeys(":write ", "n")')
-call shortcut#map('<space> b W',           'Buffer - S',                         'write')
-call shortcut#map('<space> b n',           'Buffer - Focus - N',                 'bnext')
-call shortcut#map('<space> b p',           'Buffer - Focus - P',                 'bprevious')
-call shortcut#map('<space> b r',           'Buffer - R',                         'confirm edit')
-call shortcut#map('<space> b s',           'Buffer - Save as.',                  'call feedkeys(":saveas ", "n")')
-call shortcut#map('<space> c P',           'Comment - Yank - Paste a',           'Comment - Yank', 'normal! `[P')
-call shortcut#map('<space> c p',           'Comment - Yank - Paste b',           'Comment - Yank', 'normal! `]p')
-call shortcut#map('<space> g %',           'Git - D',                            'Gdiff')
-call shortcut#map('<space> g C',           'Git - Commit (amend)',               'Gcommit --amend')
-call shortcut#map('<space> g D',           'Git - Delete file (force)',          'Gremove!')
-call shortcut#map('<space> g H',           'Git - Hunk - H',                     'SignifyToggleHighlight')
-call shortcut#map('<space> g M',           'Git - Move file (force)',            'call feedkeys(":Gmove! ", "n")')
-call shortcut#map('<space> g R',           'Git - Revert file (force)',          'Gread!')
-call shortcut#map('<space> g W',           'Git - Add file (force)',             'Gwrite!')
-call shortcut#map('<space> g b',           'Git - B',                            'Gblame')
-call shortcut#map('<space> g c',           'Git - C',                            'Gcommit')
-call shortcut#map('<space> g d',           'Git - Delete f',                     'Gremove')
-call shortcut#map('<space> g e',           'Git - E',                            'Gedit')
-call shortcut#map('<space> g g',           'Git - G',                            'call feedkeys(":Ggrep ", "n")')
-call shortcut#map('<space> g h',           'Git - Hunk - S',                     'SignifyToggle')
-call shortcut#map('<space> g l',           'Git - L',                            'Gitv')
-call shortcut#map('<space> g m',           'Git - Move f',                       'call feedkeys(":Gmove ", "n")')
-call shortcut#map('<space> g r',           'Git - Revert f',                     'Gread')
-call shortcut#map('<space> g s',           'Git - S',                            'Gstatus')
-call shortcut#map('<space> g w',           'Git - Add f',                        'Gwrite')
-call shortcut#map('<space> o #',           'Toggle - Highlight - Hex c',         'ColorToggle')
-call shortcut#map('<space> o <Backspace>', 'Toggle - Distraction-free w',        'Goyo')
-call shortcut#map('<space> o <C-N>',       'Toggle - Automatic c',               'NeoCompleteToggle')
-call shortcut#map('<space> o <Tab>',       'Toggle - Highlight - I',             'IndentLinesToggle')
-call shortcut#map('<space> o N',           'Toggle - Line numbering (relative)', 'setlocal relativenumber!')
-call shortcut#map('<space> o Q',           'Toggle - Automatic f',               'call shortcut#toggle_flag("formatoptions", "a", "t")')
-call shortcut#map('<space> o ]',           'Toggle - Tag l',                     'TlistToggle')
-call shortcut#map('<space> o _',           'Toggle - Highlight - Cursor w',      'MatchmakerToggle')
-call shortcut#map('<space> o c',           'Open - C',                           'call ColorPicker(0)')
-call shortcut#map('<space> o n',           'Toggle - Line n',                    'setlocal number!')
-call shortcut#map('<space> o p',           'Toggle - Paste v',                   'setlocal paste!')
-call shortcut#map('<space> o q',           'Toggle - QuickFix w',                'QFix')
-call shortcut#map('<space> o s',           'Open - S',                           'Startify')
-call shortcut#map('<space> o s',           'Toggle - Spelling c',                'setlocal spell!')
-call shortcut#map('<space> o u',           'Toggle - Edit history (undo tree)',  'UndotreeToggle')
-call shortcut#map('<space> o z',           'Toggle - Code f',                    'setlocal foldenable!')
-call shortcut#map('<space> s w',           'Strip W',                            'call StripTrailingWhitespace()')
-call shortcut#map('<space> t :',           'Tab - For each l',                   'call feedkeys(":tabdo ", "n")')
-call shortcut#map('<space> t < <',         'Tab - Move - F',                     'tabmove 0')
-call shortcut#map('<space> t <',           'Tab - Move - L',                     'tabmove -')
-call shortcut#map('<space> t > >',         'Tab - Move - L',                     'tabmove $')
-call shortcut#map('<space> t >',           'Tab - Move - R',                     'tabmove +')
-call shortcut#map('<space> t A',           'Tab - Open - L',                     '$tabnew')
-call shortcut#map('<space> t D',           'Tab - Close - A',                    '%tabclose')
-call shortcut#map('<space> t I',           'Tab - Open - F',                     '0tabnew')
-call shortcut#map('<space> t M',           'Tab - Close - O',                    'tabonly')
-call shortcut#map('<space> t a',           'Tab - Open - R',                     'tabnew')
-call shortcut#map('<space> t d',           'Tab - C',                            'tabclose')
-call shortcut#map('<space> t i',           'Tab - Open - L',                     '-tabnew')
-call shortcut#map('<space> t n',           'Tab - Focus - N',                    'tabnext')
-call shortcut#map('<space> t p',           'Tab - Focus - P',                    'tabprevious')
-call shortcut#map('<space> t t',           'Tab - Find and f',                   'Unite -no-split tab')
-call shortcut#map('<space> u e',           'UltiSnips - E',                      'UltiSnipsEdit')
+call shortcut#map('<space> Z K',     'Zeal - Search for.',                 'ZvK')
+call shortcut#map('<space> Z d',     'Zeal - Select d',                    'ZvKD')
+call shortcut#map('<space> Z v',     'Zeal - Find visual s',               'ZvV')
+call shortcut#map('<space> Z w',     'Zeal - Find word under c',           'Zeavim')
+call shortcut#map('<space> b R',     'Buffer - Reload (force)',            'edit!')
+call shortcut#map('<space> b S',     'Buffer - Save as',                 'call feedkeys(":write ", "n")')
+call shortcut#map('<space> b W',     'Buffer - Save',                         'write')
+call shortcut#map('<space> b n',     'Buffer - Focus next',                 'bnext')
+call shortcut#map('<space> b p',     'Buffer - Focus previous',                 'bprevious')
+call shortcut#map('<space> b r',     'Buffer - R',                         'confirm edit')
+call shortcut#map('<space> b s',     'Buffer - Save as.',                  'call feedkeys(":saveas ", "n")')
+call shortcut#map('<space> c P',     'Comment - Yank - Paste a',           'normal! `[P')
+call shortcut#map('<space> c p',     'Comment - Yank - Paste b',           'normal! `]p')
+call shortcut#map('<space> g %',     'Git - D',                            'Gdiff')
+call shortcut#map('<space> g C',     'Git - Commit (amend)',               'Gcommit --amend')
+call shortcut#map('<space> g D',     'Git - Delete file (force)',          'Gremove!')
+call shortcut#map('<space> g H',     'Git - Hunk - H',                     'SignifyToggleHighlight')
+call shortcut#map('<space> g M',     'Git - Move file (force)',            'call feedkeys(":Gmove! ", "n")')
+call shortcut#map('<space> g R',     'Git - Revert file (force)',          'Gread!')
+call shortcut#map('<space> g W',     'Git - Add file (force)',             'Gwrite!')
+call shortcut#map('<space> g b',     'Git - B',                            'Gblame')
+call shortcut#map('<space> g c',     'Git - C',                            'Gcommit')
+call shortcut#map('<space> g d',     'Git - Delete f',                     'Gremove')
+call shortcut#map('<space> g e',     'Git - E',                            'Gedit')
+call shortcut#map('<space> g g',     'Git - G',                            'call feedkeys(":Ggrep ", "n")')
+call shortcut#map('<space> g h',     'Git - Hunk - S',                     'SignifyToggle')
+call shortcut#map('<space> g l',     'Git - L',                            'Gitv')
+call shortcut#map('<space> g m',     'Git - Move f',                       'call feedkeys(":Gmove ", "n")')
+call shortcut#map('<space> g r',     'Git - Revert f',                     'Gread')
+call shortcut#map('<space> g s',     'Git - S',                            'Gstatus')
+call shortcut#map('<space> g w',     'Git - Add f',                        'Gwrite')
+call shortcut#map('<space> o #',     'Toggle - Highlight - Hex c',         'ColorToggle')
+call shortcut#map('<space> o d',     'Toggle - Distraction-free w',        'Goyo')
+call shortcut#map('<space> o <Tab>', 'Toggle - Indentlines',               'IndentLinesToggle')
+call shortcut#map('<space> o N',     'Toggle - Line numbering (relative)', 'setlocal relativenumber!')
+call shortcut#map('<space> o Q',     'Toggle - Automatic f',               'call shortcut#toggle_flag("formatoptions", "a", "t")')
+call shortcut#map('<space> o ]',     'Toggle - Tag l',                     'TlistToggle')
+call shortcut#map('<space> o c',     'Open - C',                           'call ColorPicker(0)')
+call shortcut#map('<space> o n',     'Toggle - Line n',                    'setlocal number!')
+call shortcut#map('<space> o p',     'Toggle - Paste v',                   'setlocal paste!')
+call shortcut#map('<space> o q',     'Toggle - QuickFix w',                'QFix')
+call shortcut#map('<space> o s',     'Open - S',                           'Startify')
+call shortcut#map('<space> o s',     'Toggle - Spelling c',                'setlocal spell!')
+call shortcut#map('<space> o u',     'Toggle - Edit history (undo tree)',  'UndotreeToggle')
+call shortcut#map('<space> o z',     'Toggle - Code f',                    'setlocal foldenable!')
+call shortcut#map('<space> s w',     'Strip W',                            'call StripTrailingWhitespace()')
+call shortcut#map('<space> t :',     'Tab - For each l',                   'call feedkeys(":tabdo ", "n")')
+call shortcut#map('<space> t < <',   'Tab - Move - F',                     'tabmove 0')
+call shortcut#map('<space> t <',     'Tab - Move - L',                     'tabmove -')
+call shortcut#map('<space> t > >',   'Tab - Move - L',                     'tabmove $')
+call shortcut#map('<space> t >',     'Tab - Move - R',                     'tabmove +')
+call shortcut#map('<space> t A',     'Tab - Open - L',                     '$tabnew')
+call shortcut#map('<space> t D',     'Tab - Close - A',                    '%tabclose')
+call shortcut#map('<space> t I',     'Tab - Open - F',                     '0tabnew')
+call shortcut#map('<space> t M',     'Tab - Close - Only',                 'tabonly')
+call shortcut#map('<space> t a',     'Tab - Open - New',                   'tabnew')
+call shortcut#map('<space> t d',     'Tab - C',                            'tabclose')
+call shortcut#map('<space> t i',     'Tab - Open - L',                     '-tabnew')
+call shortcut#map('<space> t n',     'Tab - Focus - N',                    'tabnext')
+call shortcut#map('<space> t p',     'Tab - Focus - P',                    'tabprevious')
+call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unite -no-split tab')
+call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
+call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
+call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
 
 if filereadable(expand("~/.localdf/nvim.vim"))
 
