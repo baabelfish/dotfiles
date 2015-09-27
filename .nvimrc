@@ -29,6 +29,15 @@ call plug#begin('~/.nvim/plugged')
 let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
 
+Plug 'int3/vim-extradite'
+Plug 'KabbAmine/zeavim.vim'
+Plug 'irrationalistic/vim-tasks'
+Plug 'blueyed/vim-diminactive'
+Plug 'sunaku/vim-shortcut'
+Plug 'habamax/vim-skipit'
+Plug 'cosminadrianpopescu/vim-sql-workbench'
+Plug 'morhetz/gruvbox'
+Plug 'dyng/ctrlsf.vim'
 Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/switch.vim'
@@ -133,7 +142,6 @@ Plug 'xolox/vim-misc'
 Plug 'lambdalisue/vim-manpager'
 Plug 'peterhoeg/vim-qml'
 Plug 't9md/vim-choosewin'
->>>>>>> added choosewin
 
 call plug#end()
 
@@ -163,7 +171,8 @@ set cscopetag
 set cursorline
 set display+=lastline " FIXME
 " set fillchars+=vert: 
-set fillchars+=vert:│
+" set fillchars+=vert:│
+set fillchars+=vert: 
 set formatoptions=qrn1tj tw=400 " tcqj
 set gdefault smartcase ignorecase incsearch
 set hidden
@@ -297,7 +306,8 @@ nnoremap <silent>vaf :call SelectFunction(0)<cr>
 nnoremap <silent>vif :call SelectFunction(1)<cr>
 
 " Plugin related
-nnoremap <C-^> <Plug>(TsuquyomiReferences)
+nnoremap <silent><space><return> :call Shortcut_discover()<cr>
+nnoremap <silent><C-^> <Plug>(TsuquyomiReferences)
 nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
 nnoremap <silent><F5> :UndotreeToggle<cr>
@@ -626,7 +636,19 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_tex_checkers = ['lacheck']
 let g:syntastic_warning_symbol='✗'
 
-let g:choosewin_overlay_enable = 1
+let g:choosewin_overlay_enable = 0
+let g:choosewin_blink_on_land  = 0
+let g:choosewin_label = 'ASDFGHJKLZXCV'
+let g:choosewin_label_align = 'left'
+let g:choosewin_label_padding = 0
+let g:choosewin_return_on_single_win = 1
+let g:choosewin_label_fill = 1
+let g:choosewin_color_label = {
+    \ 'gui': ['#202020', '#22ff22', 'bold'],
+    \ }
+let g:choosewin_color_other = {
+    \ 'gui': ['#202020', '#22ff22'],
+    \ }
 
 let g:switch_custom_definitions =
       \ [
@@ -736,25 +758,28 @@ endif
 
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
 
-hi Normal                  guifg=#99d1ce guibg=none    gui=none
-hi NonText                 guifg=#111111 guibg=none    gui=none
-hi VertSplit               guifg=#222222 guibg=none
-hi CtrlPNoEntries          guifg=#FF8B00 guibg=none
-hi CtrlPMatch              guifg=#BAFF00 guibg=none
-hi CtrlPLinePre            guifg=none    guibg=none
-hi CtrlPPrtBase            guifg=#A8A8A8 guibg=none
-hi CtrlPPrtText            guifg=#C8C8C8 guibg=none
-hi CtrlPPrtCursor          guifg=none    guibg=none
-hi CtrlPTabExtra           guifg=#FFFFFF guibg=none
-hi CtrlPBufName            guifg=#FFFFFF guibg=none
-hi CtrlPTagKind            guifg=#FFFFFF guibg=none
-hi CtrlPqfLineCol          guifg=#FFFFFF guibg=none
-hi CtrlPUndoT              guifg=#FFFFFF guibg=none
-hi CtrlPUndoBr             guifg=#FFFFFF guibg=none
-hi CtrlPUndoNr             guifg=#FFFFFF guibg=none
-hi CtrlPUndoSv             guifg=#FFFFFF guibg=none
-hi CtrlPUndoPo             guifg=#FFFFFF guibg=none
-hi CtrlPBookmark           guifg=#FFFFFF guibg=none
+hi ColorColumn       guibg=#0a0a0a
+
+" hi Normal            guifg=#99d1ce guibg=none    gui=none
+hi Normal            guifg=#99d1ce guibg=#0c0c0c    gui=none
+hi NonText           guifg=#111111 guibg=none    gui=none
+hi VertSplit         guifg=#222222 guibg=none
+hi CtrlPNoEntries    guifg=#FF8B00 guibg=none
+hi CtrlPMatch        guifg=#BAFF00 guibg=none
+hi CtrlPLinePre      guifg=none    guibg=none
+hi CtrlPPrtBase      guifg=#A8A8A8 guibg=none
+hi CtrlPPrtText      guifg=#C8C8C8 guibg=none
+hi CtrlPPrtCursor    guifg=none    guibg=none
+hi CtrlPTabExtra     guifg=#FFFFFF guibg=none
+hi CtrlPBufName      guifg=#FFFFFF guibg=none
+hi CtrlPTagKind      guifg=#FFFFFF guibg=none
+hi CtrlPqfLineCol    guifg=#FFFFFF guibg=none
+hi CtrlPUndoT        guifg=#FFFFFF guibg=none
+hi CtrlPUndoBr       guifg=#FFFFFF guibg=none
+hi CtrlPUndoNr       guifg=#FFFFFF guibg=none
+hi CtrlPUndoSv       guifg=#FFFFFF guibg=none
+hi CtrlPUndoPo       guifg=#FFFFFF guibg=none
+hi CtrlPBookmark     guifg=#FFFFFF guibg=none
 " hi mbechanged              guifg=255     guibg=none    gui=none
 " hi mbenormal               guifg=187     guibg=none    gui=none
 " hi mbevisiblechanged       guifg=255     guibg=none    gui=none
@@ -763,19 +788,19 @@ hi CtrlPBookmark           guifg=#FFFFFF guibg=none
 " hi perlspecialmatch        guifg=176     guibg=none    gui=none
 " hi perlspecialstring       guifg=176     guibg=none    gui=none
 " hi taglisttagname          guifg=105     guibg=none    gui=none
-hi SignColumn              guifg=none    guibg=none    gui=none
-hi SignifyLineAdd          guifg=none    guibg=#032007 gui=bold
-hi SignifyLineChange       guifg=none    guibg=#1F1900 gui=bold
-hi SignifyLineDelete       guifg=none    guibg=#180505 gui=bold
-hi SignifySignAdd          guifg=#36bF2A guibg=none    gui=bold
-hi SignifySignChange       guifg=#bFb92A guibg=none    gui=bold
-hi SignifySignDelete       guifg=#bB0F0F guibg=none    gui=bold
-hi InterestingWord1        guifg=#000000 guibg=#7aa06b
-hi InterestingWord2        guifg=#000000 guibg=#d2e564
-hi InterestingWord3        guifg=#000000 guibg=#0097c1
-hi InterestingWord4        guifg=#000000 guibg=#22ff22
-hi InterestingWord5        guifg=#000000 guibg=#0097c1
-hi InterestingWord6        guifg=#000000 guibg=#0097c1
+hi SignColumn        guifg=none    guibg=none    gui=none
+hi SignifyLineAdd    guifg=none    guibg=#032007 gui=bold
+hi SignifyLineChange guifg=none    guibg=#1F1900 gui=bold
+hi SignifyLineDelete guifg=none    guibg=#180505 gui=bold
+hi SignifySignAdd    guifg=#36bF2A guibg=none    gui=bold
+hi SignifySignChange guifg=#bFb92A guibg=none    gui=bold
+hi SignifySignDelete guifg=#bB0F0F guibg=none    gui=bold
+hi InterestingWord1  guifg=#000000 guibg=#7aa06b
+hi InterestingWord2  guifg=#000000 guibg=#d2e564
+hi InterestingWord3  guifg=#000000 guibg=#0097c1
+hi InterestingWord4  guifg=#000000 guibg=#22ff22
+hi InterestingWord5  guifg=#000000 guibg=#0097c1
+hi InterestingWord6  guifg=#000000 guibg=#0097c1
 
 " Syntax
 " hi Block                     guifg=#79AE4E  guibg=none gui=bold
@@ -877,7 +902,6 @@ hi javascriptBCollectionAttrs guifg=#779777 guibg=none gui=italic
 " hi perlspecialmatch            guifg=176  guibg=238  gui=none
 " hi perlspecialstring           guifg=176  guibg=238  gui=none
 " hi taglisttagname              guifg=105  guibg=none gui=none
-hi ColorColumn          guibg=none
 hi CursorColumn         guifg=none    guibg=#262626 gui=none
 hi CursorLine           guibg=#1c1c1c gui=none
 hi CursorLineNr         guifg=#67cf30 guibg=none    gui=none
@@ -1092,3 +1116,72 @@ call arpeggio#map('icvx', '', 0, 'h2', '<Esc>ihodor. ')
 call arpeggio#map('icvx', '', 0, 'h3', '<Esc>iHodor! ')
 call arpeggio#map('icvx', '', 0, 'h4', '<Esc>iHODOR! ')
 call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
+
+" https://github.com/sunaku/.vim/tree/spacey/shortcut
+call shortcut#map(' <Space> b R ',           ' Buffer -> Reload (force)    ',         'edit!')
+call shortcut#map(' <Space> b S ',           ' Buffer -> Save as copy      ',         'call feedkeys(":write ", "n")')
+call shortcut#map(' <Space> b W ',           ' Buffer -> Save              ',         'write')
+call shortcut#map(' <Space> b n ',           ' Buffer -> Focus -> Next     ',         'bnext')
+call shortcut#map(' <Space> b p ',           ' Buffer -> Focus -> Previous ',         'bprevious')
+call shortcut#map(' <Space> b r ',           ' Buffer -> Reload            ',         'confirm edit')
+call shortcut#map(' <Space> b s ',           ' Buffer -> Save as...        ',         'call feedkeys(":saveas ", "n")')
+call shortcut#map(' <Space> c P       ',     ' Comment -> Yank -> Paste above ',      'Comment -> Yank', 'normal! `[P')
+call shortcut#map(' <Space> c p       ',     ' Comment -> Yank -> Paste below ',      'Comment -> Yank', 'normal! `]p')
+call shortcut#map(' <Space> o #           ', ' Toggle -> Highlight -> Hex colors   ', 'ColorToggle')
+call shortcut#map(' <Space> o <Backspace> ', ' Toggle -> Distraction-free writing  ', 'Goyo')
+call shortcut#map(' <Space> o <C-N>       ', ' Toggle -> Automatic completion      ', 'NeoCompleteToggle')
+call shortcut#map(' <Space> o <Tab>       ', ' Toggle -> Highlight -> Indentation  ', 'IndentLinesToggle')
+call shortcut#map(' <Space> o N           ', ' Toggle -> Line numbering (relative) ', 'setlocal relativenumber!')
+call shortcut#map(' <Space> o Q           ', ' Toggle -> Automatic formatting      ', 'call shortcut#toggle_flag("formatoptions", "a", "t")')
+call shortcut#map(' <Space> o ]           ', ' Toggle -> Tag list                  ', 'TlistToggle')
+call shortcut#map(' <Space> o _           ', ' Toggle -> Highlight -> Cursor word  ', 'MatchmakerToggle')
+call shortcut#map(' <Space> o n           ', ' Toggle -> Line numbering            ', 'setlocal number!')
+call shortcut#map(' <Space> o p           ', ' Toggle -> Paste verbatim            ', 'setlocal paste!')
+call shortcut#map(' <Space> o q           ', ' Toggle -> QuickFix window           ', 'QFix')
+call shortcut#map(' <Space> o s           ', ' Toggle -> Spelling check            ', 'setlocal spell!')
+call shortcut#map(' <Space> o u           ', ' Toggle -> Edit history (undo tree)  ', 'UndotreeToggle')
+call shortcut#map(' <Space> o z           ', ' Toggle -> Code folding              ', 'setlocal foldenable!')
+call shortcut#map(' <Space> t :   ',         ' Tab -> For each loop     ',            'call feedkeys(":tabdo ", "n")')
+call shortcut#map(' <Space> t <   ',         ' Tab -> Move -> Left      ',            'tabmove -')
+call shortcut#map(' <Space> t < < ',         ' Tab -> Move -> First     ',            'tabmove 0')
+call shortcut#map(' <Space> t >   ',         ' Tab -> Move -> Right     ',            'tabmove +')
+call shortcut#map(' <Space> t > > ',         ' Tab -> Move -> Last      ',            'tabmove $')
+call shortcut#map(' <Space> t A   ',         ' Tab -> Open -> Last      ',            '$tabnew')
+call shortcut#map(' <Space> t D   ',         ' Tab -> Close -> All      ',            '%tabclose')
+call shortcut#map(' <Space> t I   ',         ' Tab -> Open -> First     ',            '0tabnew')
+call shortcut#map(' <Space> t M   ',         ' Tab -> Close -> Others   ',            'tabonly')
+call shortcut#map(' <Space> t a   ',         ' Tab -> Open -> Right     ',            'tabnew')
+call shortcut#map(' <Space> t d   ',         ' Tab -> Close             ',            'tabclose')
+call shortcut#map(' <Space> t i   ',         ' Tab -> Open -> Left      ',            '-tabnew')
+call shortcut#map(' <Space> t n   ',         ' Tab -> Focus -> Next     ',            'tabnext')
+call shortcut#map(' <Space> t p   ',         ' Tab -> Focus -> Previous ',            'tabprevious')
+call shortcut#map(' <Space> t t   ',         ' Tab -> Find and focus    ',            'Unite -no-split tab')
+
+call shortcut#map(' <Space> K K ', ' Zeal -> Search for...          ', 'ZvK')
+call shortcut#map(' <Space> K v ', ' Zeal -> Find visual selection  ', 'ZvV')
+call shortcut#map(' <Space> K w ', ' Zeal -> Find word under cursor ', 'Zeavim')
+call shortcut#map(' <Space> K d ', ' Zeal -> Select docset          ', 'ZvKD') 
+
+call shortcut#map(' <Space> g g ', ' Git -> Grep                ', 'call feedkeys(":Ggrep ", "n")')
+call shortcut#map(' <Space> g m ', ' Git -> Move file           ', 'call feedkeys(":Gmove ", "n")')
+call shortcut#map(' <Space> g M ', ' Git -> Move file (force)   ', 'call feedkeys(":Gmove! ", "n")')
+call shortcut#map(' <Space> g b ', ' Git -> Blame               ', 'Gblame')
+call shortcut#map(' <Space> g C ', ' Git -> Commit (amend)      ', 'Gcommit --amend')
+call shortcut#map(' <Space> g c ', ' Git -> Commit              ', 'Gcommit')
+call shortcut#map(' <Space> g % ', ' Git -> Diff                ', 'Gdiff')
+call shortcut#map(' <Space> g e ', ' Git -> Edit                ', 'Gedit')
+call shortcut#map(' <Space> g l ', ' Git -> Log                 ', 'Gitv')
+call shortcut#map(' <Space> g r ', ' Git -> Revert file         ', 'Gread')
+call shortcut#map(' <Space> g R ', ' Git -> Revert file (force) ', 'Gread!')
+call shortcut#map(' <Space> g s ', ' Git -> Status              ', 'Gstatus')
+call shortcut#map(' <Space> g w ', ' Git -> Add file            ', 'Gwrite')
+call shortcut#map(' <Space> g W ', ' Git -> Add file (force)    ', 'Gwrite!')
+call shortcut#map(' <Space> g d ', ' Git -> Delete file         ', 'Gremove')
+call shortcut#map(' <Space> g D ', ' Git -> Delete file (force) ', 'Gremove!')
+call shortcut#map(' <Space> g h ', ' Git -> Hunk -> Signs       ', 'SignifyToggle')
+call shortcut#map(' <Space> g H ', ' Git -> Hunk -> Highlights  ', 'SignifyToggleHighlight')
+
+if filereadable(expand("~/.localdf/nvim.vim"))
+
+  source ~/.localdf/nvim.vim
+endif
