@@ -25,10 +25,21 @@ call plug#begin('~/.nvim/plugged')
 " Plug 'wincent/ferret' " Works like shit
 " Plug 'baabelfish/mycolors'
 
+let g:indentLine_enabled = 0
+let g:indentLine_color_gui = '#303030'
 Plug 'Yggdroot/indentLine'
 
 let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
+
+let g:move_key_modifier = 'A-C'
+Plug 'matze/vim-move'
+
+let g:agprg="ag --smart-case --column --vimgrep"
+" let g:agprg="ag --smart-case --column"
+let g:aghighlight=1
+let g:agformat="%f:%l:%m"
+Plug 'rking/ag.vim'
 
 Plug 'int3/vim-extradite'
 Plug 'KabbAmine/zeavim.vim'
@@ -105,7 +116,7 @@ Plug 'myint/syntastic-extras'
 Plug 'osyo-manga/vim-hopping'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'peterhoeg/vim-qml'
-Plug 'rking/ag.vim'
+
 Plug 'roktas/syntastic-more'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -125,7 +136,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
@@ -204,8 +215,8 @@ set synmaxcol=1024
 set novisualbell noerrorbells
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
-set ts=4 sts=4 sw=4 expandtab shiftround copyindent preserveindent
-set ttimeout ttimeoutlen=0 lazyredraw
+set expandtab shiftround copyindent preserveindent
+set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0 lazyredraw
 set undofile undolevels=1000 undoreload=10000 undodir=~/.vim/undodir nobackup
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
@@ -298,7 +309,7 @@ nnoremap <silent><A-f> :call Fullscreen()<cr>:echo ""<cr>
 nnoremap <silent><space>C :call ToggleConceal()<cr>
 
 " Plugin related
-nnoremap <silent><space><space> :call Shortcut_discover()<cr>
+nnoremap <silent><space><return> :call Shortcut_discover()<cr>
 snoremap <silent><C-^> <Plug>(TsuquyomiReferences)
 nnoremap <space>ct :YcmCompleter GetType<cr>
 nnoremap <space>gt :YcmCompleter GoTo<cr>
@@ -329,7 +340,7 @@ vmap <tab>3 :EasyAlign3\ <cr>
 vmap <tab>4 :EasyAlign4\ <cr>
 vmap <tab>= :EasyAlign=<cr>
 vmap <tab>: :EasyAlign:<cr>
-nnoremap <silent><space><space>O :Unite -silent tab<cr>
+nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>P :call RunFileFinder()<cr>
 nnoremap <silent><space>p :call RunFileFinderGit()<cr>
 " nnoremap <silent><space>P :CtrlPCurWD<cr>
@@ -378,11 +389,11 @@ endfunction
 
 
 " Vim builtin overrides
-cnoremap <C-h> <Left>
+cnoremap <C-h> <left>
 cnoremap <C-j> <down>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
-cnoremap <C-l> <Right>
+cnoremap <C-l> <right>
 nnoremap <C-m> <C-a>
 nnoremap K i<cr><Esc>k$
 nnoremap Y y$
@@ -429,7 +440,7 @@ nnoremap <silent><leader><leader>s :so ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>v :e ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
-nnoremap <silent><space><return> :set nohls!<cr>
+nnoremap <silent><space><space> :set nohls!<cr>
 nnoremap <silent><space>D :cd %:p:h<cr>
 nnoremap <silent><space>d :lcd %:p:h<cr>
 nnoremap Ä :w<cr>
@@ -525,9 +536,6 @@ let g:ctrlp_custom_ignore = {
 
 let g:cpp_class_scope_highlight = 1
 
-let g:agprg="ag --smart-case --column"
-let g:aghighlight=1
-let g:agformat="%f:%l:%m"
 
 let g:clojure_syntax_keywords = {
     \ 'clojureMacro': ["defproject", "defcustom"],
@@ -1121,10 +1129,10 @@ call shortcut#map('<space> Z d',     'Zeal - Select d',                    'ZvKD
 call shortcut#map('<space> Z v',     'Zeal - Find visual s',               'ZvV')
 call shortcut#map('<space> Z w',     'Zeal - Find word under c',           'Zeavim')
 call shortcut#map('<space> b R',     'Buffer - Reload (force)',            'edit!')
-call shortcut#map('<space> b S',     'Buffer - Save as',                 'call feedkeys(":write ", "n")')
-call shortcut#map('<space> b W',     'Buffer - Save',                         'write')
-call shortcut#map('<space> b n',     'Buffer - Focus next',                 'bnext')
-call shortcut#map('<space> b p',     'Buffer - Focus previous',                 'bprevious')
+call shortcut#map('<space> b S',     'Buffer - Save as',                   'call feedkeys(":write ", "n")')
+call shortcut#map('<space> b W',     'Buffer - Save',                      'write')
+call shortcut#map('<space> b n',     'Buffer - Focus next',                'bnext')
+call shortcut#map('<space> b p',     'Buffer - Focus previous',            'bprevious')
 call shortcut#map('<space> b r',     'Buffer - R',                         'confirm edit')
 call shortcut#map('<space> b s',     'Buffer - Save as.',                  'call feedkeys(":saveas ", "n")')
 call shortcut#map('<space> c P',     'Comment - Yank - Paste a',           'normal! `[P')
@@ -1180,7 +1188,9 @@ call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unit
 call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
 call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
 call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
-
+call shortcut#map('<space> s 8',     'Set tabwidth to 8', 'set ts=8 sts=8 sw=8')
+call shortcut#map('<space> s 4',     'Set tabwidth to 4', 'set ts=4 sts=4 sw=4')
+call shortcut#map('<space> s 2',     'Set tabwidth to 2', 'set ts=2 sts=2 sw=2')
 if filereadable(expand("~/.localdf/nvim.vim"))
 
   source ~/.localdf/nvim.vim
