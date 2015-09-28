@@ -329,14 +329,16 @@ vmap <tab>3 :EasyAlign3\ <cr>
 vmap <tab>4 :EasyAlign4\ <cr>
 vmap <tab>= :EasyAlign=<cr>
 vmap <tab>: :EasyAlign:<cr>
-nnoremap <si<space>lent><space>O :Unite -silent tab<cr>
+nnoremap <silent><space><space>O :Unite -silent tab<cr>
+nnoremap <silent><space>P :call RunFileFinder()<cr>
+nnoremap <silent><space>p :call RunFileFinderGit()<cr>
+" nnoremap <silent><space>P :CtrlPCurWD<cr>
+nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>f m':Unite outline<cr>
 nnoremap <silent><space>F :CtrlPFunky<cr>
-nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
-nnoremap <silent><space>p :Unite -silent file_rec/async<cr>
-nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>l :CtrlPLine<cr>
 nnoremap <silent><space>y m':Unite -silent history/yank<cr>
+
 " nnoremap <leader>gj <plug>(signify-next-hunk)
 " nnoremap <leader>gk <plug>(signify-prev-hunk)
 nmap <leader><space>j <plug>(signify-next-hunk)
@@ -362,6 +364,18 @@ omap a; <Plug>Argumentative_OpPendingOuterTextObject
 nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
 nnoremap <silent><leader>f :ChooseWin<cr>
 nnoremap <silent><leader>F :ChooseWinSwap<cr>
+
+function! RunFileFinderGit()
+let g:unite_source_rec_async_command = 'git ls-files'
+    execute ":Unite -silent file_rec/async"
+endfunction
+
+
+function! RunFileFinder()
+    let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -S --ignore ".git" --hidden -g "" --silent'
+    execute ":Unite -silent file_rec/async"
+endfunction
+
 
 " Vim builtin overrides
 cnoremap <C-h> <Left>
@@ -675,7 +689,6 @@ let g:unite_enable_ignore_case = 1
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '» '
 let g:unite_source_history_yank_enable =1
-let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -i --ignore ".git" --hidden -g ""'
 let g:unite_split_rule = 'bot'
 let g:unite_winheight = 15
 
@@ -988,25 +1001,25 @@ function! ColorPicker(insert)
   endif
 endfunction
 
-" function! CurrentLineA()
-"   normal! 0
-"   let head_pos = getpos('.')
-"   normal! $
-"   let tail_pos = getpos('.')
-"   return ['v', head_pos, tail_pos]
-" endfunction
+function! CurrentLineA()
+  normal! 0
+  let head_pos = getpos('.')
+  normal! $
+  let tail_pos = getpos('.')
+  return ['v', head_pos, tail_pos]
+endfunction
 
-" function! CurrentLineI()
-"   normal! ^
-"   let head_pos = getpos('.')
-"   normal! g_
-"   let tail_pos = getpos('.')
-"   let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
-"   return
-"         \ non_blank_char_exists_p
-"         \ ? ['v', head_pos, tail_pos]
-"         \ : 0
-" endfunction
+function! CurrentLineI()
+  normal! ^
+  let head_pos = getpos('.')
+  normal! g_
+  let tail_pos = getpos('.')
+  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+  return
+        \ non_blank_char_exists_p
+        \ ? ['v', head_pos, tail_pos]
+        \ : 0
+endfunction
 
 function! ToggleConceal()
   if(&conceallevel == 2)
@@ -1025,14 +1038,14 @@ endfunction
 
 " Textobjs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" call textobj#user#plugin('line', {
-"       \   '-': {
-"       \     'select-a-function': 'CurrentLineA',
-"       \     'select-a': 'al',
-"       \     'select-i-function': 'CurrentLineI',
-"       \     'select-i': 'il',
-"       \   },
-"       \ })
+call textobj#user#plugin('line', {
+      \   '-': {
+      \     'select-a-function': 'CurrentLineA',
+      \     'select-a': 'aL',
+      \     'select-i-function': 'CurrentLineI',
+      \     'select-i': 'iL',
+      \   },
+      \ })
 
 
 " Random stuff
@@ -1064,7 +1077,12 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.out$',
       \ '.aux$',
       \ '.a$',
-      \ '.pdf$',
+      \ '.o$',
+      \ '.obj$',
+      \ '.so$',
+      \ '.lib$',
+      \ '.jar$',
+      \ '.pdf$'
       \ ], '\|'))
 " call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
