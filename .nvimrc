@@ -1188,10 +1188,10 @@ call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unit
 call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
 call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
 call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
-call shortcut#map('<space> s 8',     'Set tabwidth to 8', 'set ts=8 sts=8 sw=8')
-call shortcut#map('<space> s 4',     'Set tabwidth to 4', 'set ts=4 sts=4 sw=4')
-call shortcut#map('<space> s 2',     'Set tabwidth to 2', 'set ts=2 sts=2 sw=2')
-if filereadable(expand("~/.localdf/nvim.vim"))
+call shortcut#map('<space> s 8',     'Set tabwidth to 8',                  'set ts=8 sts=8 sw=8')
+call shortcut#map('<space> s 4',     'Set tabwidth to 4',                  'set ts=4 sts=4 sw=4')
+call shortcut#map('<space> s 2',     'Set tabwidth to 2',                  'set ts=2 sts=2 sw=2')
 
+if filereadable(expand("~/.localdf/nvim.vim"))
   source ~/.localdf/nvim.vim
 endif
