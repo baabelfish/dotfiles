@@ -86,6 +86,8 @@ bindsym $mod+Shift+w resize grow height 50 px or 5 ppt
 bindsym $mod+Shift+s resize shrink height 50 px or 5 ppt
 bindsym $mod+Shift+a resize shrink width 50 px or 5 ppt
 
+bindsym $mod+Shift+s sticky toggle
+
 # Splits
 bindsym $mod+colon split h
 bindsym $mod+Control+colon split h
@@ -251,6 +253,10 @@ for_window [window_role="About"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_role="^Manager"] floating enable
 for_window [window_role="pop-up"] floating enable
+for_window [class="(?i)pavucontrol"] floating enable, move position mouse
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="popup"] no_focus
 
 # Startup
 bindsym $mod+Mod5+h exec --no-startup-id urxvtc -title i3-launch-htop -e htop

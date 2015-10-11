@@ -27,7 +27,7 @@ call plug#begin('~/.nvim/plugged')
 
 let g:indentLine_enabled = 0
 let g:indentLine_color_gui = '#303030'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
@@ -35,7 +35,7 @@ Plug 'Quramy/tsuquyomi'
 let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
 
-let g:agprg="ag --smart-case --column --vimgrep"
+" let g:agprg="ag --smart-case --column --vimgrep"
 " let g:agprg="ag --smart-case --column"
 let g:aghighlight=1
 let g:agformat="%f:%l:%m"
@@ -1079,6 +1079,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'bower_components/',
       \ '.sass-cache',
       \ 'web/wp',
+      \ 'nimcache',
       \ '.toc$',
       \ '.bak$',
       \ '.log$',
@@ -1188,9 +1189,9 @@ call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unit
 call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
 call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
 call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
-call shortcut#map('<space> s 8',     'Set tabwidth to 8',                  'set ts=8 sts=8 sw=8')
-call shortcut#map('<space> s 4',     'Set tabwidth to 4',                  'set ts=4 sts=4 sw=4')
-call shortcut#map('<space> s 2',     'Set tabwidth to 2',                  'set ts=2 sts=2 sw=2')
+call shortcut#map('<space> s 8',     'Set tabwidth to 8', 'set ts=8 sts=8 sw=8')
+call shortcut#map('<space> s 4',     'Set tabwidth to 4', 'set ts=4 sts=4 sw=4')
+call shortcut#map('<space> s 2',     'Set tabwidth to 2', 'set ts=2 sts=2 sw=2')
 
 if filereadable(expand("~/.localdf/nvim.vim"))
   source ~/.localdf/nvim.vim
