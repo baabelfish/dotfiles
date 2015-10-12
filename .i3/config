@@ -23,6 +23,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Control+Shift+F4 i3-msg exit
 bindsym $mod+q kill
 bindsym $mod+b exec --no-startup-id ~/.xutils/tempbar.sh
+bindsym $mod+Shift+b exec --no-startup-id ~/.xutils/toggletray.sh
 
 # Panic button
 bindcode $mod+119 killall java
