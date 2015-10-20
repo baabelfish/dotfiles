@@ -1,5 +1,4 @@
 alsaequal
-fzf
 aseprite
 atool
 autocutsel
@@ -9,12 +8,14 @@ chromium-pepper-flash
 clipit
 cmus
 compton
+connman
 cunit
 dnsutils
 dzen2
 elementary-icon-theme
 faenza-icon-theme
 feh
+fzf
 gifsicle
 gimp
 gksu
@@ -25,6 +26,7 @@ i3-wm
 i3blocks
 i3lock
 i3status
+lampe
 leiningen
 leiningen-completions
 lua-messagepack
@@ -35,6 +37,7 @@ mediainfo
 mps-youtube-git
 mutt
 neovim-git
+nerd-fonts-git
 network-manager-applet
 nim
 nimble
@@ -70,5 +73,3 @@ yle-dl
 zathura
 zenity
 zsh
-lampe
-nerd-fonts-git
