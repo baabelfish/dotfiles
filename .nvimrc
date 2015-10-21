@@ -42,6 +42,7 @@ let g:agformat="%f:%l:%m"
 Plug 'rking/ag.vim'
 
 Plug 'int3/vim-extradite'
+Plug 'digitaltoad/vim-jade'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'blueyed/vim-diminactive'

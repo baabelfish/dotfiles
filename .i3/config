@@ -86,7 +86,7 @@ bindsym $mod+Shift+w resize grow height 50 px or 5 ppt
 bindsym $mod+Shift+s resize shrink height 50 px or 5 ppt
 bindsym $mod+Shift+a resize shrink width 50 px or 5 ppt
 
-bindsym $mod+Shift+s sticky toggle
+# bindsym $mod+Shift+s sticky toggle
 
 # Splits
 bindsym $mod+colon split h
@@ -263,6 +263,26 @@ bindsym $mod+Mod5+h exec --no-startup-id urxvtc -title i3-launch-htop -e htop
 bindsym $mod+Mod5+c exec --no-startup-id $BROWSER
 bindsym $mod+Mod5+s exec --no-startup-id spotify
 bindsym $mod+Mod5+Shift+s exec --no-startup-id steam
+
+# Lights
+bindsym $mod+Home exec --no-startup-id ~/.xutils/myhue/menu.sh
+bindsym $mod+KP_1 exec --no-startup-id ~/.xutils/myhue/command.sh 1 on
+bindsym $mod+KP_2 exec --no-startup-id ~/.xutils/myhue/command.sh 2 on
+bindsym $mod+KP_3 exec --no-startup-id ~/.xutils/myhue/command.sh 3 on
+bindsym $mod+Shift+KP_1 exec --no-startup-id ~/.xutils/myhue/command.sh 1 off
+bindsym $mod+Shift+KP_2 exec --no-startup-id ~/.xutils/myhue/command.sh 2 off
+bindsym $mod+Shift+KP_3 exec --no-startup-id ~/.xutils/myhue/command.sh 3 off
+bindsym $mod+KP_0 exec --no-startup-id ~/.xutils/myhue/all.sh on
+bindsym $mod+Shift+KP_0 exec --no-startup-id ~/.xutils/myhue/all.sh off
+
+# Colors
+bindsym $mod+Control+KP_1 exec --no-startup-id ~/.xutils/myhue/all.sh hue 50
+bindsym $mod+Control+KP_2 exec --no-startup-id ~/.xutils/myhue/all.sh hue 180
+bindsym $mod+Control+KP_3 exec --no-startup-id ~/.xutils/myhue/all.sh hue 0
+bindsym $mod+KP_Add exec --no-startup-id ~/.xutils/myhue/all.sh sat 0
+bindsym $mod+Shift+KP_Add exec --no-startup-id ~/.xutils/myhue/all.sh sat 255
+bindsym $mod+KP_Subtract exec --no-startup-id ~/.xutils/myhue/all.sh effect colorloop
+bindsym $mod+Shift+KP_Subtract exec --no-startup-id ~/.xutils/myhue/all.sh effect none
 
 # Nonstandard
 gaps outer 4
