@@ -2,7 +2,9 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 feh --bg-center ~/.wallpaper
 
-export AWT_TOOLKIT=XToolkit
+# OOPS
+# export AWT_TOOLKIT=XToolkit
+export AWT_TOOLKIT=MToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1
 export _JAVA_OPTIONS='-Xmx2048m -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
@@ -41,6 +43,7 @@ xinput set-int-prop "PS/2 ALPS DualPoint TouchPad" "Device Enabled" 8 0
 #     xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
 # fi
 
+wmname LG3D
 eval "sleep 8 && transset-df -n i3bar 0.85"&
 [[ -f "~/.localdf/pxinitrc" ]] && ~/.localdf/pxinitrc
 [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3

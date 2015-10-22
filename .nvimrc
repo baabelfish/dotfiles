@@ -2,9 +2,10 @@ if has('nvim')
   runtime! plugin/python_setup.vim
 endif
 
+silent !mkdir -p "$HOME/.nvim/undodir"
+silent !mkdir -p "$HOME/.nvim/autoload"
+
 if !filereadable(expand('~/.nvim/autoload/plug.vim'))
-  silent !mkdir -p ~/.nvim/undodir
-  silent !mkdir -p ~/.nvim/autoload
   ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
   ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
   !nvim +'PlugUpdate | quit!'
@@ -39,8 +40,8 @@ Plug 'matze/vim-move'
 
 " let g:agprg="ag --smart-case --column --vimgrep"
 " let g:agprg="ag --smart-case --column"
-let g:aghighlight=1
-let g:agformat="%f:%l:%m"
+" let g:aghighlight=1
+" let g:agformat="%f:%l:%m"
 Plug 'rking/ag.vim'
 
 Plug 'int3/vim-extradite'
@@ -139,7 +140,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
-" Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
@@ -166,7 +167,7 @@ if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
   endif
-  set encoding=utf-8
+  " set encoding=utf-8
   setglobal fileencoding=utf-8
   scriptencoding utf-8
 endif
@@ -220,7 +221,7 @@ set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
 set expandtab shiftround copyindent preserveindent
 set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0 lazyredraw
-set undofile undolevels=1000 undoreload=10000 undodir=~/.vim/undodir nobackup
+set undofile undolevels=1000 undoreload=10000 undodir=~/.nvim/undodir nobackup
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
@@ -762,10 +763,10 @@ endif
 
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
 
-hi ColorColumn       guibg=#0a0a0a
+hi ColorColumn       guibg=#0c0c0c
 
 " hi Normal            guifg=#99d1ce guibg=none    gui=none
-hi Normal            guifg=#99d1ce guibg=#0c0c0c    gui=none
+hi Normal            guifg=#99d1ce guibg=#111111    gui=none
 hi NonText           guifg=#111111 guibg=none    gui=none
 hi VertSplit         guifg=#222222 guibg=none
 hi CtrlPNoEntries    guifg=#FF8B00 guibg=none
@@ -1192,9 +1193,16 @@ call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unit
 call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
 call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
 call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
-call shortcut#map('<space> s 8',     'Set tabwidth to 8', 'set ts=8 sts=8 sw=8')
-call shortcut#map('<space> s 4',     'Set tabwidth to 4', 'set ts=4 sts=4 sw=4')
-call shortcut#map('<space> s 2',     'Set tabwidth to 2', 'set ts=2 sts=2 sw=2')
+call shortcut#map('<space> s 8',     'Set tabwidth to 8',                  'set ts=8 sts=8 sw=8')
+call shortcut#map('<space> s 4',     'Set tabwidth to 4',                  'set ts=4 sts=4 sw=4')
+call shortcut#map('<space> s 2',     'Set tabwidth to 2',                  'set ts=2 sts=2 sw=2')
+call shortcut#map('<space> T l',     'Todo - local',                       'e ~/todo.todo')
+call shortcut#map('<space> T d',     'Todo - Mark as done',                'call <Plug>() TaskComplete()')
+call shortcut#map('<space> T c',     'Todo - Cancel task',                 'call <Plug>() TaskCancel()')
+call shortcut#map('<space> T a',     'Todo - Archive task',                'call <Plug>() TaskArchive()')
+call shortcut#map('<space> T n',     'Todo - New task under',              'call <Plug>() NewTask(1)')
+call shortcut#map('<space> T N',     'Todo - New task over',               'call <Plug>() NewTask(-1)')
+" call shortcut#map('<space> T u',     'Todo - Update archive',              'call <Plug>() TaskArchive()')
 
 if filereadable(expand("~/.localdf/nvim.vim"))
   source ~/.localdf/nvim.vim

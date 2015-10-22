@@ -65,6 +65,8 @@ end
 
 alias fishcfg='nvim ~/.config/fish/config.fish'
 
+alias ca='cal --monday -w -Y'
+
 # Moving around
 alias ..='cd ..'
 alias ...='cd ../..'
