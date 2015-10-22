@@ -31,6 +31,8 @@ let g:indentLine_color_gui = '#303030'
 
 let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'digitaltoad/vim-jade'
 
 let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
@@ -1119,10 +1121,10 @@ call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
 call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
 call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
-call arpeggio#map('icvx', '', 0, 'h1', '<Esc>iHodor ')
-call arpeggio#map('icvx', '', 0, 'h2', '<Esc>ihodor. ')
-call arpeggio#map('icvx', '', 0, 'h3', '<Esc>iHodor! ')
-call arpeggio#map('icvx', '', 0, 'h4', '<Esc>iHODOR! ')
+call arpeggio#map('icvx', '', 0, 'h1', ' <Esc>sHodor')
+call arpeggio#map('icvx', '', 0, 'h2', ' <Esc>shodor.')
+call arpeggio#map('icvx', '', 0, 'h3', ' <Esc>sHodor!')
+call arpeggio#map('icvx', '', 0, 'h4', ' <Esc>sHODOR! ')
 call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
 
 " https://github.com/sunaku/.vim/tree/spacey/shortcut
