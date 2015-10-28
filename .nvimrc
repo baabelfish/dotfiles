@@ -42,7 +42,9 @@ Plug 'matze/vim-move'
 " let g:agprg="ag --smart-case --column"
 " let g:aghighlight=1
 " let g:agformat="%f:%l:%m"
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
+
+Plug 'gabesoft/vim-ags'
 
 Plug 'int3/vim-extradite'
 Plug 'digitaltoad/vim-jade'
@@ -67,6 +69,7 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
+Plug 'lambdalisue/unite-grep-vcs'
 Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim ;and make -f make_unix.mak' }
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
@@ -347,6 +350,7 @@ vmap <tab>: :EasyAlign:<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>P :call RunFileFinder()<cr>
 nnoremap <silent><space>p :call RunFileFinderGit()<cr>
+nnoremap <silent><space>A :Unite grep:.::\\.(filter\|provider\|controller\|directive\|factory\|service)\\(\\'.+\\'<cr>
 " nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>f m':Unite outline<cr>
@@ -380,8 +384,9 @@ nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
 nnoremap <silent><leader>f :ChooseWin<cr>
 nnoremap <silent><leader>F :ChooseWinSwap<cr>
 
+
 function! RunFileFinderGit()
-let g:unite_source_rec_async_command = 'git ls-files'
+    let g:unite_source_rec_async_command = 'git ls-files'
     execute ":Unite -silent file_rec/async"
 endfunction
 
@@ -659,6 +664,7 @@ let g:choosewin_color_other = {
 let g:switch_custom_definitions =
       \ [
       \  ['yes', 'no' ],
+      \  ['resolve', 'reject' ],
       \  ['on', 'off' ],
       \  ['active', 'passive' ],
       \  ['start', 'stop' ],
@@ -793,7 +799,7 @@ hi CtrlPBookmark     guifg=#FFFFFF guibg=none
 " hi perlspecialmatch        guifg=176     guibg=none    gui=none
 " hi perlspecialstring       guifg=176     guibg=none    gui=none
 " hi taglisttagname          guifg=105     guibg=none    gui=none
-hi SignColumn        guifg=none    guibg=none    gui=none
+hi SignColumn        guifg=none    guibg=#111111    gui=none
 hi SignifyLineAdd    guifg=none    guibg=#032007 gui=bold
 hi SignifyLineChange guifg=none    guibg=#1F1900 gui=bold
 hi SignifyLineDelete guifg=none    guibg=#180505 gui=bold
@@ -908,7 +914,7 @@ hi javascriptBCollectionAttrs guifg=#779777 guibg=none gui=italic
 " hi perlspecialstring           guifg=176  guibg=238  gui=none
 " hi taglisttagname              guifg=105  guibg=none gui=none
 hi CursorColumn         guifg=none    guibg=#262626 gui=none
-hi CursorLine           guibg=#1c1c1c gui=none
+hi CursorLine           guibg=#111111 gui=none
 hi CursorLineNr         guifg=#67cf30 guibg=none    gui=none
 hi LineNr               guifg=#444944 guibg=none    gui=none
 hi PMenu                guifg=#dadada guibg=#262626 gui=none
@@ -1062,10 +1068,16 @@ call textobj#user#plugin('line', {
 
 " Random stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
-call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
-call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
-call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--vimgrep -i --silent'
+endif
+
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
       \ '\.git/',
