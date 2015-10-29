@@ -354,7 +354,7 @@ vmap <tab>: :EasyAlign:<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>P :call RunFileFinder()<cr>
 nnoremap <silent><space>p :call RunFileFinderGit()<cr>
-nnoremap <silent><space>A :Unite grep:.::\\.(filter\|provider\|controller\|directive\|factory\|service)\\(\\'.+\\'<cr>
+nnoremap <silent><space>a :Unite grep:.::\\.(filter\|provider\|controller\|directive\|factory\|service)\\(\\'.+\\'<cr>
 " nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>f m':Unite outline<cr>
@@ -1143,6 +1143,7 @@ call arpeggio#map('icvx', '', 0, 'h2', ' <Esc>shodor.')
 call arpeggio#map('icvx', '', 0, 'h3', ' <Esc>sHodor!')
 call arpeggio#map('icvx', '', 0, 'h4', ' <Esc>sHODOR! ')
 call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
+call arpeggio#map('icvx', '', 0, 'jf', '<Esc><C-w>c<c-l>')
 
 " https://github.com/sunaku/.vim/tree/spacey/shortcut
 call shortcut#map('<space> Z K',     'Zeal - Search for.',                 'ZvK')
