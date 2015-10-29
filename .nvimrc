@@ -12,6 +12,9 @@ if !filereadable(expand('~/.nvim/autoload/plug.vim'))
   quit!
 endif
 
+set rtp+=/usr/share/ocamlmerlin/vim
+
+
 call plug#begin('~/.nvim/plugged')
 
 " Plug 'airblade/vim-gitgutter'
@@ -46,6 +49,8 @@ Plug 'matze/vim-move'
 
 Plug 'gabesoft/vim-ags'
 
+Plug 'rgrinberg/vim-ocaml'
+Plug 'the-lambda-church/merlin', { 'do': 'cd ~/.nvim/plugged/merlin && ./configure --bindir /usr/bin --sharedir /usr/share --vimdir /usr/share/ocamlmerlin/vim && make && clear && sudo make install' }
 Plug 'int3/vim-extradite'
 Plug 'digitaltoad/vim-jade'
 Plug 'KabbAmine/zeavim.vim'
@@ -70,10 +75,10 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
 Plug 'lambdalisue/unite-grep-vcs'
-Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim ;and make -f make_unix.mak' }
+Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe ;and git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/nim.vim'
 Plug 'baabelfish/vim-dispatch'
@@ -166,7 +171,7 @@ call plug#end()
 
 filetype plugin indent on
 
-if has("multi_byte")
+if has("multi_byte") && has("starting")
   if &termencoding == ""
     let &termencoding = &encoding
   endif
@@ -184,7 +189,7 @@ endif
 set autoread
 set backspace=indent,eol,start
 set complete-=i
-set completeopt=menu,longest
+set completeopt=menu,longest previewheight=2 pumheight=40
 set conceallevel=0
 set cscopetag
 set cursorline
@@ -210,7 +215,6 @@ set notimeout
 set nrformats-=octal
 set number numberwidth=4
 set path+=.,**,,
-set pumheight=5
 set regexpengine=1
 set scrolljump=8 sidescroll=1
 set shortmess+=filmnrxoOtTI
