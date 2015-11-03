@@ -41,19 +41,15 @@ Plug 'digitaltoad/vim-jade'
 let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
 
-" let g:agprg="ag --smart-case --column --vimgrep"
-" let g:agprg="ag --smart-case --column"
-" let g:aghighlight=1
-" let g:agformat="%f:%l:%m"
-" Plug 'rking/ag.vim'
-
 Plug 'gabesoft/vim-ags'
 
+Plug 'jreybert/vimagit'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'the-lambda-church/merlin', { 'do': 'cd ~/.nvim/plugged/merlin && ./configure --bindir /usr/bin --sharedir /usr/share --vimdir /usr/share/ocamlmerlin/vim && make && clear && sudo make install' }
 Plug 'int3/vim-extradite'
 Plug 'digitaltoad/vim-jade'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'tsukkee/unite-help'
 Plug 'irrationalistic/vim-tasks'
 Plug 'blueyed/vim-diminactive'
 Plug 'sunaku/vim-shortcut'
@@ -80,7 +76,8 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'baabelfish/a.vim'
-Plug 'baabelfish/nim.vim'
+Plug 'baabelfish/nimtools'
+Plug 'zah/nim.vim'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
 Plug 'baabelfish/vim-vertigo'
@@ -124,15 +121,32 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'mrtazz/DoxygenToolkit.vim'
-Plug 'myint/syntastic-extras'
+" Plug 'scrooloose/syntastic'
+" Plug 'myint/syntastic-extras'
 Plug 'osyo-manga/vim-hopping'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'peterhoeg/vim-qml'
-
-Plug 'roktas/syntastic-more'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
+
+let g:neomake_error_sign = {
+    \ 'text': '✖',
+    \ 'texthl': 'SyntasticErrorSign',
+    \ }
+let g:neomake_warning_sign = {
+    \ 'text': '✗',
+    \ 'texthl': 'SyntasticWarningSign',
+    \ }
+let g:neomake_informational_sign = {
+    \ 'text': 'ℹ',
+    \ 'texthl': 'SyntasticInfoSign',
+    \ }
+let g:neomake_message_sign = {
+    \ 'text': '➤',
+    \ 'texthl': 'SyntasticMsgSign',
+    \ }
+Plug 'baabelfish/neomake'
+
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'tommcdo/vim-express'
 Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -266,6 +280,8 @@ autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+autocmd! BufWritePost * Neomake
+autocmd! BufEnter * Neomake
 " autocmd CursorHold * SyntasticCheck
 
 
@@ -366,8 +382,6 @@ nnoremap <silent><space>y m':Unite -silent history/yank<cr>
 " nnoremap <leader>gk <plug>(signify-prev-hunk)
 nmap <leader><space>j <plug>(signify-next-hunk)
 nmap <leader><space>k <plug>(signify-prev-hunk)
-nnoremap <silent><leader>a :TagbarToggle<cr>
-nnoremap <silent><leader>A :TagbarShowTag<cr>
 nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 nnoremap <silent><space>g/ :HoppingStart<cr>
 map <space>/  <Plug>(incsearch-forward)
@@ -602,7 +616,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
-let g:signify_disable_by_default = 0
+let g:signify_disable_by_default = 1
 let g:signify_update_on_bufenter = 1
 let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'
@@ -668,6 +682,7 @@ let g:choosewin_color_other = {
 let g:switch_custom_definitions =
       \ [
       \  ['yes', 'no' ],
+      \  ['horizontal', 'vertical' ],
       \  ['resolve', 'reject' ],
       \  ['on', 'off' ],
       \  ['active', 'passive' ],
@@ -723,7 +738,7 @@ let g:targets_argOpening = '[({[<]'
 let g:targets_argClosing = '[]})>]'
 
 let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -869,7 +884,7 @@ hi javascriptBCollectionAttrs guifg=#779777 guibg=none gui=italic
 " hi Directory                   guifg=172  guibg=none gui=none
 " hi EasyMotionTarget            guifg=46   guibg=233
 " hi Error                       guifg=196  guibg=none gui=bold
-" hi ErrorMsg                    guifg=172  guibg=none gui=none
+hi ErrorMsg                    guifg=#ff9999  guibg=none gui=none
 " hi Folded                      guifg=103  guibg=238  gui=none
 " hi Label                       guifg=249  guibg=none gui=italic
 " hi MatchParen                  guifg=118  guibg=none gui=underline
@@ -927,6 +942,8 @@ hi PMenuSel             guifg=#afff00 guibg=#121212 gui=none
 hi PMenuThumb           guifg=#afff00 guibg=#afff00 gui=none
 hi SyntasticErrorSign   guifg=#ff4444 guibg=none
 hi SyntasticWarningSign guifg=#d7ff5f guibg=none
+hi SyntasticInfoSign    guifg=#e0e0e0 guibg=none
+hi SyntasticMsgSign     guifg=#cbffff guibg=none
 hi WildMenu             guifg=#080808 guibg=#afd700 gui=bold
 
 " Abbrevations
@@ -1183,11 +1200,11 @@ call shortcut#map('<space> o <Tab>', 'Toggle - Indentlines',               'Inde
 call shortcut#map('<space> o N',     'Toggle - Line numbering (relative)', 'setlocal relativenumber!')
 call shortcut#map('<space> o Q',     'Toggle - Automatic f',               'call shortcut#toggle_flag("formatoptions", "a", "t")')
 call shortcut#map('<space> o ]',     'Toggle - Tag l',                     'TlistToggle')
-call shortcut#map('<space> o c',     'Open - C',                           'call ColorPicker(0)')
+call shortcut#map('<space> o c',     'Open - Color picker',                           'call ColorPicker(0)')
 call shortcut#map('<space> o n',     'Toggle - Line n',                    'setlocal number!')
 call shortcut#map('<space> o p',     'Toggle - Paste v',                   'setlocal paste!')
 call shortcut#map('<space> o q',     'Toggle - QuickFix w',                'QFix')
-call shortcut#map('<space> o s',     'Open - S',                           'Startify')
+call shortcut#map('<space> o s',     'Open - Startify',                           'Startify')
 call shortcut#map('<space> o s',     'Toggle - Spelling c',                'setlocal spell!')
 call shortcut#map('<space> o u',     'Toggle - Edit history (undo tree)',  'UndotreeToggle')
 call shortcut#map('<space> o z',     'Toggle - Code f',                    'setlocal foldenable!')
@@ -1219,6 +1236,12 @@ call shortcut#map('<space> T c',     'Todo - Cancel task',                 'call
 call shortcut#map('<space> T a',     'Todo - Archive task',                'call <Plug>() TaskArchive()')
 call shortcut#map('<space> T n',     'Todo - New task under',              'call <Plug>() NewTask(1)')
 call shortcut#map('<space> T N',     'Todo - New task over',               'call <Plug>() NewTask(-1)')
+call shortcut#map('<leader> a',      'Tagbar - Toggle',                    'nnoremap <silent><leader>a :TagbarToggle<cr>')
+call shortcut#map('<leader> A',      'Tagbar - Show tag',                  'nnoremap <silent><leader>A :TagbarShowTag<cr>')
+call shortcut#map('<space> N s',     'Nim - Server start',                 'NimServerStart')
+call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
+call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
+
 " call shortcut#map('<space> T u',     'Todo - Update archive',              'call <Plug>() TaskArchive()')
 
 if filereadable(expand("~/.localdf/nvim.vim"))

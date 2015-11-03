@@ -1,11 +1,3 @@
---langdef=js
---langmap=js:.js
---regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
---regex-js=/([A-Za-z0-9._$'"()]+)[ \t]*[:][ \t]*function[ \t]*\([^)]*\)/\1/f,function/
---regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/a,array/
---regex-js=/([^= ]+)[ \t]*=[ \t]*'[^']*'/\1/s,string/
---regex-js=/([^= ]+)[ \t]*=[ \t]*"[^"]*"/\1/s,string/
-
 --langdef=nim
 --langmap=nim:.nim
 --regex-nim=/(\w+)\*?\s*=\s*object/\1/t,class/
@@ -18,6 +10,14 @@
 --regex-nim=/proc\s+`([^`]+)`/\1/o,operator/
 --regex-nim=/template\s+(\w+)/\1/t,template/
 --regex-nim=/macro\s+(\w+)/\1/m,macro/
+
+--langdef=js
+--langmap=js:.js
+--regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
+--regex-js=/([A-Za-z0-9._$'"()]+)[ \t]*[:][ \t]*function[ \t]*\([^)]*\)/\1/f,function/
+--regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/a,array/
+--regex-js=/([^= ]+)[ \t]*=[ \t]*'[^']*'/\1/s,string/
+--regex-js=/([^= ]+)[ \t]*=[ \t]*"[^"]*"/\1/s,string/
 
 --langdef=typescript
 --langmap=typescript:.ts

@@ -1,14 +1,18 @@
 decorations none
 transparent true
-dockapp_mode none
+vertical false
+geometry 10x1-0-0
+geometry 10x1-0-0
+fuzzy_edges 0
+tint_color "#000000"
+tint_level 0
 window_strut bottom
-background "#202020"
+background "#000000"
 kludges force_icons_size
-grow_gravity NE
-icon_gravity NE
+grow_gravity E
+icon_gravity E
 icon_size 16
 sticky true
-# window_strut none
 window_type dock
 window_layer bottom
 # no_shrink false

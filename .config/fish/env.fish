@@ -11,6 +11,7 @@ set -x FZF_DEFAULT_OPTS '-e --no-mouse --prompt=: --toggle-sort=f1 --color=dark,
 
 mkdir -p $HOME/.local/apps/bin 
 set -gx PATH $HOME/.local/bin $PATH
+set -gx PATH $HOME/.nimble/bin $PATH
 set -gx /usr/bin/core_perl $HOME/.local/bin $PATH
 
 # set -x MANPAGER 'nvim -c Man -'
