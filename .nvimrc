@@ -18,6 +18,24 @@ endif
 " {{{ Plugins
 
 call plug#begin('~/.nvim/plugged')
+" {{{ Deprecated
+" Plug 'scrooloose/syntastic'
+" Plug 'myint/syntastic-extras'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'xolox/vim-lua-inspect'
+" NeoBundle 'Mizuchi/STL-Syntax'
+" NeoBundle 'sheerun/vim-polyglot'
+" Plug 'Raimondi/delimitMate'
+" Plug 'marijnh/tern_for_vim'
+" Plug 'lambdalisue/vim-gita'
+" Plug 'floobits/floobits-neovim'
+" Plug 'wincent/ferret' " Works like shit
+" Plug 'baabelfish/mycolors'
+let g:indentLine_enabled = 0
+let g:indentLine_color_gui = '#303030'
+" Plug 'Yggdroot/indentLine'
+" }}}
 " {{{ Vim enhancements
 let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
@@ -79,24 +97,6 @@ Plug 'wellle/targets.vim'
 " }}}
 " {{{ C++
 Plug 'baabelfish/a.vim'
-" }}}
-" {{{ Deprecated
-" Plug 'scrooloose/syntastic'
-" Plug 'myint/syntastic-extras'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'xolox/vim-lua-inspect'
-" NeoBundle 'Mizuchi/STL-Syntax'
-" NeoBundle 'sheerun/vim-polyglot'
-" Plug 'Raimondi/delimitMate'
-" Plug 'marijnh/tern_for_vim'
-" Plug 'lambdalisue/vim-gita'
-" Plug 'floobits/floobits-neovim'
-" Plug 'wincent/ferret' " Works like shit
-" Plug 'baabelfish/mycolors'
-let g:indentLine_enabled = 0
-let g:indentLine_color_gui = '#303030'
-" Plug 'Yggdroot/indentLine'
 " }}}
 " {{{ Typescript / Javascript
 let g:tsuquyomi_disable_quickfix = 1
@@ -247,7 +247,7 @@ set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set mouse=
-set foldmethod=manual foldlevel=0 foldtext=MyFoldText()
+set foldmethod=indent foldlevel=999
 set noshowmode
 set nospell
 set notimeout
@@ -278,11 +278,14 @@ set wrapmargin=0 nowrap linebreak breakat+=" "
 " {{{ Autocommands
 
 autocmd!
+
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
 autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
+
 autocmd FileType cpp set nowrap
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType ejs set filetype=typescript
@@ -295,14 +298,18 @@ autocmd FileType matlab set filetype=octave
 autocmd FileType plaintex set filetype=tex
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType typescript setlocal completeopt+=preview
-autocmd FileType vim setlocal foldenable foldmethod=marker
+autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
-autocmd! BufEnter * Neomake
-autocmd! BufWritePost * Neomake
+
+if exists(":Neomake")
+  autocmd! BufEnter * Neomake
+  autocmd! BufWritePost * Neomake
+endif
 " autocmd CursorHold * SyntasticCheck
 
 " }}}

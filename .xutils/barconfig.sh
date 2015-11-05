@@ -43,13 +43,13 @@ network() {
 }
 
 volume() {
-  if [[ "$(hostname)" == "edge" ]]; then
-    VOL=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
-    STATE=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
-  else
-    VOL=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
-    STATE=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
-  fi
+    if [[ "$(hostname)" == "edge" ]]; then
+        VOL=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
+        STATE=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
+    else
+        VOL=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
+        STATE=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
+    fi
 
     if [[ "$STATE" == "off]" ]]; then
         echo -n "$(glyph "f023") %{F#ff9444}Muted"
@@ -108,28 +108,28 @@ battery() {
     ISLOW=0
 
     if [[ -n "$PERCENT" ]]; then
-      R=$(echo "obase=16; $((255-$PERCENTNUMBER*255/100))"|bc)
-      G=$(echo "obase=16; $(($PERCENTNUMBER*255/100))"|bc)
-      B="00"
-      STR="%{F#$R$G$B}■ "
-      if [[ -n "${TIME}" ]]; then
-        STR+="${PERCENT} %{F$INACTIVE}(%{F-}${TIME}%{F$INACTIVE})%{F-}"
-      else
-        STR+="${PERCENT} "
-      fi
+        R=$(echo "obase=16; $((255-$PERCENTNUMBER*255/100))"|bc)
+        G=$(echo "obase=16; $(($PERCENTNUMBER*255/100))"|bc)
+        B="00"
+        STR="%{F#$R$G$B}■ "
+        if [[ -n "${TIME}" ]]; then
+            STR+="${PERCENT} %{F$INACTIVE}(%{F-}${TIME}%{F$INACTIVE})%{F-}"
+        else
+            STR+="${PERCENT} "
+        fi
 
-      if [[ $PERCENT -le 8 ]]; then
-        echo -n "%{B#fff91111} %{F#000000} BATTERY %{F-} "
-      else
-        echo -n " $STR "
-      fi
+        if [[ $PERCENT -le 8 ]]; then
+            echo -n "%{B#fff91111} %{F#000000} BATTERY %{F-} "
+        else
+            echo -n " $STR "
+        fi
     fi
-  }
+}
 
 windowtitle(){
     TITLE=$(xdotool getactivewindow getwindowname)
     if [[ "$TITLE" != "" && "$TITLE" != "float" && "$TITLE" != "stalonetray" ]]; then
-        echo "%{B$BACKGROUND} %{F$SEPARATOR}»%{F$WINDOWTITLE} $(echo "$TITLE" | cut -c 1-100) %{F$SEPARATOR}«%{F-} %{B-}"
+        echo "%{B$BACKGROUND} %{F$SEPARATOR}»%{F$WINDOWTITLE} $(echo "$TITLE" | cut -c 1-80) %{F$SEPARATOR}«%{F-} %{B-}"
     fi
 }
 
