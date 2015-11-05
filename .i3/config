@@ -173,7 +173,7 @@ bar {
 }
 
 # Lock screen
-bindsym $mod+F5 exec --no-startup-id i3lock -c 090909
+bindsym $mod+F5 exec --no-startup-id ~/.xutils/lock.sh
 bindsym $mod+shift+F5 exec ~/.xutils/suspend.sh
 
 # Volume keys

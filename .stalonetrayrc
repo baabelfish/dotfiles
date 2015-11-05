@@ -12,7 +12,7 @@ grow_gravity SE
 icon_gravity SE
 icon_size 16
 sticky true
-window_type normal
+window_type dock
 window_layer top
 # no_shrink false
 skip_taskbar true

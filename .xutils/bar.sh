@@ -42,8 +42,8 @@ network() {
 }
 
 volume() {
-    VOL=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
-    STATE=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
+    VOL=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
+    STATE=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
 
     if [[ "$STATE" == "off]" ]]; then
         echo -n "$(glyph "f023") Muted"
@@ -97,16 +97,19 @@ windowtitle(){
 }
 
 while true; do
-    echo "      \
+    echo "\
 $(wrap "$(workspace)")$SEPARATOR\
 $(wrap " $(volume) ")$SEPARATOR\
 $(music)$SEPARATOR\
-%{c}$(windowtitle)$SEPARATOR\
-%{r}$(wrap " $(network) ")$SEPARATOR\
+%{c}\
+$(windowtitle)$SEPARATOR\
+%{r}\
 $(wrap " $(bar_clock) ")$SEPARATOR\
 $(wrap " $(bar_date) ")\
-       "
-    sleep .1;
+"
+    sleep 1;
 done | 
 lemonbar -o 1 -p -b -B#00000000 -F#A0A0A0 -f "Literation Mono Powerline PNFT-8"\
  | bash
+
+# %{r}$(wrap " $(network) ")$SEPARATOR\

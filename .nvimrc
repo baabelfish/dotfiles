@@ -42,7 +42,6 @@ Plug 'matze/vim-move'
 
 Plug 'gabesoft/vim-ags'
 
-Plug 'jreybert/vimagit'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'the-lambda-church/merlin', { 'do': 'cd ~/.nvim/plugged/merlin && ./configure --bindir /usr/bin --sharedir /usr/share --vimdir /usr/share/ocamlmerlin/vim && make && clear && sudo make install' }
 Plug 'int3/vim-extradite'
@@ -87,7 +86,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish'
 Plug 'flazz/vim-colorschemes'
 Plug 'glts/vim-textobj-comment'
-Plug 'gregsexton/gitv'
 Plug 'groenewege/vim-less'
 Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
@@ -109,7 +107,6 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'lambdalisue/vim-gita'
 Plug 'lambdalisue/vim-manpager'
 Plug 'leafo/moonscript-vim'
 Plug 'majutsushi/tagbar'
@@ -129,6 +126,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mickaobrien/vim-stackoverflow'
 
+" {{{ Neomake
 let g:neomake_error_sign = {
     \ 'text': '✖',
     \ 'texthl': 'SyntasticErrorSign',
@@ -147,10 +145,19 @@ let g:neomake_message_sign = {
     \ }
 Plug 'benekastah/neomake'
 " Plug 'baabelfish/neomake'
+" }}}
+" {{{ Git
+Plug 'gregsexton/gitv'
+Plug 'jreybert/vimagit'
+Plug 'tommcdo/vim-fugitive-blame-ext'
+Plug 'lambdalisue/vim-gita'
+Plug 'tpope/vim-fugitive'
+" }}}
 
+" {{{ Typescript
+" }}}
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'tommcdo/vim-express'
-Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tommcdo/vim-kangaroo'
 Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-ninja-feet'
@@ -159,7 +166,6 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
@@ -225,7 +231,6 @@ set mouse=
 set nofoldenable foldmethod=manual foldlevel=999
 set noshowmode
 set nospell
-set noswapfile
 set notimeout
 set nrformats-=octal
 set number numberwidth=4
@@ -243,7 +248,7 @@ set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
 set expandtab shiftround copyindent preserveindent
 set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0 lazyredraw
-set undofile undolevels=1000 undoreload=10000 undodir=~/.nvim/undodir nobackup
+set undofile undolevels=1000 undoreload=10000 undodir=~/.nvim/undodir nobackup noswapfile
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
@@ -259,31 +264,32 @@ endif
 
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType typescript setlocal completeopt+=preview
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType plaintex set filetype=tex
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd!
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
 autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 autocmd FileType cpp set nowrap
-autocmd FileType javascript set filetype=typescript
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType ejs set filetype=typescript
 autocmd FileType fish set filetype=sh
+autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType matlab set filetype=octave
+autocmd FileType plaintex set filetype=tex
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType typescript setlocal completeopt+=preview
+autocmd FileType vim setlocal foldenable foldmethod=marker
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
-autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-autocmd! BufWritePost * Neomake
 autocmd! BufEnter * Neomake
+autocmd! BufWritePost * Neomake
 " autocmd CursorHold * SyntasticCheck
 
 
@@ -759,10 +765,10 @@ let g:ycm_filetype_blacklist = {
       \ 'tex' : 1,
       \ 'text' : 1,
       \ 'unite' : 1,
-      \ 'sql' : 1,
       \ 'vim' : 1,
-      \ 'typescript' : 1,
+      \ 'sql' : 1,
       \}
+      " \ 'typescript' : 1,
       " \ 'javascript' : 1,
 let g:ycm_semantic_triggers = {
       \ 'clojure' : ['(', '/'],
@@ -793,7 +799,7 @@ let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscor
 hi ColorColumn       guibg=#0c0c0c
 
 " hi Normal            guifg=#99d1ce guibg=none    gui=none
-hi Normal            guifg=#99d1ce guibg=#111111    gui=none
+hi Normal            guifg=#99d1ce guibg=#111111 gui=none
 hi NonText           guifg=#111111 guibg=none    gui=none
 hi VertSplit         guifg=#222222 guibg=none
 hi CtrlPNoEntries    guifg=#FF8B00 guibg=none
@@ -820,7 +826,9 @@ hi CtrlPBookmark     guifg=#FFFFFF guibg=none
 " hi perlspecialmatch        guifg=176     guibg=none    gui=none
 " hi perlspecialstring       guifg=176     guibg=none    gui=none
 " hi taglisttagname          guifg=105     guibg=none    gui=none
-hi SignColumn        guifg=none    guibg=#111111    gui=none
+hi SignColumn        guifg=none    guibg=#111111 gui=none
+hi FoldColumn        guifg=none    guibg=none    gui=none
+hi Folded            guifg=none    guibg=#222230 gui=none
 hi SignifyLineAdd    guifg=none    guibg=#032007 gui=bold
 hi SignifyLineChange guifg=none    guibg=#1F1900 gui=bold
 hi SignifyLineDelete guifg=none    guibg=#180505 gui=bold
@@ -1262,7 +1270,22 @@ call shortcut#map('<space> N s',     'Nim - Server start',                 'NimS
 call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
 call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
 
-" call shortcut#map('<space> T u',     'Todo - Update archive',              'call <Plug>() TaskArchive()')
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = '⇒ ' . strpart(line, 5, windowwidth - 2 -len(foldedlinecount))
+    let lineright = foldedlinecount . ' '
+    let fillcharcount = windowwidth - len(line) - len(lineright) + 6
+    return line . repeat(" ", fillcharcount) . lineright
+endfunction " }}}
+set foldtext=MyFoldText()
 
 if filereadable(expand("~/.localdf/nvim.vim"))
   source ~/.localdf/nvim.vim
