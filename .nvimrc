@@ -272,7 +272,8 @@ autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespa
 autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 autocmd FileType cpp set nowrap
-autocmd FileType ejs set filetype=javascript
+autocmd FileType javascript set filetype=typescript
+autocmd FileType ejs set filetype=typescript
 autocmd FileType fish set filetype=sh
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
 autocmd FileType matlab set filetype=octave
