@@ -127,6 +127,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'peterhoeg/vim-qml'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'mickaobrien/vim-stackoverflow'
 
 let g:neomake_error_sign = {
     \ 'text': '✖',
@@ -1132,9 +1133,9 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ ], '\|'))
 " call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
-map g? <Plug>(operator-adjust)
-call operator#user#define('adjust', 'Ag_textobj')
-function! Ag_textobj(motion_wiseness)
+map <space>?a <Plug>(operator-ags)
+call operator#user#define('ags', 'Ags_textobj')
+function! Ags_textobj(motion_wiseness)
   let start = getpos("'[")
   let stop = getpos("']")
   let start_line = start[1]
@@ -1144,12 +1145,30 @@ function! Ag_textobj(motion_wiseness)
   " echo linestart colstart
   if start_line == stop_line
       let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
-      let command = 'Ag! ' . '"' . stuff . '"'
+      let command = 'Ags ' . '"' . stuff . '"'
+      exec command
+  endif
+endfunction
+
+map <space>?s <Plug>(operator-stackoverflow)
+call operator#user#define('stackoverflow', 'SO_textobj')
+function! SO_textobj(motion_wiseness)
+  let start = getpos("'[")
+  let stop = getpos("']")
+  let start_line = start[1]
+  let start_col = start[2]
+  let stop_line = stop[1]
+  let stop_col = stop[2]
+  " echo linestart colstart
+  if start_line == stop_line
+      let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
+      let command = 'StackOverflow ' . '"' . stuff . '"'
       exec command
   endif
 endfunction
 
 call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+call arpeggio#map('icvx', '', 0, 'wtf', '<Esc>:StackOverflow <c-r>"<cr>')
 call arpeggio#map('icvx', '', 0, 'j.', '<Esc>:w<cr>')
 call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
 call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
