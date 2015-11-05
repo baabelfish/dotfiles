@@ -46,5 +46,5 @@ xinput set-int-prop "PS/2 ALPS DualPoint TouchPad" "Device Enabled" 8 0
 wmname LG3D
 eval "sleep 8 && transset-df -n i3bar 0.85"&
 [[ -f "~/.localdf/pxinitrc" ]] && ~/.localdf/pxinitrc
-feh --bg-center ~/.wallpaper
+feh --bg-fill ~/.wallpaper
 [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3
