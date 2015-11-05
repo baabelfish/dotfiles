@@ -1,19 +1,18 @@
 decorations none
 transparent true
 vertical false
-geometry 10x1-0-0
-geometry 10x1-0-0
+geometry 1x1-0-0
 fuzzy_edges 0
-tint_color "#000000"
-tint_level 0
-window_strut bottom
+tint_color "#999999"
+tint_level 2
+window_strut top
 background "#000000"
 kludges force_icons_size
-grow_gravity E
-icon_gravity E
+grow_gravity SE
+icon_gravity SE
 icon_size 16
 sticky true
-window_type dock
-window_layer bottom
+window_type normal
+window_layer top
 # no_shrink false
 skip_taskbar true

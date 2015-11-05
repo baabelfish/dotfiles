@@ -1,6 +1,5 @@
 #!/bin/bash
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-feh --bg-center ~/.wallpaper
 
 # OOPS
 # export AWT_TOOLKIT=XToolkit
@@ -22,13 +21,14 @@ xset s off
 autocutsel -fork&
 autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
-# [[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
+[[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/udiskie ]] && bluedevil-monolithic&
 [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
 [[ -e /usr/bin/compton ]] && compton&
 [[ -e /usr/bin/nm-applet ]] && nm-applet&
 [[ -e /usr/bin/clipit ]] && clipit&
+[[ -x $HOME/.local/bin/lemonbar ]] && $HOME/.xutils/bar.sh&
 
 xinput set-int-prop "DualPoint Stick" "Device Enabled" 8 1
 xinput set-int-prop "PS/2 ALPS DualPoint TouchPad" "Device Enabled" 8 0
@@ -46,4 +46,5 @@ xinput set-int-prop "PS/2 ALPS DualPoint TouchPad" "Device Enabled" 8 0
 wmname LG3D
 eval "sleep 8 && transset-df -n i3bar 0.85"&
 [[ -f "~/.localdf/pxinitrc" ]] && ~/.localdf/pxinitrc
+feh --bg-center ~/.wallpaper
 [[ -e ~/.local/apps/i3/i3 ]] && exec ~/.local/apps/i3/i3 || exec i3

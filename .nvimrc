@@ -14,7 +14,6 @@ endif
 
 set rtp+=/usr/share/ocamlmerlin/vim
 
-
 call plug#begin('~/.nvim/plugged')
 
 " Plug 'airblade/vim-gitgutter'
@@ -145,7 +144,8 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
-Plug 'baabelfish/neomake'
+Plug 'benekastah/neomake'
+" Plug 'baabelfish/neomake'
 
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'tommcdo/vim-express'
