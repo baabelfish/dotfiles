@@ -1,3 +1,5 @@
+" {{{ Initialization
+
 if has('nvim')
   runtime! plugin/python_setup.vim
 endif
@@ -12,85 +14,27 @@ if !filereadable(expand('~/.nvim/autoload/plug.vim'))
   quit!
 endif
 
-set rtp+=/usr/share/ocamlmerlin/vim
+" }}}
+" {{{ Plugins
 
 call plug#begin('~/.nvim/plugged')
-
-" Plug 'airblade/vim-gitgutter'
-" Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'xolox/vim-lua-inspect'
-" NeoBundle 'Mizuchi/STL-Syntax'
-" NeoBundle 'sheerun/vim-polyglot'
-" Plug 'Raimondi/delimitMate'
-" Plug 'marijnh/tern_for_vim'
-" Plug 'lambdalisue/vim-gita'
-" Plug 'floobits/floobits-neovim'
-" Plug 'wincent/ferret' " Works like shit
-" Plug 'baabelfish/mycolors'
-
-let g:indentLine_enabled = 0
-let g:indentLine_color_gui = '#303030'
-" Plug 'Yggdroot/indentLine'
-
-let g:tsuquyomi_disable_quickfix = 1
-Plug 'Quramy/tsuquyomi'
-Plug 'leafgarland/typescript-vim'
-Plug 'digitaltoad/vim-jade'
-
+" {{{ Vim enhancements
 let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
 
-Plug 'gabesoft/vim-ags'
-
-Plug 'rgrinberg/vim-ocaml'
-Plug 'the-lambda-church/merlin', { 'do': 'cd ~/.nvim/plugged/merlin && ./configure --bindir /usr/bin --sharedir /usr/share --vimdir /usr/share/ocamlmerlin/vim && make && clear && sudo make install' }
-Plug 'int3/vim-extradite'
-Plug 'digitaltoad/vim-jade'
-Plug 'KabbAmine/zeavim.vim'
-Plug 'tsukkee/unite-help'
-Plug 'irrationalistic/vim-tasks'
-Plug 'blueyed/vim-diminactive'
-Plug 'sunaku/vim-shortcut'
-Plug 'habamax/vim-skipit'
-Plug 'cosminadrianpopescu/vim-sql-workbench'
-Plug 'morhetz/gruvbox'
-Plug 'dyng/ctrlsf.vim'
-Plug 'AndrewRadev/gapply.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'PeterRincker/vim-argumentative'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/unite-outline'
-Plug 'Shougo/unite-session'
-Plug 'Shougo/unite.vim'
-Plug 'lambdalisue/unite-grep-vcs'
-Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
-Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
-Plug 'baabelfish/a.vim'
-Plug 'baabelfish/nimtools'
-Plug 'zah/nim.vim'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-droid256'
 Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
-Plug 'bps/vim-textobj-python'
-Plug 'chrisbra/NrrwRgn'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dag/vim-fish'
+Plug 'blueyed/vim-diminactive'
+Plug 'chrisbra/NrrwRgn' " ?
 Plug 'flazz/vim-colorschemes'
 Plug 'glts/vim-textobj-comment'
-Plug 'groenewege/vim-less'
-Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'guns/vim-sexp'
-Plug 'guns/vim-slamhound'
+Plug 'habamax/vim-skipit'
 Plug 'haya14busa/incsearch.vim'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-dutyl'
@@ -105,58 +49,10 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'lambdalisue/vim-manpager'
-Plug 'leafo/moonscript-vim'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'mhinz/vim-signify'
-Plug 'mhinz/vim-startify'
-Plug 'mrtazz/DoxygenToolkit.vim'
-" Plug 'scrooloose/syntastic'
-" Plug 'myint/syntastic-extras'
 Plug 'osyo-manga/vim-hopping'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'peterhoeg/vim-qml'
-Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'mickaobrien/vim-stackoverflow'
-
-" {{{ Neomake
-let g:neomake_error_sign = {
-    \ 'text': '✖',
-    \ 'texthl': 'SyntasticErrorSign',
-    \ }
-let g:neomake_warning_sign = {
-    \ 'text': '✗',
-    \ 'texthl': 'SyntasticWarningSign',
-    \ }
-let g:neomake_informational_sign = {
-    \ 'text': 'ℹ',
-    \ 'texthl': 'SyntasticInfoSign',
-    \ }
-let g:neomake_message_sign = {
-    \ 'text': '➤',
-    \ 'texthl': 'SyntasticMsgSign',
-    \ }
-Plug 'benekastah/neomake'
-" Plug 'baabelfish/neomake'
-" }}}
-" {{{ Git
-Plug 'gregsexton/gitv'
-Plug 'jreybert/vimagit'
-Plug 'tommcdo/vim-fugitive-blame-ext'
-Plug 'lambdalisue/vim-gita'
-Plug 'tpope/vim-fugitive'
-" }}}
-
-" {{{ Typescript
-" }}}
-Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
+Plug 'sunaku/vim-shortcut'
+Plug 't9md/vim-choosewin'
 Plug 'tommcdo/vim-express'
 Plug 'tommcdo/vim-kangaroo'
 Plug 'tommcdo/vim-lion'
@@ -178,17 +74,142 @@ Plug 'vim-scripts/Vimchant'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/dbext.vim'
-Plug 'vim-scripts/django.vim'
-Plug 'vim-scripts/octave.vim--'
 Plug 'vim-scripts/surrparen'
 Plug 'wellle/targets.vim'
-Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-misc'
+" }}}
+" {{{ C++
+Plug 'baabelfish/a.vim'
+" }}}
+" {{{ Deprecated
+" Plug 'scrooloose/syntastic'
+" Plug 'myint/syntastic-extras'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'xolox/vim-lua-inspect'
+" NeoBundle 'Mizuchi/STL-Syntax'
+" NeoBundle 'sheerun/vim-polyglot'
+" Plug 'Raimondi/delimitMate'
+" Plug 'marijnh/tern_for_vim'
+" Plug 'lambdalisue/vim-gita'
+" Plug 'floobits/floobits-neovim'
+" Plug 'wincent/ferret' " Works like shit
+" Plug 'baabelfish/mycolors'
+let g:indentLine_enabled = 0
+let g:indentLine_color_gui = '#303030'
+" Plug 'Yggdroot/indentLine'
+" }}}
+" {{{ Typescript / Javascript
+let g:tsuquyomi_disable_quickfix = 1
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+" }}}
+" {{{ Documentation
+Plug 'mickaobrien/vim-stackoverflow'
+Plug 'groenewege/vim-less'
+Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'lambdalisue/vim-manpager'
+Plug 'digitaltoad/vim-jade'
+Plug 'KabbAmine/zeavim.vim'
+" }}}
+" {{{ Markup
+Plug 'mattn/emmet-vim'
+Plug 'digitaltoad/vim-jade'
+" }}}
+" {{{ Emacs kind of shit
+Plug 'mattn/gist-vim'
+" }}}
+" {{{ Lib
+Plug 'xolox/vim-misc'
+Plug 'mattn/webapi-vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
+" }}}
+" {{{ Search
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite-session'
+Plug 'Shougo/unite.vim'
+Plug 'gabesoft/vim-ags'
+Plug 'lambdalisue/unite-grep-vcs'
+Plug 'tsukkee/unite-help'
+" }}}
+" {{{ IDE features
+Plug 'SirVer/ultisnips'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+" }}}
+" {{{ SQL
+Plug 'cosminadrianpopescu/vim-sql-workbench'
+" }}}
+" {{{ Nim
+Plug 'baabelfish/nimtools'
+Plug 'zah/nim.vim'
+" }}}
+" {{{ Language support
+Plug 'dag/vim-fish'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'rust-lang/rust.vim'
 Plug 'peterhoeg/vim-qml'
-Plug 't9md/vim-choosewin'
-
+Plug 'leafo/moonscript-vim'
+Plug 'vim-scripts/octave.vim--'
+Plug 'kchmck/vim-coffee-script'
+Plug 'vim-scripts/django.vim'
+Plug 'rgrinberg/vim-ocaml'
+Plug 'bps/vim-textobj-python'
+Plug 'Matt-Stevens/vim-systemd-syntax'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'HerringtonDarkholme/yats.vim'
+" }}}
+" {{{ Misc
+Plug 'irrationalistic/vim-tasks'
+" }}}
+" {{{ Neomake
+let g:neomake_error_sign = {
+    \ 'text': '✖',
+    \ 'texthl': 'SyntasticErrorSign',
+    \ }
+let g:neomake_warning_sign = {
+    \ 'text': '✗',
+    \ 'texthl': 'SyntasticWarningSign',
+    \ }
+let g:neomake_informational_sign = {
+    \ 'text': 'ℹ',
+    \ 'texthl': 'SyntasticInfoSign',
+    \ }
+let g:neomake_message_sign = {
+    \ 'text': '➤',
+    \ 'texthl': 'SyntasticMsgSign',
+    \ }
+Plug 'benekastah/neomake'
+" Plug 'baabelfish/neomake'
+" }}}
+" {{{ Lisps
+Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'guns/vim-sexp'
+Plug 'guns/vim-slamhound'
+" }}}
+" {{{ Version control
+Plug 'AndrewRadev/gapply.vim'
+Plug 'mhinz/vim-signify'
+Plug 'int3/vim-extradite'
+Plug 'gregsexton/gitv'
+Plug 'jreybert/vimagit'
+Plug 'tommcdo/vim-fugitive-blame-ext'
+Plug 'lambdalisue/vim-gita'
+Plug 'tpope/vim-fugitive'
+" }}}
 call plug#end()
+
+" }}}
+" {{{ Settings
 
 filetype plugin indent on
 
@@ -205,8 +226,6 @@ if &shell =~# 'fish$'
   set shell=/bin/zsh
 endif
 
-" Settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread
 set backspace=indent,eol,start
 set complete-=i
@@ -228,7 +247,7 @@ set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set mouse=
-set nofoldenable foldmethod=manual foldlevel=999
+set foldmethod=manual foldlevel=0 foldtext=MyFoldText()
 set noshowmode
 set nospell
 set notimeout
@@ -255,15 +274,9 @@ set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak breakat+=" "
 
-if has("gui_running")
-  set number
-  set guifont=Termsyn\ 10
-  set guicursor+=a:blinkon0
-endif
+" }}}
+" {{{ Autocommands
 
-
-" Autocommands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd!
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -292,9 +305,9 @@ autocmd! BufEnter * Neomake
 autocmd! BufWritePost * Neomake
 " autocmd CursorHold * SyntasticCheck
 
+" }}}
+" {{{ Shortcuts
 
-" Shortcuts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = 'ö'
 let maplocalleader = 'ä'
 nnoremap <F3> :set paste! \| echo ""<cr>
@@ -410,19 +423,6 @@ nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
 nnoremap <silent><leader>f :ChooseWin<cr>
 nnoremap <silent><leader>F :ChooseWinSwap<cr>
 
-
-function! RunFileFinderGit()
-    let g:unite_source_rec_async_command = 'git ls-files'
-    execute ":Unite -silent file_rec/async"
-endfunction
-
-
-function! RunFileFinder()
-    let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -S --ignore ".git" --hidden -g "" --silent'
-    execute ":Unite -silent file_rec/async"
-endfunction
-
-
 " Vim builtin overrides
 cnoremap <C-h> <left>
 cnoremap <C-j> <down>
@@ -447,9 +447,6 @@ nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
 nnoremap H ^
 nnoremap L $
 nnoremap <silent><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-inoremap <c-l> <c-x><c-l>
-inoremap <c-f> <c-x><c-f>
-inoremap <c-e> <c-x><c-o>
 nnoremap <A-up> :resize +5<cr>
 nnoremap <A-down> :resize -5<cr>
 nnoremap <A-left> :vertical resize +5<cr>
@@ -515,11 +512,205 @@ nnoremap <silent><leader>H1 :match<cr>
 nnoremap <silent><leader>H2 :2match<cr>
 nnoremap <silent><leader>H3 :3match<cr>
 
-" Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" {{{ Functions
+
+function! MyFoldText()
+    let line = getline(v:foldstart)
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+    let line = '⇒ ' . strpart(line, 5, windowwidth - 2 -len(foldedlinecount))
+    let lineright = foldedlinecount . ' '
+    let fillcharcount = windowwidth - len(line) - len(lineright) + 6
+    return line . repeat(" ", fillcharcount) . lineright
+endfunction
+
+function! s:NextTextObject(motion, dir)
+  let c = nr2char(getchar())
+  if c ==# "b"
+    let c = "("
+  elseif c ==# "B"
+    let c = "{"
+  elseif c ==# "d"
+    let c = "["
+  endif
+  exe "normal!".a:dir.c."v".a:motion.c
+endfunction
+
+function! GoyoBefore()
+  Limelight
+  set scrolloff=999
+endfunction
+
+function! GoyoAfter()
+  Limelight!
+  set scrolloff=0
+endfunction
+
+function! RunFileFinderGit()
+    let g:unite_source_rec_async_command = 'git ls-files'
+    execute ":Unite -silent file_rec/async"
+endfunction
+
+function! RunFileFinder()
+    let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -S --ignore ".git" --hidden -g "" --silent'
+    execute ":Unite -silent file_rec/async"
+endfunction
+
+function! OpenCw()
+  execute ":redraw"
+  execute ":Copen"
+  execute ":bo cw 2"
+endfunc
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  silent! %s/\s\+$//e
+  call cursor(l, c)
+endfun
+
+let g:dfm_fullscreen=0
+let g:dfm_nd=0
+function! Fullscreen()
+  if g:dfm_nd
+    call NoDistraction()
+  endif
+  if g:dfm_fullscreen
+    tab close
+    set showtabline=1
+  else
+    tab split
+    set showtabline=0
+  endif
+  let g:dfm_fullscreen=!g:dfm_fullscreen
+endfunction
+
+function! NoDistraction()
+  SignifyToggle
+  SyntasticToggleMode
+  LiteDFMToggle
+  set cursorline!
+  let g:dfm_nd=!g:dfm_nd
+endfunction
+
+function! ColorPicker(insert)
+  let color = '\#' . expand('<cword>')
+  let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
+  if strlen(@z) != 0
+    if a:insert == 0
+      normal! diw"zP
+    else
+      let @z = '#' . @z
+      normal! "zp
+    endif
+  endif
+endfunction
+
+function! CurrentLineA()
+  normal! 0
+  let head_pos = getpos('.')
+  normal! $
+  let tail_pos = getpos('.')
+  return ['v', head_pos, tail_pos]
+endfunction
+
+function! CurrentLineI()
+  normal! ^
+  let head_pos = getpos('.')
+  normal! g_
+  let tail_pos = getpos('.')
+  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+  return
+        \ non_blank_char_exists_p
+        \ ? ['v', head_pos, tail_pos]
+        \ : 0
+endfunction
+
+function! ToggleConceal()
+  if(&conceallevel == 2)
+    set conceallevel=0
+  else
+    set conceallevel=2
+  endif
+endfunction
+
+function! StripTrailingWhitespace()
+  let save_cursor = getpos(".")
+  %s/\s\+$//e
+  call setpos('.', save_cursor)
+endfunction
+
+" }}}
+" {{{ Plugin configuration
+
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--vimgrep -i --silent'
+endif
+
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ '\.tscache/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ 'lib/Cake/',
+      \ 'node_modules/',
+      \ 'vendor/',
+      \ 'Vendor/',
+      \ 'app_old/',
+      \ 'acf-laravel/',
+      \ 'plugins/',
+      \ 'bower_components/',
+      \ '.sass-cache',
+      \ 'web/wp',
+      \ 'nimcache',
+      \ '.toc$',
+      \ '.bak$',
+      \ '.log$',
+      \ '.out$',
+      \ '.aux$',
+      \ '.a$',
+      \ '.o$',
+      \ '.obj$',
+      \ '.so$',
+      \ '.lib$',
+      \ '.jar$',
+      \ '.pdf$'
+      \ ], '\|'))
+" call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
+
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
+call arpeggio#map('icvx', '', 0, 'wtf', '<Esc>:StackOverflow <c-r>"<cr>')
+call arpeggio#map('icvx', '', 0, 'j.', '<Esc>:w<cr>')
+call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
+call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
+call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
+call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
+call arpeggio#map('icvx', '', 0, 'h1', ' <Esc>sHodor')
+call arpeggio#map('icvx', '', 0, 'h2', ' <Esc>shodor.')
+call arpeggio#map('icvx', '', 0, 'h3', ' <Esc>sHodor!')
+call arpeggio#map('icvx', '', 0, 'h4', ' <Esc>sHODOR! ')
+call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
+call arpeggio#map('icvx', '', 0, 'jf', '<Esc><C-w>c<c-l>')
+
 let g:BASH_Ctrl_j = 'off'
 
 let g:python_host_skip_check=1
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
 " let g:airline_branch_prefix = ''
 let g:airline_detect_iminsert=0
@@ -778,9 +969,9 @@ let g:ycm_semantic_triggers = {
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
-" Colorscheme
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" {{{ Colorscheme
+
 set background=dark
 let g:droid_transparent = 1
 
@@ -956,8 +1147,9 @@ hi SyntasticInfoSign    guifg=#e0e0e0 guibg=none
 hi SyntasticMsgSign     guifg=#cbffff guibg=none
 hi WildMenu             guifg=#080808 guibg=#afd700 gui=bold
 
-" Abbrevations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" {{{ Abbrevations
+
 abbr teh the
 abbr ture true
 cabbrev vh vert help
@@ -966,127 +1158,9 @@ cabbrev Q q
 cabbrev Wq wq
 cabbrev E e
 
+" }}}
+" {{{ Custom text objects / operators
 
-" " Functions
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:NextTextObject(motion, dir)
-  let c = nr2char(getchar())
-  if c ==# "b"
-    let c = "("
-  elseif c ==# "B"
-    let c = "{"
-  elseif c ==# "d"
-    let c = "["
-  endif
-  exe "normal!".a:dir.c."v".a:motion.c
-endfunction
-
-function! GoyoBefore()
-  Limelight
-  set scrolloff=999
-endfunction
-
-function! GoyoAfter()
-  Limelight!
-  set scrolloff=0
-endfunction
-
-let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-
-function! OpenCw()
-  execute ":redraw"
-  execute ":Copen"
-  execute ":bo cw 2"
-endfunc
-
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-fun! <SID>StripTrailingWhitespaces()
-  let l = line(".")
-  let c = col(".")
-  silent! %s/\s\+$//e
-  call cursor(l, c)
-endfun
-
-let g:dfm_fullscreen=0
-let g:dfm_nd=0
-function! Fullscreen()
-  if g:dfm_nd
-    call NoDistraction()
-  endif
-  if g:dfm_fullscreen
-    tab close
-    set showtabline=1
-  else
-    tab split
-    set showtabline=0
-  endif
-  let g:dfm_fullscreen=!g:dfm_fullscreen
-endfunction
-
-function! NoDistraction()
-  SignifyToggle
-  SyntasticToggleMode
-  LiteDFMToggle
-  set cursorline!
-  let g:dfm_nd=!g:dfm_nd
-endfunction
-
-function! ColorPicker(insert)
-  let color = '\#' . expand('<cword>')
-  let @z = system("zenity --color-selection --color " . color . " | cut -c 2-3,6-7,10-11 | tr -d \"\n\"")
-  if strlen(@z) != 0
-    if a:insert == 0
-      normal! diw"zP
-    else
-      let @z = '#' . @z
-      normal! "zp
-    endif
-  endif
-endfunction
-
-function! CurrentLineA()
-  normal! 0
-  let head_pos = getpos('.')
-  normal! $
-  let tail_pos = getpos('.')
-  return ['v', head_pos, tail_pos]
-endfunction
-
-function! CurrentLineI()
-  normal! ^
-  let head_pos = getpos('.')
-  normal! g_
-  let tail_pos = getpos('.')
-  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
-  return
-        \ non_blank_char_exists_p
-        \ ? ['v', head_pos, tail_pos]
-        \ : 0
-endfunction
-
-function! ToggleConceal()
-  if(&conceallevel == 2)
-    set conceallevel=0
-  else
-    set conceallevel=2
-  endif
-endfunction
-
-function! StripTrailingWhitespace()
-  let save_cursor = getpos(".")
-  %s/\s\+$//e
-  call setpos('.', save_cursor)
-endfunction
-
-
-" Textobjs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call textobj#user#plugin('line', {
       \   '-': {
       \     'select-a-function': 'CurrentLineA',
@@ -1095,52 +1169,6 @@ call textobj#user#plugin('line', {
       \     'select-i': 'iL',
       \   },
       \ })
-
-
-" Random stuff
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
-" call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
-
-if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--vimgrep -i --silent'
-endif
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ '\.tscache/',
-      \ 'git5/.*/review/',
-      \ 'google/obj/',
-      \ 'tmp/',
-      \ 'lib/Cake/',
-      \ 'node_modules/',
-      \ 'vendor/',
-      \ 'Vendor/',
-      \ 'app_old/',
-      \ 'acf-laravel/',
-      \ 'plugins/',
-      \ 'bower_components/',
-      \ '.sass-cache',
-      \ 'web/wp',
-      \ 'nimcache',
-      \ '.toc$',
-      \ '.bak$',
-      \ '.log$',
-      \ '.out$',
-      \ '.aux$',
-      \ '.a$',
-      \ '.o$',
-      \ '.obj$',
-      \ '.so$',
-      \ '.lib$',
-      \ '.jar$',
-      \ '.pdf$'
-      \ ], '\|'))
-" call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
 map <space>?a <Plug>(operator-ags)
 call operator#user#define('ags', 'Ags_textobj')
@@ -1176,19 +1204,16 @@ function! SO_textobj(motion_wiseness)
   endif
 endfunction
 
-call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-call arpeggio#map('icvx', '', 0, 'wtf', '<Esc>:StackOverflow <c-r>"<cr>')
-call arpeggio#map('icvx', '', 0, 'j.', '<Esc>:w<cr>')
-call arpeggio#map('icvx', '', 0, 'hl', '<Esc>I')
-call arpeggio#map('icvx', '', 0, 'jl', '<Esc>A')
-call arpeggio#map('icvx', '', 0, 'kn', '<Esc>O')
-call arpeggio#map('icvx', '', 0, 'ln', '<Esc>o')
-call arpeggio#map('icvx', '', 0, 'h1', ' <Esc>sHodor')
-call arpeggio#map('icvx', '', 0, 'h2', ' <Esc>shodor.')
-call arpeggio#map('icvx', '', 0, 'h3', ' <Esc>sHodor!')
-call arpeggio#map('icvx', '', 0, 'h4', ' <Esc>sHODOR! ')
-call arpeggio#map('icvx', '', 0, 'ks', '<C-o>:w<cr>')
-call arpeggio#map('icvx', '', 0, 'jf', '<Esc><C-w>c<c-l>')
+" }}}
+" {{{ Random stuff
+
+" call unite#custom_source('menu', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
+" call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+
+" }}}
+" {{{ Better shortcuts / launcher
 
 " https://github.com/sunaku/.vim/tree/spacey/shortcut
 call shortcut#map('<space> Z K',     'Zeal - Search for.',                 'ZvK')
@@ -1270,23 +1295,11 @@ call shortcut#map('<space> N s',     'Nim - Server start',                 'NimS
 call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
 call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
 
-function! MyFoldText() " {{{
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
-
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
-
-    let line = '⇒ ' . strpart(line, 5, windowwidth - 2 -len(foldedlinecount))
-    let lineright = foldedlinecount . ' '
-    let fillcharcount = windowwidth - len(line) - len(lineright) + 6
-    return line . repeat(" ", fillcharcount) . lineright
-endfunction " }}}
-set foldtext=MyFoldText()
+" }}}
+" {{{ Extensions
 
 if filereadable(expand("~/.localdf/nvim.vim"))
   source ~/.localdf/nvim.vim
 endif
+
+" }}}
