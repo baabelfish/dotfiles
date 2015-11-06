@@ -9,7 +9,7 @@ if [[ ! -z "$LINES" ]]; then
     done
 
     FILEMOD=$(stat -c "%Y" $TEMPFILE)
-    vim $TEMPFILE
+    $EDITOR $TEMPFILE
     FILEMODAFTER=$(stat -c "%Y" $TEMPFILE)
 
     IFS=$'\n'
