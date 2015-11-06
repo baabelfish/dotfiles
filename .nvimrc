@@ -1159,6 +1159,7 @@ hi WildMenu             guifg=#080808 guibg=#afd700 gui=bold
 
 abbr teh the
 abbr ture true
+abbr flase false
 cabbrev vh vert help
 cabbrev W w
 cabbrev Q q

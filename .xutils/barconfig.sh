@@ -84,7 +84,7 @@ music() {
 }
 
 workspace() {
-    WORKSPACES=($(wmctrl -d|awk '{print $NF}'))
+    WORKSPACES=($(wmctrl -d|awk '{print $NF}'|sort))
     ACTIVE=$(wmctrl -d|grep '*'|awk '{print $NF}')
     for i in ${WORKSPACES[@]}; do
         if [[ "$i" == "$ACTIVE" ]]; then

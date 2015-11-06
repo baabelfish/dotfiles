@@ -98,6 +98,7 @@ alias gut='git'
 
 # Bash stuff
 alias erename='~/.zsh/rename.sh'
+alias elineval='~/.zsh/lineval.sh'
 
 # Keyboard layout
 alias use_dvorak='setxkbmap fi dvorak'
