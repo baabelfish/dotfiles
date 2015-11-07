@@ -6,6 +6,7 @@ endif
 
 silent !mkdir -p "$HOME/.nvim/undodir"
 silent !mkdir -p "$HOME/.nvim/autoload"
+silent !mkdir -p "$HOME/.nvim/view"
 
 if !filereadable(expand('~/.nvim/autoload/plug.vim'))
   ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
@@ -278,6 +279,15 @@ set wrapmargin=0 nowrap linebreak breakat+=" "
 
 autocmd!
 
+" Autocommands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType typescript setlocal completeopt+=preview
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType plaintex set filetype=tex
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
