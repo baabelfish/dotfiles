@@ -292,6 +292,7 @@ autocmd FileType fish set filetype=sh
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+autocmd FileType nims set filetype=nim
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType matlab set filetype=octave
 autocmd FileType plaintex set filetype=tex

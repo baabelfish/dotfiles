@@ -24,7 +24,7 @@ autocutsel -selection PRIMARY -fork&
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
 [[ -e /usr/bin/udiskie ]] && udiskie&
 [[ -e /usr/bin/udiskie ]] && bluedevil-monolithic&
-[[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "i3lock -c 202020"&
+[[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "~/.xutils/lock.sh"&
 [[ -e /usr/bin/compton ]] && compton&
 [[ -e /usr/bin/nm-applet ]] && nm-applet&
 [[ -e /usr/bin/clipit ]] && clipit&
