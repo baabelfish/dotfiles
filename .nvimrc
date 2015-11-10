@@ -45,7 +45,6 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Valloric/MatchTagAlways'
 Plug 'baabelfish/vim-dispatch'
-Plug 'baabelfish/vim-droid256'
 Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
 Plug 'blueyed/vim-diminactive'
@@ -77,12 +76,9 @@ Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tomtom/tComment_vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
@@ -195,6 +191,9 @@ Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'guns/vim-sexp'
 Plug 'guns/vim-slamhound'
+Plug 'tpope/vim-classpath', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 " }}}
 " {{{ Version control
 Plug 'AndrewRadev/gapply.vim'
@@ -298,6 +297,7 @@ autocmd FileType matlab set filetype=octave
 autocmd FileType plaintex set filetype=tex
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType typescript setlocal completeopt+=preview
+autocmd FileType nim setlocal ts=4 sts=4 sw=4
 autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
@@ -306,10 +306,8 @@ autocmd Syntax * RainbowParanthesesLoadRound
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 
-if exists(":Neomake")
-  autocmd! BufEnter * Neomake
-  autocmd! BufWritePost * Neomake
-endif
+autocmd! BufEnter * Neomake
+autocmd! BufWritePost * Neomake
 " autocmd CursorHold * SyntasticCheck
 
 " }}}
@@ -563,7 +561,7 @@ function! RunFileFinderGit()
 endfunction
 
 function! RunFileFinder()
-    let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -S --ignore ".git" --hidden -g "" --silent'
+    let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
     execute ":Unite -silent file_rec/async"
 endfunction
 
@@ -994,10 +992,10 @@ endif
 
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
 
-hi ColorColumn       guibg=#0c0c0c
+hi ColorColumn       guibg=#101010
 
 " hi Normal            guifg=#99d1ce guibg=none    gui=none
-hi Normal            guifg=#99d1ce guibg=#111111 gui=none
+hi Normal            guifg=#99d1ce guibg=none gui=none
 hi NonText           guifg=#111111 guibg=none    gui=none
 hi VertSplit         guifg=#222222 guibg=none
 hi CtrlPNoEntries    guifg=#FF8B00 guibg=none

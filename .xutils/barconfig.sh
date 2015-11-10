@@ -43,15 +43,10 @@ network() {
 }
 
 volume() {
-    if [[ "$(hostname)" == "edge" ]]; then
-        VOL=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
-        STATE=$(amixer get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
-    else
-        VOL=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 2|cut -d '%' -f 1)
-        STATE=$(amixer -c1 get Master | grep "Front Left" | sed -n 2p | cut -d'[' -f 3)
-    fi
+    VOL=$(ponymix get-volume)
+    MUTED=$(ponymix|grep '\[Muted\]')
 
-    if [[ "$STATE" == "off]" ]]; then
+    if [[ ! -z "$MUTED" ]]; then
         echo -n "$(glyph "f023") %{F#ff9444}Muted"
     else
         if [[ "$VOL" -gt 60 ]]; then
