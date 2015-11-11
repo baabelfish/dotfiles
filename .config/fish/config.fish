@@ -2,9 +2,6 @@ if test -e "$HOME/.config/fish/env.fish"
     source "$HOME/.config/fish/env.fish"
 end
 
-# Essentials
-fish_vi_mode
-
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
@@ -18,29 +15,41 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
-function fish_prompt
-    if [ $fish_bind_mode = 'default' ]
-        set my_vi_indicator 'N'
-    else if [ $fish_bind_mode = 'visual' ]
-        set my_vi_indicator 'V'
-    else if [ $fish_bind_mode = 'insert' ]
-        set my_vi_indicator 'I'
-    else
-        set my_vi_indicator $fish_bind_mode
-    end
+function fish_vi_mode
+    function fish_prompt
+        set last_status $status
+        if [ $fish_bind_mode = 'default' ]
+            set my_vi_indicator 'N'
+        else if [ $fish_bind_mode = 'visual' ]
+            set my_vi_indicator 'V'
+        else if [ $fish_bind_mode = 'insert' ]
+            set my_vi_indicator 'I'
+        else
+            set my_vi_indicator $fish_bind_mode
+        end
 
-    set_color -b 333
-    set last_status $status
-    printf ' %s ' (hostname)
-    set_color 333
-    set_color -b 222
-    printf ''
-    set_color 0f0
-    printf ' %s ' $my_vi_indicator
-    set_color normal
-    set_color 222
-    printf ' '
-    set_color normal
+        if [ $last_status != 0 ]
+            set_color f00
+            set_color -b 433
+            printf ' %s ' $last_status
+            set_color 433
+            set_color -b 333
+            printf ''
+        end
+
+        set_color ccc
+        set_color -b 333
+        printf ' %s ' (hostname)
+        set_color 333
+        set_color -b 222
+        printf ''
+        set_color 0f0
+        printf ' %s ' $my_vi_indicator
+        set_color normal
+        set_color 222
+        printf ' '
+        set_color normal
+    end
 end
 
 function fish_right_prompt
@@ -335,4 +344,7 @@ function fuck -d 'Correct your previous console command'
         history --delete $fucked_up_command
     end
 end
+
+# Essentials
+fish_vi_mode
 

@@ -309,6 +309,8 @@ autocmd VimResized * exe "normal! \<c-w>="
 
 autocmd! BufEnter * Neomake
 autocmd! BufWritePost * Neomake
+autocmd! BufEnter * if exists(":Neomake") | Neomake
+autocmd! BufWritePost * if exists(":Neomake") | Neomake
 " autocmd CursorHold * SyntasticCheck
 
 " }}}
