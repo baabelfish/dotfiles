@@ -254,8 +254,10 @@ function my_vi_key_bindings
     bind_vim \ r 'backisearch'
     bind_vim \ t '__fzf_ctrl_t'
     bind_vim \ \  'l'
-    bind_vim \ nv  'nvim'
+    bind_vim \ v  'nvim'
     bind_vim \ C  'C'
+    bind_vim \ ml  'cd ~/.localdf'
+    bind_vim \ mcf  'nvim ~/.config/fish/config.fish'
 end
 set -g fish_key_bindings my_vi_key_bindings
 
