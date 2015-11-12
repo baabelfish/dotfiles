@@ -5,7 +5,7 @@ set -x NO_FISHMARKS_COMPAT_ALIASES
 set -x EDITOR 'nvim'
 set -x NEDITOR 'nvim'
 set -x VISUAL 'nvim'
-set -x BROWSER 'chromium'
+set -x BROWSER 'google-chrome-stable'
 set -x LESS '-i -M -R -q'
 set -x FZF_DEFAULT_OPTS '-e --no-mouse --prompt=: --toggle-sort=f1 --color=dark,fg:251,bg:0,hl:156,fg+:255,bg+:0,prompt:118,pointer:112'
 

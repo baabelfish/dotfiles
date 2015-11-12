@@ -285,22 +285,21 @@ autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespa
 autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 
-autocmd FileType cpp set nowrap
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType ejs set filetype=typescript
-autocmd FileType fish set filetype=sh
+autocmd FileType cpp setlocal nowrap
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType ejs setlocal filetype=typescript
+autocmd FileType fish setlocal filetype=sh
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-autocmd FileType nims set filetype=nim
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType matlab set filetype=octave
-autocmd FileType plaintex set filetype=tex
+autocmd FileType nims setlocal filetype=nim
+autocmd FileType matlab setlocal filetype=octave
+autocmd FileType plaintex setlocal filetype=tex
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType typescript setlocal completeopt+=preview
 autocmd FileType nim setlocal ts=4 sts=4 sw=4
 autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound

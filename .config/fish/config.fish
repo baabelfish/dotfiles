@@ -73,6 +73,7 @@ function fish_greeting
 end
 
 alias fishcfg='nvim ~/.config/fish/config.fish'
+alias fishenv='nvim ~/.config/fish/env.fish'
 
 alias ca='cal --monday -w -Y'
 
