@@ -220,24 +220,42 @@ function backisearch
 end
 
 # Binds
+function bind_vim
+    bind $argv[1] "echo $argv[2]; $argv[2]; commandline -f repaint"
+end
+
 function my_vi_key_bindings
     fish_vi_key_bindings
-    bind \cl 'clear; commandline -f repaint'
-    bind -M insert \cl 'clear; commandline -f repaint'
+    set -x fish_bind_mode default
+    bind -M insert \ca 'ranger-cd; commandline -f repaint'
     bind -M insert \ce end-of-line
+    bind -M insert \cl 'clear; commandline -f repaint'
+    bind -M insert \cs 'cmatrix; commandline -f repaint'
+    bind -M insert \cr 'backisearch'
+    bind -M insert \ct '__fzf_ctrl_t'
+    bind -M insert \cv 'edit-command'
     bind H my_previous_dir
     bind L my_next_dir
-    bind gh my_back_dir
     bind \ca browse_all
-    bind -M insert \ca 'ranger-cd; commandline -f repaint'
     bind \cd browse_all
-    bind -M insert \cd browse_all
+    bind \cl 'clear; commandline -f repaint'
     bind \cs 'cmatrix; commandline -f repaint'
-    bind -M insert \cs 'cmatrix; commandline -f repaint'
-    bind -M insert \ct '__fzf_ctrl_t'
-    bind -M insert \cr 'backisearch'
-    bind -M insert \cv 'edit-command'
+    bind gh my_back_dir
     bind gr 'backisearch'
+    bind_vim \ a 'ranger-cd; commandline -f repaint'
+    bind_vim \ d browse_all
+    bind_vim \ gP 'git push'
+    bind_vim \ gcA 'git commit -a --amend'
+    bind_vim \ gca 'git commit -a'
+    bind_vim \ gco 'git commit'
+    bind_vim \ gd 'git diff'
+    bind_vim \ gl 'git lo'
+    bind_vim \ gp 'git pull --rebase'
+    bind_vim \ r 'backisearch'
+    bind_vim \ t '__fzf_ctrl_t'
+    bind_vim \ \  'l'
+    bind_vim \ nv  'nvim'
+    bind_vim \ C  'C'
 end
 set -g fish_key_bindings my_vi_key_bindings
 
