@@ -226,7 +226,7 @@ end
 
 function my_vi_key_bindings
     fish_vi_key_bindings
-    set -x fish_bind_mode default
+    # set -x fish_bind_mode default
     bind -M insert \ca 'ranger-cd; commandline -f repaint'
     bind -M insert \ce end-of-line
     bind -M insert \cl 'clear; commandline -f repaint'
