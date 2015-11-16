@@ -1,0 +1,12 @@
+#!/bin/bash
+IFS=$'\n'
+result=($(ag --vimgrep -S --silent -r "\.(state|provider|controller|directive|factory|service)\(\'.+\'" . | cut -f1 -d',' | sort -t ":" -k4))
+
+# TODO: Replace column -t with Unite formatting for faster search
+for line in ${result[@]}; do
+    fileinfo=$(echo "$line" | cut -d':' -f1,2,3)
+    right=$(echo "$line" | cut -d':' -f4-)
+    etype=$(echo "$right" | cut -f1 -d '(' | tr -d '.' | xargs)
+    name=$(echo "$right" | cut -f2 -d '(' | tr -d "'")
+    echo -e "$fileinfo:\t#$etype\t@$name"
+done | column -t

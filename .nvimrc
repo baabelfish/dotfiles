@@ -396,7 +396,7 @@ vmap <tab>: :EasyAlign:<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
 nnoremap <silent><space>P :call RunFileFinder()<cr>
 nnoremap <silent><space>p :call RunFileFinderGit()<cr>
-nnoremap <silent><space>a :Unite grep:.::\\.(filter\|provider\|controller\|directive\|factory\|service)\\(\\'.+\\'<cr>
+nmap <silent><space>a :call RunAngularFinder()<cr>
 " nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>f m':Unite outline<cr>
@@ -554,13 +554,18 @@ function! GoyoAfter()
   set scrolloff=0
 endfunction
 
+function! RunAngularFinder()
+    let g:unite_source_grep_command = 'nvim_angularsearch'
+    execute ":Unite grep:.::angular:"
+endfunction
+
 function! RunFileFinderGit()
     let g:unite_source_rec_async_command = 'git ls-files'
     execute ":Unite -silent file_rec/async"
 endfunction
 
 function! RunFileFinder()
-    let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+    let g:unite_source_rec_async_command = 'ag --follow --vimgrep --nocolor --nogroup --hidden -g ""'
     execute ":Unite -silent file_rec/async"
 endfunction
 
@@ -1176,7 +1181,7 @@ call textobj#user#plugin('line', {
       \   },
       \ })
 
-map <space>?a <Plug>(operator-ags)
+map g/ <Plug>(operator-ags)
 call operator#user#define('ags', 'Ags_textobj')
 function! Ags_textobj(motion_wiseness)
   let start = getpos("'[")
