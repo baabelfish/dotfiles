@@ -228,7 +228,7 @@ endif
 set autoread
 set backspace=indent,eol,start
 set complete-=i
-set completeopt=menu,longest previewheight=2 pumheight=40
+set completeopt=menu,longest previewheight=20 pumheight=40
 set conceallevel=0
 set cscopetag
 set cursorline
@@ -366,8 +366,6 @@ nnoremap <silent><space>C :call ToggleConceal()<cr>
 " Plugin related
 nnoremap <silent><space><return> :call Shortcut_discover()<cr>
 snoremap <silent><C-^> <Plug>(TsuquyomiReferences)
-nnoremap <space>ct :YcmCompleter GetType<cr>
-nnoremap <space>gt :YcmCompleter GoTo<cr>
 nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
 nnoremap <silent><space><c-b> :Make! clean<cr>
@@ -416,6 +414,7 @@ map <space>/  <Plug>(incsearch-forward)
 map <space>?  <Plug>(incsearch-backward)
 nnoremap gT :YcmCompleter GetType<cr>
 nnoremap gt :YcmCompleter GoTo<cr>
+nnoremap gd :YcmCompleter GoToDefinition<cr>
 nmap [; <Plug>Argumentative_Prev
 nmap ]; <Plug>Argumentative_Next
 xmap [; <Plug>Argumentative_XPrev
@@ -480,8 +479,6 @@ nnoremap <silent><leader><leader>v :e ~/.nvimrc<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
-nnoremap <silent><space>D :cd %:p:h<cr>
-nnoremap <silent><space>d :lcd %:p:h<cr>
 nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
@@ -971,6 +968,7 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_semantic_triggers = {
       \ 'clojure' : ['(', '/'],
       \ 'nim' : ['.'],
+      \ 'typescript' : ['.']
       \ }
 
 let delimitMate_expand_cr = 1
@@ -1302,6 +1300,18 @@ call shortcut#map('<leader> A',      'Tagbar - Show tag',                  'nnor
 call shortcut#map('<space> N s',     'Nim - Server start',                 'NimServerStart')
 call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
 call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
+
+let g:neomake_typescript_tscp_maker = {
+      \ 'bin': 'tscp',
+      \ 'args': [],
+      \ 'errorformat': 
+      \ '%E%f %#(%l\,%c): error %m,' .
+      \ '%E%f %#(%l\,%c): %m,' .
+      \ '%Eerror %m,' .
+      \ '%C%\s%\+%m'
+      \ }
+
+let g:neomake_typescript_enabled_makers = ['tscp']
 
 " }}}
 " {{{ Extensions
