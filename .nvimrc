@@ -165,6 +165,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 " }}}
 " {{{ Misc
 Plug 'irrationalistic/vim-tasks'
+Plug 'ruanyl/vim-gh-line'
 " }}}
 " {{{ Neomake
 let g:neomake_error_sign = {
