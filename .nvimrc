@@ -297,7 +297,9 @@ autocmd FileType matlab setlocal filetype=octave
 autocmd FileType plaintex setlocal filetype=tex
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType typescript setlocal completeopt+=preview
+autocmd FileType typescript setlocal makeprg=tscp
 autocmd FileType nim setlocal ts=4 sts=4 sw=4
+autocmd FileType jade setlocal ts=2 sts=2 sw=2
 autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
@@ -1315,7 +1317,6 @@ let g:neomake_typescript_tscp_maker = {
       \ '%Eerror %m,' .
       \ '%C%\s%\+%m'
       \ }
-
 let g:neomake_typescript_enabled_makers = ['tscp']
 
 " }}}
