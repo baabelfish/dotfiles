@@ -279,6 +279,7 @@ bindsym $mod+Shift+KP_0 exec --no-startup-id ~/.xutils/myhue/all.sh off
 bindsym $mod+Control+KP_1 exec --no-startup-id ~/.xutils/myhue/all.sh hue 50
 bindsym $mod+Control+KP_2 exec --no-startup-id ~/.xutils/myhue/all.sh hue 180
 bindsym $mod+Control+KP_3 exec --no-startup-id ~/.xutils/myhue/all.sh hue 0
+bindsym $mod+Control+KP_4 exec --no-startup-id ~/.xutils/myhue/all.sh bri 255
 bindsym $mod+Shift+KP_Add exec --no-startup-id ~/.xutils/myhue/all.sh sat 0
 bindsym $mod+KP_Add exec --no-startup-id ~/.xutils/myhue/all.sh sat 255
 bindsym $mod+KP_Subtract exec --no-startup-id ~/.xutils/myhue/all.sh effect colorloop

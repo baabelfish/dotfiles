@@ -406,9 +406,9 @@ vmap <tab>4 :EasyAlign4\ <cr>
 vmap <tab>= :EasyAlign=<cr>
 vmap <tab>: :EasyAlign:<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
-nnoremap <silent><space>P :call RunFileFinder()<cr>
-nnoremap <silent><space>p :call RunFileFinderGit()<cr>
 nmap <silent><space>a :call RunAngularFinder()<cr>
+nnoremap <silent><space>P :Unite file_rec/async<cr>
+nnoremap <silent><space>p :Unite file_rec/git<cr>
 " nnoremap <silent><space>P :CtrlPCurWD<cr>
 nnoremap <silent><space>o :Unite -silent buffer_tab<cr>
 nnoremap <silent><space>f m':Unite outline<cr>
@@ -566,6 +566,7 @@ function! GoyoAfter()
   set scrolloff=0
 endfunction
 
+<<<<<<< HEAD
 function! RunAngularFinder()
     let g:unite_source_grep_command = 'nvim_angularsearch'
     execute ":Unite grep:.::angular:"
@@ -581,6 +582,19 @@ function! RunFileFinder()
     execute ":Unite -silent file_rec/async"
 endfunction
 
+||||||| merged common ancestors
+function! RunFileFinderGit()
+    let g:unite_source_rec_async_command = 'git ls-files'
+    execute ":Unite -silent file_rec/async"
+endfunction
+
+function! RunFileFinder()
+    let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -S --ignore ".git" --hidden -g "" --silent'
+    execute ":Unite -silent file_rec/async"
+endfunction
+
+=======
+>>>>>>> asdf
 function! OpenCw()
   execute ":redraw"
   execute ":Copen"
