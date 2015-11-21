@@ -566,35 +566,11 @@ function! GoyoAfter()
   set scrolloff=0
 endfunction
 
-<<<<<<< HEAD
 function! RunAngularFinder()
     let g:unite_source_grep_command = 'nvim_angularsearch'
     execute ":Unite grep:.::angular:"
 endfunction
 
-function! RunFileFinderGit()
-    let g:unite_source_rec_async_command = 'git ls-files'
-    execute ":Unite -silent file_rec/async"
-endfunction
-
-function! RunFileFinder()
-    let g:unite_source_rec_async_command = 'ag --follow --vimgrep --nocolor --nogroup --hidden -g ""'
-    execute ":Unite -silent file_rec/async"
-endfunction
-
-||||||| merged common ancestors
-function! RunFileFinderGit()
-    let g:unite_source_rec_async_command = 'git ls-files'
-    execute ":Unite -silent file_rec/async"
-endfunction
-
-function! RunFileFinder()
-    let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --column -S --ignore ".git" --hidden -g "" --silent'
-    execute ":Unite -silent file_rec/async"
-endfunction
-
-=======
->>>>>>> asdf
 function! OpenCw()
   execute ":redraw"
   execute ":Copen"
