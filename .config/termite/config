@@ -7,7 +7,8 @@ cursor_blink = off
 cursor_shape = block
 dynamic_title = true
 # font = terminess powerline 8
-font = Terminus 8
+# font = Terminus 8
+font = Tewi 8
 # font = Literation Mono Powerline 8
 # font = Monofur 9
 geometry = 800x600
@@ -23,6 +24,7 @@ padding = 0
 
 [colors]
 foreground = #d9d9d9
-background = rgba(15, 15, 15, 0.94)
+background = rgba(20, 20, 20, 0.96)
+# background = #181C24
 highlight = #ffffff
 cursor = #888888
