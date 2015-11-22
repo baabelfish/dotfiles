@@ -2,6 +2,7 @@ alsaequal
 aseprite
 atool
 autocutsel
+bdf-tewi-git
 calc
 chromium
 chromium-pepper-flash
@@ -22,6 +23,7 @@ gifsicle
 gimp
 gksu
 google-chrome
+gvim
 highlight
 htop
 i3-wm
@@ -39,7 +41,7 @@ lynx
 mediainfo
 mps-youtube-git
 mutt
-neovim-git
+neovim
 nerd-fonts-git
 network-manager-applet
 nim
@@ -63,7 +65,6 @@ tree
 ttf-droid
 udiskie
 unclutter
-vim
 weechat
 wmctrl
 xautolock
