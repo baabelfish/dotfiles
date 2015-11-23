@@ -42,6 +42,7 @@ let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
 
 Plug 'AndrewRadev/sideways.vim'
+Plug 'christoomey/vim-sort-motion'
 Plug 'AndrewRadev/switch.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Valloric/MatchTagAlways'
@@ -484,7 +485,6 @@ nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
 
 " Refactoring
 nnoremap <leader>* :%s/\<<C-r><C-w>\>/
-nnoremap S yiwvip:s/<C-r>0/
 
 " Misc
 nnoremap <silent><leader><leader>s :so ~/.nvimrc<cr>
@@ -890,6 +890,7 @@ let g:choosewin_color_other = {
     \ 'gui': ['#202020', '#22ff22'],
     \ }
 
+let g:switch_mapping ='S'
 let g:switch_custom_definitions =
       \ [
       \  ['yes', 'no' ],
