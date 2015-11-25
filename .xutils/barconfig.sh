@@ -1,14 +1,6 @@
 #!/bin/bash
 #      
 
-if [[ ! -x $HOME/.local/bin/lemonbar ]]; then
-    cd /tmp
-    git clone https://github.com/krypt-n/bar
-    cd bar
-    make
-    cp lemonbar $HOME/.local/bin
-fi
-
 BACKGROUND="#aa000000"
 HIGHLIGHT="#ffffff"
 SEPARATOR="#559955"

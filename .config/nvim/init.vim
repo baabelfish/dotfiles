@@ -4,11 +4,11 @@ if has('nvim')
   runtime! plugin/python_setup.vim
 endif
 
-silent !mkdir -p "$HOME/.nvim/undodir"
-silent !mkdir -p "$HOME/.nvim/autoload"
-silent !mkdir -p "$HOME/.nvim/view"
+silent !mkdir -p "$HOME/.config/nvim/undodir"
+silent !mkdir -p "$HOME/.config/nvim/autoload"
+silent !mkdir -p "$HOME/.config/nvim/view"
 
-if !filereadable(expand('~/.nvim/autoload/plug.vim'))
+if !filereadable(expand('~/.config/nvim/autoload/plug.vim'))
   ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
   ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
   !nvim +'PlugUpdate | quit!'
@@ -18,7 +18,7 @@ endif
 " }}}
 " {{{ Plugins
 
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " {{{ Deprecated
 " Plug 'scrooloose/syntastic'
 " Plug 'myint/syntastic-extras'
@@ -120,7 +120,7 @@ Plug 'mattn/gist-vim'
 " {{{ Lib
 Plug 'xolox/vim-misc'
 Plug 'mattn/webapi-vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.nvim/plugged/vimproc.vim && make -f make_unix.mak' }
+Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.config/nvim/plugged/vimproc.vim && make -f make_unix.mak' }
 " }}}
 " {{{ Search
 Plug 'ctrlpvim/ctrlp.vim'
@@ -139,7 +139,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 " }}}
 " {{{ SQL
 Plug 'cosminadrianpopescu/vim-sql-workbench'
@@ -269,7 +269,7 @@ set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
 set expandtab shiftround copyindent preserveindent
 set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0 lazyredraw
-set undofile undolevels=1000 undoreload=10000 undodir=~/.nvim/undodir nobackup noswapfile
+set undofile undolevels=1000 undoreload=10000 undodir=~/.config/nvim/undodir nobackup noswapfile
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
@@ -487,8 +487,8 @@ nnoremap <silent><space>T :!export TERM=screen-256color && tig<cr><cr>
 nnoremap <leader>* :%s/\<<C-r><C-w>\>/
 
 " Misc
-nnoremap <silent><leader><leader>s :so ~/.nvimrc<cr>
-nnoremap <silent><leader><leader>v :e ~/.nvimrc<cr>
+nnoremap <silent><leader><leader>s :so $MYVIMRC<cr>
+nnoremap <silent><leader><leader>v :e $MYVIMRC<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
@@ -835,7 +835,7 @@ let g:signify_sign_delete            = '†'
 let g:signify_sign_delete_first_line = '»'
 let g:signify_sign_overwrite = 0
 
-let g:startify_bookmarks = [ '~/.nvimrc' ]
+let g:startify_bookmarks = [ '$MYVIMRC' ]
 let g:startify_change_to_dir = 0
 let g:startify_enable_special = 0
 let g:startify_enable_special = 1
