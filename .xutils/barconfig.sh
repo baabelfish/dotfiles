@@ -1,14 +1,6 @@
 #!/bin/bash
 #      
 
-if [[ ! -x $HOME/.local/bin/lemonbar ]]; then
-    cd /tmp
-    git clone https://github.com/krypt-n/bar
-    cd bar
-    make
-    cp lemonbar $HOME/.local/bin
-fi
-
 BACKGROUND="#aa000000"
 HIGHLIGHT="#ffffff"
 SEPARATOR="#559955"
@@ -113,7 +105,7 @@ battery() {
             STR+="${PERCENT} "
         fi
 
-        if [[ $PERCENT -le 8 ]]; then
+        if [[ "$PERCENT" -le 8 ]]; then
             echo -n "%{B#fff91111} %{F#000000} BATTERY %{F-} "
         else
             echo -n " $STR "
@@ -128,7 +120,7 @@ windowtitle(){
     fi
 }
 
-echo "\
+echo -n "%{S0}%{l}\
 $(wrap "$(workspace)")$SEPARATOR\
 $(wrap " $(volume) ")$SEPARATOR\
 $(music)$SEPARATOR\
@@ -139,5 +131,31 @@ $(wrap "$(battery)")$SEPARATOR\
 $(wrap " $(bar_clock) ")$SEPARATOR\
 $(wrap " $(bar_date) ")\
 "
+
+echo -n "%{S1}%{l}\
+$(wrap "$(workspace)")$SEPARATOR\
+$(wrap " $(volume) ")$SEPARATOR\
+$(music)$SEPARATOR\
+%{c}\
+$(windowtitle)$SEPARATOR\
+%{r}\
+$(wrap "$(battery)")$SEPARATOR\
+$(wrap " $(bar_clock) ")$SEPARATOR\
+$(wrap " $(bar_date) ")\
+"
+
+echo -n "%{S2}%{l}\
+$(wrap "$(workspace)")$SEPARATOR\
+$(wrap " $(volume) ")$SEPARATOR\
+$(music)$SEPARATOR\
+%{c}\
+$(windowtitle)$SEPARATOR\
+%{r}\
+$(wrap "$(battery)")$SEPARATOR\
+$(wrap " $(bar_clock) ")$SEPARATOR\
+$(wrap " $(bar_date) ")\
+"
+
+echo ""
 
 # %{r}$(wrap " $(network) ")$SEPARATOR\

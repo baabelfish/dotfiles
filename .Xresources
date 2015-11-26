@@ -89,9 +89,9 @@ URxvt.background: [95]#101010
 
 ! Rofi
 rofi.modi:                           window,run,ssh
-rofi.opacity:                        95
-rofi.width:                          50
-rofi.lines:                          20
+rofi.opacity:                        100
+rofi.width:                          26
+rofi.lines:                          10
 rofi.columns:                        1
 rofi.font:                           Termsyn 9
 rofi.fg:                             #bfbfbf
@@ -101,20 +101,20 @@ rofi.color-enabled:                  false
 ! rofi.color-urgent:                   #101010,#ff0000,#101010,#ff0000
 ! rofi.color-active:                   #101010,#ff0000,#101010,#ff0000
 ! rofi.color-window:                   #101010,#ff0000
-rofi.fg-active:                      #5fff5f
+rofi.fg-active:                      #5f5f5f
 rofi.fg-urgent:                      #DC322F
-rofi.hlfg-active:                    #5fff5f
+rofi.hlfg-active:                    #5f5f5f
 rofi.hlfg-urgent:                    #FDF6E3
 rofi.bg-active:                      #101010
 rofi.bg-urgent:                      #101010
 rofi.hlbg-active:                    #268BD2
 rofi.hlbg-urgent:                    #DC322F
 rofi.bgalt:                          #101010
-rofi.hlfg:                           #5fff5f
+rofi.hlfg:                           #ffffff
 rofi.hlbg:                           #101010
-rofi.bc:                             #334422
+rofi.bc:                             #333333
 rofi.bw:                             1
-rofi.location:                       2
+rofi.location:                       3
 rofi.padding:                        2
 rofi.yoffset:                        0
 rofi.xoffset:                        0
