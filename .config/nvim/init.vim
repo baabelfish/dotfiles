@@ -129,12 +129,23 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
-Plug 'gabesoft/vim-ags'
+Plug 'dyng/ctrlsf.vim'
 Plug 'lambdalisue/unite-grep-vcs'
 Plug 'tsukkee/unite-help'
 " }}}
 " {{{ IDE features
-Plug 'SirVer/ultisnips'
+imap <C-@>     <Plug>(neosnippet_expand_or_jump)
+smap <C-@>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-@>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neocomplcache'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -378,7 +389,7 @@ nnoremap <silent><A-f> :call Fullscreen()<cr>:echo ""<cr>
 nnoremap <silent><space>C :call ToggleConceal()<cr>
 
 " Plugin related
-nnoremap <silent><space><return> :call Shortcut_discover()<cr>
+nnoremap <silent><C-@> :call Shortcut_discover()<cr>
 snoremap <silent><C-^> <Plug>(TsuquyomiReferences)
 nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
@@ -1197,7 +1208,7 @@ function! Ags_textobj(motion_wiseness)
   " echo linestart colstart
   if start_line == stop_line
       let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
-      let command = 'Ags ' . '"' . stuff . '"'
+      let command = 'CtrlSF ' . '"' . stuff . '"'
       exec command
   endif
 endfunction
