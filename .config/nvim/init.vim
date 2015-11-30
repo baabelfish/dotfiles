@@ -9,16 +9,16 @@ silent !mkdir -p "$HOME/.config/nvim/autoload"
 silent !mkdir -p "$HOME/.config/nvim/view"
 
 if !filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-  ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
-  ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
-  !nvim +'PlugUpdate | quit!'
+  " ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
+  " ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
+  "" !nvim +'PlugUpdate | quit!'
   quit!
 endif
 
 " }}}
 " {{{ Plugins
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('$HOME/.config/nvim/plugged')
 " {{{ Deprecated
 " Plug 'scrooloose/syntastic'
 " Plug 'myint/syntastic-extras'
@@ -42,7 +42,6 @@ let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
 
 Plug 'AndrewRadev/sideways.vim'
-Plug 'christoomey/vim-sort-motion'
 Plug 'AndrewRadev/switch.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Valloric/MatchTagAlways'
@@ -51,6 +50,7 @@ Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
 Plug 'blueyed/vim-diminactive'
 Plug 'chrisbra/NrrwRgn' " ?
+Plug 'christoomey/vim-sort-motion'
 Plug 'flazz/vim-colorschemes'
 Plug 'glts/vim-textobj-comment'
 Plug 'habamax/vim-skipit'
@@ -65,11 +65,13 @@ Plug 'justinmk/vim-gtfo'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-arpeggio'
 Plug 'kana/vim-operator-user'
+Plug 'kana/vim-textobj-fold'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'osyo-manga/vim-hopping'
+Plug 'skammer/vim-css-color'
 Plug 'sunaku/vim-shortcut'
 Plug 't9md/vim-choosewin'
 Plug 'tommcdo/vim-express'
@@ -99,6 +101,7 @@ Plug 'baabelfish/a.vim'
 " {{{ Typescript / Javascript
 let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
+
 Plug 'leafgarland/typescript-vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 " }}}
@@ -130,10 +133,17 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
 Plug 'dyng/ctrlsf.vim'
+" Plug 'gabesoft/vim-ags'
 Plug 'lambdalisue/unite-grep-vcs'
 Plug 'tsukkee/unite-help'
 " }}}
 " {{{ IDE features
+" Plug 'SirVer/ultisnips'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
+
 imap <C-@>     <Plug>(neosnippet_expand_or_jump)
 smap <C-@>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-@>     <Plug>(neosnippet_expand_target)
@@ -142,14 +152,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+" let g:deoplete#enable_at_startup = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+" Plug 'Shougo/javacomplete'
+" Plug 'Shougo/neco-syntax'
+" Plug 'Shougo/neco-vim'
+" Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neocomplcache'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-startify'
+" Plug 'Shougo/deoplete.nvim'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 " }}}
 " {{{ SQL
@@ -253,7 +265,7 @@ set fillchars+=vert: 
 set formatoptions=qrn1tj tw=400 " tcqj
 set gdefault smartcase ignorecase incsearch
 set hidden
-set history=100
+set history=1000
 set langmenu=en_US.UTF-8
 set laststatus=2
 set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
@@ -286,6 +298,7 @@ set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak breakat+=" "
+set omnifunc=syntaxcomplete#Complete
 
 " }}}
 " {{{ Autocommands
@@ -295,12 +308,12 @@ autocmd!
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType typescript setlocal completeopt+=preview
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType plaintex set filetype=tex
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType plaintex set filetype=tex
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
@@ -309,22 +322,18 @@ autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 
 autocmd FileType cpp setlocal nowrap
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType ejs setlocal filetype=typescript
 autocmd FileType fish setlocal filetype=sh
 autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
 autocmd FileType nims setlocal filetype=nim
 autocmd FileType matlab setlocal filetype=octave
 autocmd FileType plaintex setlocal filetype=tex
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType typescript setlocal completeopt+=preview
 autocmd FileType typescript setlocal makeprg=tscp
 autocmd FileType nim setlocal ts=4 sts=4 sw=4
 autocmd FileType jade setlocal ts=2 sts=2 sw=2
 autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd InsertLeave * set nopaste
 autocmd Syntax * RainbowParanthesesLoadRound
@@ -381,6 +390,8 @@ nnoremap <leader>8 8<C-w><C-w>
 nnoremap <leader>9 9<C-w><C-w>
 " nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 " nnoremap <silent><space>r :Root<cr>
+
+inoremap <silent> <Esc>o
 
 " Custom function callers
 inoremap <silent><A-c> <C-o>:call ColorPicker(1)<cr>
@@ -503,6 +514,7 @@ nnoremap <silent><leader><leader>v :e $MYVIMRC<cr>
 nnoremap <silent><leader><leader>y :e ~/.ycm_extra_conf.py<cr>
 nnoremap <silent><leader>w :set wrap!<cr>
 nnoremap <silent><space><space> :set nohls!<cr>
+nnoremap <silent>  za
 nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
@@ -851,7 +863,7 @@ let g:startify_change_to_dir = 0
 let g:startify_enable_special = 0
 let g:startify_enable_special = 1
 let g:startify_list_order = ['bookmarks', 'sessions', 'files']
-let g:startify_session_dir = '~/.vim/session'
+let g:startify_session_dir = '~/.config/nvim/session'
 let g:startify_session_persistence = 2
 let g:startify_show_files_number = 30
 let g:startify_skiplist = [
@@ -861,11 +873,11 @@ let g:startify_skiplist = [
       \ ]
 let g:startify_custom_header = [
       \'',
-      \'     _/      _/  _/',
-      \'    _/      _/      _/_/_/  _/_/',
-      \'   _/      _/  _/  _/    _/    _/',
-      \'    _/  _/    _/  _/    _/    _/',
-      \'     _/      _/  _/    _/    _/',
+      \'      _/      _/  _/      _/  _/',
+      \'     _/_/    _/  _/      _/      _/_/_/  _/_/',
+      \'    _/  _/  _/  _/      _/  _/  _/    _/    _/',
+      \'   _/    _/ /    _/  _/    _/  _/    _/    _/',
+      \'  _/      _/      _/      _/  _/    _/    _/',
       \'',
       \'',
       \ ]
@@ -1208,7 +1220,7 @@ function! Ags_textobj(motion_wiseness)
   " echo linestart colstart
   if start_line == stop_line
       let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
-      let command = 'CtrlSF ' . '"' . stuff . '"'
+      let command = 'CtrlSF ' . stuff
       exec command
   endif
 endfunction
@@ -1320,6 +1332,8 @@ call shortcut#map('<leader> A',      'Tagbar - Show tag',                  'nnor
 call shortcut#map('<space> N s',     'Nim - Server start',                 'NimServerStart')
 call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
 call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
+call shortcut#map('<space> G s',     'Gists - Save',                       'Gist -p')
+call shortcut#map('<space> G l',     'Gists - List',                       'Gist -l')
 
 let g:neomake_typescript_tscp_maker = {
       \ 'bin': 'tscp',
