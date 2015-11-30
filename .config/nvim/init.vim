@@ -455,12 +455,16 @@ nmap [; <Plug>Argumentative_Prev
 nmap ]; <Plug>Argumentative_Next
 xmap [; <Plug>Argumentative_XPrev
 xmap ]; <Plug>Argumentative_XNext
+nmap H <Plug>Argumentative_MoveLeft
+nmap L <Plug>Argumentative_MoveRight
 nmap <; <Plug>Argumentative_MoveLeft
 nmap >; <Plug>Argumentative_MoveRight
 xmap i; <Plug>Argumentative_InnerTextObject
 xmap a; <Plug>Argumentative_OuterTextObject
 omap i; <Plug>Argumentative_OpPendingInnerTextObject
 omap a; <Plug>Argumentative_OpPendingOuterTextObject
+" nnoremap <silent>H :SidewaysLeft<cr>
+" nnoremap <silent>L :SidewaysRight<cr>
 nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
 nnoremap <silent><leader>f :ChooseWin<cr>
 nnoremap <silent><leader>F :ChooseWinSwap<cr>
@@ -486,8 +490,8 @@ nnoremap gV `[v`]
 nnoremap <expr> gP '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <silent># :set hlsearch<cr>:norm! #<cr>
 nnoremap <silent>* :set hlsearch<cr>:norm! *<cr>
-nnoremap H ^
-nnoremap L $
+" nnoremap H ^
+" nnoremap L $
 nnoremap <silent><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 nnoremap <A-up> :resize +5<cr>
 nnoremap <A-down> :resize -5<cr>
@@ -1208,7 +1212,8 @@ call textobj#user#plugin('line', {
       \   },
       \ })
 
-map g/ <Plug>(operator-ags)
+nmap G/ :CtrlSF 
+nmap g/ <Plug>(operator-ags)
 call operator#user#define('ags', 'Ags_textobj')
 function! Ags_textobj(motion_wiseness)
   let start = getpos("'[")

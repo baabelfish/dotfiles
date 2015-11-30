@@ -27,7 +27,10 @@ ${Elements["TIME"]}$SEPARATOR\
 ${Elements["DATE"]}\
 "
 if [[ "$NOUTPUT" != "$OUTPUT" ]]; then
-    echo -e $NOUTPUT
+    echo -n %{S0}$NOUTPUT
+    echo -n %{S1}$NOUTPUT
+    echo -n %{S2}$NOUTPUT
+    echo ""
     OUTPUT=$NOUTPUT
 fi
 }
@@ -126,18 +129,19 @@ bar_volume() {
     fi
     echo "VOLUME $RESULT" > $FIFO
 }
-trap 'echo "Hello world"' TRAP
-# while [[ 1 ]]; do
-#     bar_volume
-#     sleep 1
-# done&
 
-# while [[ 1 ]]; do
-#     CONNECTION=$(nmcli d|grep connected|awk '{print $4}')
-#     if [[ "$CONNECTION" != "--" ]] && [[ "$CONNECTION" != "Wired" ]]; then
-#         echo "CONNECTION $(glyph "f1c1") $CONNECTION" > $FIFO
-#     fi
-# done&
+while [[ 1 ]]; do
+    bar_volume
+    sleep 1
+done&
+
+while [[ 1 ]]; do
+    CONNECTION=$(nmcli d|grep connected|awk '{print $4}')
+    if [[ "$CONNECTION" != "--" ]] && [[ "$CONNECTION" != "Wired" ]]; then
+        echo "CONNECTION $(glyph "f1c1") $CONNECTION" > $FIFO
+    fi
+    sleep 60
+done&
 
 while read line < $FIFO
 do
