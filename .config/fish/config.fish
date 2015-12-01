@@ -18,11 +18,17 @@ set __fish_git_prompt_char_upstream_behind '↓'
 function fish_vi_mode
     function fish_prompt
         set last_status $status
+        set vim_ind_color '222'
+        set vim_ind_color_fg '0f0'
         if [ $fish_bind_mode = 'default' ]
             set my_vi_indicator 'N'
         else if [ $fish_bind_mode = 'visual' ]
+            set vim_ind_color 'fa0'
+            set vim_ind_color_fg '222'
             set my_vi_indicator 'V'
         else if [ $fish_bind_mode = 'insert' ]
+            set vim_ind_color '2e2'
+            set vim_ind_color_fg '222'
             set my_vi_indicator 'I'
         else
             set my_vi_indicator $fish_bind_mode
@@ -37,16 +43,17 @@ function fish_vi_mode
             printf ''
         end
 
+
         set_color ccc
         set_color -b 333
         printf ' %s ' (hostname)
         set_color 333
-        set_color -b 222
+        set_color -b $vim_ind_color
         printf ''
-        set_color 0f0
+        set_color $vim_ind_color_fg
         printf ' %s ' $my_vi_indicator
         set_color normal
-        set_color 222
+        set_color $vim_ind_color
         printf ' '
         set_color normal
     end
