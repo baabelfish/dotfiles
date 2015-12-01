@@ -1212,7 +1212,7 @@ call textobj#user#plugin('line', {
       \   },
       \ })
 
-nmap G/ :CtrlSF 
+" nmap G/ :CtrlSF 
 nmap g/ <Plug>(operator-ags)
 call operator#user#define('ags', 'Ags_textobj')
 function! Ags_textobj(motion_wiseness)

@@ -5,6 +5,9 @@
 	ui = auto
 	decorate = short
 
+[apply]
+	whitespace = warn
+
 [diff]
 	tool = nvim -d
 
@@ -30,6 +33,12 @@
 	smu = submodule update --init --recursive
 	smua = submodule foreach git pull origin master
 	sma = submodule add
+	sprp = !git stash && git pull --rebase && git stash pop
+	b = branch
+	co = checkout
+	cob = checkout -b
+	cop = checkout -p
+	rep = reset -p
 
 [github]
 	user = baabelfish

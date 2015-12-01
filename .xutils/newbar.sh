@@ -19,6 +19,7 @@ NOUTPUT="\
 %{l}\
 ${Elements["WORKSPACE"]}$SEPARATOR\
 ${Elements["VOLUME"]}$SEPARATOR\
+${Elements["MUSIC"]}$SEPARATOR\
 %{c}\
 ${Elements["WINDOWTITLE"]}$SEPARATOR\
 %{r}\
@@ -129,11 +130,36 @@ bar_volume() {
     fi
     echo "VOLUME $RESULT" > $FIFO
 }
-
 while [[ 1 ]]; do
     bar_volume
     sleep 1
 done&
+
+
+music() {
+    STATUS="$(playerctl status)"
+
+    if [[ $STATUS != "" ]]; then
+        ARTIST="$(playerctl metadata artist)"
+        ALBUM="$(playerctl metadata album | cut -d'(' -f1)"
+        TRACK="$(playerctl metadata title | cut -d'(' -f1)"
+        STR="$(echo "$ARTIST - $TRACK" | sed -e 's/^ *//' | sed -e 's/ *$//' | cut -c 1-50)"
+        RESULT=""
+
+        if [[ $STATUS == "Playing" ]]; then
+            RESULT="%{F#55dc75}$(glyph "f047")"
+        elif [[ $STATUS == "Paused" ]]; then
+            RESULT="%{F#444444}$(glyph "f048")"
+        fi
+        RESULT=" $RESULT%{F-} $STR "
+        echo "MUSIC $RESULT" > $FIFO
+    fi
+}
+while [[ 1 ]]; do
+    music
+    sleep 4
+done&
+
 
 while [[ 1 ]]; do
     CONNECTION=$(nmcli d|grep connected|awk '{print $4}')
