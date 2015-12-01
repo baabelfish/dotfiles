@@ -19,6 +19,10 @@ endif
 " {{{ Plugins
 
 call plug#begin('$HOME/.config/nvim/plugged')
+" {{{ Development
+" Plug 'baabelfish/nvim-structure'
+Plug 'baabelfish/nvim-nim'
+" }}}
 " {{{ Deprecated
 " Plug 'scrooloose/syntastic'
 " Plug 'myint/syntastic-extras'
@@ -69,7 +73,7 @@ Plug 'kana/vim-textobj-fold'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
-Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
 Plug 'osyo-manga/vim-hopping'
 Plug 'skammer/vim-css-color'
 Plug 'sunaku/vim-shortcut'
@@ -158,7 +162,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-" let g:deoplete#enable_at_startup = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " Plug 'Shougo/javacomplete'
 " Plug 'Shougo/neco-syntax'
@@ -167,15 +170,18 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-" Plug 'Shougo/deoplete.nvim'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_completion_start_length = 1
+" Plug 'Shougo/deoplete.nvim'
 " }}}
 " {{{ SQL
 Plug 'cosminadrianpopescu/vim-sql-workbench'
 " }}}
 " {{{ Nim
-Plug 'baabelfish/nimtools'
-Plug 'zah/nim.vim'
+" Plug 'baabelfish/nimtools'
+" Plug 'zah/nim.vim'
 " }}}
 " {{{ Language support
 Plug 'dag/vim-fish'
@@ -193,6 +199,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'ElmCast/elm-vim'
 " }}}
 " {{{ Misc
 Plug 'irrationalistic/vim-tasks'
@@ -343,8 +350,8 @@ autocmd FileType jade setlocal ts=2 sts=2 sw=2
 autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
 
 autocmd InsertLeave * set nopaste
-autocmd Syntax * RainbowParanthesesLoadRound
-autocmd VimEnter * RainbowParenthesesToggle
+" autocmd Syntax * RainbowParanthesesLoadRound
+" autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 
 autocmd! BufEnter * Neomake
@@ -456,9 +463,9 @@ nnoremap <space>cc :Connect nrepl://localhost:8110<cr><cr>
 nnoremap <silent><space>g/ :HoppingStart<cr>
 map <space>/  <Plug>(incsearch-forward)
 map <space>?  <Plug>(incsearch-backward)
-nnoremap gT :YcmCompleter GetType<cr>
-nnoremap gt :YcmCompleter GoTo<cr>
-nnoremap gd :YcmCompleter GoToDefinition<cr>
+" nnoremap gT :YcmCompleter GetType<cr>
+" nnoremap gt :YcmCompleter GoTo<cr>
+" nnoremap gd :YcmCompleter GoToDefinition<cr>
 nmap [; <Plug>Argumentative_Prev
 nmap ]; <Plug>Argumentative_Next
 xmap [; <Plug>Argumentative_XPrev
@@ -473,7 +480,7 @@ omap i; <Plug>Argumentative_OpPendingInnerTextObject
 omap a; <Plug>Argumentative_OpPendingOuterTextObject
 " nnoremap <silent>H :SidewaysLeft<cr>
 " nnoremap <silent>L :SidewaysRight<cr>
-nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
+" nnoremap <space>gd :!nim c --debugger:native % && cgdb %:r<cr>
 nnoremap <silent><leader>f :ChooseWin<cr>
 nnoremap <silent><leader>F :ChooseWinSwap<cr>
 
@@ -530,8 +537,8 @@ nnoremap <silent>  za
 nnoremap Ä :w<cr>
 nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
-nnoremap ¤ :'<,'>g/^/norm! 
-vnoremap ¤ :g/^/norm! 
+nnoremap ¤ :'<,'>g/^/norm 
+vnoremap ¤ :g/^/norm 
 nmap ½ @q
 vmap ½ @q
 nnoremap å :w<cr>
@@ -1097,7 +1104,6 @@ hi InterestingWord6  guifg=#000000 guibg=#0097c1
 " hi Include                     guifg=245  guibg=none gui=none
 " hi Keyword                     guifg=106  guibg=none gui=none
 " hi Macro                       guifg=129  guibg=none gui=none
-" hi Operator                    guifg=247  guibg=none
 " hi PreCondit                   guifg=129  guibg=none gui=none
 " hi PreProc                     guifg=200  guibg=none gui=none
 " hi Special                     guifg=148  guibg=none gui=none
@@ -1105,12 +1111,27 @@ hi InterestingWord6  guifg=#000000 guibg=#0097c1
 " hi Structure                   guifg=246  guibg=none gui=bold
 " hi Tag                         guifg=142  guibg=none gui=none
 " hi Todo                        guifg=196  guibg=none gui=italic,bold
-" hi Type                        guifg=148  guibg=none gui=italic
-hi Function    guifg=#79EC1C guibg=none gui=bold
-hi Number      guifg=#af5f87 guibg=none gui=none
-hi Statement   guifg=#C16FE8 guibg=none gui=none
-hi String      guifg=#79AE4E guibg=none gui=bold
-hi Conditional guifg=#37BEBE guibg=none gui=bold
+hi Type        guifg=#d26937 gui=bold
+hi Typedef     guifg=#d26937 gui=none
+hi Function    guifg=#79EC1C gui=none
+hi Delimiter   guifg=#8989c9 gui=none
+hi Number      guifg=#af5f87 gui=none
+hi Float       guifg=#8f6f87 gui=none
+hi Statement   guifg=#C16FE8 gui=bold
+hi String      guifg=#79AE4E gui=bold
+hi Conditional guifg=#37BEBE gui=bold
+hi Operator    guifg=#E16FE8 gui=none
+hi Operator10  guifg=#E16FE8 gui=bold
+hi Operator9   guifg=#D16FE8 gui=none
+hi Operator8   guifg=#C16FE8 gui=none
+hi Operator7   guifg=#B16FE8 gui=none
+hi Operator6   guifg=#A16FE8 gui=none
+hi Operator5   guifg=#916FE8 gui=none
+hi Operator4   guifg=#816FE8 gui=none
+hi Operator3   guifg=#716FE8 gui=none
+hi Operator2   guifg=#619FE8 gui=none
+hi Operator1   guifg=#516FE8 gui=none
+hi Operator0   guifg=#416FE8 gui=none
 
 " Javascript is special
 hi javaScriptNumber           guifg=#af5f87 guibg=none gui=none
@@ -1300,6 +1321,7 @@ call shortcut#map('<space> g m',     'Git - Move f',                       'call
 call shortcut#map('<space> g r',     'Git - Revert f',                     'Gread')
 call shortcut#map('<space> g s',     'Git - S',                            'Gstatus')
 call shortcut#map('<space> g w',     'Git - Add f',                        'Gwrite')
+call shortcut#map('<space> s s',     'Git - Get syntax group',             'call SynStack()')
 call shortcut#map('<space> o #',     'Toggle - Highlight - Hex c',         'ColorToggle')
 call shortcut#map('<space> o d',     'Toggle - Distraction-free w',        'Goyo')
 call shortcut#map('<space> o <Tab>', 'Toggle - Indentlines',               'IndentLinesToggle')
