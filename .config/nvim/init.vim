@@ -108,6 +108,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 " {{{ Documentation
 Plug 'mickaobrien/vim-stackoverflow'
 Plug 'groenewege/vim-less'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'lambdalisue/vim-manpager'
 Plug 'digitaltoad/vim-jade'
@@ -132,8 +133,13 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
+Plug 'sgur/unite-qf'
 Plug 'dyng/ctrlsf.vim'
 " Plug 'gabesoft/vim-ags'
+
+let g:ack_qhandler = 'Unite qf'
+Plug 'mileszs/ack.vim'
+
 Plug 'lambdalisue/unite-grep-vcs'
 Plug 'tsukkee/unite-help'
 " }}}
@@ -173,6 +179,7 @@ Plug 'zah/nim.vim'
 " }}}
 " {{{ Language support
 Plug 'dag/vim-fish'
+Plug 'ElmCast/elm-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'rust-lang/rust.vim'
@@ -430,7 +437,8 @@ vmap <tab>4 :EasyAlign4\ <cr>
 vmap <tab>= :EasyAlign=<cr>
 vmap <tab>: :EasyAlign:<cr>
 nnoremap <silent><space>O :Unite -silent tab<cr>
-nmap <silent><space>a :call RunAngularFinder()<cr>
+" nmap <silent><space>a :call RunAngularFinder()<cr>
+nmap <silent><space>a :Ack! --nojs --output='$1 - $2' "\.(state)\\(\"(.*)\""<cr>
 nnoremap <silent><space>P :Unite file_rec/async<cr>
 nnoremap <silent><space>p :Unite file_rec/git<cr>
 " nnoremap <silent><space>P :CtrlPCurWD<cr>
@@ -596,7 +604,7 @@ endfunction
 
 function! RunAngularFinder()
     let g:unite_source_grep_command = 'nvim_angularsearch'
-    execute ":Unite grep:.::angular:"
+    execute ":Unite grep:.::*:"
 endfunction
 
 function! OpenCw()
@@ -921,6 +929,7 @@ let g:switch_mapping ='S'
 let g:switch_custom_definitions =
       \ [
       \  ['yes', 'no' ],
+      \  ['ng-show', 'ng-hide' ],
       \  ['horizontal', 'vertical' ],
       \  ['resolve', 'reject' ],
       \  ['on', 'off' ],
@@ -1031,7 +1040,7 @@ let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscor
 hi ColorColumn       guibg=#101010
 
 " hi Normal            guifg=#99d1ce guibg=none    gui=none
-hi Normal            guifg=#99d1ce guibg=none gui=none
+hi Normal            guifg=#a9d1ce guibg=none gui=none
 hi NonText           guifg=#111111 guibg=none    gui=none
 hi VertSplit         guifg=#222222 guibg=none
 hi CtrlPNoEntries    guifg=#FF8B00 guibg=none
@@ -1254,6 +1263,7 @@ endfunction
 " call unite#custom_source('source', 'matchers', ['matcher_fuzzy'])
 " call unite#custom_source('outline', 'matchers', ['matcher_fuzzy'])
 " call unite#custom_source('history/yank', 'matchers', ['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_length'])
 
 " }}}
 " {{{ Better shortcuts / launcher
@@ -1296,11 +1306,11 @@ call shortcut#map('<space> o <Tab>', 'Toggle - Indentlines',               'Inde
 call shortcut#map('<space> o N',     'Toggle - Line numbering (relative)', 'setlocal relativenumber!')
 call shortcut#map('<space> o Q',     'Toggle - Automatic f',               'call shortcut#toggle_flag("formatoptions", "a", "t")')
 call shortcut#map('<space> o ]',     'Toggle - Tag l',                     'TlistToggle')
-call shortcut#map('<space> o c',     'Open - Color picker',                           'call ColorPicker(0)')
+call shortcut#map('<space> o c',     'Open - Color picker',                'call ColorPicker(0)')
 call shortcut#map('<space> o n',     'Toggle - Line n',                    'setlocal number!')
 call shortcut#map('<space> o p',     'Toggle - Paste v',                   'setlocal paste!')
 call shortcut#map('<space> o q',     'Toggle - QuickFix w',                'QFix')
-call shortcut#map('<space> o s',     'Open - Startify',                           'Startify')
+call shortcut#map('<space> o s',     'Open - Startify',                    'Startify')
 call shortcut#map('<space> o s',     'Toggle - Spelling c',                'setlocal spell!')
 call shortcut#map('<space> o u',     'Toggle - Edit history (undo tree)',  'UndotreeToggle')
 call shortcut#map('<space> o z',     'Toggle - Code f',                    'setlocal foldenable!')

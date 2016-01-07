@@ -243,8 +243,8 @@ function my_vi_key_bindings
     bind -M insert \cv 'edit-command'
     bind H my_previous_dir
     bind L my_next_dir
-    bind \ca browse_all
-    bind \cd browse_all
+    bind_vim ca browse_all
+    bind_vim cd 'browse_dirs; commandline -f repaint'
     bind \cl 'clear; commandline -f repaint'
     bind \cs 'cmatrix; commandline -f repaint'
     bind gh my_back_dir
