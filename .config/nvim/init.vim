@@ -52,7 +52,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
-Plug 'blueyed/vim-diminactive'
+" Plug 'blueyed/vim-diminactive'
 Plug 'chrisbra/NrrwRgn' " ?
 Plug 'christoomey/vim-sort-motion'
 Plug 'flazz/vim-colorschemes'
@@ -312,7 +312,7 @@ set virtualedit=block
 set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak breakat+=" "
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 
 " }}}
 " {{{ Autocommands
@@ -322,12 +322,12 @@ autocmd!
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType typescript setlocal completeopt+=preview
-" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType plaintex set filetype=tex
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType plaintex set filetype=tex
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
@@ -384,6 +384,8 @@ tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
 tnoremap <A-l> <C-\><C-n><C-w>l
+tnoremap <A-q> <C-\><C-n><C-w>c
+tnoremap <A-w> <C-\><C-n>:BB<cr>
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -539,6 +541,7 @@ nnoremap <leader>§ :let @q='<C-r><C-r>q'
 nnoremap § qqqqq
 nnoremap ¤ :'<,'>g/^/norm 
 vnoremap ¤ :g/^/norm 
+nnoremap <space>S :CtrlSF 
 nmap ½ @q
 vmap ½ @q
 nnoremap å :w<cr>
@@ -1029,17 +1032,15 @@ let delimitMate_expand_space = 1
 " }}}
 " {{{ Colorscheme
 
-set background=dark
-let g:droid_transparent = 1
-
 syntax on
+set background=dark
 
 if has("gui_running")
-  colorscheme gotham
+    colorscheme gotham
 elseif &t_Co == 256 
-  colorscheme gotham
+    colorscheme gotham
 else
-  colorscheme delek
+    colorscheme delek
 endif
 
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
@@ -1216,7 +1217,7 @@ hi SyntasticErrorSign   guifg=#ff4444 guibg=none
 hi SyntasticWarningSign guifg=#d7ff5f guibg=none
 hi SyntasticInfoSign    guifg=#e0e0e0 guibg=none
 hi SyntasticMsgSign     guifg=#cbffff guibg=none
-hi WildMenu             guifg=#080808 guibg=#afd700 gui=bold
+  hi WildMenu             guifg=#080808 guibg=#afd700 gui=bold
 
 " }}}
 " {{{ Abbrevations
