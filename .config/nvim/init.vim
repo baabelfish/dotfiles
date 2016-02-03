@@ -52,6 +52,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-vertigo'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Plug 'blueyed/vim-diminactive'
 Plug 'chrisbra/NrrwRgn' " ?
 Plug 'christoomey/vim-sort-motion'
@@ -274,6 +275,7 @@ set conceallevel=0
 set cscopetag
 set cursorline
 set display+=lastline " FIXME
+set diffopt=vertical
 " set fillchars+=vert: 
 " set fillchars+=vert:│
 set fillchars+=vert: 
@@ -1149,11 +1151,13 @@ hi javascript_chaining        guifg=#D9AEFF guibg=none gui=italic
 hi javascriptBModelAttrs      guifg=#777777 guibg=none gui=none
 hi javascriptBCollectionAttrs guifg=#779777 guibg=none gui=italic
 
+hi DiffAdd                     guifg=none  guibg=#2c4629 gui=none
+hi DiffChange                  guifg=none  guibg=#252513 gui=none
+hi DiffDelete                  guifg=none  guibg=#663030 gui=none
+hi DiffText                    guifg=none  guibg= gui=bold
+
 " hi Cursor                      guifg=232  guibg=254  gui=none
 " hi Debug                       guifg=214  guibg=none gui=none
-" hi DiffAdd                     guifg=112  guibg=none gui=bold
-" hi DiffChange                  guifg=220  guibg=none gui=bold
-" hi DiffDelete                  guifg=160  guibg=none gui=bold
 " hi Directory                   guifg=172  guibg=none gui=none
 " hi EasyMotionTarget            guifg=46   guibg=233
 " hi Error                       guifg=196  guibg=none gui=bold
@@ -1373,16 +1377,16 @@ call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimS
 call shortcut#map('<space> G s',     'Gists - Save',                       'Gist -p')
 call shortcut#map('<space> G l',     'Gists - List',                       'Gist -l')
 
-let g:neomake_typescript_tscp_maker = {
-      \ 'bin': 'tscp',
-      \ 'args': [],
-      \ 'errorformat': 
-      \ '%E%f %#(%l\,%c): error %m,' .
-      \ '%E%f %#(%l\,%c): %m,' .
-      \ '%Eerror %m,' .
-      \ '%C%\s%\+%m'
-      \ }
-let g:neomake_typescript_enabled_makers = ['tscp']
+" let g:neomake_typescript_tscp_maker = {
+"       \ 'bin': 'tscp',
+"       \ 'args': [],
+"       \ 'errorformat': 
+"       \ '%E%f %#(%l\,%c): error %m,' .
+"       \ '%E%f %#(%l\,%c): %m,' .
+"       \ '%Eerror %m,' .
+"       \ '%C%\s%\+%m'
+"       \ }
+" let g:neomake_typescript_enabled_makers = ['tscp']
 
 " }}}
 " {{{ Extensions
@@ -1390,5 +1394,22 @@ let g:neomake_typescript_enabled_makers = ['tscp']
 if filereadable(expand("~/.localdf/nvim.vim"))
   source ~/.localdf/nvim.vim
 endif
+
+function! GConflict()
+  let conflicts = split(system("git status --short | grep \"^UU \" | cut -c4-"), "\n")
+  if len(conflicts) > 0
+    if &diff
+      echo "Diff already in progress (save it with :Gw)"
+    else
+      exec ":e " . conflicts[0]
+      exec ":Gdiff"
+    endif
+  else
+    echo "No more conflicts!"
+  endif
+endfunction
+
+command! Gconflict :call GConflict()
+command! Grc :echom system("git rebase --continue")
 
 " }}}
