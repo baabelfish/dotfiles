@@ -181,6 +181,7 @@ Plug 'cosminadrianpopescu/vim-sql-workbench'
 " }}}
 " {{{ Nim
 " Plug 'baabelfish/nimtools'
+Plug 'baabelfish/nvim-nim'
 " Plug 'zah/nim.vim'
 " }}}
 " {{{ Language support
@@ -309,7 +310,7 @@ set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0 lazyredraw
 set undofile undolevels=1000 undoreload=10000 undodir=~/.config/nvim/undodir nobackup noswapfile
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
-set wildignore+=*/components/*,*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
+set wildignore+=*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak breakat+=" "
 " set omnifunc=syntaxcomplete#Complete
@@ -331,7 +332,7 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
+autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.ts,*.hpp call StripTrailingWhitespace()
 autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 
@@ -545,7 +546,6 @@ nnoremap <space>S :CtrlSF
 nmap ½ @q
 vmap ½ @q
 nnoremap å :w<cr>
-nnoremap Å :Gwrite<cr>
 nnoremap <space>Å :Gcommit<cr>
 nnoremap <space>åi :w \| source $MYVIMRC \| PlugInstall<cr>
 nnoremap <space>åu :w \| source $MYVIMRC \| PlugUpdate<cr>
