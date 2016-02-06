@@ -224,7 +224,7 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
-Plug 'benekastah/neomake'
+Plug 'benekastah/neomake', { 'commit': 'a18db10' }
 " Plug 'baabelfish/neomake'
 " }}}
 " {{{ Lisps
