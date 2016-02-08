@@ -192,6 +192,7 @@ Plug 'baabelfish/nvim-nim'
 " Plug 'zah/nim.vim'
 " }}}
 " {{{ Language support
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'dag/vim-fish'
 Plug 'ElmCast/elm-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -1186,7 +1187,6 @@ if exists("shortcut#map")
   call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
   call shortcut#map('<space> G s',     'Gists - Save',                       'Gist -p')
   call shortcut#map('<space> G l',     'Gists - List',                       'Gist -l')
-  call shortcut#map('<space> r',       'Run',                                'call RunFile()')
 endif
 
 function! RunFile()
@@ -1232,17 +1232,33 @@ function! RunInSplit(cmd)
   exec "term " . a:cmd
 endfunction
 
+function! BuffersClean()
+  for buf in tabpagebuflist()
+    if getbufvar(2, "&mod")
+      echom "Can't pull: " . bufname(2) . " has modifications"
+      return 0
+    endif
+  endfor
+  return 1
+endfunction
+
+function! RunGitCommand(cmd)
+  new
+  resize 8
+  call termopen(a:cmd)
+  normal! G
+endfunction
+
+function! GPull()
+    if BuffersClean()
+        call RunGitCommand("git pull --rebase")
+    endif
+endfunction
+
 command! Gconflict :call GConflict()
 command! Grc :call RunInSplit("git rebase --continue")
 command! Gpsh :call RunInSplit("git push")
 
-" nnoremap <space>r :term nim c -r expand("%:p")<cr>
-nnoremap <space>r :call Run()<cr>
-
-function! Run()
-  let cmd = "nim c -r --threads:on " . expand("%:p")
-  new
-  exec ":term " . cmd
-endfunction
+nnoremap <space>r :call RunInSplit("nim c --threads:on -r" . expand("%:p"))<cr>
 
 " }}}
