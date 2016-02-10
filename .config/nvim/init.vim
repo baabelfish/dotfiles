@@ -155,6 +155,7 @@ Plug 'tsukkee/unite-help'
 " }}}
 " {{{ IDE features
 " Plug 'SirVer/ultisnips'
+Plug 'idanarye/vim-vebugger'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -215,11 +216,11 @@ Plug 'ruanyl/vim-gh-line'
 " }}}
 " {{{ Neomake
 let g:neomake_error_sign = {
-    \ 'text': '✖',
+    \ 'text': '✗',
     \ 'texthl': 'SyntasticErrorSign',
     \ }
 let g:neomake_warning_sign = {
-    \ 'text': '✗',
+    \ 'text': '✖',
     \ 'texthl': 'SyntasticWarningSign',
     \ }
 let g:neomake_informational_sign = {
