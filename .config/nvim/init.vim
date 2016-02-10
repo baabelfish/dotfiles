@@ -233,7 +233,7 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
-Plug 'benekastah/neomake', { 'commit': 'a18db10' }
+Plug 'benekastah/neomake', { 'commit': 'a3f3b3ba728aca1362c39ab550b069a77e2d2111' }
 " Plug 'baabelfish/neomake'
 " }}}
 " {{{ Lisps
@@ -366,10 +366,8 @@ autocmd InsertLeave * set nopaste
 " autocmd VimEnter * RainbowParenthesesToggle
 autocmd VimResized * exe "normal! \<c-w>="
 
-autocmd! BufEnter * Neomake
-autocmd! BufWritePost * Neomake
-autocmd! BufEnter * if exists(":Neomake") | Neomake
-autocmd! BufWritePost * if exists(":Neomake") | Neomake
+autocmd! BufEnter * if exists(":Neomake") | silent Neomake
+autocmd! BufWritePost * if exists(":Neomake") | silent Neomake
 " autocmd CursorHold * SyntasticCheck
 
 " }}}
