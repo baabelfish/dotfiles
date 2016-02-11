@@ -28,16 +28,24 @@ Plug 'baabelfish/indent-detector.vim'
 
 " {{{ Development
 " Plug 'baabelfish/nvim-structure'
-Plug 'baabelfish/nvim-nim'
+" Plug 'baabelfish/nvim-nim'
 " }}}
 " {{{ Deprecated
+" Plug 'Shougo/javacomplete'
+" Plug 'Shougo/neco-syntax'
+" Plug 'Shougo/neco-vim'
+" Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/neoinclude.vim'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/deoplete.nvim'
 " Plug 'scrooloose/syntastic'
 " Plug 'myint/syntastic-extras'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'xolox/vim-lua-inspect'
-" NeoBundle 'Mizuchi/STL-Syntax'
-" NeoBundle 'sheerun/vim-polyglot'
+" Plug 'Mizuchi/STL-Syntax'
+" Plug 'sheerun/vim-polyglot'
 " Plug 'Raimondi/delimitMate'
 " Plug 'marijnh/tern_for_vim'
 " Plug 'lambdalisue/vim-gita'
@@ -153,9 +161,12 @@ Plug 'mileszs/ack.vim'
 Plug 'lambdalisue/unite-grep-vcs'
 Plug 'tsukkee/unite-help'
 " }}}
+" {{{ New
+" }}}
 " {{{ IDE features
 " Plug 'SirVer/ultisnips'
 Plug 'idanarye/vim-vebugger'
+Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -169,19 +180,10 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-" Plug 'Shougo/javacomplete'
-" Plug 'Shougo/neco-syntax'
-" Plug 'Shougo/neco-vim'
-" Plug 'Shougo/echodoc.vim'
-" Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-" Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
-" Plug 'Shougo/deoplete.nvim'
 " }}}
 " {{{ SQL
 Plug 'cosminadrianpopescu/vim-sql-workbench'
@@ -233,15 +235,15 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
-Plug 'benekastah/neomake', { 'commit': 'a3f3b3ba728aca1362c39ab550b069a77e2d2111' }
+Plug 'benekastah/neomake'
 " Plug 'baabelfish/neomake'
 " }}}
 " {{{ Lisps
 Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'guns/vim-sexp'
-Plug 'guns/vim-slamhound'
+Plug 'guns/vim-sexp', { 'for': 'clojure' }
+Plug 'guns/vim-slamhound', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
