@@ -864,16 +864,7 @@ let g:startify_skiplist = [
       \ $VIMRUNTIME .'/doc',
       \ 'bundle/.*/doc'
       \ ]
-let g:startify_custom_header = [
-      \'',
-      \'      _/      _/  _/      _/  _/',
-      \'     _/_/    _/  _/      _/      _/_/_/  _/_/',
-      \'    _/  _/  _/  _/      _/  _/  _/    _/    _/',
-      \'   _/    _/ /    _/  _/    _/  _/    _/    _/',
-      \'  _/      _/      _/      _/  _/    _/    _/',
-      \'',
-      \'',
-      \ ]
+let g:startify_custom_header = []
 
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 0
