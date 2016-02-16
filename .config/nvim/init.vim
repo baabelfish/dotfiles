@@ -7,12 +7,12 @@ if has('nvim')
   call jobstart("mkdir -p \"$HOME/.config/nvim/undodir\"")
 endif
 
-if !filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-  " ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
-  " ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
-  "" !nvim +'PlugUpdate | quit!'
-  quit!
-endif
+" if !filereadable(expand('~/.config/nvim/autoload/plug.vim'))
+"   " ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
+"   " ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
+"   "" !nvim +'PlugUpdate | quit!'
+"   quit!
+" endif
 
 " }}}
 " {{{ Plugins
@@ -817,8 +817,8 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_signs = 1
 
-let g:gissues_lazy_load = 0
-" let g:gissues_async_omni = 0
+let g:gissues_lazy_load = 1
+let g:gissues_async_omni = 0
 
 let g:indentLine_faster = 1
 
