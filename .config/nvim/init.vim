@@ -171,14 +171,15 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+
+" imap <C-@>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-@>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-@>     <Plug>(neosnippet_expand_target)
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
 
@@ -938,9 +939,9 @@ let g:indentLine_char = '│'
 
 let g:omni_sql_no_default_maps = 1
 
-let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsExpandTrigger="<C-@>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-@>"
 let g:UltiSnipsListSnippets="<c-r><tab>"
 let g:UltiSnipsNoPythonWarning = 1
 let g:UltiSnipsSnippetDirectories = ["ultisnips"]

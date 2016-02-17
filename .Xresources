@@ -176,6 +176,7 @@ rofi.kb-row-first:                   Home,KP_Home
 rofi.kb-row-last:                    End,KP_End
 rofi.kb-row-select:                  Control+space
 rofi.kb-cancel:                      Escape,SuperL+q
+rofi.kb-cancel:                      Escape
 ! rofi.key-window:                     
 ! rofi.key-run:                        
 ! rofi.key-ssh:                        
