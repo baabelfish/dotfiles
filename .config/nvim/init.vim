@@ -302,7 +302,7 @@ set notimeout
 set nrformats-=octal
 set number numberwidth=4
 set path+=.,**,,
-set regexpengine=1
+set regexpengine=2
 set scrolljump=8 sidescroll=1
 set shortmess+=filmnrxoOtTI
 set showcmd
