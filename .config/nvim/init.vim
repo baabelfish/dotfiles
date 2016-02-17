@@ -971,7 +971,6 @@ let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_server_log_level = 'error'
 let g:ycm_filetype_blacklist = {
-      \ 'gitcommit' : 1,
       \ 'markdown' : 1,
       \ 'notes' : 1,
       \ 'tex' : 1,
