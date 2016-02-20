@@ -6,6 +6,7 @@
 
 # OOPS
 # export AWT_TOOLKIT=XToolkit
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export AWT_TOOLKIT=MToolkit
 export VDPAU_NVIDIA_NO_OVERLAY=1
 export _JAVA_OPTIONS='-Xmx2048m -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
