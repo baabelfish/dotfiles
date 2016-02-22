@@ -90,7 +90,6 @@ Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'osyo-manga/vim-hopping'
-Plug 'skammer/vim-css-color'
 Plug 'sunaku/vim-shortcut'
 " Plug 't9md/vim-choosewin'
 Plug 'tommcdo/vim-express'
@@ -236,7 +235,7 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
-Plug 'benekastah/neomake'
+Plug 'benekastah/neomake', { 'commit': 'e06f85e1651f5fe8841df3c85df1c51a891ccac4' }
 " Plug 'baabelfish/neomake'
 " }}}
 " {{{ Lisps
@@ -336,42 +335,42 @@ autocmd!
 
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType typescript setlocal completeopt+=preview
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType plaintex set filetype=tex
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+autocmd! FileType typescript setlocal completeopt+=preview
+autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd! FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd! FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd! FileType plaintex setlocal filetype=tex
+autocmd! FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd! BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-autocmd BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.ts,*.hpp call StripTrailingWhitespace()
-autocmd BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
-autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
+autocmd! BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.ts,*.hpp call StripTrailingWhitespace()
+autocmd! BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
+autocmd! BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 
-autocmd FileType cpp setlocal nowrap
-autocmd FileType ejs setlocal filetype=typescript
-autocmd FileType fish setlocal filetype=sh
-autocmd FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
-autocmd FileType html setlocal indentkeys-=*<Return> " Fix html indentation
-autocmd FileType nims setlocal filetype=nim
-autocmd FileType matlab setlocal filetype=octave
-autocmd FileType plaintex setlocal filetype=tex
-autocmd FileType typescript setlocal completeopt+=preview
-autocmd FileType typescript setlocal makeprg=tscp
-autocmd FileType nim setlocal ts=4 sts=4 sw=4
-autocmd FileType jade setlocal ts=2 sts=2 sw=2
-autocmd FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
+autocmd! FileType cpp setlocal nowrap
+autocmd! FileType ejs setlocal filetype=typescript
+autocmd! FileType fish setlocal filetype=sh
+autocmd! FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
+autocmd! FileType html setlocal indentkeys-=*<Return> " Fix html indentation
+autocmd! FileType nims setlocal filetype=nim
+autocmd! FileType matlab setlocal filetype=octave
+autocmd! FileType plaintex setlocal filetype=tex
+autocmd! FileType typescript setlocal completeopt+=preview
+autocmd! FileType typescript setlocal makeprg=tscp
+autocmd! FileType nim setlocal ts=4 sts=4 sw=4
+autocmd! FileType jade setlocal ts=2 sts=2 sw=2
+autocmd! FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
 
-autocmd InsertLeave * set nopaste
+autocmd! InsertLeave * set nopaste
 " autocmd Syntax * RainbowParanthesesLoadRound
 " autocmd VimEnter * RainbowParenthesesToggle
-autocmd VimResized * exe "normal! \<c-w>="
+autocmd! VimResized * exe "normal! \<c-w>="
 
-autocmd! BufEnter * if exists(":Neomake") | silent Neomake
-autocmd! BufWritePost * if exists(":Neomake") | silent Neomake
-" autocmd CursorHold * SyntasticCheck
+autocmd! BufEnter * Neomake
+autocmd! BufWritePost * Neomake
+autocmd! CursorHold * Neomake
 
 " }}}
 " {{{ Shortcuts
@@ -725,15 +724,10 @@ endfunction
 " }}}
 " {{{ Plugin configuration
 
-if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--vimgrep -i --silent'
-endif
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--vimgrep -i --silent'
 
-
-if exists("arpeggio")
-  call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
-endif
+call arpeggio#map('icvx', '', 0, 'jk', '<Esc>')
 
 let g:BASH_Ctrl_j = 'off'
 
@@ -941,10 +935,10 @@ let g:omni_sql_no_default_maps = 1
 
 let g:UltiSnipsExpandTrigger="<C-@>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-@>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsListSnippets="<c-r><tab>"
 let g:UltiSnipsNoPythonWarning = 1
-let g:UltiSnipsSnippetDirectories = ["ultisnips"]
+let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_start_insert = 1
@@ -967,10 +961,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_key_invoke_completion = '<c-e>'
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_key_list_previous_completion=['<Up>']
-let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_invoke_completion = '<M-Space>'
+let g:ycm_key_list_previous_completion=['<C-p>']
+let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_server_log_level = 'error'
@@ -998,7 +991,6 @@ let delimitMate_expand_space = 1
 " }}}
 " {{{ Colorscheme
 
-syntax on
 silent! colorscheme teema
 
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
@@ -1018,177 +1010,172 @@ cabbrev E e
 " }}}
 " {{{ Custom text objects / operators
 
-if exists("textobj#user#plugin")
-  call textobj#user#plugin('line', {
-        \   '-': {
-        \     'select-a-function': 'CurrentLineA',
-        \     'select-a': 'aL',
-        \     'select-i-function': 'CurrentLineI',
-        \     'select-i': 'iL',
-        \   },
-        \ })
+call textobj#user#plugin('line', {
+      \   '-': {
+      \     'select-a-function': 'CurrentLineA',
+      \     'select-a': 'aL',
+      \     'select-i-function': 'CurrentLineI',
+      \     'select-i': 'iL',
+      \   },
+      \ })
 
-  nmap g/ <Plug>(operator-ags)
-  call operator#user#define('ags', 'Ags_textobj')
-  function! Ags_textobj(motion_wiseness)
-    let start = getpos("'[")
-    let stop = getpos("']")
-    let start_line = start[1]
-    let start_col = start[2]
-    let stop_line = stop[1]
-    let stop_col = stop[2]
-    " echo linestart colstart
-    if start_line == stop_line
-        let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
-        let command = 'CtrlSF ' . stuff
-        exec command
-    endif
-  endfunction
+nmap g/ <Plug>(operator-ags)
+call operator#user#define('ags', 'Ags_textobj')
+function! Ags_textobj(motion_wiseness)
+  let start = getpos("'[")
+  let stop = getpos("']")
+  let start_line = start[1]
+  let start_col = start[2]
+  let stop_line = stop[1]
+  let stop_col = stop[2]
+  " echo linestart colstart
+  if start_line == stop_line
+      let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
+      let command = 'CtrlSF ' . stuff
+      exec command
+  endif
+endfunction
 
-  map <space>?s <Plug>(operator-stackoverflow)
-  call operator#user#define('stackoverflow', 'SO_textobj')
-  function! SO_textobj(motion_wiseness)
-    let start = getpos("'[")
-    let stop = getpos("']")
-    let start_line = start[1]
-    let start_col = start[2]
-    let stop_line = stop[1]
-    let stop_col = stop[2]
-    " echo linestart colstart
-    if start_line == stop_line
-        let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
-        let command = 'StackOverflow ' . '"' . stuff . '"'
-        exec command
-    endif
-  endfunction
-endif
+map <space>?s <Plug>(operator-stackoverflow)
+call operator#user#define('stackoverflow', 'SO_textobj')
+function! SO_textobj(motion_wiseness)
+  let start = getpos("'[")
+  let stop = getpos("']")
+  let start_line = start[1]
+  let start_col = start[2]
+  let stop_line = stop[1]
+  let stop_col = stop[2]
+  " echo linestart colstart
+  if start_line == stop_line
+      let stuff = getline(start_line)[ start_col - 1 : stop_col - 1 ]
+      let command = 'StackOverflow ' . '"' . stuff . '"'
+      exec command
+  endif
+endfunction
 
 " }}}
 " {{{ Random stuff
 
-if exists("unite")
-  call unite#filters#sorter_default#use(['sorter_length'])
-  call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-        \ 'ignore_pattern', join([
-        \ '\.git/',
-        \ '\.tscache/',
-        \ 'git5/.*/review/',
-        \ 'google/obj/',
-        \ 'tmp/',
-        \ 'lib/Cake/',
-        \ 'node_modules/',
-        \ 'vendor/',
-        \ 'Vendor/',
-        \ 'app_old/',
-        \ 'acf-laravel/',
-        \ 'plugins/',
-        \ 'bower_components/',
-        \ '.sass-cache',
-        \ 'web/wp',
-        \ 'nimcache',
-        \ '.toc$',
-        \ '.bak$',
-        \ '.log$',
-        \ '.out$',
-        \ '.aux$',
-        \ '.a$',
-        \ '.o$',
-        \ '.obj$',
-        \ '.so$',
-        \ '.lib$',
-        \ '.jar$',
-        \ '.pdf$'
-        \ ], '\|'))
-  " call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
-endif
+call unite#filters#sorter_default#use(['sorter_length'])
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ '\.tscache/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ 'lib/Cake/',
+      \ 'node_modules/',
+      \ 'vendor/',
+      \ 'Vendor/',
+      \ 'app_old/',
+      \ 'acf-laravel/',
+      \ 'plugins/',
+      \ 'bower_components/',
+      \ '.sass-cache',
+      \ 'web/wp',
+      \ 'nimcache',
+      \ '.toc$',
+      \ '.bak$',
+      \ '.log$',
+      \ '.out$',
+      \ '.aux$',
+      \ '.a$',
+      \ '.o$',
+      \ '.obj$',
+      \ '.so$',
+      \ '.lib$',
+      \ '.jar$',
+      \ '.pdf$'
+      \ ], '\|'))
+" call unite#custom_source('file_rec/async', 'matchers', ['matcher_fuzzy'])
 
 " }}}
 " {{{ Better shortcuts / launcher
 
 " https://github.com/sunaku/.vim/tree/spacey/shortcut
-if exists("shortcut#map")
-  call shortcut#map('<space> Z K',     'Zeal - Search for.',                 'ZvK')
-  call shortcut#map('<space> Z d',     'Zeal - Select d',                    'ZvKD')
-  call shortcut#map('<space> Z v',     'Zeal - Find visual s',               'ZvV')
-  call shortcut#map('<space> Z w',     'Zeal - Find word under c',           'Zeavim')
-  call shortcut#map('<space> b R',     'Buffer - Reload (force)',            'edit!')
-  call shortcut#map('<space> b S',     'Buffer - Save as',                   'call feedkeys(":write ", "n")')
-  call shortcut#map('<space> b W',     'Buffer - Save',                      'write')
-  call shortcut#map('<space> b n',     'Buffer - Focus next',                'bnext')
-  call shortcut#map('<space> b p',     'Buffer - Focus previous',            'bprevious')
-  call shortcut#map('<space> b r',     'Buffer - R',                         'confirm edit')
-  call shortcut#map('<space> b s',     'Buffer - Save as.',                  'call feedkeys(":saveas ", "n")')
-  call shortcut#map('<space> c P',     'Comment - Yank - Paste a',           'normal! `[P')
-  call shortcut#map('<space> c p',     'Comment - Yank - Paste b',           'normal! `]p')
-  call shortcut#map('<space> g %',     'Git - D',                            'Gdiff')
-  call shortcut#map('<space> g C',     'Git - Commit (amend)',               'Gcommit --amend')
-  call shortcut#map('<space> g D',     'Git - Delete file (force)',          'Gremove!')
-  call shortcut#map('<space> g H',     'Git - Hunk - H',                     'SignifyToggleHighlight')
-  call shortcut#map('<space> g M',     'Git - Move file (force)',            'call feedkeys(":Gmove! ", "n")')
-  call shortcut#map('<space> g R',     'Git - Revert file (force)',          'Gread!')
-  call shortcut#map('<space> g W',     'Git - Add file (force)',             'Gwrite!')
-  call shortcut#map('<space> g b',     'Git - B',                            'Gblame')
-  call shortcut#map('<space> g c',     'Git - C',                            'Gcommit')
-  call shortcut#map('<space> g d',     'Git - Delete f',                     'Gremove')
-  call shortcut#map('<space> g e',     'Git - E',                            'Gedit')
-  call shortcut#map('<space> g g',     'Git - G',                            'call feedkeys(":Ggrep ", "n")')
-  call shortcut#map('<space> g h',     'Git - Hunk - S',                     'SignifyToggle')
-  call shortcut#map('<space> g l',     'Git - L',                            'Gitv')
-  call shortcut#map('<space> g m',     'Git - Move f',                       'call feedkeys(":Gmove ", "n")')
-  call shortcut#map('<space> g r',     'Git - Revert f',                     'Gread')
-  call shortcut#map('<space> g s',     'Git - S',                            'Gstatus')
-  call shortcut#map('<space> g w',     'Git - Add f',                        'Gwrite')
-  call shortcut#map('<space> s s',     'Git - Get syntax group',             'call SynStack()')
-  call shortcut#map('<space> o #',     'Toggle - Highlight - Hex c',         'ColorToggle')
-  call shortcut#map('<space> o d',     'Toggle - Distraction-free w',        'Goyo')
-  call shortcut#map('<space> o <Tab>', 'Toggle - Indentlines',               'IndentLinesToggle')
-  call shortcut#map('<space> o N',     'Toggle - Line numbering (relative)', 'setlocal relativenumber!')
-  call shortcut#map('<space> o Q',     'Toggle - Automatic f',               'call shortcut#toggle_flag("formatoptions", "a", "t")')
-  call shortcut#map('<space> o ]',     'Toggle - Tag l',                     'TlistToggle')
-  call shortcut#map('<space> o c',     'Open - Color picker',                'call ColorPicker(0)')
-  call shortcut#map('<space> o n',     'Toggle - Line n',                    'setlocal number!')
-  call shortcut#map('<space> o p',     'Toggle - Paste v',                   'setlocal paste!')
-  call shortcut#map('<space> o q',     'Toggle - QuickFix w',                'QFix')
-  call shortcut#map('<space> o s',     'Open - Startify',                    'Startify')
-  call shortcut#map('<space> o s',     'Toggle - Spelling c',                'setlocal spell!')
-  call shortcut#map('<space> o u',     'Toggle - Edit history (undo tree)',  'UndotreeToggle')
-  call shortcut#map('<space> o z',     'Toggle - Code f',                    'setlocal foldenable!')
-  call shortcut#map('<space> s w',     'Strip W',                            'call StripTrailingWhitespace()')
-  call shortcut#map('<space> t :',     'Tab - For each l',                   'call feedkeys(":tabdo ", "n")')
-  call shortcut#map('<space> t < <',   'Tab - Move - F',                     'tabmove 0')
-  call shortcut#map('<space> t <',     'Tab - Move - L',                     'tabmove -')
-  call shortcut#map('<space> t > >',   'Tab - Move - L',                     'tabmove $')
-  call shortcut#map('<space> t >',     'Tab - Move - R',                     'tabmove +')
-  call shortcut#map('<space> t A',     'Tab - Open - L',                     '$tabnew')
-  call shortcut#map('<space> t D',     'Tab - Close - A',                    '%tabclose')
-  call shortcut#map('<space> t I',     'Tab - Open - F',                     '0tabnew')
-  call shortcut#map('<space> t M',     'Tab - Close - Only',                 'tabonly')
-  call shortcut#map('<space> t a',     'Tab - Open - New',                   'tabnew')
-  call shortcut#map('<space> t d',     'Tab - C',                            'tabclose')
-  call shortcut#map('<space> t i',     'Tab - Open - L',                     '-tabnew')
-  call shortcut#map('<space> t n',     'Tab - Focus - N',                    'tabnext')
-  call shortcut#map('<space> t p',     'Tab - Focus - P',                    'tabprevious')
-  call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unite -no-split tab')
-  call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
-  call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
-  call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
-  call shortcut#map('<space> s 8',     'Set tabwidth to 8',                  'set ts=8 sts=8 sw=8')
-  call shortcut#map('<space> s 4',     'Set tabwidth to 4',                  'set ts=4 sts=4 sw=4')
-  call shortcut#map('<space> s 2',     'Set tabwidth to 2',                  'set ts=2 sts=2 sw=2')
-  call shortcut#map('<space> T l',     'Todo - local',                       'e ~/todo.todo')
-  call shortcut#map('<space> T d',     'Todo - Mark as done',                'call <Plug>() TaskComplete()')
-  call shortcut#map('<space> T c',     'Todo - Cancel task',                 'call <Plug>() TaskCancel()')
-  call shortcut#map('<space> T a',     'Todo - Archive task',                'call <Plug>() TaskArchive()')
-  call shortcut#map('<space> T n',     'Todo - New task under',              'call <Plug>() NewTask(1)')
-  call shortcut#map('<space> T N',     'Todo - New task over',               'call <Plug>() NewTask(-1)')
-  call shortcut#map('<leader> a',      'Tagbar - Toggle',                    'nnoremap <silent><leader>a :TagbarToggle<cr>')
-  call shortcut#map('<leader> A',      'Tagbar - Show tag',                  'nnoremap <silent><leader>A :TagbarShowTag<cr>')
-  call shortcut#map('<space> N s',     'Nim - Server start',                 'NimServerStart')
-  call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
-  call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
-  call shortcut#map('<space> G s',     'Gists - Save',                       'Gist -p')
-  call shortcut#map('<space> G l',     'Gists - List',                       'Gist -l')
-endif
+call shortcut#map('<space> Z K',     'Zeal - Search for.',                 'ZvK')
+call shortcut#map('<space> Z d',     'Zeal - Select d',                    'ZvKD')
+call shortcut#map('<space> Z v',     'Zeal - Find visual s',               'ZvV')
+call shortcut#map('<space> Z w',     'Zeal - Find word under c',           'Zeavim')
+call shortcut#map('<space> b R',     'Buffer - Reload (force)',            'edit!')
+call shortcut#map('<space> b S',     'Buffer - Save as',                   'call feedkeys(":write ", "n")')
+call shortcut#map('<space> b W',     'Buffer - Save',                      'write')
+call shortcut#map('<space> b n',     'Buffer - Focus next',                'bnext')
+call shortcut#map('<space> b p',     'Buffer - Focus previous',            'bprevious')
+call shortcut#map('<space> b r',     'Buffer - R',                         'confirm edit')
+call shortcut#map('<space> b s',     'Buffer - Save as.',                  'call feedkeys(":saveas ", "n")')
+call shortcut#map('<space> c P',     'Comment - Yank - Paste a',           'normal! `[P')
+call shortcut#map('<space> c p',     'Comment - Yank - Paste b',           'normal! `]p')
+call shortcut#map('<space> g %',     'Git - D',                            'Gdiff')
+call shortcut#map('<space> g C',     'Git - Commit (amend)',               'Gcommit --amend')
+call shortcut#map('<space> g D',     'Git - Delete file (force)',          'Gremove!')
+call shortcut#map('<space> g H',     'Git - Hunk - H',                     'SignifyToggleHighlight')
+call shortcut#map('<space> g M',     'Git - Move file (force)',            'call feedkeys(":Gmove! ", "n")')
+call shortcut#map('<space> g R',     'Git - Revert file (force)',          'Gread!')
+call shortcut#map('<space> g W',     'Git - Add file (force)',             'Gwrite!')
+call shortcut#map('<space> g b',     'Git - B',                            'Gblame')
+call shortcut#map('<space> g c',     'Git - C',                            'Gcommit')
+call shortcut#map('<space> g d',     'Git - Delete f',                     'Gremove')
+call shortcut#map('<space> g e',     'Git - E',                            'Gedit')
+call shortcut#map('<space> g g',     'Git - G',                            'call feedkeys(":Ggrep ", "n")')
+call shortcut#map('<space> g h',     'Git - Hunk - S',                     'SignifyToggle')
+call shortcut#map('<space> g l',     'Git - L',                            'Gitv')
+call shortcut#map('<space> g m',     'Git - Move f',                       'call feedkeys(":Gmove ", "n")')
+call shortcut#map('<space> g r',     'Git - Revert f',                     'Gread')
+call shortcut#map('<space> g s',     'Git - S',                            'Gstatus')
+call shortcut#map('<space> g w',     'Git - Add f',                        'Gwrite')
+call shortcut#map('<space> s s',     'Git - Get syntax group',             'call SynStack()')
+call shortcut#map('<space> o #',     'Toggle - Highlight - Hex c',         'ColorToggle')
+call shortcut#map('<space> o d',     'Toggle - Distraction-free w',        'Goyo')
+call shortcut#map('<space> o <Tab>', 'Toggle - Indentlines',               'IndentLinesToggle')
+call shortcut#map('<space> o N',     'Toggle - Line numbering (relative)', 'setlocal relativenumber!')
+call shortcut#map('<space> o Q',     'Toggle - Automatic f',               'call shortcut#toggle_flag("formatoptions", "a", "t")')
+call shortcut#map('<space> o ]',     'Toggle - Tag l',                     'TlistToggle')
+call shortcut#map('<space> o c',     'Open - Color picker',                'call ColorPicker(0)')
+call shortcut#map('<space> o n',     'Toggle - Line n',                    'setlocal number!')
+call shortcut#map('<space> o p',     'Toggle - Paste v',                   'setlocal paste!')
+call shortcut#map('<space> o q',     'Toggle - QuickFix w',                'QFix')
+call shortcut#map('<space> o s',     'Open - Startify',                    'Startify')
+call shortcut#map('<space> o s',     'Toggle - Spelling c',                'setlocal spell!')
+call shortcut#map('<space> o u',     'Toggle - Edit history (undo tree)',  'UndotreeToggle')
+call shortcut#map('<space> o z',     'Toggle - Code f',                    'setlocal foldenable!')
+call shortcut#map('<space> s w',     'Strip W',                            'call StripTrailingWhitespace()')
+call shortcut#map('<space> t :',     'Tab - For each l',                   'call feedkeys(":tabdo ", "n")')
+call shortcut#map('<space> t < <',   'Tab - Move - F',                     'tabmove 0')
+call shortcut#map('<space> t <',     'Tab - Move - L',                     'tabmove -')
+call shortcut#map('<space> t > >',   'Tab - Move - L',                     'tabmove $')
+call shortcut#map('<space> t >',     'Tab - Move - R',                     'tabmove +')
+call shortcut#map('<space> t A',     'Tab - Open - L',                     '$tabnew')
+call shortcut#map('<space> t D',     'Tab - Close - A',                    '%tabclose')
+call shortcut#map('<space> t I',     'Tab - Open - F',                     '0tabnew')
+call shortcut#map('<space> t M',     'Tab - Close - Only',                 'tabonly')
+call shortcut#map('<space> t a',     'Tab - Open - New',                   'tabnew')
+call shortcut#map('<space> t d',     'Tab - C',                            'tabclose')
+call shortcut#map('<space> t i',     'Tab - Open - L',                     '-tabnew')
+call shortcut#map('<space> t n',     'Tab - Focus - N',                    'tabnext')
+call shortcut#map('<space> t p',     'Tab - Focus - P',                    'tabprevious')
+call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unite -no-split tab')
+call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
+call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
+call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
+call shortcut#map('<space> s 8',     'Set tabwidth to 8',                  'set ts=8 sts=8 sw=8')
+call shortcut#map('<space> s 4',     'Set tabwidth to 4',                  'set ts=4 sts=4 sw=4')
+call shortcut#map('<space> s 2',     'Set tabwidth to 2',                  'set ts=2 sts=2 sw=2')
+call shortcut#map('<space> T l',     'Todo - local',                       'e ~/todo.todo')
+call shortcut#map('<space> T d',     'Todo - Mark as done',                'call <Plug>() TaskComplete()')
+call shortcut#map('<space> T c',     'Todo - Cancel task',                 'call <Plug>() TaskCancel()')
+call shortcut#map('<space> T a',     'Todo - Archive task',                'call <Plug>() TaskArchive()')
+call shortcut#map('<space> T n',     'Todo - New task under',              'call <Plug>() NewTask(1)')
+call shortcut#map('<space> T N',     'Todo - New task over',               'call <Plug>() NewTask(-1)')
+call shortcut#map('<leader> a',      'Tagbar - Toggle',                    'nnoremap <silent><leader>a :TagbarToggle<cr>')
+call shortcut#map('<leader> A',      'Tagbar - Show tag',                  'nnoremap <silent><leader>A :TagbarShowTag<cr>')
+call shortcut#map('<space> N s',     'Nim - Server start',                 'NimServerStart')
+call shortcut#map('<space> N S',     'Nim - Server stop',                  'NimServerStop')
+call shortcut#map('<space> N d',     'Nim - Server debug',                 'NimServerDebug')
+call shortcut#map('<space> G s',     'Gists - Save',                       'Gist -p')
+call shortcut#map('<space> G l',     'Gists - List',                       'Gist -l')
+call shortcut#map('<space> r',       'Run',                                'call RunFile()')
 
 function! RunFile()
   let file = expand("%:p")

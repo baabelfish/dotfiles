@@ -1,0 +1,25 @@
+extends tex
+
+snippet bf "" !w
+\textbf{${VISUAL}$1}$0
+endsnippet
+
+snippet it "" !w
+\textit{${VISUAL}$1}$0
+endsnippet
+
+snippet turha "" !w
+name: $1
+params: $2
+return: $0
+endsnippet
+
+snippet begin "block"
+\begin{$1}
+    $2
+\end{$1}
+endsnippet
+
+snippet frac "fraction"
+\frac{$1}{$2}$0
+endsnippet

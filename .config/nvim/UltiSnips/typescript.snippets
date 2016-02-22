@@ -1,0 +1,44 @@
+snippet wat "" !w
+wat => console.log(wat)$0
+endsnippet
+
+snippet coe "" !w
+console.error(${VISUAL}$0);
+endsnippet
+
+snippet col "" !w
+console.log(${VISUAL}$0);
+endsnippet
+
+snippet if "" !w
+if (${1:true}) {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet else "" !w
+else {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet _ "" !w
+_(${VISUAL})
+    $0
+    .value()
+endsnippet
+
+snippet q "" !w
+$q((resolve, reject) => ${VISUAL}$0
+endsnippet
+
+snippet Q "" !w
+$q((resolve, reject) => {
+    ${VISUAL}$0
+});
+endsnippet
+
+snippet bb "" !w
+new Promise((resolve, reject) => {$0
+});
+endsnippet
