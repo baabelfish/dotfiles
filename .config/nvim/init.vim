@@ -176,7 +176,8 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+" Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
@@ -1226,7 +1227,22 @@ function! GConflict()
   endif
 endfunction
 
+function! RunInSplit(cmd)
+  new
+  exec "term " . a:cmd
+endfunction
+
 command! Gconflict :call GConflict()
-command! Grc :echom system("git rebase --continue")
+command! Grc :call RunInSplit("git rebase --continue")
+command! Gpsh :call RunInSplit("git push")
+
+" nnoremap <space>r :term nim c -r expand("%:p")<cr>
+nnoremap <space>r :call Run()<cr>
+
+function! Run()
+  let cmd = "nim c -r --threads:on " . expand("%:p")
+  new
+  exec ":term " . cmd
+endfunction
 
 " }}}
