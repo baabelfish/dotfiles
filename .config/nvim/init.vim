@@ -1247,6 +1247,6 @@ command! Gconflict :call GConflict()
 command! Grc :call RunInSplit("git rebase --continue")
 command! Gpsh :call RunInSplit("git push")
 
-nnoremap <space>r :call RunInSplit("nim c --threads:on -r" . expand("%:p"))<cr>
+nnoremap <space>r :call RunInSplit("nim c --verbosity:0 --threads:on -r " . expand("%:p"))<cr>
 
 " }}}
