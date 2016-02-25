@@ -235,8 +235,8 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
-Plug 'benekastah/neomake', { 'commit': 'e06f85e1651f5fe8841df3c85df1c51a891ccac4' }
-" Plug 'baabelfish/neomake'
+" Plug 'benekastah/neomake', { 'commit': 'e06f85e1651f5fe8841df3c85df1c51a891ccac4' }
+Plug 'baabelfish/neomake'
 " }}}
 " {{{ Lisps
 Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
