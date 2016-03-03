@@ -128,7 +128,7 @@ Plug 'groenewege/vim-less'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'lambdalisue/vim-manpager'
-Plug 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-pug'
 Plug 'KabbAmine/zeavim.vim'
 " }}}
 " {{{ Markup
@@ -319,7 +319,7 @@ set novisualbell noerrorbells
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
 set expandtab shiftround copyindent preserveindent
-set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0 lazyredraw
+set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0
 set undofile undolevels=1000 undoreload=10000 undodir=~/.config/nvim/undodir nobackup noswapfile
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
@@ -508,6 +508,8 @@ cnoremap <C-l> <right>
 nnoremap <C-m> <C-a>
 nnoremap K i<cr><Esc>k$
 nnoremap Y y$
+nnoremap gy "+y
+nnoremap gp "+p
 nnoremap ` '
 nnoremap ' `
 nnoremap gj j
