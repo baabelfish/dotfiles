@@ -97,8 +97,10 @@ Plug 'tommcdo/vim-express'
 Plug 'tommcdo/vim-kangaroo'
 Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-ninja-feet'
-Plug 'tomtom/tComment_vim'
+" Plug 'tomtom/tComment_vim'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
@@ -334,8 +336,10 @@ set omnifunc=syntaxcomplete#Complete
 
 autocmd!
 
-" Autocommands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show signs
+sign define dummy
+autocmd BufEnter * sign define dummy and autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+
 autocmd! FileType typescript setlocal completeopt+=preview
 autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd! FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -844,7 +848,7 @@ let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
-let g:signify_disable_by_default = 1
+let g:signify_disable_by_default = 0
 let g:signify_update_on_bufenter = 1
 let g:signify_sign_add               = '»'
 let g:signify_sign_change            = '∙'

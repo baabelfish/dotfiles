@@ -1,22 +1,3 @@
-" set rtp=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
-" set rtp+=/usr/share/go/misc/vim
-
-if has('vim_starting')
-endif
-
-if has('nvim')
-  runtime! plugin/python_setup.vim
-endif
-
-if !filereadable(expand('~/.vim/autoload/plug.vim'))
-  silent !mkdir ~/.vim/undodir
-  silent !mkdir -p ~/.vim/autoload
-  ![[ -n "$(pacman -Qs the_silver_searcher)" ]] || sudo pacman -S the_silver_searcher --noconfirm --needed  !
-  ![[ -n "$(pacman -Qs ctags)" ]] || !sudo pacman -S ctags --noconfirm --needed
-  !vim +'PlugUpdate | quit!'
-  quit!
-endif
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'mattn/gist-vim'
