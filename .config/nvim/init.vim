@@ -59,8 +59,10 @@ let g:indentLine_color_gui = '#303030'
 " {{{ Vim enhancements
 let g:move_key_modifier = 'A-C'
 Plug 'matze/vim-move'
-
 Plug 'AndrewRadev/sideways.vim'
+
+let g:localvimrc_ask = 0
+Plug 'embear/vim-localvimrc'
 Plug 'AndrewRadev/switch.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Valloric/MatchTagAlways'
@@ -94,6 +96,7 @@ Plug 'osyo-manga/vim-hopping'
 Plug 'sunaku/vim-shortcut'
 " Plug 't9md/vim-choosewin'
 Plug 'tommcdo/vim-express'
+Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-kangaroo'
 Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-ninja-feet'
@@ -154,6 +157,21 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
 Plug 'sgur/unite-qf'
+
+let g:ctrlsf_default_root = 'project'
+let g:ctrlsf_mapping = {
+      \ "open"    : ["<CR>", "o"],
+      \ "openb"   : "O",
+      \ "split"   : "<C-O>",
+      \ "tab"     : "t",
+      \ "tabb"    : "T",
+      \ "popen"   : "p",
+      \ "quit"    : "Q",
+      \ "next"    : "<C-J>",
+      \ "prev"    : "<C-K>",
+      \ "pquit"   : "Q",
+      \ "loclist" : "",
+      \ }
 Plug 'dyng/ctrlsf.vim'
 " Plug 'gabesoft/vim-ags'
 
@@ -199,6 +217,7 @@ Plug 'baabelfish/nvim-nim'
 " {{{ Language support
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'dag/vim-fish'
+Plug 'exu/pgsql.vim'
 Plug 'ElmCast/elm-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'xolox/vim-lua-ftplugin'
@@ -216,6 +235,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ElmCast/elm-vim'
 " }}}
 " {{{ Misc
+" Plug 'Konfekt/FastFold'
+Plug 'kopischke/vim-stay'
 Plug 'irrationalistic/vim-tasks'
 Plug 'kana/vim-vspec'
 Plug 'jaxbot/github-issues.vim'
@@ -347,15 +368,20 @@ autocmd! FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd! FileType plaintex setlocal filetype=tex
 autocmd! FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd! BufRead,BufNewFile *.md setlocal textwidth=80
-autocmd! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+autocmd! FileType java setlocal omnifunc=javacomplete#Complete
+autocmd! FileType java nmap <buffer><F4> <Plug>(JavaComplete-Imports-AddSmart)
+autocmd! FileType java nmap <buffer><F5> <Plug>(JavaComplete-Imports-Add)
+autocmd! FileType java nmap <buffer><F6> <Plug>(JavaComplete-Imports-AddMissing)
+autocmd! FileType java nmap <buffer><F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
+autocmd! BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd! BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.ts,*.hpp call StripTrailingWhitespace()
 autocmd! BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd! BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
 
 autocmd! FileType cpp setlocal nowrap
 autocmd! FileType ejs setlocal filetype=typescript
+autocmd! FileType sql setlocal syntax=typescript
 autocmd! FileType fish setlocal filetype=sh
 autocmd! FileType html nnoremap <buffer><leader>F :%!tidy -q -i --show-errors  0 -xml<cr>
 autocmd! FileType html setlocal indentkeys-=*<Return> " Fix html indentation
@@ -373,9 +399,7 @@ autocmd! InsertLeave * set nopaste
 " autocmd VimEnter * RainbowParenthesesToggle
 autocmd! VimResized * exe "normal! \<c-w>="
 
-autocmd! BufEnter * Neomake
-autocmd! BufWritePost * Neomake
-autocmd! CursorHold * Neomake
+autocmd! BufEnter,BufWritePost * Neomake
 
 " }}}
 " {{{ Shortcuts
@@ -850,10 +874,10 @@ let g:sexp_enable_insert_mode_mappings = 0
 
 let g:signify_disable_by_default = 0
 let g:signify_update_on_bufenter = 1
-let g:signify_sign_add               = '»'
-let g:signify_sign_change            = '∙'
-let g:signify_sign_delete            = '†'
-let g:signify_sign_delete_first_line = '»'
+let g:signify_sign_add               = '․'
+let g:signify_sign_change            = '․'
+let g:signify_sign_delete            = '․'
+let g:signify_sign_delete_first_line = '․'
 let g:signify_sign_overwrite = 0
 
 let g:startify_bookmarks = [ '$MYVIMRC' ]
@@ -903,8 +927,11 @@ let g:choosewin_color_other = {
     \ }
 
 let g:switch_mapping ='S'
+let g:switch_reverse_mapping ='<A-S>'
 let g:switch_custom_definitions =
       \ [
+      \  ['div', 'span' ],
+      \  ['ng-show', 'ng-hide', 'ng-if' ],
       \  ['yes', 'no' ],
       \  ['ng-show', 'ng-hide' ],
       \  ['horizontal', 'vertical' ],
@@ -945,7 +972,7 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsListSnippets="<c-r><tab>"
 let g:UltiSnipsNoPythonWarning = 1
-let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
+let g:UltiSnipsSnippetDirectories = ["ultisnips"]
 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_start_insert = 1

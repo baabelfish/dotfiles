@@ -41,7 +41,7 @@ bindsym $mod+Shift+t exec --no-startup-id termite --title "float" -e fish
 bindsym $mod+p exec --no-startup-id rofi -show run
 bindsym $mod+space exec --no-startup-id ~/.xutils/menu.sh
 bindsym $mod+Shift+p exec --no-startup-id rofi -show window
-bindsym $mod+Control+p exec --no-startup-id ~/.xutils/pass.sh
+bindsym $mod+Control+p exec ~/.xutils/pass.sh
 bindsym $mod+Shift+Control+p exec --no-startup-id "zenity --color-selection | cut -c 1-3,6-7,10-11 | tr -d '\n' | xclip"
 bindsym $mod+i move container to output left
 bindsym $mod+o move container to output right
