@@ -360,10 +360,6 @@ set omnifunc=syntaxcomplete#Complete
 
 autocmd!
 
-" Always show signs
-sign define dummy
-autocmd BufEnter * sign define dummy and autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-
 autocmd! FileType typescript setlocal completeopt+=preview
 autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd! FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -632,7 +628,7 @@ function! MyFoldText()
     let onetab = strpart('          ', 0, &tabstop)
     let line = substitute(line, '\t', onetab, 'g')
     let line = '⇒ ' . strpart(line, 5, windowwidth - 2 -len(foldedlinecount))
-    let lineright = foldedlinecount . ' '
+    let lineright = foldedlinecount . '  '
     let fillcharcount = windowwidth - len(line) - len(lineright) + 6
     return line . repeat(" ", fillcharcount) . lineright
 endfunction
@@ -1297,5 +1293,9 @@ function! Run()
 endfunction
 
 nnoremap <space>r :call Run()<cr>
+
+" Always show signs
+sign define dummy
+autocmd BufEnter * autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
