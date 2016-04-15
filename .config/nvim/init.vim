@@ -217,6 +217,7 @@ Plug 'baabelfish/nvim-nim'
 " }}}
 " {{{ Language support
 Plug 'artur-shaik/vim-javacomplete2'
+" Plug 'flowtype/vim-flow'
 Plug 'dag/vim-fish'
 Plug 'exu/pgsql.vim'
 Plug 'ElmCast/elm-vim'
