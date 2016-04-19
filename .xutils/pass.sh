@@ -2,7 +2,7 @@
 IFS=$'\n'
 
 lpass ls
-[[ $? != "0" ]] && notify-send "User not logged in" && exit 1
+[[ $? != "0" ]] && lpass login $LPASSUSER
 data=($(lpass show --color=never $(lpass ls --color=never | rofi -dmenu -i -p "» " | sed -rn 's/^.* \[id: (.*)\]/\1/p')))
 [[ $? != "0" ]] && exit 1
 if [[ ! -e "$data" ]]; then

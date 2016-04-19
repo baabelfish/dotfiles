@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "sourceMap": true
+    },
+    "files": [
+        "typings/tsd.d.ts",
+        "phaserts/phaser.d.ts",
+        "app.ts"
+    ]
+}

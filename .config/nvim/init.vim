@@ -62,7 +62,7 @@ Plug 'matze/vim-move'
 Plug 'AndrewRadev/sideways.vim'
 
 let g:localvimrc_ask = 0
-Plug 'embear/vim-localvimrc'
+" Plug 'embear/vim-localvimrc'
 Plug 'AndrewRadev/switch.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Valloric/MatchTagAlways'
@@ -104,7 +104,7 @@ Plug 'tommcdo/vim-ninja-feet'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-projectionist'
+" Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
@@ -324,6 +324,7 @@ set list listchars=tab:→\ ,extends:▸,precedes:◂,nbsp:␣
 set magic
 set modelines=0
 set mouse=
+set noai
 set foldmethod=indent foldlevel=999
 set noshowmode
 set nospell
@@ -347,6 +348,7 @@ set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0
 set undofile undolevels=1000 undoreload=10000 undodir=~/.config/nvim/undodir nobackup noswapfile
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
+set winminheight=0
 set wildignore+=*/node_modules/*,*/bower_modules/*,*/tmp/*,*.so,*.swp,*.zip,*/doxygen/*,*.o,*.pyc,*.aux,*.toc,*.tar,*.gz,*.svg,*.mdr,*.mdzip,*.blg,*.bbl,*.out,*.log,*.zip,*.pdf,*.bst,*.jpeg,*.jpg,*.png,*.a,*.so,*.exe,*.dll,*.bak,*.,*.class,*.meta,*.lock,*.orig,*.jar,*/hg/*,git/*,*/bzr/*
 set wildmenu wildignorecase wildmode=longest:full,full
 set wrapmargin=0 nowrap linebreak breakat+=" "
@@ -1118,6 +1120,8 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.o$',
       \ '.obj$',
       \ '.so$',
+      \ '.png$',
+      \ '.jpg$',
       \ '.lib$',
       \ '.jar$',
       \ '.pdf$'
@@ -1281,6 +1285,16 @@ command! Gconflict :call GConflict()
 command! Grc :call RunInSplit("git rebase --continue")
 command! Gpsh :call RunInSplit("git push")
 
-nnoremap <space>r :call RunInSplit("nim c --verbosity:0 --threads:on -r " . expand("%:p"))<cr>
+function! Run()
+    if &ft == "nim"
+        call RunInSplit("nim c --verbosity:0 --threads:on -r " . expand("%:p"))
+    elseif &ft == "typescript"
+        call RunInSplit("tsc")
+    else
+        echo "Nope."
+    endif
+endfunction
+
+nnoremap <space>r :call Run()<cr>
 
 " }}}
