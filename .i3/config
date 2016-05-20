@@ -263,7 +263,7 @@ bindsym $mod+Mod5+h exec --no-startup-id urxvtc -title i3-launch-htop -e htop
 bindsym $mod+Mod5+c exec --no-startup-id $BROWSER
 bindsym $mod+Mod5+s exec --no-startup-id spotify
 bindsym $mod+Mod5+Shift+s exec --no-startup-id steam
-
+bindsym $mod+Mod5+1 exec --no-startup-id ~/.xutils/hodorify.sh
 # Lights
 bindsym $mod+Home exec --no-startup-id ~/.xutils/myhue/menu.sh
 bindsym $mod+KP_1 exec --no-startup-id ~/.xutils/myhue/command.sh 1 on
