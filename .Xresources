@@ -97,10 +97,10 @@ rofi.font:                           Termsyn 9
 rofi.fg:                             #bfbfbf
 rofi.bg:                             #121212
 rofi.color-enabled:                  false
-! rofi.color-normal:                   #101010,#ff0000,#101010,#101010
-! rofi.color-urgent:                   #101010,#ff0000,#101010,#ff0000
-! rofi.color-active:                   #101010,#ff0000,#101010,#ff0000
-! rofi.color-window:                   #101010,#ff0000
+rofi.color-normal:                   #202020,#777777,#202020,#252525,#88ff88
+rofi.color-urgent:                   #202020,#777777,#202020,#ff0000
+rofi.color-active:                   #202020,#777777,#202020,#ff0000
+rofi.color-window:                   #202020,#777777
 rofi.fg-active:                      #5f5f5f
 rofi.fg-urgent:                      #DC322F
 rofi.hlfg-active:                    #5f5f5f
@@ -176,7 +176,6 @@ rofi.kb-row-first:                   Home,KP_Home
 rofi.kb-row-last:                    End,KP_End
 rofi.kb-row-select:                  Control+space
 rofi.kb-cancel:                      Escape,SuperL+q
-rofi.kb-cancel:                      Escape
 ! rofi.key-window:                     
 ! rofi.key-run:                        
 ! rofi.key-ssh:                        
