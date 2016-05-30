@@ -65,7 +65,7 @@ let g:localvimrc_ask = 0
 " Plug 'embear/vim-localvimrc'
 Plug 'AndrewRadev/switch.vim'
 Plug 'PeterRincker/vim-argumentative'
-Plug 'Valloric/MatchTagAlways'
+" Plug 'Valloric/MatchTagAlways'
 Plug 'baabelfish/vim-dispatch'
 Plug 'baabelfish/vim-vertigo'
 Plug 'baabelfish/teema'
@@ -185,13 +185,11 @@ Plug 'tsukkee/unite-help'
 " {{{ New
 " }}}
 " {{{ IDE features
-" Plug 'SirVer/ultisnips'
 Plug 'idanarye/vim-vebugger'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-startify'
 
 " imap <C-@>     <Plug>(neosnippet_expand_or_jump)
 " smap <C-@>     <Plug>(neosnippet_expand_or_jump)
@@ -202,7 +200,7 @@ Plug 'mhinz/vim-startify'
 "   set conceallevel=2 concealcursor=niv
 " endif
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
@@ -217,7 +215,6 @@ Plug 'baabelfish/nvim-nim'
 " }}}
 " {{{ Language support
 Plug 'artur-shaik/vim-javacomplete2'
-" Plug 'flowtype/vim-flow'
 Plug 'dag/vim-fish'
 Plug 'exu/pgsql.vim'
 Plug 'ElmCast/elm-vim'
