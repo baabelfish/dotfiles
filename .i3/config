@@ -212,6 +212,7 @@ bindsym $mod+Shift+F11 exec --no-startup-id urxvt -T float -e zsh -c "vim ~/.Xde
 # Window orientations
 for_window [class="^Amnesia$"] floating enable
 for_window [class="^Awesomenauts$"] floating enable
+for_window [class="^qemu-pebble$"] floating enable
 for_window [class="^Braid$"] floating enable
 for_window [class="^Closure$"] floating enable
 for_window [class="^Defcon$"] floating enable

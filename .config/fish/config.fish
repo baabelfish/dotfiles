@@ -373,6 +373,8 @@ function fuck -d 'Correct your previous console command'
     end
 end
 
+set -gx PATH '/home/bbl/pebble-dev/pebble-sdk-4.2-linux64/bin' $PATH
+
 # Essentials
 fish_vi_mode
 
