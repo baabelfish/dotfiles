@@ -40,13 +40,15 @@ autocutsel -selection PRIMARY -fork&
 if [[ "$(hostname)" == "edge" ]]; then
     [[ -e /usr/bin/xautolock ]] && xautolock -time 10 -locker "~/.xutils/lock.sh"&
 fi
-    xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1 &
-    xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2 &
-    xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 8 200 &
-    xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 8 6 7 4 5 &
-    xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 0 &
-    xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 8 50 &
-    xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
+
+xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1 &
+xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2 &
+xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 8 200 &
+xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 8 6 7 4 5 &
+xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 0 &
+xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 8 50 &
+xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
+xinput --disable 12
 
 wmname LG3D
 # eval "sleep 8 && transset-df -n i3bar 0.85"&

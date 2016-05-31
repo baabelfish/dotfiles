@@ -34,14 +34,14 @@ function fish_vi_mode
             set my_vi_indicator $fish_bind_mode
         end
 
-        if [ $last_status != 0 ]
-            set_color f00
-            set_color -b 433
-            printf ' %s ' $last_status
-            set_color 433
-            set_color -b 333
-            printf ''
-        end
+        # if [ $last_status != 0 ]
+        #     set_color f00
+        #     set_color -b 433
+        #     printf ' %s ' $last_status
+        #     set_color 433
+        #     set_color -b 333
+        #     printf ''
+        # end
 
 
         set_color ccc
@@ -57,23 +57,24 @@ function fish_vi_mode
         printf ' '
         set_color normal
     end
-end
 
-function fish_right_prompt
-    set_color 222
-    printf ''
+    # function fish_right_prompt
+    #     set_color 222
+    #     printf ''
 
-    set_color -b 222
-    set_color 3e3
-    printf '%s ' (__fish_git_prompt)
+    #     set_color -b 222
+    #     set_color 3e3
+    #     printf '%s ' (__fish_git_prompt)
 
-    set_color 333
-    printf ''
+    #     set_color 333
+    #     printf ''
 
-    set_color -b 333
-    set_color ddd
-    printf ' %s ' (pwd)
-    set_color normal
+    #     set_color -b 333
+    #     set_color ddd
+    #     printf ' %s ' (pwd)
+    #     set_color normal
+    # end
+
 end
 
 function fish_greeting
@@ -269,7 +270,7 @@ end
 set -g fish_key_bindings my_vi_key_bindings
 
 # Sources
-. ~/.config/fish/plugins/fishmarks/marks.fish
+# . ~/.config/fish/plugins/fishmarks/marks.fish
 alias M save_bookmark
 alias m go_to_bookmark
 alias md delete_bookmark
@@ -361,6 +362,8 @@ if test -e "$HOME/.local.fish"
     source "$HOME/.local.fish"
 end
 
+set -gx PATH "/home/bbl/pebble-dev/pebble-sdk-4.2-linux64/bin" $PATH
+
 function fuck -d 'Correct your previous console command'
     set -l exit_code $status
     set -l eval_script (mktemp 2>/dev/null ; or mktemp -t 'thefuck')
@@ -373,8 +376,5 @@ function fuck -d 'Correct your previous console command'
     end
 end
 
-set -gx PATH '/home/bbl/pebble-dev/pebble-sdk-4.2-linux64/bin' $PATH
-
 # Essentials
-fish_vi_mode
-
+# fish_vi_mode
