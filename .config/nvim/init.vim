@@ -38,7 +38,7 @@ Plug 'baabelfish/indent-detector.vim'
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
-" Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim'
 " Plug 'scrooloose/syntastic'
 " Plug 'myint/syntastic-extras'
 " Plug 'airblade/vim-gitgutter'
@@ -200,7 +200,7 @@ Plug 'majutsushi/tagbar'
 "   set conceallevel=2 concealcursor=niv
 " endif
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-" Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'cd ~/.config/nvim/plugged/YouCompleteMe && git submodule update --init --recursive && python2 install.py' }
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
