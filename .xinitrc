@@ -12,7 +12,6 @@ export VDPAU_NVIDIA_NO_OVERLAY=1
 export _JAVA_OPTIONS='-Xmx2048m -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # xrandr --output LVDS1 --primary
-autocutsel -selection PRIMARY -fork &
 setxkbmap -layout fi
 setxkbmap -option caps:escape
 xmodmap ~/.xbqwerty
@@ -22,8 +21,9 @@ xsetroot -cursor_name left_ptr
 xset -dpms
 xset s off
 
-autocutsel -fork&
-autocutsel -selection PRIMARY -fork&
+autocutsel -f -s PRIMARY
+autocutsel -f -s CLIPBOARD
+autocutsel -f -s SECONDARY
 [[ -e /usr/bin/start-pulseaudio-x11 ]] && /usr/bin/start-pulseaudio-x11 &
 [[ -e /usr/bin/unclutter ]] && unclutter -idle 2 -noevents&
 [[ -e /usr/bin/udiskie ]] && udiskie&
@@ -48,7 +48,7 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 8 6 7 4
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 0 &
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Timeout" 8 50 &
 xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 8 0 &
-xinput --disable 12
+xinput --disable "$(xinput|grep TouchPad|cut -d'=' -f2|cut -f1)"
 
 wmname LG3D
 # eval "sleep 8 && transset-df -n i3bar 0.85"&

@@ -38,7 +38,7 @@ Plug 'baabelfish/indent-detector.vim'
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete.nvim'
 " Plug 'scrooloose/syntastic'
 " Plug 'myint/syntastic-extras'
 " Plug 'airblade/vim-gitgutter'
@@ -390,6 +390,7 @@ autocmd! FileType typescript setlocal makeprg=tscp
 autocmd! FileType nim setlocal ts=4 sts=4 sw=4
 autocmd! FileType jade setlocal ts=2 sts=2 sw=2
 autocmd! FileType vim setlocal foldmethod=marker foldlevel=0 foldtext=MyFoldText()
+autocmd! BufNewFile,BufRead *.vue setlocal filetype=html
 
 autocmd! InsertLeave * set nopaste
 " autocmd Syntax * RainbowParanthesesLoadRound

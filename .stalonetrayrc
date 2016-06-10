@@ -5,7 +5,7 @@ geometry 1x1-0-0
 fuzzy_edges 0
 tint_color "#999999"
 tint_level 2
-window_strut top
+window_strut bottom
 background "#000000"
 kludges force_icons_size
 grow_gravity SE
