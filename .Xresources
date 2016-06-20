@@ -89,18 +89,18 @@ URxvt.background: [95]#101010
 
 ! Rofi
 rofi.modi:                           window,run,ssh
-rofi.opacity:                        100
-rofi.width:                          26
-rofi.lines:                          10
+rofi.opacity:                        93
+rofi.width:                          40
+rofi.lines:                          26
 rofi.columns:                        1
 rofi.font:                           Termsyn 9
-rofi.fg:                             #bfbfbf
+rofi.fg:                             #bfbfcf
 rofi.bg:                             #121212
 rofi.color-enabled:                  false
-rofi.color-normal:                   #202020,#777777,#202020,#252525,#88ff88
-rofi.color-urgent:                   #202020,#777777,#202020,#ff0000
-rofi.color-active:                   #202020,#777777,#202020,#ff0000
-rofi.color-window:                   #202020,#777777
+rofi.color-normal:                   #202020,#999999,#202020,#252525,#88ff88
+rofi.color-urgent:                   #202020,#999999,#202020,#333333
+rofi.color-active:                   #202020,#999999,#202020,#333333
+rofi.color-window:                   #202020,#999999
 rofi.fg-active:                      #5f5f5f
 rofi.fg-urgent:                      #DC322F
 rofi.hlfg-active:                    #5f5f5f
@@ -113,8 +113,8 @@ rofi.bgalt:                          #101010
 rofi.hlfg:                           #ffffff
 rofi.hlbg:                           #101010
 rofi.bc:                             #333333
-rofi.bw:                             1
-rofi.location:                       3
+rofi.bw:                             0
+rofi.location:                       0
 rofi.padding:                        2
 rofi.yoffset:                        0
 rofi.xoffset:                        0
@@ -166,6 +166,8 @@ rofi.kb-custom-7:                    Alt+7
 rofi.kb-custom-8:                    Alt+8
 rofi.kb-custom-9:                    Alt+9
 rofi.kb-row-left:                    Control+Page_Up
+rofi.scroll-method:                  1
+rofi.scrollbar-width:                2
 rofi.kb-row-right:                   Control+Page_Down
 rofi.kb-row-up:                      Up,Control+k,Shift+Tab
 rofi.kb-row-down:                    Down,Control+j

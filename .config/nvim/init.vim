@@ -373,6 +373,7 @@ autocmd! FileType java nmap <buffer><F7> <Plug>(JavaComplete-Imports-RemoveUnuse
 
 autocmd! BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd! BufRead,BufNewFile config setlocal ft=cfg
+autocmd! BufRead,BufNewFile *.conf setlocal ft=cfg
 autocmd! BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.ts,*.hpp call StripTrailingWhitespace()
 autocmd! BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd! BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
