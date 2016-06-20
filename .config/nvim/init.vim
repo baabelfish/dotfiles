@@ -187,7 +187,7 @@ Plug 'tsukkee/unite-help'
 " {{{ IDE features
 Plug 'idanarye/vim-vebugger'
 Plug 'SirVer/ultisnips'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
 
@@ -372,6 +372,7 @@ autocmd! FileType java nmap <buffer><F6> <Plug>(JavaComplete-Imports-AddMissing)
 autocmd! FileType java nmap <buffer><F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 autocmd! BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd! BufRead,BufNewFile config setlocal ft=cfg
 autocmd! BufWritePre *.hh,*.m,*.h,*.c,*.mm,*.cpp,*.ts,*.hpp call StripTrailingWhitespace()
 autocmd! BufWritePre *.java,*.php,*.feature call StripTrailingWhitespace()
 autocmd! BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml call StripTrailingWhitespace()
@@ -774,7 +775,7 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline_exclude_preview = 0
 let g:airline_powerline_fonts=1
-let g:airline_theme='powerlineish'
+let g:airline_theme='ubaryd'
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#trailing_format = '%s'
@@ -928,18 +929,20 @@ let g:switch_mapping ='S'
 let g:switch_reverse_mapping ='<A-S>'
 let g:switch_custom_definitions =
       \ [
-      \  ['div', 'span' ],
-      \  ['ng-show', 'ng-hide', 'ng-if' ],
-      \  ['yes', 'no' ],
-      \  ['ng-show', 'ng-hide' ],
-      \  ['horizontal', 'vertical' ],
-      \  ['resolve', 'reject' ],
-      \  ['on', 'off' ],
       \  ['active', 'passive' ],
-      \  ['start', 'stop' ],
       \  ['begin', 'end' ],
+      \  ['div', 'span' ],
+      \  ['filter', 'reject' ],
       \  ['float', 'double' ],
-      \  ['up', 'right', 'left', 'down' ]
+      \  ['horizontal', 'vertical' ],
+      \  ['ng-show', 'ng-hide' ],
+      \  ['ng-show', 'ng-hide', 'ng-if' ],
+      \  ['on', 'off' ],
+      \  ['resolve', 'reject' ],
+      \  ['some', 'every' ],
+      \  ['start', 'stop' ],
+      \  ['up', 'right', 'left', 'down' ],
+      \  ['yes', 'no' ],
       \ ]
 
 let g:tagbar_left = 0
@@ -1024,6 +1027,8 @@ let delimitMate_expand_space = 1
 " {{{ Colorscheme
 
 silent! colorscheme teema
+hi Normal guifg=#d0d0d0 guibg=none
+hi VertSplit guifg=#1b1b1b guibg=none
 
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,chai,underscore'
 
@@ -1284,6 +1289,8 @@ command! Gpsh :call RunInSplit("git push")
 function! Run()
     if &ft == "nim"
         call RunInSplit("nim c --verbosity:0 --threads:on -r " . expand("%:p"))
+    elseif &ft == "python"
+        call RunInSplit(expand("%"))
     elseif &ft == "typescript"
         call RunInSplit("tsc")
     else
