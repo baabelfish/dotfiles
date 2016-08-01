@@ -1,3 +1,9 @@
+if test -r /etc/locale.conf
+    while read -l kv
+        set -gx (string split "=" -- $kv)
+    end </etc/locale.conf
+end
+
 if test -e "$HOME/.config/fish/env.fish"
     source "$HOME/.config/fish/env.fish"
 end
@@ -6,7 +12,7 @@ end
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
 set __fish_git_prompt_showupstream 'yes'
-# set __fish_git_prompt_color_branch yellow
+set __fish_git_prompt_color_branch yellow
 
 # Status Chars
 set __fish_git_prompt_char_dirtystate '⚡'
@@ -16,9 +22,11 @@ set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
 function fish_prompt
+    # Ei toimi enää
+    # printf ' '
     set last_status $status
-    set vim_ind_color '222222'
-    set vim_ind_color_fg '00ff00'
+    set vim_ind_color '222'
+    set vim_ind_color_fg '0f0'
     if [ $fish_bind_mode = 'default' ]
         set my_vi_indicator 'N'
     else if [ $fish_bind_mode = 'visual' ]
@@ -32,49 +40,42 @@ function fish_prompt
     else
         set my_vi_indicator $fish_bind_mode
     end
-
     if [ $last_status != 0 ]
         set_color f00
         set_color -b 433
         printf ' %s ' $last_status
         set_color 433
         set_color -b 333
-        printf ''
     end
-
-
     set_color ccc
     set_color -b 333
     printf ' %s ' (hostname)
     set_color 333
     set_color -b $vim_ind_color
-    printf ''
     set_color $vim_ind_color_fg
     printf ' %s ' $my_vi_indicator
     set_color normal
     set_color $vim_ind_color
-    printf ' '
-    set_color normal
+    printf ' '
+#     set_color normal
 end
 
 function fish_mode_prompt
 end
 
 function fish_right_prompt
+#     Ei toimi
+#     printf ''
     set_color 222
-    printf ''
-
     set_color -b 222
     set_color 3e3
-    printf '%s ' (__fish_git_prompt)
-
-    set_color 333
-    printf ''
-
-    set_color -b 333
-    set_color ddd
-    printf ' %s ' (pwd)
-    set_color normal
+    # printf '%s ' (__fish_git_prompt)
+    # set_color 333
+    # printf ' '
+    # set_color -b 333
+    # set_color ddd
+    # printf ' %s ' (pwd)
+    # set_color normal
 end
 
 function fish_greeting
@@ -377,4 +378,4 @@ function fuck -d 'Correct your previous console command'
 end
 
 # Essentials
-# fish_vi_mode
+fish_vi_key_bindings
