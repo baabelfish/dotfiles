@@ -21,7 +21,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'reedes/vim-wordy'
 Plug 'tkhren/vim-fake'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'baabelfish/indent-detector.vim'
+Plug 'baabelfish/vimjobs'
 
 " Plug 'luochen1990/rainbow'
 " let g:rainbow_active = 1
@@ -71,6 +71,7 @@ Plug 'baabelfish/vim-vertigo'
 Plug 'baabelfish/teema'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'metakirby5/codi.vim'
 Plug 'chrisbra/NrrwRgn' " ?
 Plug 'christoomey/vim-sort-motion'
 Plug 'flazz/vim-colorschemes'
@@ -127,6 +128,7 @@ let g:tsuquyomi_disable_quickfix = 1
 Plug 'Quramy/tsuquyomi'
 
 Plug 'leafgarland/typescript-vim'
+Plug 'mhartington/vim-typings'
 Plug 'othree/javascript-libraries-syntax.vim'
 " }}}
 " {{{ Documentation
@@ -155,7 +157,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
-Plug 'Shougo/unite-session'
 Plug 'Shougo/unite.vim'
 Plug 'sgur/unite-qf'
 
@@ -186,7 +187,15 @@ Plug 'tsukkee/unite-help'
 " }}}
 " {{{ IDE features
 Plug 'idanarye/vim-vebugger'
+
+let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsListSnippets="<C-S-Space>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsNoPythonWarning = 1
+" let g:UltiSnipsSnippetsDir = "~/.config/nvim/ultisnips"
 Plug 'SirVer/ultisnips'
+
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -214,6 +223,8 @@ Plug 'baabelfish/nvim-nim'
 " Plug 'zah/nim.vim'
 " }}}
 " {{{ Language support
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'dag/vim-fish'
 Plug 'exu/pgsql.vim'
@@ -230,12 +241,10 @@ Plug 'rgrinberg/vim-ocaml'
 Plug 'bps/vim-textobj-python'
 Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ElmCast/elm-vim'
 " }}}
 " {{{ Misc
 " Plug 'Konfekt/FastFold'
-Plug 'kopischke/vim-stay'
 Plug 'irrationalistic/vim-tasks'
 Plug 'kana/vim-vspec'
 Plug 'jaxbot/github-issues.vim'
@@ -258,8 +267,11 @@ let g:neomake_message_sign = {
     \ 'text': '➤',
     \ 'texthl': 'SyntasticMsgSign',
     \ }
+let g:neomake_javascript_enabled_makers = []
+Plug 'neomake/neomake'
+" Plug 'flowtype/vim-flow'
 " Plug 'benekastah/neomake', { 'commit': 'e06f85e1651f5fe8841df3c85df1c51a891ccac4' }
-Plug 'baabelfish/neomake'
+" Plug 'baabelfish/neomake'
 " }}}
 " {{{ Lisps
 Plug 'Raimondi/delimitMate', { 'for': 'clojure' }
@@ -289,16 +301,16 @@ call plug#end()
 filetype plugin indent on
 
 if has("multi_byte") && has("starting")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
-  " set encoding=utf-8
-  setglobal fileencoding=utf-8
-  scriptencoding utf-8
+if &termencoding == ""
+let &termencoding = &encoding
+endif
+" set encoding=utf-8
+setglobal fileencoding=utf-8
+scriptencoding utf-8
 endif
 
 if &shell =~# 'fish$'
-  set shell=/bin/zsh
+set shell=/bin/zsh
 endif
 
 set autoread
@@ -340,10 +352,12 @@ set splitbelow splitright
 set suffixesadd=.java,.py,.cpp,.hpp,.html,.js,.hh,.h,.c,.cc,.sh,.md,.json
 set synmaxcol=1024
 set novisualbell noerrorbells
+set termguicolors
 set tildeop
 set titlestring=Vim:\ %f\ %h%r%m
 set expandtab shiftround copyindent preserveindent
-set ts=4 sts=4 sw=4 ttimeout ttimeoutlen=0
+set ts=4 sts=4 sw=4
+set ttimeout ttimeoutlen=0
 set undofile undolevels=1000 undoreload=10000 undodir=~/.config/nvim/undodir nobackup noswapfile
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
@@ -458,7 +472,7 @@ nnoremap <silent><A-f> :call Fullscreen()<cr>:echo ""<cr>
 nnoremap <silent><space>C :call ToggleConceal()<cr>
 
 " Plugin related
-nnoremap <silent><C-@> :call Shortcut_discover()<cr>
+nnoremap <silent><C-Space> :call Shortcut_discover()<cr>
 snoremap <silent><C-^> <Plug>(TsuquyomiReferences)
 nnoremap <silent><F5> :UndotreeToggle<cr>
 nnoremap <silent><c-b> :w\|Make<cr>
@@ -606,6 +620,7 @@ nnoremap <leader>M :.move
 nnoremap <leader>c :copy.<left><left><left><left><left>
 vnoremap <leader>c :copy.
 nnoremap <leader>C :.copy
+nnoremap <BS> <C-^>
 
 " From others
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -906,7 +921,7 @@ let g:syntastic_cpp_include_dirs = [ '/usr/include/qt/QtCore', '/usr/include/qt/
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_error_symbol = "✗"
-let g:syntastic_javascript_checkers = ['jslint', 'jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html', 'ts', 'tsc', 'typescript'] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_tex_checkers = ['lacheck']
@@ -931,6 +946,7 @@ let g:switch_reverse_mapping ='<A-S>'
 let g:switch_custom_definitions =
       \ [
       \  ['active', 'passive' ],
+      \  ['var', 'let', 'const' ],
       \  ['begin', 'end' ],
       \  ['div', 'span' ],
       \  ['filter', 'reject' ],
@@ -969,13 +985,6 @@ let g:indentLine_char = '│'
 
 let g:omni_sql_no_default_maps = 1
 
-let g:UltiSnipsExpandTrigger="<C-@>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsListSnippets="<c-r><tab>"
-let g:UltiSnipsNoPythonWarning = 1
-let g:UltiSnipsSnippetDirectories = ["ultisnips"]
-
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '» '
@@ -1003,6 +1012,8 @@ let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_server_log_level = 'error'
+let g:ycm_server_log_level = 'error'
+let g:ycm_use_ultisnips_completer = 1
 let g:ycm_filetype_blacklist = {
       \ 'markdown' : 1,
       \ 'notes' : 1,
@@ -1199,9 +1210,9 @@ call shortcut#map('<space> t t',     'Tab - Find and f',                   'Unit
 call shortcut#map('<space> u e',     'UltiSnips - E',                      'UltiSnipsEdit')
 call shortcut#map('<space>no',       'NERDTreeToggle - Open',              'NERDTreeToggle | wincmd = | wincmd p')
 call shortcut#map('<space>nf',       'NERDTreeToggle - Find file',         'NERDTree | wincmd = | wincmd p | NERDTreeFind | wincmd = | wincmd p')
-call shortcut#map('<space> s 8',     'Set tabwidth to 8',                  'set ts=8 sts=8 sw=8')
-call shortcut#map('<space> s 4',     'Set tabwidth to 4',                  'set ts=4 sts=4 sw=4')
-call shortcut#map('<space> s 2',     'Set tabwidth to 2',                  'set ts=2 sts=2 sw=2')
+call shortcut#map('<space> 8',       'Set tabwidth to 8',                  'setlocal ts=8 sts=8 sw=8')
+call shortcut#map('<space> 4',       'Set tabwidth to 4',                  'setlocal ts=4 sts=4 sw=4')
+call shortcut#map('<space> 2',       'Set tabwidth to 2',                  'setlocal ts=2 sts=2 sw=2')
 call shortcut#map('<space> T l',     'Todo - local',                       'e ~/todo.todo')
 call shortcut#map('<space> T d',     'Todo - Mark as done',                'call <Plug>() TaskComplete()')
 call shortcut#map('<space> T c',     'Todo - Cancel task',                 'call <Plug>() TaskCancel()')
@@ -1292,6 +1303,8 @@ function! Run()
         call RunInSplit("nim c --verbosity:0 --threads:on -r " . expand("%:p"))
     elseif &ft == "python"
         call RunInSplit(expand("%"))
+    elseif &ft == "javascript"
+        call RunInSplit("node " . expand("%:p"))
     elseif &ft == "typescript"
         call RunInSplit("tsc")
     else

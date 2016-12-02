@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
@@ -7,6 +7,7 @@ Plug 'rking/ag.vim'
 Plug 'idanarye/vim-casetrate'
 Plug 'idanarye/vim-vebugger'
 Plug 'idanarye/vim-merginal'
+Plug 'jacoborus/tender.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/gapply.vim'
@@ -22,9 +23,11 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'cd ~/.vim/plugged/vimproc.vim && make -f make_unix.mak' }
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
+Plug 'metakirby5/codi.vim'
 Plug 'b4winckler/vim-angry'
 Plug 'baabelfish/a.vim'
 Plug 'baabelfish/vim-dispatch'
+Plug 'baabelfish/vimjobs'
 Plug 'baabelfish/vim-droid256'
 Plug 'Raimondi/delimitMate'
 Plug 'baabelfish/vim-vertigo'

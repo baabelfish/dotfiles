@@ -1,9 +1,3 @@
-if test -r /etc/locale.conf
-    while read -l kv
-        set -gx (string split "=" -- $kv)
-    end </etc/locale.conf
-end
-
 if test -e "$HOME/.config/fish/env.fish"
     source "$HOME/.config/fish/env.fish"
 end
@@ -12,7 +6,7 @@ end
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
 set __fish_git_prompt_showupstream 'yes'
-set __fish_git_prompt_color_branch yellow
+# set __fish_git_prompt_color_branch yellow
 
 # Status Chars
 set __fish_git_prompt_char_dirtystate '⚡'
@@ -22,8 +16,6 @@ set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
 function fish_prompt
-    # Ei toimi enää
-    # printf ' '
     set last_status $status
     set vim_ind_color '222'
     set vim_ind_color_fg '0f0'
@@ -40,38 +32,46 @@ function fish_prompt
     else
         set my_vi_indicator $fish_bind_mode
     end
+
     if [ $last_status != 0 ]
         set_color f00
         set_color -b 433
         printf ' %s ' $last_status
         set_color 433
         set_color -b 333
+        # printf ''
     end
+
+
     set_color ccc
     set_color -b 333
     printf ' %s ' (hostname)
     set_color 333
     set_color -b $vim_ind_color
+    # printf ''
     set_color $vim_ind_color_fg
     printf ' %s ' $my_vi_indicator
     set_color normal
     set_color $vim_ind_color
+    # printf ' '
     printf ' '
-#     set_color normal
+    set_color normal
 end
 
 function fish_mode_prompt
 end
 
 function fish_right_prompt
-#     Ei toimi
+#     set_color 222
 #     printf ''
-    set_color 222
-    set_color -b 222
-    set_color 3e3
-    # printf '%s ' (__fish_git_prompt)
+
+#     set_color -b 222
+#     set_color 3e3
+#     printf '%s ' (__fish_git_prompt)
+
     # set_color 333
-    # printf ' '
+    # printf ''
+
     # set_color -b 333
     # set_color ddd
     # printf ' %s ' (pwd)
@@ -222,12 +222,52 @@ function browse_dirs
     commandline -f repaint
 end
 
-function backisearch
-    history | uniq -u | eval (__fzfcmd) +s +m --tiebreak=index --toggle-sort=ctrl-r > $TMPDIR/fzf.result
-    and commandline (cat $TMPDIR/fzf.result)
+function fzf_key_bindings
+  # Due to a bug of fish, we cannot use command substitution,
+  # so we use temporary file instead
+  if [ -z "$TMPDIR" ]
+    set -g TMPDIR /tmp
+  end
+
+  function __fzf_escape
+    while read item
+      echo -n (echo -n "$item" | sed -E 's/([ "$~'\''([{<>})])/\\\\\\1/g')' '
+    end
+  end
+
+  function fzf-file-widget
+    set -q FZF_CTRL_T_COMMAND; or set -l FZF_CTRL_T_COMMAND "
+    command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
+      -o -type f -print \
+      -o -type d -print \
+      -o -type l -print 2> /dev/null | sed 1d | cut -b3-"
+    eval "$FZF_CTRL_T_COMMAND | "fzf" -m $FZF_CTRL_T_OPTS > $TMPDIR/fzf.result"
+    and for i in (seq 20); commandline -i (cat $TMPDIR/fzf.result | __fzf_escape) 2> /dev/null; and break; sleep 0.1; end
     commandline -f repaint
     rm -f $TMPDIR/fzf.result
+  end
+
+  function fzf-history-widget
+    history | eval fzf +s +m --tiebreak=index --toggle-sort=ctrl-r $FZF_CTRL_R_OPTS -q '(commandline)' > $TMPDIR/fzf.result
+    and commandline -- (cat $TMPDIR/fzf.result)
+    commandline -f repaint
+    rm -f $TMPDIR/fzf.result
+  end
+
+  function fzf-cd-widget
+    set -q FZF_ALT_C_COMMAND; or set -l FZF_ALT_C_COMMAND "
+    command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
+      -o -type d -print 2> /dev/null | sed 1d | cut -b3-"
+    # Fish hangs if the command before pipe redirects (2> /dev/null)
+    eval "$FZF_ALT_C_COMMAND | "fzf" +m $FZF_ALT_C_OPTS > $TMPDIR/fzf.result"
+    [ (cat $TMPDIR/fzf.result | wc -l) -gt 0 ]
+    and cd (cat $TMPDIR/fzf.result)
+    commandline -f repaint
+    rm -f $TMPDIR/fzf.result
+  end
 end
+fzf_key_bindings
+
 
 # Binds
 function bind_vim
@@ -241,8 +281,8 @@ function my_vi_key_bindings
     bind -M insert \ce end-of-line
     bind -M insert \cl 'clear; commandline -f repaint'
     bind -M insert \cs 'cmatrix; commandline -f repaint'
-    bind -M insert \cr 'backisearch'
-    bind -M insert \ct '__fzf_ctrl_t'
+    # bind -M insert \cr 'backisearch'
+    # bind -M insert \ct '__fzf_ctrl_t'
     bind -M insert \cv 'edit-command'
     bind H my_previous_dir
     bind L my_next_dir
@@ -251,7 +291,7 @@ function my_vi_key_bindings
     bind \cl 'clear; commandline -f repaint'
     bind \cs 'cmatrix; commandline -f repaint'
     bind gh my_back_dir
-    bind gr 'backisearch'
+    # bind gr 'backisearch'
     bind_vim \ a 'ranger-cd; commandline -f repaint'
     bind_vim \ d browse_all
     bind_vim \ gP 'git push'
@@ -261,18 +301,24 @@ function my_vi_key_bindings
     bind_vim \ gd 'git diff'
     bind_vim \ gl 'git lo'
     bind_vim \ gp 'git pull --rebase'
-    bind_vim \ r 'backisearch'
-    bind_vim \ t '__fzf_ctrl_t'
+    # bind_vim \ r 'backisearch'
+    # bind_vim \ t '__fzf_ctrl_t'
     bind_vim \ \  'l'
     bind_vim \ v  'nvim'
     bind_vim \ C  'C'
     bind_vim \ ml  'cd ~/.localdf'
     bind_vim \ mcf  'nvim ~/.config/fish/config.fish'
+    bind \ct fzf-file-widget
+    bind \cr fzf-history-widget
+    bind \cf fzf-cd-widget
+    bind -M insert \ct fzf-file-widget
+    bind -M insert \cr fzf-history-widget
+    bind -M insert \cf fzf-cd-widget
 end
 set -g fish_key_bindings my_vi_key_bindings
 
 # Sources
-. ~/.config/fish/plugins/fishmarks/marks.fish
+# . ~/.config/fish/plugins/fishmarks/marks.fish
 alias M save_bookmark
 alias m go_to_bookmark
 alias md delete_bookmark
@@ -348,22 +394,27 @@ function edit-command
     rm $tmpfile
 end
 
-set -x LS_COLORS 'rs=0:di=00;33:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=0;0:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01\ ;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'
+set -x LS_COLORS 'rs=0:di=00;33:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=0;0:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01\
+    ;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'
 
-if test -e "/usr/share/fish/functions/fzf.fish"
-    source /usr/share/fish/functions/fzf.fish
-    fzf_key_bindings
-end
 
 if test -e "$HOME/.localdf/private.fish"
     source "$HOME/.localdf/private.fish"
+end
+
+if test -e "$HOME/.config/fish/plugins/fishmarks/marks.fish"
+    source "$HOME/.config/fish/plugins/fishmarks/marks.fish"
 end
 
 if test -e "$HOME/.local.fish"
     source "$HOME/.local.fish"
 end
 
-set -gx PATH "/home/bbl/pebble-dev/pebble-sdk-4.2-linux64/bin" $PATH
+if test -e "$HOME/temp/Nim/bin"
+    set -gx PATH "$HOME/temp/Nim/bin" $PATH
+end
+
+# set -gx PATH "/home/bbl/pebble-dev/pebble-sdk-4.2-linux64/bin" $PATH
 
 function fuck -d 'Correct your previous console command'
     set -l exit_code $status
@@ -378,4 +429,4 @@ function fuck -d 'Correct your previous console command'
 end
 
 # Essentials
-fish_vi_key_bindings
+# fish_vi_mode
